@@ -72,10 +72,11 @@ Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 `upload-sarif`, `comment-pr`, `no-semgrep`. Outputs: `decision`, `risk`, `score`,
 `sarif-file`, `exceeded`. Action definition: [`packages/action/action.yml`](packages/action/action.yml).
 
-**See it running:** [`SteveMonsway/mcp-trust-demo`](https://github.com/SteveMonsway/mcp-trust-demo)
-is a live demo — an intentionally-vulnerable MCP server wired to this Action. It shows the
-[Code Scanning alerts](https://github.com/SteveMonsway/mcp-trust-demo/security/code-scanning)
-and the [PR comment + blocked check](https://github.com/SteveMonsway/mcp-trust-demo/pull/1) the scan produces.
+> [!TIP]
+> **▶ See it running** — [`SteveMonsway/mcp-trust-demo`](https://github.com/SteveMonsway/mcp-trust-demo)
+> is a live demo: an intentionally-vulnerable MCP server wired to this Action. It shows the
+> [Code Scanning alerts](https://github.com/SteveMonsway/mcp-trust-demo/security/code-scanning)
+> and the [PR comment + blocked check](https://github.com/SteveMonsway/mcp-trust-demo/pull/1) the scan produces.
 
 ## Badge
 
