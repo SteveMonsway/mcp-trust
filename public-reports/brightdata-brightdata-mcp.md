@@ -1,0 +1,149 @@
+# MCP Trust Report: github:brightdata/brightdata-mcp
+
+**Decision:** APPROVE_WITH_RESTRICTIONS  
+**Risk:** MEDIUM  
+**Score:** 30/100  
+**Confidence:** 81%
+
+_Resolved ref: `adbfdd49b8805136662a264490118c2688da3e29`_
+
+## Executive Summary
+This MCP server looks usable **with restrictions** (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.
+
+## Decision Reasons
+- Overall score 30 falls in MEDIUM band
+
+## Coverage
+| Check | State |
+|---|---|
+| configScan | not_available |
+| staticScan | completed |
+| capabilityInference | static_only |
+| introspection | disabled |
+| semgrep | completed |
+| docker | disabled |
+| dependencyScan | not_available |
+| runtimeScan | not_available |
+| packageMetadata | completed |
+
+## Capability Map
+_Source: static_inference_
+
+_No tools discovered (no runtime introspection); capabilities inferred statically where possible._
+
+## Subscores
+| Subscore | Value |
+|---|---|
+| capability | 0 |
+| code | 91 |
+| config | _not assessed_ |
+| supplyChain | 0 |
+| dependency | _not assessed_ |
+| authTransport | _not assessed_ |
+| metadata | 0 |
+| maintainer | _not assessed_ |
+| runtime | _not assessed_ |
+
+## Findings (6)
+### HIGH (2)
+#### MCP-CODE-003: Dynamic code evaluation (eval / Function)
+**Severity:** high  **Confidence:** 85%  **Category:** code
+
+Uses eval() or the Function constructor to execute dynamically constructed code.
+
+**Evidence:** `browser_tools.js:285`
+
+```
+return await page.$eval('body', body=>body.innerHTML);
+```
+
+**Impact:** Dynamically evaluated code can execute attacker-controlled logic.
+
+**Remediation:** Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.
+
+#### MCP-CODE-003: Dynamic code evaluation (eval / Function)
+**Severity:** high  **Confidence:** 85%  **Category:** code
+
+Uses eval() or the Function constructor to execute dynamically constructed code.
+
+**Evidence:** `browser_tools.js:306`
+
+```
+try { return await page.$eval('body', body=>body.innerText); }
+```
+
+**Impact:** Dynamically evaluated code can execute attacker-controlled logic.
+
+**Remediation:** Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.
+
+### MEDIUM (1)
+#### MCP-SG-JS-006: Secret-like environment variable access
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+The server handles credentials; misuse or logging could leak them.
+
+**Evidence:** `browser_tools.js:38`
+
+```
+headers: {authorization: `Bearer ${process.env.API_TOKEN}`},
+```
+
+**Impact:** The server handles credentials; misuse or logging could leak them.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+### LOW (2)
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `browser_tools.js:32`
+
+```
+headers: {authorization: `Bearer ${process.env.API_TOKEN}`},
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `server.js:17`
+
+```
+const api_token = <redacted:secret>
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+### INFO (1)
+#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
+**Severity:** info  **Confidence:** 100%  **Category:** supply_chain
+
+The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.
+
+**Evidence:** `repo.files`
+
+```
+no SECURITY.md found in source
+```
+
+**Impact:** Absence of a disclosure process slows remediation of future vulnerabilities.
+
+**Remediation:** Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.
+
+
+## Recommended Policy
+- Run only in a sandbox with least-privilege configuration.
+
+## Disclaimer
+> MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
+
+_Generated by mcp-trust 0.5.3 at 2026-07-08T14:27:06.533Z._

@@ -11,6 +11,14 @@ describe('redact', () => {
   it('redacts an Anthropic key', () => {
     expect(redact('sk-ant-abcdefghijklmnopqrstuvwxyz0123')).toContain('<redacted:anthropic-key>');
   });
+  it('redacts a full PEM private key block', () => {
+    const pem = '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBg\n-----END PRIVATE KEY-----';
+    expect(redact(pem)).toBe('<redacted:private-key>');
+  });
+  it('redacts a lone PEM header (no END / body already stripped)', () => {
+    expect(redact('JWT_PRIVATE_KEY = """-----BEGIN PRIVATE KEY-----')).not.toContain('BEGIN PRIVATE KEY');
+    expect(redact('-----BEGIN RSA PRIVATE KEY-----')).toBe('<redacted:private-key>');
+  });
   it('leaves ordinary text intact', () => {
     expect(redact('hello world')).toBe('hello world');
   });

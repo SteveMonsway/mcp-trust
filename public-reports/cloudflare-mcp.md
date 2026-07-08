@@ -1,18 +1,18 @@
-# MCP Trust Report: github:cloudflare/mcp-server-cloudflare
+# MCP Trust Report: github:cloudflare/mcp
 
-**Decision:** BLOCK  
-**Risk:** MEDIUM  
-**Score:** 36/100  
-**Confidence:** 71%
+**Decision:** NEEDS_REVIEW  
+**Risk:** LOW  
+**Score:** 26/100  
+**Confidence:** 67%
 
-_Resolved ref: `52c633e37684fadb94ae236f74909b9bbefc0db8`_
+_Resolved ref: `fe731a8babb9dfef8816904bdd4e2c840d70af4c`_
 
 ## Executive Summary
-The scanner found **high-confidence capability evidence in the server’s runtime code** (e.g. command execution). Review the flagged findings below before connecting this server to an agent. **A BLOCK is a "review required", not proof the server is malicious** — the evidence may be legitimate by design (see Decision Reasons).
+The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).
 
 ## Decision Reasons
-- Overall score 36 falls in MEDIUM band
-- Critical finding with high confidence: MCP-CODE-001
+- Overall score 26 falls in LOW band
+- Elevated to NEEDS_REVIEW by: MCP-CODE-002
 
 ## Coverage
 | Check | State |
@@ -21,7 +21,7 @@ The scanner found **high-confidence capability evidence in the server’s runtim
 | staticScan | completed |
 | capabilityInference | static_only |
 | introspection | disabled |
-| semgrep | completed |
+| semgrep | partial |
 | docker | disabled |
 | dependencyScan | not_available |
 | runtimeScan | not_available |
@@ -36,196 +36,79 @@ _No tools discovered (no runtime introspection); capabilities inferred staticall
 | Subscore | Value |
 |---|---|
 | capability | 0 |
-| code | 100 |
+| code | 68 |
 | config | _not assessed_ |
 | supplyChain | 0 |
 | dependency | _not assessed_ |
 | authTransport | _not assessed_ |
-| metadata | 29 |
+| metadata | 42 |
 | maintainer | _not assessed_ |
 | runtime | _not assessed_ |
 
-## Findings (13)
-### CRITICAL (1)
-#### MCP-CODE-001: child_process.exec usage
-**Severity:** critical  **Confidence:** 95%  **Category:** code
+## Findings (5)
+### HIGH (1)
+#### MCP-META-002: Suspicious concealment phrase in metadata
+**Severity:** high  **Confidence:** 60%  **Category:** metadata
 
-Uses child_process.exec(), which runs a command through a shell and is prone to command injection.
+Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
 
-**Evidence:** `apps/sandbox-container/container/sandbox.container.app.ts:140`
-
-```
-const proc = exec(execParams.args)
-```
-
-**Impact:** Enables arbitrary shell command execution with the process privileges. The argument appears to be dynamically constructed, raising injection risk.
-
-**Remediation:** Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.
-
-### HIGH (2)
-#### MCP-CODE-006: Arbitrary filesystem write or delete
-**Severity:** high  **Confidence:** 85%  **Category:** code
-
-Writes or deletes files, potentially outside a scoped workspace.
-
-**Evidence:** `apps/sandbox-container/container/sandbox.container.app.ts:120`
+**Evidence:** `src/auth/account-access.ts`
 
 ```
-await fs.rm(path.join(process.cwd(), reqPath), { recursive: true })
+ && props.accounts.length === 1
+}
+
+/**
+ * The account id usable without asking the user: an account token
 ```
 
-**Impact:** File deletion can destroy data outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.
+**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
 
-**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
 
-#### MCP-CODE-006: Arbitrary filesystem write or delete
-**Severity:** high  **Confidence:** 75%  **Category:** code
+### MEDIUM (3)
+#### MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)
+**Severity:** medium  **Confidence:** 90%  **Category:** code
 
-Writes or deletes files, potentially outside a scoped workspace.
+Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/seed-r2.ts — which does not run as part of the MCP server.)
 
-**Evidence:** `apps/sandbox-container/container/sandbox.container.app.ts:104`
-
-```
-await fs.writeFile(reqPath, file.text)
-```
-
-**Impact:** File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.
-
-**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
-
-### MEDIUM (9)
-#### MCP-CODE-005: Arbitrary filesystem read
-**Severity:** medium  **Confidence:** 75%  **Category:** code
-
-Reads files using a dynamically constructed path, allowing reads outside the intended scope.
-
-**Evidence:** `apps/sandbox-container/container/sandbox.container.app.ts:75`
+**Evidence:** `scripts/seed-r2.ts:52`
 
 ```
-const contents = await fs.readFile(path.join(process.cwd(), reqPath))
+execSync(
 ```
 
-**Impact:** A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.
+**Impact:** Enables arbitrary shell command execution.
 
-**Remediation:** Resolve and validate paths against an allowlisted base directory before reading.
-
-#### MCP-META-005: Encoded or hidden content in metadata
-**Severity:** medium  **Confidence:** 65%  **Category:** metadata
-
-Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.
-
-**Evidence:** `packages/mcp-common/src/cloudflare-auth.ts`
-
-```
-<redacted:high-entropy>-._~
-```
-
-**Impact:** Hidden or encoded content can smuggle instructions past human review.
-
-**Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
+**Remediation:** Prefer spawnSync with an argument array and shell:false; validate inputs.
 
 #### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
 **Severity:** medium  **Confidence:** 60%  **Category:** code
 
-A caller-controlled URL can reach internal services or exfiltrate data.
+A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
 
-**Evidence:** `apps/demo-day/frontend/script.js:144`
+**Evidence:** `src/index.ts:115`
 
 ```
-const response = await fetch(url, options)
+const response = await fetch(env.OPENAPI_SPEC_URL)
 ```
 
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
+**Impact:** A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
 
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
 #### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
 **Severity:** medium  **Confidence:** 60%  **Category:** code
 
-A caller-controlled URL can reach internal services or exfiltrate data.
+A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
 
-**Evidence:** `apps/dex-analysis/src/warp_diag_reader.ts:83`
-
-```
-const res = await fetch(url, { headers })
-```
-
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
-
-#### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
-**Severity:** medium  **Confidence:** 60%  **Category:** code
-
-A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Evidence:** `apps/radar/src/tools/radar.tools.ts:165`
+**Evidence:** `src/utils/fetch-retry.ts:51`
 
 ```
-const response = await fetch(url.toString(), {
+const response = await fetch(input, init)
 ```
 
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
-
-#### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
-**Severity:** medium  **Confidence:** 60%  **Category:** code
-
-A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Evidence:** `apps/radar/src/tools/url-scanner.tools.ts:35`
-
-```
-const res = await fetch(url.toString(), {
-```
-
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
-
-#### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
-**Severity:** medium  **Confidence:** 60%  **Category:** code
-
-A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Evidence:** `apps/radar/src/tools/url-scanner.tools.ts:205`
-
-```
-const response = await fetch(screenshotUrl, {
-```
-
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
-
-#### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
-**Severity:** medium  **Confidence:** 60%  **Category:** code
-
-A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Evidence:** `apps/sandbox-container/server/containerHelpers.ts:74`
-
-```
-return fetch(url, request.clone() as Request)
-```
-
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
-
-#### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
-**Severity:** medium  **Confidence:** 60%  **Category:** code
-
-A caller-controlled URL can reach internal services or exfiltrate data.
-
-**Evidence:** `packages/mcp-common/src/cloudflare-api.ts:51`
-
-```
-const response = await fetch(url, {
-```
-
-**Impact:** A caller-controlled URL can reach internal services or exfiltrate data.
+**Impact:** A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
 
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
@@ -247,9 +130,9 @@ no SECURITY.md found in source
 
 
 ## Recommended Policy
-- Block by default; do not connect to developer workstations or production agents without review.
+- Run only in a sandbox with least-privilege configuration.
 
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:04.403Z._
+_Generated by mcp-trust 0.5.3 at 2026-07-08T14:38:29.660Z._

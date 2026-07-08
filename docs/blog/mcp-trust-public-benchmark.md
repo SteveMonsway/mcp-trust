@@ -1,4 +1,4 @@
-# We scanned 41 public MCP servers before letting an agent touch them
+# We scanned 452 public MCP servers before letting an agent touch them
 
 *Draft — MCP Trust public benchmark, Phase 4. Numbers are from the committed
 `public-reports/index.json`; regenerate with `pnpm scan:seed && pnpm reports:public`.*
@@ -16,7 +16,7 @@ and it maps what the server can do, runs deterministic rules plus a Semgrep AST 
 and returns an `APPROVE / APPROVE_WITH_RESTRICTIONS / NEEDS_REVIEW / BLOCK` decision with
 evidence attached to every finding.
 
-To pressure-test it, we ran it over **41 real, public MCP servers** — the reference
+To pressure-test it, we ran it over **452 real, public MCP servers** — the reference
 servers, the archived reference set, and a spread of popular vendor/community servers
 (databases, browsers, search, payments, cloud).
 
@@ -24,31 +24,31 @@ servers, the archived reference set, and a spread of popular vendor/community se
 
 | Decision | Count | Meaning |
 |---|---|---|
-| BLOCK | 2 | Runtime code with high-confidence dangerous capability; review before use |
-| NEEDS_REVIEW | 16 | Notable risk (network egress, secret access, dynamic requests) |
-| APPROVE_WITH_RESTRICTIONS | 1 | Usable with sandboxing / least privilege |
-| APPROVE | 22 | No significant risk in the available evidence |
+| BLOCK | 32 | Runtime code with high-confidence dangerous capability; review before use |
+| NEEDS_REVIEW | 91 | Notable patterns worth a human look before use |
+| APPROVE_WITH_RESTRICTIONS | 112 | Usable with sandboxing / least privilege |
+| APPROVE | 217 | No significant risk in the available evidence |
 
-The most common findings across the fleet were exactly what you'd expect from tools
-built to *do things*: secret-like environment access (`MCP-CODE-007`), filesystem
-writes (`MCP-CODE-006`), outbound requests to dynamically-built URLs
-(`MCP-SG-JS-005`, a Semgrep rule), and synchronous shell execution (`MCP-CODE-002`).
-None of that is inherently malicious — a fetch server making outbound requests is its
-whole job — which is the entire point of an **evidence-based** decision rather than a
-pass/fail verdict.
+The most common patterns across the fleet were exactly what you'd expect from tools built
+to *do things*: outbound requests to dynamically-built URLs, filesystem writes, secret-like
+environment access, and shell execution. **None of that is inherently malicious** — a fetch
+server making outbound requests, or a server reading its own API key from the environment,
+is its whole job. That is the entire point of an **evidence-based** decision: we tuned the
+scanner so ordinary server behavior (network egress, reading own credentials) is reported as
+*evidence* but does not by itself push a server into NEEDS_REVIEW — only genuine
+review-worthy signals (runtime command execution, data-exfiltration phrasing, hardcoded
+secrets) escalate the decision.
 
 ## A BLOCK is not "malware"
 
-Both BLOCKs are legitimate-by-design and the scanner says *why*:
-
-- **`cloudflare-mcp`** ships a sandbox-container server whose runtime literally calls
-  `child_process.exec` (`apps/sandbox-container/container/sandbox.container.app.ts`).
-  Running commands *is the feature*. BLOCK here means "this tool executes commands —
-  make sure you meant to give an agent that."
-- **`mongodb-mcp`** shells out in its runtime setup path (`src/setup/aiTool.ts`).
-
-That's the signal we want: capability evidence in the code that actually runs when an
-agent connects.
+Many of the 32 BLOCKs are legitimate-by-design, and the scanner says *why*. For example,
+**`cloudflare/mcp-server-cloudflare`** ships a sandbox-container server whose runtime
+literally calls `child_process.exec` on request input
+(`apps/sandbox-container/container/sandbox.container.app.ts`). Running commands *is the
+feature*. A BLOCK here means "this tool executes commands — make sure you meant to give an
+agent that." Others are desktop-automation / shell / build-tool servers that genuinely run
+commands. That's the signal we want: capability evidence in the code that actually runs when
+an agent connects — so a human can decide, with the evidence in front of them.
 
 ## The lesson: a scanner has to understand what code is *for*
 
@@ -102,12 +102,11 @@ We'd rather undersell than overclaim:
 
 ## Performance, and where it goes
 
-41 targets scanned in **~112 seconds** on one laptop (mean 2.7s, median 2.3s each;
-machine-dependent). The time splits almost entirely between the **git clone (~55%)** and
-the **Semgrep subprocess (~43%)**; the deterministic rules are ~1%. Both the clone and
-Semgrep run as *synchronous* child processes, so — we checked — naive in-process
-concurrency wouldn't help. The real win is **caching clones per repository**: several seed
-entries are subpaths of the same monorepo and re-clone it today. That's the next lever.
+452 targets scanned in **~28 minutes** on one laptop, sequential (mean 3.7s, median 2.4s
+each; machine-dependent). The time splits almost entirely between the **git clone (~64%)**
+and the **Semgrep subprocess (~35%)**; the deterministic rules are ~1%. Both run as
+*synchronous* child processes, one target at a time — so scanning parallel clones (async
+spawn, ~8–10 at once) would cut this to a few minutes. That's the next performance lever.
 
 ## Reproduce it
 

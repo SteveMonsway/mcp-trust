@@ -2,6 +2,16 @@
 
 All notable changes to MCP Trust. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.3] — 2026-07-08 — precision tuning (network + redaction)
+
+- **Outbound request with a dynamic URL** (`MCP-SG-JS-005` / `MCP-SG-PY-004`, SSRF) no longer
+  by itself forces `NEEDS_REVIEW`. Almost every MCP server makes outbound requests, so this was
+  flagging ~half of all servers; it stays a medium finding (visible in the report and capability
+  map) but only real drivers (shell exec, exfiltration metadata, hardcoded secrets, …) escalate
+  the decision. Real SSRF (URL from tool input) needs taint analysis — tracked as future work.
+- `redact()` also collapses a lone `-----BEGIN … PRIVATE KEY-----` header (not just a full block),
+  so a report never displays a raw PEM marker.
+
 ## [0.5.2] — 2026-07-08 — precision tuning
 
 Data-driven false-positive reduction, validated against the 41-server benchmark:

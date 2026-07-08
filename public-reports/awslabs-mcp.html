@@ -64,7 +64,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 46 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-META-003, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004</li></ul>
+<ul><li>Overall score 46 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-META-003, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004, MCP-CODE-004</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>completed</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>partial</td></tr></tbody></table>
@@ -611,73 +611,73 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/amazon-bedrock-agentcore-mcp-server/awslabs/amazon_bedrock_agentcore_mcp_server/utils/doc_fetcher.py:60</code></p>
 <pre class="snippet"><code>with urllib.request.urlopen(req, timeout=doc_config.timeout) as r: # nosec</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/amazon-mq-mcp-server/awslabs/amazon_mq_mcp_server/rabbitmq/admin.py:41</code></p>
 <pre class="snippet"><code>response = requests.request(method, url, headers=self.headers, json=data, verify=True)</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/aws-api-mcp-server/awslabs/aws_api_mcp_server/core/metadata/read_only_operations_list.py:97</code></p>
 <pre class="snippet"><code>response = requests.get(</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/aws-serverless-mcp-server/awslabs/aws_serverless_mcp_server/utils/github.py:37</code></p>
 <pre class="snippet"><code>response = requests.get(url, headers=default_headers, timeout=30)</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/canary_utils.py:798</code></p>
 <pre class="snippet"><code>response = requests.get(layer_response[&#39;Content&#39;][&#39;Location&#39;], timeout=30)</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/canary_utils.py:840</code></p>
 <pre class="snippet"><code>response = requests.get(</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/canary_utils.py:872</code></p>
 <pre class="snippet"><code>response = requests.get(code_location, timeout=30)</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Evidence:</strong> <code>src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/model_validation_utils.py:381</code></p>
 <pre class="snippet"><code>with urllib.request.urlopen( # nosec B310</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
 <h3 class="sev sev-low">LOW (163)</h3>
@@ -2179,7 +2179,7 @@ limit: int = 10            # Optional - max results per topic
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:58.979Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:24:11.431Z.</footer>
 </main>
 </body>
 </html>

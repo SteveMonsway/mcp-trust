@@ -1,0 +1,163 @@
+# MCP Trust Report: github:peng-shawn/mermaid-mcp-server
+
+**Decision:** APPROVE_WITH_RESTRICTIONS  
+**Risk:** MEDIUM  
+**Score:** 33/100  
+**Confidence:** 78%
+
+_Resolved ref: `81dc507991c6bfcc09bb59805916d47c9bfd03c5`_
+
+## Executive Summary
+This MCP server looks usable **with restrictions** (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.
+
+## Decision Reasons
+- Overall score 33 falls in MEDIUM band
+
+## Coverage
+| Check | State |
+|---|---|
+| configScan | not_available |
+| staticScan | completed |
+| capabilityInference | static_only |
+| introspection | disabled |
+| semgrep | completed |
+| docker | disabled |
+| dependencyScan | not_available |
+| runtimeScan | not_available |
+| packageMetadata | completed |
+
+## Capability Map
+_Source: static_inference_
+
+_No tools discovered (no runtime introspection); capabilities inferred statically where possible._
+
+## Subscores
+| Subscore | Value |
+|---|---|
+| capability | 0 |
+| code | 98 |
+| config | _not assessed_ |
+| supplyChain | 0 |
+| dependency | _not assessed_ |
+| authTransport | _not assessed_ |
+| metadata | 0 |
+| maintainer | _not assessed_ |
+| runtime | _not assessed_ |
+
+## Findings (7)
+### HIGH (3)
+#### MCP-CODE-003: Dynamic code evaluation (eval / Function)
+**Severity:** high  **Confidence:** 85%  **Category:** code
+
+Uses eval() or the Function constructor to execute dynamically constructed code.
+
+**Evidence:** `index.ts:281`
+
+```
+const screenshot = await page.$eval(
+```
+
+**Impact:** Dynamically evaluated code can execute attacker-controlled logic.
+
+**Remediation:** Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.
+
+#### MCP-CODE-003: Dynamic code evaluation (eval / Function)
+**Severity:** high  **Confidence:** 85%  **Category:** code
+
+Uses eval() or the Function constructor to execute dynamically constructed code.
+
+**Evidence:** `index.ts:343`
+
+```
+svgContent = await page.$eval("#container svg", (svg) => {
+```
+
+**Impact:** Dynamically evaluated code can execute attacker-controlled logic.
+
+**Remediation:** Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `index.ts:368`
+
+```
+fs.unlinkSync(tempHtmlPath);
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+### MEDIUM (3)
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `index.ts:266`
+
+```
+fs.writeFileSync(tempHtmlPath, htmlContent);
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `index.ts:431`
+
+```
+fs.writeFileSync(fullPath, imageBuffer);
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `index.ts:468`
+
+```
+fs.writeFileSync(fullPath, svgContent, "utf-8");
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+### INFO (1)
+#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
+**Severity:** info  **Confidence:** 100%  **Category:** supply_chain
+
+The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.
+
+**Evidence:** `repo.files`
+
+```
+no SECURITY.md found in source
+```
+
+**Impact:** Absence of a disclosure process slows remediation of future vulnerabilities.
+
+**Remediation:** Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.
+
+
+## Recommended Policy
+- Run only in a sandbox with least-privilege configuration.
+
+## Disclaimer
+> MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
+
+_Generated by mcp-trust 0.5.3 at 2026-07-08T14:45:31.848Z._

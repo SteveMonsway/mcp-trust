@@ -40,12 +40,11 @@ detected capability is itself a signal worth reading.
 <!-- BENCHMARK_SUMMARY_START -->
 ## Latest run
 
-- **Targets scanned:** 41 public MCP servers (all GitHub), 41 ok, 0 failed.
-- **Decisions:** 2 BLOCK · 16 NEEDS_REVIEW · 1 APPROVE_WITH_RESTRICTIONS · 22 APPROVE.
-- **Risk:** 29 low · 12 medium · 0 high · 0 critical.
-- **Timing (this run, darwin / Node v24.8.0):** ~132s wall; mean 3.2s, median 2.7s per target. Machine-dependent.
-- **Where the time goes:** clone/resolve ~49%, Semgrep ~49%, regex rules ~1.2% (rest negligible). Both clone and Semgrep are synchronous (spawnSync) — in-process concurrency would not help; clone caching per repository is the real lever.
-- **Environment:** Node v24.8.0, darwin, Semgrep available. Scanner v0.5.2.
+- **Targets scanned:** 452 public MCP servers (all GitHub, JS/TS/Python), 452 ok, 0 failed.
+- **Decisions:** 32 BLOCK · 91 NEEDS_REVIEW · 112 APPROVE_WITH_RESTRICTIONS · 217 APPROVE.
+- **Risk:** 236 low · 216 medium · 0 high · 0 critical.
+- **Timing (this run, darwin / Node v24.8.0):** ~28 min (1665s), sequential; mean 3.7s, median 2.4s per target. ~64% git clone + ~35% Semgrep; parallel clones would cut this to minutes (roadmap).
+- **Environment:** Node v24.8.0, darwin, Semgrep available. Scanner v0.5.3.
 
 ## How to read these results
 
@@ -68,48 +67,69 @@ confidence — so an APPROVE is never misread as "fully analyzed, safe". In this
 
 ## Results
 
-<!-- Regenerate this table + summary from public-reports/index.json after each run. -->
+<!-- Top of the list; full 452-row index: ../public-reports/README.md -->
 | # | Target | Category | Decision | Risk | Score | Findings | Note |
 |---|---|---|---|---|---|---|---|
-| 1 | `mongodb-mcp` | database | BLOCK | medium | 37 | 67 |  |
-| 2 | `cloudflare-mcp` | cloud | BLOCK | medium | 36 | 13 |  |
-| 3 | `awslabs-mcp` | cloud | NEEDS_REVIEW | medium | 46 | 228 |  |
-| 4 | `context7` | developer | NEEDS_REVIEW | medium | 44 | 38 |  |
-| 5 | `mcp-atlassian` | communication | NEEDS_REVIEW | medium | 39 | 43 |  |
-| 6 | `playwright-mcp-microsoft` | browser | NEEDS_REVIEW | medium | 33 | 12 |  |
-| 7 | `mcp-playwright-ea` | browser | NEEDS_REVIEW | medium | 33 | 10 |  |
-| 8 | `neon-mcp` | database | NEEDS_REVIEW | medium | 33 | 12 |  |
-| 9 | `firecrawl-mcp` | browser | NEEDS_REVIEW | medium | 32 | 15 |  |
-| 10 | `stripe-agent-toolkit` | payment | NEEDS_REVIEW | medium | 32 | 74 | ⚠ unanalyzed lang |
-| 11 | `mcp-arc-google-maps` | geo | NEEDS_REVIEW | medium | 30 | 9 |  |
-| 12 | `supabase-mcp` | database | NEEDS_REVIEW | low | 27 | 7 |  |
-| 13 | `mcp-arc-brave-search` | search | NEEDS_REVIEW | low | 25 | 6 |  |
-| 14 | `mcp-arc-gitlab` | developer | NEEDS_REVIEW | low | 25 | 6 |  |
-| 15 | `mcp-arc-github` | developer | NEEDS_REVIEW | low | 19 | 4 |  |
-| 16 | `tavily-mcp` | search | NEEDS_REVIEW | low | 18 | 4 |  |
-| 17 | `mcp-ref-everything` | reference | NEEDS_REVIEW | low | 11 | 3 |  |
-| 18 | `fetch-mcp` | network | NEEDS_REVIEW | low | 9 | 2 |  |
-| 19 | `mcp-ref-filesystem` | filesystem | APPROVE_WITH_RESTRICTIONS | medium | 33 | 48 |  |
-| 20 | `mcp-ref-memory` | knowledge | APPROVE | low | 26 | 9 |  |
-| 21 | `exa-mcp` | search | APPROVE | low | 25 | 11 |  |
-| 22 | `grafana-mcp` | observability | APPROVE | low | 20 | 7 | ⚠ unanalyzed lang |
-| 23 | `redis-mcp` | database | APPROVE | low | 18 | 4 |  |
-| 24 | `mcp-arc-gdrive` | document | APPROVE | low | 13 | 3 |  |
-| 25 | `mcp-arc-everart` | media | APPROVE | low | 13 | 3 |  |
-| 26 | `mcp-arc-aws-kb-retrieval` | cloud | APPROVE | low | 8 | 3 |  |
-| 27 | `chroma-mcp` | database | APPROVE | low | 8 | 2 |  |
-| 28 | `mcp-ref-git` | git | APPROVE | low | 5 | 1 |  |
-| 29 | `mcp-arc-git` | git | APPROVE | low | 5 | 1 |  |
-| 30 | `mcp-arc-slack` | communication | APPROVE | low | 4 | 2 |  |
-| 31 | `mcp-ref-fetch` | network | APPROVE | low | 0 | 0 |  |
-| 32 | `mcp-ref-time` | utility | APPROVE | low | 0 | 0 |  |
-| 33 | `mcp-ref-sequentialthinking` | utility | APPROVE | low | 0 | 1 |  |
-| 34 | `mcp-arc-postgres` | database | APPROVE | low | 0 | 1 |  |
-| 35 | `mcp-arc-sqlite` | database | APPROVE | low | 0 | 0 |  |
-| 36 | `mcp-arc-redis` | database | APPROVE | low | 0 | 1 |  |
-| 37 | `mcp-arc-puppeteer` | browser | APPROVE | low | 0 | 1 |  |
-| 38 | `mcp-arc-sentry` | observability | APPROVE | low | 0 | 0 |  |
-| 39 | `github-mcp-server` | developer | APPROVE | low | 0 | 0 | ⚠ unanalyzed lang |
-| 40 | `qdrant-mcp` | database | APPROVE | low | 0 | 0 |  |
-| 41 | `elasticsearch-mcp` | database | APPROVE | low | 0 | 0 | ⚠ unanalyzed lang |
+| 1 | `getsentry-xcodebuildmcp` | typescript | BLOCK | medium | 52 | 93 | ⚠ |
+| 2 | `srbhptl39-mcp-superassistant` | typescript | BLOCK | medium | 51 | 23 |  |
+| 3 | `wonderwhy-er-desktopcommandermcp` | typescript | BLOCK | medium | 48 | 206 |  |
+| 4 | `atagon-gmbh-kogiqa-mcp` | javascript | BLOCK | medium | 44 | 12 |  |
+| 5 | `ibm-mcp-context-forge` | python | BLOCK | medium | 42 | 249 | ⚠ |
+| 6 | `cisco-ai-defense-mcp-scanner` | python | BLOCK | medium | 42 | 490 |  |
+| 7 | `artokun-comfyui-mcp` | typescript | BLOCK | medium | 42 | 156 |  |
+| 8 | `sepinetam-mcp-for-stata` | python | BLOCK | medium | 42 | 26 |  |
+| 9 | `aartiq-servicenow-mcp` | typescript | BLOCK | medium | 41 | 61 |  |
+| 10 | `softeria-ms-365-mcp-server` | typescript | BLOCK | medium | 39 | 24 |  |
+| 11 | `maksimsarychau-mcp-zebrunner` | typescript | BLOCK | medium | 39 | 93 |  |
+| 12 | `dakkshin-after-effects-mcp` | javascript | BLOCK | medium | 38 | 10 |  |
+| 13 | `jamubc-gemini-mcp-tool` | typescript | BLOCK | medium | 37 | 25 |  |
+| 14 | `mongodb-js-mongodb-mcp-server` | typescript | BLOCK | medium | 37 | 67 |  |
+| 15 | `quantgeekdev-mcp-framework` | typescript | BLOCK | medium | 37 | 82 |  |
+| 16 | `cloudflare-mcp-server-cloudflare` | typescript | BLOCK | medium | 36 | 13 |  |
+| 17 | `agentdeskai-browser-tools-mcp` | javascript | BLOCK | medium | 33 | 15 |  |
+| 18 | `jgraph-drawio-mcp` | javascript | BLOCK | medium | 33 | 13 |  |
+| 19 | `tradesdontlie-tradingview-mcp` | javascript | BLOCK | medium | 33 | 5 |  |
+| 20 | `southleft-figma-console-mcp` | typescript | BLOCK | medium | 33 | 21 |  |
+| 21 | `rinadelph-agent-mcp` | typescript | BLOCK | medium | 33 | 68 |  |
+| 22 | `patruff-ollama-mcp-bridge` | typescript | BLOCK | medium | 33 | 12 |  |
+| 23 | `stevenstavrakis-obsidian-mcp` | typescript | BLOCK | medium | 33 | 23 |  |
+| 24 | `cso1z-feishu-mcp` | typescript | BLOCK | medium | 33 | 22 |  |
+| 25 | `etsd-tech-mcp-pointer` | typescript | BLOCK | medium | 33 | 12 |  |
+| 26 | `reading-plus-ai-mcp-server-data-exploration` | python | BLOCK | medium | 33 | 3 |  |
+| 27 | `bvisible-mcp-ssh-manager` | javascript | BLOCK | medium | 33 | 56 |  |
+| 28 | `domdomegg-computer-use-mcp` | typescript | BLOCK | medium | 33 | 10 |  |
+| 29 | `uholli-browser-mcp` | typescript | BLOCK | medium | 33 | 4 |  |
+| 30 | `browsermcp-mcp` | typescript | BLOCK | medium | 32 | 3 |  |
+| 31 | `getsentry-sentry-mcp` | typescript | BLOCK | medium | 30 | 178 |  |
+| 32 | `nickgnd-tmux-mcp` | javascript | BLOCK | medium | 30 | 2 |  |
+| 33 | `vmoranv-jshookmcp` | typescript | NEEDS_REVIEW | medium | 52 | 261 | ⚠ |
+| 34 | `volcengine-mcp-server` | python | NEEDS_REVIEW | medium | 50 | 203 | ⚠ |
+| 35 | `sirkirby-unifi-mcp` | python | NEEDS_REVIEW | medium | 47 | 80 |  |
+| 36 | `jjvm2000-terminal-mcp` | typescript | NEEDS_REVIEW | medium | 47 | 15 |  |
+| 37 | `awslabs-mcp` | python | NEEDS_REVIEW | medium | 46 | 228 |  |
+| 38 | `datalayer-jupyter-mcp-server` | python | NEEDS_REVIEW | medium | 44 | 13 |  |
+| 39 | `rohitg00-kubectl-mcp-server` | python | NEEDS_REVIEW | medium | 44 | 20 |  |
+| 40 | `postmanlabs-postman-mcp-server` | typescript | NEEDS_REVIEW | medium | 44 | 26 |  |
+| 41 | `zcaceres-markdownify-mcp` | typescript | NEEDS_REVIEW | medium | 43 | 14 |  |
+| 42 | `beehiveinnovations-pal-mcp-server` | python | NEEDS_REVIEW | medium | 42 | 177 |  |
+| 43 | `ibm-mcp-cli` | python | NEEDS_REVIEW | medium | 42 | 83 |  |
+| 44 | `salesforceairesearch-mcp-universe` | python | NEEDS_REVIEW | medium | 42 | 207 |  |
+| 45 | `heznpc-airmcp` | javascript | NEEDS_REVIEW | medium | 42 | 116 | ⚠ |
+| 46 | `samarthanalytics-sj-samarth-analytics-mcp` | typescript | NEEDS_REVIEW | medium | 42 | 115 |  |
+| 47 | `lastmile-ai-mcp-agent` | python | NEEDS_REVIEW | medium | 41 | 80 |  |
+| 48 | `excalidraw-excalidraw-mcp` | typescript | NEEDS_REVIEW | medium | 41 | 8 |  |
+| 49 | `harishsg993010-damn-vulnerable-mcp-server` | python | NEEDS_REVIEW | medium | 41 | 50 |  |
+| 50 | `ath-maas-pixelle-mcp` | python | NEEDS_REVIEW | medium | 41 | 31 |  |
+| 51 | `tencentcloudbase-cloudbase-mcp` | typescript | NEEDS_REVIEW | medium | 41 | 227 |  |
+| 52 | `arcadeai-arcade-mcp` | python | NEEDS_REVIEW | medium | 41 | 39 |  |
+| 53 | `jonigl-mcp-client-for-ollama` | python | NEEDS_REVIEW | medium | 41 | 24 |  |
+| 54 | `goldentrii-agentrecall-mcp` | javascript | NEEDS_REVIEW | medium | 41 | 381 |  |
+| 55 | `cbcoutinho-nextcloud-mcp-server` | python | NEEDS_REVIEW | medium | 41 | 27 |  |
+| 56 | `waldzellai-waldzell-mcp` | javascript | NEEDS_REVIEW | medium | 41 | 40 |  |
+| 57 | `dynamics365ninja-d365fo-mcp-server` | typescript | NEEDS_REVIEW | medium | 41 | 129 | ⚠ |
+| 58 | `iseppo-e-arveldaja-mcp` | typescript | NEEDS_REVIEW | medium | 41 | 54 |  |
+| 59 | `llallum-msdefender-mcp` | javascript | NEEDS_REVIEW | medium | 41 | 19 |  |
+| 60 | `czlonkowski-n8n-mcp` | typescript | NEEDS_REVIEW | medium | 40 | 316 |  |
+
+_… 392 more — see the full index: [](../public-reports/README.md)._
 <!-- BENCHMARK_SUMMARY_END -->

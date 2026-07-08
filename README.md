@@ -74,9 +74,9 @@ Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 
 ## Public benchmark
 
-MCP Trust ships a reproducible benchmark over **41 real, public MCP servers**
-(`registry-seed/seed-targets.yml`). Latest run: **2 BLOCK · 16 NEEDS_REVIEW ·
-1 APPROVE_WITH_RESTRICTIONS · 22 APPROVE**, ~112s for all 41.
+MCP Trust ships a reproducible benchmark over **452 real, public MCP servers**
+(JavaScript / TypeScript / Python; `registry-seed/seed-targets.yml`). Latest run:
+**32 BLOCK · 91 NEEDS_REVIEW · 112 APPROVE_WITH_RESTRICTIONS · 217 APPROVE**.
 
 ```bash
 pnpm scan:seed        # clone + static + Semgrep for each seed target
@@ -159,7 +159,7 @@ for the full catalog (implemented + planned).
 Short version below; full user/company roadmap in [ROADMAP.md](ROADMAP.md).
 
 - **Phase 1–4 (done):** CLI, 30+12 rules, Docker sandbox, `@modelcontextprotocol/sdk`
-  introspection, JSON/MD/**HTML**/**SARIF**, GitHub Action, and a public benchmark of 41 servers.
+  introspection, JSON/MD/**HTML**/**SARIF**, GitHub Action, and a public benchmark of 452 servers.
 - **Next (free):** policy file (`--policy`), rules for more languages (Go/Rust/…), npm releases.
 - **Later (paid, teams):** hosted API, dashboard, private/continuous scans, Slack, GitHub App.
 
@@ -168,7 +168,7 @@ Short version below; full user/company roadmap in [ROADMAP.md](ROADMAP.md).
 ```bash
 pnpm install
 pnpm build       # turbo build all packages
-pnpm test        # vitest (154 tests)
+pnpm test        # vitest (159 tests)
 pnpm typecheck   # tsc --noEmit across packages
 ```
 

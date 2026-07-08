@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:modelcontextprotocol/mcpb</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-review">
+<h1>MCP Trust Report: github:modelcontextprotocol/mcpb</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">33/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">77%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>70fe3b34cd6dff1b3bba046638edc72a6467a4fb</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
+</section>
+<section class="limitations"><h2>⚠️ Limitations</h2>
+<ul><li>Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe.</li></ul>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 33 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002, MCP-CODE-002</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (139)</h2>
+<h3 class="sev sev-high">HIGH (2)</h3>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously.</p>
+<p><strong>Evidence:</strong> <code>src/cli/cli.ts:32</code></p>
+<pre class="snippet"><code>execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/node/validate.ts:501</code></p>
+<pre class="snippet"><code>await fs.rm(tmpDir, {</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (4)</h3>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/build-mcpb-schema.js:33</code></p>
+<pre class="snippet"><code>await fs.writeFile(filePath, JSON.stringify(jsonSchema, null, 2), {</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/build-mcpb-schema.js:43</code></p>
+<pre class="snippet"><code>await fs.writeFile(filePath, JSON.stringify(jsonSchema, null, 2), {</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/create-dev-version.js:29</code></p>
+<pre class="snippet"><code>fs.writeFileSync(&quot;package.json&quot;, JSON.stringify(packageJson, null, 2) + &quot;\n&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/node/validate.ts:445</code></p>
+<pre class="snippet"><code>await fs.writeFile(manifestPath, JSON.stringify(result.data, null, 2));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<h3 class="sev sev-low">LOW (132)</h3>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:25</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${validManifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:33</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${invalidManifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:41</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath}`, { encoding: &quot;utf-8&quot;, stdio: &quot;pipe&quot; });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:53</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate /non/existent/file.json`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:69</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${invalidJsonPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:134</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestWithIcon}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:161</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestWithUrl}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:218</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} pack ${tempDir} ${packedFilePath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:225</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} unpack ${packedFilePath} ${unpackedDir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:397</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} pack ${tempExecDir} ${execPackedFilePath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:486</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} pack ${tempBinDir} ${binPackedFilePath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:166</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:176</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:189</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:208</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:215</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:232</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:239</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:255</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:262</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:278</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:285</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:324</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${manifestPath}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:67</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:74</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:97</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:123</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:130</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:158</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:183</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:190</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:219</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:226</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:258</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:298</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:305</code></p>
+<pre class="snippet"><code>execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:326</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:343</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:360</code></p>
+<pre class="snippet"><code>const result = execSync(`node ${cliPath} validate ${dir}`, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:21</code></p>
+<pre class="snippet"><code>execSync(&quot;yarn build&quot;, { cwd: join(__dirname, &quot;..&quot;) });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:178</code></p>
+<pre class="snippet"><code>execSync(&quot;yarn build&quot;, { cwd: join(__dirname, &quot;..&quot;) });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:299</code></p>
+<pre class="snippet"><code>const result = execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:323</code></p>
+<pre class="snippet"><code>execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:330</code></p>
+<pre class="snippet"><code>execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:402</code></p>
+<pre class="snippet"><code>execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:491</code></p>
+<pre class="snippet"><code>execSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:11</code></p>
+<pre class="snippet"><code>execSync(&quot;yarn build&quot;, { cwd: join(__dirname, &quot;..&quot;) });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:45</code></p>
+<pre class="snippet"><code>execSync(&quot;yarn build&quot;, { cwd: join(__dirname, &quot;..&quot;) });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:80</code></p>
+<pre class="snippet"><code>fs.unlinkSync(invalidJsonPath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:111</code></p>
+<pre class="snippet"><code>fs.rmSync(testDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:210</code></p>
+<pre class="snippet"><code>fs.rmSync(tempDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:211</code></p>
+<pre class="snippet"><code>fs.rmSync(unpackedDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:213</code></p>
+<pre class="snippet"><code>fs.unlinkSync(packedFilePath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:307</code></p>
+<pre class="snippet"><code>fs.rmSync(projectDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:308</code></p>
+<pre class="snippet"><code>fs.rmSync(manifestDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:310</code></p>
+<pre class="snippet"><code>fs.unlinkSync(manifestPackedPath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:342</code></p>
+<pre class="snippet"><code>fs.rmSync(projectDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:431</code></p>
+<pre class="snippet"><code>fs.rmSync(tempExecDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:432</code></p>
+<pre class="snippet"><code>fs.rmSync(execUnpackedDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:434</code></p>
+<pre class="snippet"><code>fs.unlinkSync(execPackedFilePath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:508</code></p>
+<pre class="snippet"><code>fs.rmSync(tempBinDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:509</code></p>
+<pre class="snippet"><code>fs.rmSync(binUnpackedDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:511</code></p>
+<pre class="snippet"><code>fs.unlinkSync(binPackedFilePath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:133</code></p>
+<pre class="snippet"><code>fs.rmSync(testFixturesDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:23</code></p>
+<pre class="snippet"><code>fs.rmSync(tempDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:348</code></p>
+<pre class="snippet"><code>fs.unlinkSync(testFile);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:371</code></p>
+<pre class="snippet"><code>fs.unlinkSync(testFile);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:396</code></p>
+<pre class="snippet"><code>fs.unlinkSync(testFile);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:427</code></p>
+<pre class="snippet"><code>fs.unlinkSync(testFile);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:446</code></p>
+<pre class="snippet"><code>fs.rmSync(TEST_DIR, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:515</code></p>
+<pre class="snippet"><code>fs.unlinkSync(testFile);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:48</code></p>
+<pre class="snippet"><code>fs.rmSync(fixturesDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:55</code></p>
+<pre class="snippet"><code>fs.rmSync(fixturesDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:134</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(testStructure, &quot;manifest.json&quot;), &quot;{}&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:139</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(testStructure, &quot;tests/test.js&quot;), &quot;test()&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:144</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(testStructure, &quot;logs/debug.log&quot;), &quot;log&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:145</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(testStructure, &quot;debug.log&quot;), &quot;log&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:184</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(testStructure, &quot;.gitignore&quot;), &quot;ignore&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:66</code></p>
+<pre class="snippet"><code>fs.writeFileSync(invalidJsonPath, &quot;{ invalid json }&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:101</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(testDir, &quot;icon.png&quot;), validPngBuffer);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:105</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(testDir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:117</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:144</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:181</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:200</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(tempDir, &quot;file1.txt&quot;), &quot;hello&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:202</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(tempDir, &quot;subdir&quot;, &quot;file2.txt&quot;), &quot;world&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:205</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(tempDir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:276</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:283</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:320</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(projectDir, &quot;index.js&quot;), &quot;console.log(&#39;hello&#39;);&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:359</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:381</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(tempExecDir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:385</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:393</code></p>
+<pre class="snippet"><code>fs.writeFileSync(regularFile, &quot;regular content&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:454</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:475</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/cli.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/cli.test.ts:482</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(tempBinDir, &quot;config.json&quot;), &quot;{}&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:88</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(testFixturesDir, &quot;valid-icon.png&quot;), validPngBuffer);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:91</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:98</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(testFixturesDir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:157</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/icon-validation.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/icon-validation.test.ts:314</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(assetsDir, &quot;icon.png&quot;), validPngBuffer);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:37</code></p>
+<pre class="snippet"><code>fs.writeFileSync(mcpbIgnorePath, content);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:51</code></p>
+<pre class="snippet"><code>fs.writeFileSync(mcpbIgnorePath, content);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:61</code></p>
+<pre class="snippet"><code>fs.writeFileSync(mcpbIgnorePath, content);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:69</code></p>
+<pre class="snippet"><code>fs.writeFileSync(mcpbIgnorePath, content);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:135</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:140</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:153</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/mcpbignore.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/mcpbignore.test.ts:178</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:85</code></p>
+<pre class="snippet"><code>fs.writeFileSync(SELF_SIGNED_CERT, forge.pki.certificateToPem(cert));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:86</code></p>
+<pre class="snippet"><code>fs.writeFileSync(SELF_SIGNED_KEY, forge.pki.privateKeyToPem(keys.privateKey));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:168</code></p>
+<pre class="snippet"><code>fs.writeFileSync(CA_CERT, forge.pki.certificateToPem(caCert));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:169</code></p>
+<pre class="snippet"><code>fs.writeFileSync(CA_KEY, forge.pki.privateKeyToPem(caKeys.privateKey));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:170</code></p>
+<pre class="snippet"><code>fs.writeFileSync(SIGNED_CERT, forge.pki.certificateToPem(cert));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:171</code></p>
+<pre class="snippet"><code>fs.writeFileSync(SIGNED_KEY, forge.pki.privateKeyToPem(keys.privateKey));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:325</code></p>
+<pre class="snippet"><code>fs.writeFileSync(TEST_MCPB, zipContent);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/sign.e2e.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/sign.e2e.test.ts:389</code></p>
+<pre class="snippet"><code>fs.writeFileSync(testFile, tamperedContent);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:38</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:88</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;main.py&quot;), &quot;print(&#39;hello&#39;)&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:112</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;myserver&quot;), &quot;#!/bin/sh\necho hi&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:148</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;myserver&quot;), &quot;#!/bin/sh\necho hi&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:170</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:205</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:241</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:269</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:292</code></p>
+<pre class="snippet"><code>fs.writeFileSync(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:322</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:323</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;credentials.json&quot;), &#39;{&quot;secret&quot;: &quot;value&quot;}&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:339</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// fixture&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:340</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server.pem&quot;), &quot;--- CERT ---&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — test/validate.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>test/validate.test.ts:357</code></p>
+<pre class="snippet"><code>fs.writeFileSync(join(dir, &quot;server&quot;, &quot;index.js&quot;), &quot;// server code&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<h3 class="sev sev-info">INFO (1)</h3>
+<article class="finding">
+<h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
+<p><strong>Evidence:</strong> <code>repo.files</code></p>
+<pre class="snippet"><code>no SECURITY.md found in source</code></pre>
+<p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
+<p><strong>Remediation:</strong> Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>Run only in a sandbox with least-privilege configuration.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:27:57.821Z.</footer>
+</main>
+</body>
+</html>

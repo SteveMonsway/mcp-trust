@@ -11,6 +11,10 @@ interface SecretPattern {
 // Order matters: more specific patterns first.
 const SECRET_PATTERNS: SecretPattern[] = [
   { type: 'private-key', regex: /-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP )?PRIVATE KEY-----[\s\S]*?-----END (?:RSA |EC |OPENSSH |DSA |PGP )?PRIVATE KEY-----/g },
+  // A lone PEM header (single-line snippet, or a block whose body was already
+  // redacted so the END marker no longer follows) — collapse the marker too so a
+  // report never displays a raw "BEGIN … PRIVATE KEY" line.
+  { type: 'private-key', regex: /-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP )?PRIVATE KEY-----/g },
   { type: 'aws-access-key', regex: /\b(?:AKIA|ASIA)[0-9A-Z]{16}\b/g },
   { type: 'github-token', regex: /\bgh[pousr]_[A-Za-z0-9]{20,}\b/g },
   { type: 'slack-token', regex: /\bxox[baprs]-[A-Za-z0-9-]{10,}\b/g },

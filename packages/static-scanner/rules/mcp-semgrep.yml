@@ -160,10 +160,9 @@ rules:
       mcp_severity: medium
       mcp_confidence: "0.6"
       mcp_capability: network_egress
-      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data.
+      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
       mcp_remediation: Validate URLs against an allowlist of hosts/schemes before making outbound requests.
       mcp_cwe: CWE-918
-      mcp_min_needs_review: "true"
       references:
         - https://cwe.mitre.org/data/definitions/918.html
     patterns:
@@ -305,10 +304,9 @@ rules:
       mcp_severity: medium
       mcp_confidence: "0.6"
       mcp_capability: network_egress
-      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data.
+      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.
       mcp_remediation: Validate URLs against an allowlist of hosts/schemes before making outbound requests.
       mcp_cwe: CWE-918
-      mcp_min_needs_review: "true"
     patterns:
       - pattern-either:
           - patterns:
