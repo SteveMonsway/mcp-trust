@@ -1,6 +1,6 @@
 {
   "name": "@mcp-trust/cli",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Evidence-based preflight security scanner for Model Context Protocol (MCP) servers.",
   "type": "module",
   "bin": {

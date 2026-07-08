@@ -2,6 +2,17 @@
 
 All notable changes to MCP Trust. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.4] — 2026-07-08 — SARIF location fix (GitHub Code Scanning)
+
+Fixed:
+- **Every SARIF result now carries at least one `location`.** Project-level findings
+  (no linked repository, install script present, no `SECURITY.md` — logical `source`
+  only, no file) were emitted with no location. GitHub Code Scanning rejects the
+  **entire** SARIF upload in that case (`expected at least one location`), silently
+  dropping *all* alerts. Such findings are now anchored file-level (no fabricated
+  line) to the project manifest, inferred from evidence provenance. Surfaced end-to-end
+  by the live demo repo. No change to decisions, scores, or other report formats.
+
 ## [0.5.3] — 2026-07-08 — precision tuning (network + redaction)
 
 Tooling (no change to scan results):

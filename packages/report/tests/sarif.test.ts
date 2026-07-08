@@ -110,8 +110,31 @@ describe('SARIF 2.1.0 output', () => {
     expect(cfg.artifactLocation.uri).toBe('mcp.json');
     expect(cfg.region).toBeUndefined(); // no fabricated line
 
-    // No file at all → no locations key (valid SARIF; attributed to repo root).
-    expect(byRule('MCP-SUPPLY-001').locations).toBeUndefined();
+    // No file at all (project-level finding) → anchored file-level to the manifest
+    // (inferred from the `package.json` evidence source), with NO fabricated line.
+    const supply = byRule('MCP-SUPPLY-001').locations[0].physicalLocation;
+    expect(supply.artifactLocation.uri).toBe('package.json');
+    expect(supply.region).toBeUndefined();
+  });
+
+  it('gives every result at least one location (GitHub Code Scanning rejects results without one)', () => {
+    const findings = [
+      mkFinding(), // located code finding (server.js:22)
+      mkFinding({ ruleId: 'MCP-SUPPLY-001', evidence: [{ source: 'package.metadata' }] }),
+      mkFinding({ ruleId: 'MCP-SUPPLY-003', evidence: [{ source: 'package.scripts.postinstall' }] }),
+      mkFinding({ ruleId: 'MCP-SUPPLY-005', evidence: [{ source: 'repo.files' }] }),
+    ];
+    const sarif = JSON.parse(renderSarif(baseResult(findings)));
+    for (const r of sarif.runs[0].results) {
+      expect(Array.isArray(r.locations)).toBe(true);
+      expect(r.locations.length).toBeGreaterThanOrEqual(1);
+      expect(r.locations[0].physicalLocation.artifactLocation.uri).toBeTruthy();
+    }
+    // The three project-level supply findings anchor to the inferred manifest.
+    const uriOf = (id: string) =>
+      sarif.runs[0].results.find((r: any) => r.ruleId === id).locations[0].physicalLocation.artifactLocation.uri;
+    expect(uriOf('MCP-SUPPLY-001')).toBe('package.json');
+    expect(uriOf('MCP-SUPPLY-005')).toBe('package.json');
   });
 
   it('never lets a hostile file path break out of a relative artifact URI', () => {
@@ -126,13 +149,17 @@ describe('SARIF 2.1.0 output', () => {
     expect(uris[1]).not.toContain(ESC);
   });
 
-  it('drops the location (no misattribution) when a path climbs out of the tree', () => {
+  it('never reuses an escaping path; anchors it to the manifest instead of misattributing', () => {
     const traversal = mkFinding({ ruleId: 'MCP-TRAV', evidence: [{ source: 's', file: '../../etc/shadow', line: 3 }] });
     const sarif = JSON.parse(renderSarif(baseResult([traversal])));
     const res = sarif.runs[0].results.find((r: any) => r.ruleId === 'MCP-TRAV');
-    // Finding is still reported, but with NO invented/escaping location.
     expect(res).toBeTruthy();
-    expect(res.locations).toBeUndefined();
+    // The escaping path is never used as the URI (no misattribution, no `..`),
+    // but the result still carries a valid location so the SARIF stays ingestible.
+    const uri = res.locations[0].physicalLocation.artifactLocation.uri;
+    expect(uri).toBe('package.json');
+    expect(uri).not.toContain('..');
+    expect(res.locations[0].physicalLocation.region).toBeUndefined(); // no invented line
   });
 
   it('maps severities to SARIF levels and sorts most-severe first', () => {

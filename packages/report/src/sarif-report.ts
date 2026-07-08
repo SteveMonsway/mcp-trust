@@ -10,10 +10,14 @@ import {
 // SARIF 2.1.0 output (TZ §9.3). Enables GitHub Code Scanning annotations.
 //
 // Design invariants:
-// - Never fabricate a location. `region` is emitted only when a finding carries
-//   a concrete line (>= 1); `physicalLocation` only when it carries a file.
-//   Findings with neither become non-located results (valid SARIF; GitHub
-//   attributes them to the repo root) — honest over invented line numbers.
+// - Never fabricate a line. `region` is emitted only when a finding carries a
+//   concrete line (>= 1) — an invented line number is dishonest.
+// - EVERY result carries at least one location. GitHub Code Scanning rejects the
+//   whole SARIF upload if any result has none ("expected at least one location"),
+//   silently dropping every alert. Findings with a concrete file use it; project-
+//   level findings (no linked repo, install script, no SECURITY.md — logical
+//   `source` only, no file) are anchored file-level (no region) to the project
+//   manifest, inferred from evidence provenance or borrowed from a located finding.
 // - Descriptive text (title/impact/remediation) comes from our own rule /
 //   Semgrep-ruleset dictionaries (trusted). Target-derived strings (file paths)
 //   are treated as hostile: sanitized (control/ANSI stripped) before emission.
@@ -138,7 +142,31 @@ interface SarifResult {
   properties: Record<string, unknown>;
 }
 
-function buildResult(f: Finding, ruleIndex: number): SarifResult {
+/** A run-level anchor URI for findings that carry no usable file location, so
+ * every SARIF result stays ingestible by GitHub Code Scanning. Project/metadata
+ * findings are about the manifest: infer it from evidence provenance
+ * (`package.*` → package.json, `pyproject*` → pyproject.toml), else borrow the
+ * first concretely-located finding's file, else fall back to package.json (the
+ * MCP-server default). Never the empty string — that reintroduces the bug. */
+function projectAnchorUri(findings: Finding[]): string {
+  for (const f of findings) {
+    for (const e of f.evidence) {
+      const src = e.source ?? '';
+      if (src.startsWith('package.')) return 'package.json';
+      if (src.startsWith('pyproject')) return 'pyproject.toml';
+    }
+  }
+  for (const f of findings) {
+    const ev = f.evidence.find((e) => typeof e.file === 'string' && e.file.length > 0);
+    if (ev?.file) {
+      const uri = toArtifactUri(ev.file);
+      if (uri) return uri;
+    }
+  }
+  return 'package.json';
+}
+
+function buildResult(f: Finding, ruleIndex: number, anchorUri: string): SarifResult {
   const message = oneLine(`${f.title}. ${f.impact} Remediation: ${f.remediation}`, 3000);
   const result: SarifResult = {
     ruleId: f.ruleId,
@@ -153,23 +181,24 @@ function buildResult(f: Finding, ruleIndex: number): SarifResult {
     },
   };
 
-  // Location: pick the first evidence entry that names a file. `region` only
-  // when a real line exists — we never invent line 1 for line-less findings.
+  // Location: pick the first evidence entry that names an in-tree file. `region`
+  // only when a real line exists — we never invent line 1 for line-less findings.
   const ev = f.evidence.find((e) => typeof e.file === 'string' && e.file.length > 0);
-  if (ev?.file) {
-    const uri = toArtifactUri(ev.file);
-    if (uri) {
-      const physicalLocation: Record<string, unknown> = {
-        artifactLocation: { uri },
-      };
-      if (typeof ev.line === 'number' && ev.line >= 1) {
-        const region: Record<string, number> = { startLine: ev.line };
-        if (typeof ev.column === 'number' && ev.column >= 1) region.startColumn = ev.column;
-        if (typeof ev.endLine === 'number' && ev.endLine >= ev.line) region.endLine = ev.endLine;
-        physicalLocation.region = region;
-      }
-      result.locations = [{ physicalLocation }];
+  const uri = ev?.file ? toArtifactUri(ev.file) : '';
+  if (uri) {
+    const physicalLocation: Record<string, unknown> = { artifactLocation: { uri } };
+    if (typeof ev!.line === 'number' && ev!.line >= 1) {
+      const region: Record<string, number> = { startLine: ev!.line };
+      if (typeof ev!.column === 'number' && ev!.column >= 1) region.startColumn = ev!.column;
+      if (typeof ev!.endLine === 'number' && ev!.endLine >= ev!.line) region.endLine = ev!.endLine;
+      physicalLocation.region = region;
     }
+    result.locations = [{ physicalLocation }];
+  } else {
+    // No usable file (project-level finding, or a path that escaped the tree):
+    // anchor file-level to the manifest so the result stays ingestible — never
+    // reusing the escaping path, and never inventing a line.
+    result.locations = [{ physicalLocation: { artifactLocation: { uri: anchorUri } } }];
   }
   return result;
 }
@@ -181,7 +210,8 @@ export function renderSarif(result: ScanResult): string {
     (a, b) => SEVERITY_ORDER[b.severity] - SEVERITY_ORDER[a.severity],
   );
   const { rules, indexById } = buildRules(findings);
-  const results = findings.map((f) => buildResult(f, indexById.get(f.ruleId)!));
+  const anchorUri = projectAnchorUri(findings);
+  const results = findings.map((f) => buildResult(f, indexById.get(f.ruleId)!, anchorUri));
 
   const sarif = {
     $schema: SARIF_SCHEMA,
