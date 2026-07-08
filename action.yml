@@ -1,0 +1,159 @@
+name: 'MCP Trust Scan'
+description: 'Evidence-based preflight scanner for MCP servers — SARIF, PR comments, and a fail-on threshold.'
+author: 'MCP Trust'
+branding:
+  icon: 'shield'
+  color: 'purple'
+
+# Root action — installable one-liner (and GitHub Marketplace listing):
+#   - uses: actions/checkout@v4
+#   - uses: SteveMonsway/mcp-trust@v1        # or @v0.5.4 / @main
+#     with: { fail-on: high, upload-sarif: true, comment-pr: true }
+# Required job permissions: contents: read, security-events: write, pull-requests: write.
+#
+# Unlike packages/action (which builds the monorepo from source), this runs the
+# PUBLISHED npm package via `npx`, so it is self-contained and needs no checkout
+# of this repo. Keep CLI_VERSION in sync with the @mcp-trust/cli release this tag
+# ships against.
+
+inputs:
+  target:
+    description: 'Target to scan (github:/npm:/path/config). Default: the checked-out workspace.'
+    required: false
+    default: '.'
+  fail-on:
+    description: 'Fail the job at/above this severity: low|medium|high|critical.'
+    required: false
+    default: 'high'
+  output:
+    description: 'Comma-separated report formats to emit (json,md,sarif).'
+    required: false
+    default: 'sarif,md,json'
+  output-dir:
+    description: 'Directory for the written reports.'
+    required: false
+    default: 'mcp-trust-reports'
+  upload-sarif:
+    description: 'Upload SARIF to GitHub Code Scanning.'
+    required: false
+    default: 'true'
+  comment-pr:
+    description: 'Post/update a summary comment on the pull request.'
+    required: false
+    default: 'true'
+  no-semgrep:
+    description: 'Skip the bundled Semgrep AST ruleset.'
+    required: false
+    default: 'false'
+
+outputs:
+  decision:
+    description: 'APPROVE | APPROVE_WITH_RESTRICTIONS | NEEDS_REVIEW | BLOCK'
+    value: ${{ steps.scan.outputs.decision }}
+  risk:
+    description: 'Overall risk band: low | medium | high | critical'
+    value: ${{ steps.scan.outputs.risk }}
+  score:
+    description: 'Overall risk score 0..100'
+    value: ${{ steps.scan.outputs.score }}
+  sarif-file:
+    description: 'Path to the generated SARIF file.'
+    value: ${{ steps.scan.outputs.sarif_file }}
+  exceeded:
+    description: 'true when findings met/exceeded the fail-on threshold.'
+    value: ${{ steps.scan.outputs.exceeded }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+
+    - name: Run scan
+      id: scan
+      shell: bash
+      # Do NOT fail here even when the threshold is exceeded — we still want to
+      # upload SARIF, post the PR comment and the artifact first. The exit code
+      # is captured and the job is failed in the final step.
+      env:
+        CLI_VERSION: '0.5.4'
+      run: |
+        set +e
+        OUT="$GITHUB_WORKSPACE/${{ inputs.output-dir }}"
+        NOSG=""
+        if [ "${{ inputs.no-semgrep }}" = "true" ]; then NOSG="--no-semgrep"; fi
+        REPORT_URL="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        cd "$GITHUB_WORKSPACE"
+        # INIT_CWD lets a relative --target resolve against the consumer workspace.
+        INIT_CWD="$GITHUB_WORKSPACE" npx --yes "@mcp-trust/cli@${CLI_VERSION}" scan "${{ inputs.target }}" \
+          --format "${{ inputs.output }}" \
+          --output "$OUT" \
+          --fail-on "${{ inputs.fail-on }}" \
+          --emit-pr-comment \
+          --report-url "$REPORT_URL" \
+          $NOSG
+        CODE=$?
+        set -e
+        echo "exit_code=$CODE" >> "$GITHUB_OUTPUT"
+        echo "exceeded=$([ "$CODE" = "1" ] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+        # Locate the emitted files (single target → single slug).
+        SARIF=$(ls "$OUT"/*.sarif 2>/dev/null | head -1 || true)
+        COMMENT=$(ls "$OUT"/*.pr-comment.md 2>/dev/null | head -1 || true)
+        JSON=$(ls "$OUT"/*.json 2>/dev/null | head -1 || true)
+        echo "sarif_file=$SARIF" >> "$GITHUB_OUTPUT"
+        echo "comment_file=$COMMENT" >> "$GITHUB_OUTPUT"
+        if [ -n "$JSON" ]; then
+          echo "decision=$(node -e "process.stdout.write(require('$JSON').score.decision)")" >> "$GITHUB_OUTPUT"
+          echo "risk=$(node -e "process.stdout.write(require('$JSON').score.risk)")" >> "$GITHUB_OUTPUT"
+          echo "score=$(node -e "process.stdout.write(String(require('$JSON').score.overall))")" >> "$GITHUB_OUTPUT"
+        fi
+        # A sandbox failure (exit 5) or scanner/target error is fatal immediately.
+        if [ "$CODE" = "2" ] || [ "$CODE" = "3" ] || [ "$CODE" = "4" ] || [ "$CODE" = "5" ]; then
+          echo "::error::mcp-trust scan failed (exit $CODE)"; exit "$CODE"
+        fi
+
+    - name: Upload SARIF to Code Scanning
+      if: ${{ inputs.upload-sarif == 'true' && steps.scan.outputs.sarif_file != '' }}
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: ${{ steps.scan.outputs.sarif_file }}
+        category: mcp-trust
+
+    - name: Upload report artifact
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: mcp-trust-report
+        path: ${{ inputs.output-dir }}
+        if-no-files-found: ignore
+
+    - name: Comment on PR
+      if: ${{ inputs.comment-pr == 'true' && github.event_name == 'pull_request' && steps.scan.outputs.comment_file != '' }}
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const body = fs.readFileSync(process.env.COMMENT_FILE, 'utf8');
+          const marker = '<!-- mcp-trust-report -->';
+          const { owner, repo } = context.repo;
+          const issue_number = context.payload.pull_request.number;
+          const { data: comments } = await github.rest.issues.listComments({ owner, repo, issue_number });
+          const existing = comments.find((c) => c.body && c.body.includes(marker));
+          if (existing) {
+            await github.rest.issues.updateComment({ owner, repo, comment_id: existing.id, body });
+          } else {
+            await github.rest.issues.createComment({ owner, repo, issue_number, body });
+          }
+      env:
+        COMMENT_FILE: ${{ steps.scan.outputs.comment_file }}
+
+    - name: Enforce threshold
+      shell: bash
+      run: |
+        if [ "${{ steps.scan.outputs.exceeded }}" = "true" ]; then
+          echo "::error::MCP Trust: findings met or exceeded fail-on='${{ inputs.fail-on }}' (decision=${{ steps.scan.outputs.decision }}, risk=${{ steps.scan.outputs.risk }})."
+          exit 1
+        fi
+        echo "MCP Trust: no findings at/above '${{ inputs.fail-on }}'. Decision=${{ steps.scan.outputs.decision }}."
