@@ -2,6 +2,11 @@
 
 All notable changes to MCP Trust. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.1] — 2026-07-08 — packaging
+
+- Add an npm-facing README to `@mcp-trust/cli` (shown on the npm package page).
+- Packaging only — no change to scanner behavior (scanner version stays 0.5.0).
+
 ## [0.5.0] — 2026-07-08 — Phase 4: HTML reports + public benchmark
 
 ### Added
