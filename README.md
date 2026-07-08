@@ -61,7 +61,7 @@ jobs:
       pull-requests: write # PR comment
     steps:
       - uses: actions/checkout@v4
-      - uses: SteveMonsway/mcp-trust/packages/action@v0.5.0 # or @main
+      - uses: SteveMonsway/mcp-trust/packages/action@v0.5.3 # or @main
         with:
           fail-on: high # low|medium|high|critical
           upload-sarif: true

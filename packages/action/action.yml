@@ -7,7 +7,7 @@ branding:
 
 # Consume from another repo with:
 #   - uses: actions/checkout@v4
-#   - uses: SteveMonsway/mcp-trust/packages/action@v0.5.0   # or @main
+#   - uses: SteveMonsway/mcp-trust/packages/action@v0.5.3   # or @main
 #     with: { fail-on: high, upload-sarif: true, comment-pr: true }
 # Required job permissions: contents: read, security-events: write, pull-requests: write.
 
