@@ -72,6 +72,20 @@ Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 `upload-sarif`, `comment-pr`, `no-semgrep`. Outputs: `decision`, `risk`, `score`,
 `sarif-file`, `exceeded`. Action definition: [`packages/action/action.yml`](packages/action/action.yml).
 
+## Badge
+
+Scan your MCP server with MCP Trust? Show it. Paste this into your README:
+
+```markdown
+[![Scanned by MCP Trust](https://img.shields.io/badge/MCP_Trust-scanned-6f42c1)](https://github.com/SteveMonsway/mcp-trust)
+```
+
+Renders as [![Scanned by MCP Trust](https://img.shields.io/badge/MCP_Trust-scanned-6f42c1)](https://github.com/SteveMonsway/mcp-trust) — a link back to MCP Trust so anyone can check what it means.
+
+> The badge is a static "we run this scanner" marker, not a live verdict. For an
+> evidence-backed decision, run the [GitHub Action](#github-action) (it emits
+> `decision` / `risk` / `score`) or scan on demand with the CLI.
+
 ## Public benchmark
 
 MCP Trust ships a reproducible benchmark over **452 real, public MCP servers**
