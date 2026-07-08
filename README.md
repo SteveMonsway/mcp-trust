@@ -61,7 +61,7 @@ jobs:
       pull-requests: write # PR comment
     steps:
       - uses: actions/checkout@v4
-      - uses: SteveMonsway/mcp-trust/packages/action@v0.5.4 # or @main
+      - uses: SteveMonsway/mcp-trust@v1 # runs @mcp-trust/cli via npx
         with:
           fail-on: high # low|medium|high|critical
           upload-sarif: true
@@ -70,7 +70,8 @@ jobs:
 
 Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 `upload-sarif`, `comment-pr`, `no-semgrep`. Outputs: `decision`, `risk`, `score`,
-`sarif-file`, `exceeded`. Action definition: [`packages/action/action.yml`](packages/action/action.yml).
+`sarif-file`, `exceeded`. Action definition: [`action.yml`](action.yml).
+_Alternative (builds from source, no npm dependency): `SteveMonsway/mcp-trust/packages/action@v0.5.4`._
 
 > [!TIP]
 > **▶ See it running** — [`SteveMonsway/mcp-trust-demo`](https://github.com/SteveMonsway/mcp-trust-demo)
