@@ -1,0 +1,25 @@
+# Example: how a consumer repo wires MCP Trust into CI (TZ §11.1).
+# Copy this into your own repository's .github/workflows/.
+name: MCP Trust Scan
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  mcp-trust:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write # upload SARIF to Code Scanning
+      pull-requests: write # post the PR comment
+    steps:
+      - uses: actions/checkout@v4
+      - uses: SteveMonsway/mcp-trust/packages/action@v0.5.0 # or @main for the latest
+        with:
+          # target defaults to the checked-out workspace ('.')
+          fail-on: high
+          output: sarif,md,json
+          upload-sarif: true
+          comment-pr: true

@@ -1,0 +1,369 @@
+# MCP Trust — bundled Semgrep ruleset.
+#
+# AST-level rules that complement the regex/dictionary rules in @mcp-trust/rules.
+# Semgrep resolves imports and syntax the regex engine cannot (e.g. a bare
+# `exec()` bound to `child_process` via a named import), and expresses patterns
+# that are impractical as regex (dynamic require/import, unsafe deserialization,
+# SSRF-style dynamic URLs).
+#
+# This file is the SINGLE SOURCE OF TRUTH for these rules: the scanner reads
+# each match's `extra.metadata.mcp_*` fields to build a finding, and `rules
+# list` / `explain` parse this same file. Every rule MUST carry the full mcp_*
+# metadata block below or it is dropped at ingestion (fail-closed).
+#
+# Safety: this ruleset is run with a LOCAL --config only (never the semgrep
+# registry), fully offline, with telemetry/version-check disabled and in-code
+# `nosemgrep` suppression disabled so a hostile target cannot silence findings.
+#
+# metadata contract (all required unless noted):
+#   mcp_id           stable finding rule id (MCP-SG-<LANG>-NNN)
+#   mcp_title        short human title
+#   mcp_category     FindingCategory (code | capability | metadata | ...)
+#   mcp_severity     info | low | medium | high | critical (authoritative)
+#   mcp_confidence   0..1
+#   mcp_capability   inferred capability tag (optional, informational)
+#   mcp_impact       one-line impact statement
+#   mcp_remediation  one-line remediation
+#   mcp_cwe          CWE id (optional)
+#   mcp_min_needs_review  true → attach min_needs_review tag (optional)
+#   references       list of URLs (optional)
+
+rules:
+  # ---------------------------------------------------------------- JavaScript / TypeScript
+
+  - id: mcp-sg-js-shell-exec
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Executes a shell command via child_process.exec/execSync. A command run
+      through a shell is prone to command injection.
+    metadata:
+      mcp_id: MCP-SG-JS-001
+      mcp_title: Shell command execution (child_process.exec/execSync)
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.9"
+      mcp_capability: shell_execution
+      mcp_impact: Enables arbitrary shell command execution with the process privileges.
+      mcp_remediation: Use execFile/spawn with an argument array and shell:false; validate against an allowlist.
+      mcp_cwe: CWE-78
+      mcp_min_needs_review: "true"
+      references:
+        - https://cwe.mitre.org/data/definitions/78.html
+    patterns:
+      - pattern-either:
+          - pattern: child_process.exec(...)
+          - pattern: child_process.execSync(...)
+          - patterns:
+              - pattern: $EXEC(...)
+              - pattern-inside: |
+                  import { $EXEC } from "child_process"
+                  ...
+          - patterns:
+              - pattern: $EXEC(...)
+              - pattern-inside: |
+                  import { $EXEC } from "node:child_process"
+                  ...
+          - patterns:
+              - pattern: $EXEC(...)
+              - pattern-inside: |
+                  const { $EXEC } = require("child_process")
+                  ...
+          - patterns:
+              - pattern: $EXEC(...)
+              - pattern-inside: |
+                  const { $EXEC } = require("node:child_process")
+                  ...
+    # Only exec/execSync are named this way; metavariable-regex keeps the bare-call
+    # branch from matching an unrelated destructured function (e.g. { join }).
+    options:
+      symbolic_propagation: true
+
+  - id: mcp-sg-js-dynamic-require
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: >-
+      Dynamic require() with a non-literal argument can load attacker-controlled
+      modules at runtime.
+    metadata:
+      mcp_id: MCP-SG-JS-002
+      mcp_title: Dynamic module load (require with non-literal path)
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.7"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: A caller-controlled module path can load and execute arbitrary code.
+      mcp_remediation: Require modules by static string literals; never require a computed path.
+      mcp_cwe: CWE-98
+    patterns:
+      - pattern: require($MOD)
+      - metavariable-pattern:
+          metavariable: $MOD
+          patterns:
+            - pattern-not: '"..."'
+
+  - id: mcp-sg-js-eval
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: Uses eval() or the Function constructor to execute dynamically built code.
+    metadata:
+      mcp_id: MCP-SG-JS-003
+      mcp_title: Dynamic code evaluation (eval / new Function)
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.85"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: Dynamically evaluated code can execute attacker-controlled logic.
+      mcp_remediation: Remove eval/Function; parse data with JSON.parse and dispatch via explicit tables.
+      mcp_cwe: CWE-95
+      references:
+        - https://cwe.mitre.org/data/definitions/95.html
+    patterns:
+      - pattern-either:
+          - pattern: eval(...)
+          - pattern: new Function(...)
+
+  - id: mcp-sg-js-vm
+    languages: [javascript, typescript]
+    severity: ERROR
+    message: >-
+      Uses the node vm module to run code in a context. vm is not a security
+      sandbox and can be escaped.
+    metadata:
+      mcp_id: MCP-SG-JS-004
+      mcp_title: Code execution via node vm module
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.8"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: Code run through vm can break out of the context and execute arbitrary logic.
+      mcp_remediation: Do not use vm to isolate untrusted code; run it in a real sandbox (separate process/container).
+      mcp_cwe: CWE-95
+    patterns:
+      - pattern-either:
+          - pattern: vm.runInContext(...)
+          - pattern: vm.runInNewContext(...)
+          - pattern: vm.runInThisContext(...)
+          - pattern: vm.compileFunction(...)
+          - pattern: new vm.Script(...)
+
+  - id: mcp-sg-js-ssrf-dynamic-url
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: >-
+      Outbound HTTP request with a non-literal URL. A caller-controlled URL
+      enables SSRF and data exfiltration.
+    metadata:
+      mcp_id: MCP-SG-JS-005
+      mcp_title: Outbound request with dynamic URL (SSRF / exfiltration)
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.6"
+      mcp_capability: network_egress
+      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data.
+      mcp_remediation: Validate URLs against an allowlist of hosts/schemes before making outbound requests.
+      mcp_cwe: CWE-918
+      mcp_min_needs_review: "true"
+      references:
+        - https://cwe.mitre.org/data/definitions/918.html
+    patterns:
+      - pattern-either:
+          - patterns:
+              - pattern: fetch($URL, ...)
+              - pattern-not: fetch("...", ...)
+          - patterns:
+              - pattern: axios.$M($URL, ...)
+              - pattern-not: axios.$M("...", ...)
+          - patterns:
+              - pattern: http.request($URL, ...)
+              - pattern-not: http.request("...", ...)
+          - patterns:
+              - pattern: https.request($URL, ...)
+              - pattern-not: https.request("...", ...)
+          - patterns:
+              - pattern: http.get($URL, ...)
+              - pattern-not: http.get("...", ...)
+          - patterns:
+              - pattern: https.get($URL, ...)
+              - pattern-not: https.get("...", ...)
+      - metavariable-pattern:
+          metavariable: $URL
+          patterns:
+            - pattern-not: '"..."'
+            - pattern-not: "`...`"
+
+  - id: mcp-sg-js-secret-env
+    languages: [javascript, typescript]
+    severity: WARNING
+    message: Reads an environment variable whose name implies a secret (token/key/password).
+    metadata:
+      mcp_id: MCP-SG-JS-006
+      mcp_title: Secret-like environment variable access
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.7"
+      mcp_capability: credential_access
+      mcp_impact: The server handles credentials; misuse or logging could leak them.
+      mcp_remediation: Confirm the server needs these secrets; scope tokens narrowly and never log them.
+      mcp_cwe: CWE-522
+    patterns:
+      - pattern-either:
+          - pattern: process.env.$K
+          - pattern: process.env["$K"]
+      - metavariable-regex:
+          metavariable: $K
+          regex: (?i).*(TOKEN|SECRET|API[_-]?KEY|PASSWORD|PASSWD|CREDENTIAL|PRIVATE[_-]?KEY|ACCESS[_-]?KEY).*
+
+  # ---------------------------------------------------------------- Python
+
+  - id: mcp-sg-py-shell
+    languages: [python]
+    severity: ERROR
+    message: Runs a subprocess through a shell (shell=True) or via os.system/os.popen.
+    metadata:
+      mcp_id: MCP-SG-PY-001
+      mcp_title: Python shell execution (shell=True / os.system / os.popen)
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.9"
+      mcp_capability: shell_execution
+      mcp_impact: Enables arbitrary shell command execution with the process privileges.
+      mcp_remediation: Use subprocess with an argument list and shell=False; never pass untrusted input to a shell.
+      mcp_cwe: CWE-78
+      mcp_min_needs_review: "true"
+      references:
+        - https://cwe.mitre.org/data/definitions/78.html
+    patterns:
+      - pattern-either:
+          - pattern: subprocess.run(..., shell=True, ...)
+          - pattern: subprocess.call(..., shell=True, ...)
+          - pattern: subprocess.Popen(..., shell=True, ...)
+          - pattern: subprocess.check_output(..., shell=True, ...)
+          - pattern: subprocess.check_call(..., shell=True, ...)
+          - pattern: os.system(...)
+          - pattern: os.popen(...)
+
+  - id: mcp-sg-py-eval-exec
+    languages: [python]
+    severity: ERROR
+    message: Uses the eval()/exec() builtins to run dynamically constructed code.
+    metadata:
+      mcp_id: MCP-SG-PY-002
+      mcp_title: Dynamic code evaluation (eval / exec)
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.85"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: Dynamically evaluated code can execute attacker-controlled logic.
+      mcp_remediation: Remove eval/exec; use explicit parsing and dispatch tables.
+      mcp_cwe: CWE-95
+    patterns:
+      - pattern-either:
+          - pattern: eval(...)
+          - pattern: exec(...)
+
+  - id: mcp-sg-py-unsafe-deser
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Unsafe deserialization (pickle/marshal loads, or yaml.load without
+      SafeLoader) can execute arbitrary code on load.
+    metadata:
+      mcp_id: MCP-SG-PY-003
+      mcp_title: Unsafe deserialization (pickle / yaml.load / marshal)
+      mcp_category: code
+      mcp_severity: high
+      mcp_confidence: "0.85"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: Deserializing untrusted data can execute arbitrary code during load.
+      mcp_remediation: Use yaml.safe_load and a safe format (JSON); never unpickle untrusted data.
+      mcp_cwe: CWE-502
+      references:
+        - https://cwe.mitre.org/data/definitions/502.html
+    patterns:
+      - pattern-either:
+          - pattern: pickle.loads(...)
+          - pattern: pickle.load(...)
+          - pattern: cPickle.loads(...)
+          - pattern: marshal.loads(...)
+          - patterns:
+              - pattern: yaml.load(...)
+              - pattern-not: yaml.load(..., Loader=yaml.SafeLoader)
+              - pattern-not: yaml.load(..., Loader=SafeLoader)
+              - pattern-not: yaml.load(..., Loader=yaml.CSafeLoader)
+
+  - id: mcp-sg-py-ssrf-dynamic-url
+    languages: [python]
+    severity: WARNING
+    message: >-
+      Outbound HTTP request with a non-literal URL. A caller-controlled URL
+      enables SSRF and data exfiltration.
+    metadata:
+      mcp_id: MCP-SG-PY-004
+      mcp_title: Outbound request with dynamic URL (SSRF / exfiltration)
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.6"
+      mcp_capability: network_egress
+      mcp_impact: A caller-controlled URL can reach internal services or exfiltrate data.
+      mcp_remediation: Validate URLs against an allowlist of hosts/schemes before making outbound requests.
+      mcp_cwe: CWE-918
+      mcp_min_needs_review: "true"
+    patterns:
+      - pattern-either:
+          - patterns:
+              - pattern: requests.$M($URL, ...)
+              - pattern-not: requests.$M("...", ...)
+          - patterns:
+              - pattern: urllib.request.urlopen($URL, ...)
+              - pattern-not: urllib.request.urlopen("...", ...)
+      - metavariable-pattern:
+          metavariable: $URL
+          patterns:
+            - pattern-not: '"..."'
+
+  - id: mcp-sg-py-dynamic-import
+    languages: [python]
+    severity: WARNING
+    message: Dynamic import with a non-literal module name can load arbitrary code.
+    metadata:
+      mcp_id: MCP-SG-PY-005
+      mcp_title: Dynamic module import (__import__ / importlib with non-literal)
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.7"
+      mcp_capability: unknown_high_privilege
+      mcp_impact: A caller-controlled module name can load and execute arbitrary code.
+      mcp_remediation: Import modules by static names; never import a computed module path.
+      mcp_cwe: CWE-98
+    patterns:
+      - pattern-either:
+          - patterns:
+              - pattern: __import__($MOD)
+              - pattern-not: __import__("...")
+          - patterns:
+              - pattern: importlib.import_module($MOD)
+              - pattern-not: importlib.import_module("...")
+
+  - id: mcp-sg-py-secret-env
+    languages: [python]
+    severity: WARNING
+    message: Reads an environment variable whose name implies a secret (token/key/password).
+    metadata:
+      mcp_id: MCP-SG-PY-006
+      mcp_title: Secret-like environment variable access
+      mcp_category: code
+      mcp_severity: medium
+      mcp_confidence: "0.7"
+      mcp_capability: credential_access
+      mcp_impact: The server handles credentials; misuse or logging could leak them.
+      mcp_remediation: Confirm the server needs these secrets; scope tokens narrowly and never log them.
+      mcp_cwe: CWE-522
+    patterns:
+      - pattern-either:
+          - pattern: os.environ[$K]
+          - pattern: os.environ.get($K, ...)
+          - pattern: os.getenv($K, ...)
+      - metavariable-regex:
+          metavariable: $K
+          regex: (?i)["'].*(TOKEN|SECRET|API[_-]?KEY|PASSWORD|PASSWD|CREDENTIAL|PRIVATE[_-]?KEY|ACCESS[_-]?KEY).*["']

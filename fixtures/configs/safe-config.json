@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "docs": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything@1.0.4"],
+      "env": {
+        "LOG_LEVEL": "info"
+      }
+    },
+    "local-api": {
+      "url": "http://localhost:8931/mcp"
+    }
+  }
+}

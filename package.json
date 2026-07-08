@@ -1,0 +1,28 @@
+{
+  "name": "mcp-trust",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence-based preflight scanner for Model Context Protocol servers",
+  "license": "Apache-2.0",
+  "type": "module",
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "turbo run typecheck",
+    "cli": "pnpm --filter @mcp-trust/cli dev",
+    "scan:seed": "pnpm --filter @mcp-trust/cli dev bench scan registry-seed/seed-targets.yml --out public-reports",
+    "reports:public": "pnpm --filter @mcp-trust/cli dev bench render --out public-reports"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.5",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

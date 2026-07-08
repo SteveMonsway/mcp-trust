@@ -1,0 +1,222 @@
+# MCP Trust — public benchmark seed (TZ §14.3)
+#
+# A curated list of real, public MCP servers scanned by `pnpm scan:seed`.
+# Each entry is fed verbatim to the target parser (github.com/owner/repo[/path]).
+# `expectedCapabilities` records what the server is *documented* to do — it is a
+# reference for the human reading the report, NOT an assertion the scanner makes.
+# The scanner reports what it actually finds; divergence is itself signal.
+#
+# Categories mirror TZ §14.2 (capability taxonomy). `source: github` clones a
+# shallow, blob-limited copy and runs static + Semgrep analysis (github targets
+# are never executed/introspected — see docs/architecture/sandboxing.md).
+
+# --- Reference servers (modelcontextprotocol/servers) ---
+- id: mcp-ref-filesystem
+  category: filesystem
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/filesystem
+  expectedCapabilities: [filesystem_read, filesystem_write]
+- id: mcp-ref-git
+  category: git
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/git
+  expectedCapabilities: [filesystem_read, repository_write]
+- id: mcp-ref-fetch
+  category: network
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/fetch
+  expectedCapabilities: [network_egress]
+- id: mcp-ref-memory
+  category: knowledge
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/memory
+  expectedCapabilities: [filesystem_read, filesystem_write]
+- id: mcp-ref-time
+  category: utility
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/time
+  expectedCapabilities: []
+- id: mcp-ref-sequentialthinking
+  category: utility
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/sequentialthinking
+  expectedCapabilities: []
+- id: mcp-ref-everything
+  category: reference
+  source: github
+  locator: github.com/modelcontextprotocol/servers/src/everything
+  expectedCapabilities: [filesystem_read, network_egress]
+
+# --- Archived reference servers (modelcontextprotocol/servers-archived) ---
+- id: mcp-arc-brave-search
+  category: search
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/brave-search
+  expectedCapabilities: [network_egress]
+- id: mcp-arc-github
+  category: developer
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/github
+  expectedCapabilities: [network_egress, repository_write]
+- id: mcp-arc-gitlab
+  category: developer
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/gitlab
+  expectedCapabilities: [network_egress, repository_write]
+- id: mcp-arc-gdrive
+  category: document
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/gdrive
+  expectedCapabilities: [document_access, network_egress]
+- id: mcp-arc-google-maps
+  category: geo
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/google-maps
+  expectedCapabilities: [network_egress]
+- id: mcp-arc-postgres
+  category: database
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/postgres
+  expectedCapabilities: [database_access]
+- id: mcp-arc-sqlite
+  category: database
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/sqlite
+  expectedCapabilities: [database_access, filesystem_read]
+- id: mcp-arc-redis
+  category: database
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/redis
+  expectedCapabilities: [database_access, network_egress]
+- id: mcp-arc-puppeteer
+  category: browser
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/puppeteer
+  expectedCapabilities: [browser_access, network_egress]
+- id: mcp-arc-slack
+  category: communication
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/slack
+  expectedCapabilities: [network_egress]
+- id: mcp-arc-sentry
+  category: observability
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/sentry
+  expectedCapabilities: [network_egress]
+- id: mcp-arc-everart
+  category: media
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/everart
+  expectedCapabilities: [network_egress]
+- id: mcp-arc-aws-kb-retrieval
+  category: cloud
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/aws-kb-retrieval-server
+  expectedCapabilities: [network_egress, credential_access]
+- id: mcp-arc-git
+  category: git
+  source: github
+  locator: github.com/modelcontextprotocol/servers-archived/src/git
+  expectedCapabilities: [filesystem_read, repository_write]
+
+# --- Standalone community / vendor servers ---
+- id: github-mcp-server
+  category: developer
+  source: github
+  locator: github.com/github/github-mcp-server
+  expectedCapabilities: [network_egress, repository_write]
+- id: cloudflare-mcp
+  category: cloud
+  source: github
+  locator: github.com/cloudflare/mcp-server-cloudflare
+  expectedCapabilities: [network_egress, deployment_action, credential_access]
+- id: context7
+  category: developer
+  source: github
+  locator: github.com/upstash/context7
+  expectedCapabilities: [network_egress]
+- id: exa-mcp
+  category: search
+  source: github
+  locator: github.com/exa-labs/exa-mcp-server
+  expectedCapabilities: [network_egress]
+- id: tavily-mcp
+  category: search
+  source: github
+  locator: github.com/tavily-ai/tavily-mcp
+  expectedCapabilities: [network_egress]
+- id: supabase-mcp
+  category: database
+  source: github
+  locator: github.com/supabase/mcp
+  expectedCapabilities: [database_access, network_egress, credential_access]
+- id: playwright-mcp-microsoft
+  category: browser
+  source: github
+  locator: github.com/microsoft/playwright-mcp
+  expectedCapabilities: [browser_access, network_egress]
+- id: firecrawl-mcp
+  category: browser
+  source: github
+  locator: github.com/firecrawl/firecrawl-mcp-server
+  expectedCapabilities: [browser_access, network_egress]
+- id: mcp-playwright-ea
+  category: browser
+  source: github
+  locator: github.com/executeautomation/mcp-playwright
+  expectedCapabilities: [browser_access, network_egress]
+- id: qdrant-mcp
+  category: database
+  source: github
+  locator: github.com/qdrant/mcp-server-qdrant
+  expectedCapabilities: [database_access, network_egress]
+- id: chroma-mcp
+  category: database
+  source: github
+  locator: github.com/chroma-core/chroma-mcp
+  expectedCapabilities: [database_access, network_egress]
+- id: elasticsearch-mcp
+  category: database
+  source: github
+  locator: github.com/elastic/mcp-server-elasticsearch
+  expectedCapabilities: [database_access, network_egress]
+- id: mcp-atlassian
+  category: communication
+  source: github
+  locator: github.com/sooperset/mcp-atlassian
+  expectedCapabilities: [network_egress, credential_access]
+- id: fetch-mcp
+  category: network
+  source: github
+  locator: github.com/zcaceres/fetch-mcp
+  expectedCapabilities: [network_egress]
+- id: awslabs-mcp
+  category: cloud
+  source: github
+  locator: github.com/awslabs/mcp
+  expectedCapabilities: [network_egress, deployment_action, credential_access]
+- id: stripe-agent-toolkit
+  category: payment
+  source: github
+  locator: github.com/stripe/ai
+  expectedCapabilities: [payment_or_transfer, network_egress]
+- id: grafana-mcp
+  category: observability
+  source: github
+  locator: github.com/grafana/mcp-grafana
+  expectedCapabilities: [network_egress, credential_access]
+- id: redis-mcp
+  category: database
+  source: github
+  locator: github.com/redis/mcp-redis
+  expectedCapabilities: [database_access, network_egress]
+- id: mongodb-mcp
+  category: database
+  source: github
+  locator: github.com/mongodb-js/mongodb-mcp-server
+  expectedCapabilities: [database_access, network_egress, credential_access]
+- id: neon-mcp
+  category: database
+  source: github
+  locator: github.com/neondatabase/mcp-server-neon
+  expectedCapabilities: [database_access, network_egress, credential_access]

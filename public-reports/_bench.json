@@ -1,0 +1,1216 @@
+{
+  "generatedAt": "2026-07-08T09:56:16.402Z",
+  "scanner": {
+    "name": "mcp-trust",
+    "version": "0.5.0"
+  },
+  "environment": {
+    "node": "v24.8.0",
+    "platform": "darwin",
+    "semgrep": true
+  },
+  "count": 41,
+  "records": [
+    {
+      "id": "mcp-ref-filesystem",
+      "slug": "mcp-ref-filesystem",
+      "locator": "github.com/modelcontextprotocol/servers/src/filesystem",
+      "category": "filesystem",
+      "expectedCapabilities": [
+        "filesystem_read",
+        "filesystem_write"
+      ],
+      "ok": true,
+      "totalMs": 2782.273292,
+      "phaseMs": {
+        "resolve": 1512.50925,
+        "introspection": 0.11245900000017173,
+        "rules": 14.752083000000084,
+        "semgrep": 1233.564417,
+        "assemble": 0.6020000000003165
+      },
+      "decision": "APPROVE_WITH_RESTRICTIONS",
+      "risk": "medium",
+      "score": 42,
+      "findings": 49,
+      "topRules": [
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-META-002",
+        "MCP-CODE-006",
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "mcp-ref-git",
+      "slug": "mcp-ref-git",
+      "locator": "github.com/modelcontextprotocol/servers/src/git",
+      "category": "git",
+      "expectedCapabilities": [
+        "filesystem_read",
+        "repository_write"
+      ],
+      "ok": true,
+      "totalMs": 2268.4483330000003,
+      "phaseMs": {
+        "resolve": 1145.8814589999997,
+        "introspection": 0.0058330000001660665,
+        "rules": 1.5876670000006925,
+        "semgrep": 1102.2318340000002,
+        "assemble": 0.061167000000750704
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "mcp-ref-fetch",
+      "slug": "mcp-ref-fetch",
+      "locator": "github.com/modelcontextprotocol/servers/src/fetch",
+      "category": "network",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2193.2734579999997,
+      "phaseMs": {
+        "resolve": 1084.9970410000005,
+        "introspection": 0.006167000000459666,
+        "rules": 0.6548750000001746,
+        "semgrep": 1088.101041,
+        "assemble": 0.04179199999998673
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": []
+    },
+    {
+      "id": "mcp-ref-memory",
+      "slug": "mcp-ref-memory",
+      "locator": "github.com/modelcontextprotocol/servers/src/memory",
+      "category": "knowledge",
+      "expectedCapabilities": [
+        "filesystem_read",
+        "filesystem_write"
+      ],
+      "ok": true,
+      "totalMs": 2331.2734170000003,
+      "phaseMs": {
+        "resolve": 1171.2099170000001,
+        "introspection": 0.006375000000844011,
+        "rules": 3.4298340000004828,
+        "semgrep": 1137.4628329999996,
+        "assemble": 0.056167000000641565
+      },
+      "decision": "APPROVE_WITH_RESTRICTIONS",
+      "risk": "medium",
+      "score": 35,
+      "findings": 10,
+      "topRules": [
+        "MCP-META-002",
+        "MCP-CODE-006",
+        "MCP-SUPPLY-005",
+        "MCP-CODE-006",
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "mcp-ref-time",
+      "slug": "mcp-ref-time",
+      "locator": "github.com/modelcontextprotocol/servers/src/time",
+      "category": "utility",
+      "expectedCapabilities": [],
+      "ok": true,
+      "totalMs": 2280.813333,
+      "phaseMs": {
+        "resolve": 1178.8357919999999,
+        "introspection": 0.006250000000363798,
+        "rules": 1.185417000000598,
+        "semgrep": 1081.8570000000018,
+        "assemble": 0.039999999999054126
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": []
+    },
+    {
+      "id": "mcp-ref-sequentialthinking",
+      "slug": "mcp-ref-sequentialthinking",
+      "locator": "github.com/modelcontextprotocol/servers/src/sequentialthinking",
+      "category": "utility",
+      "expectedCapabilities": [],
+      "ok": true,
+      "totalMs": 2276.193292,
+      "phaseMs": {
+        "resolve": 1148.2192080000004,
+        "introspection": 0.006750000000465661,
+        "rules": 0.6549169999998412,
+        "semgrep": 1108.9097920000004,
+        "assemble": 0.03970899999876565
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-ref-everything",
+      "slug": "mcp-ref-everything",
+      "locator": "github.com/modelcontextprotocol/servers/src/everything",
+      "category": "reference",
+      "expectedCapabilities": [
+        "filesystem_read",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2453.138500000001,
+      "phaseMs": {
+        "resolve": 1149.7226250000003,
+        "introspection": 0.006583000000318862,
+        "rules": 7.117416999999477,
+        "semgrep": 1276.0406249999996,
+        "assemble": 0.10266599999886239
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "low",
+      "score": 16,
+      "findings": 3,
+      "topRules": [
+        "MCP-META-005",
+        "MCP-SG-JS-005",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-brave-search",
+      "slug": "mcp-arc-brave-search",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/brave-search",
+      "category": "search",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2321.5938749999987,
+      "phaseMs": {
+        "resolve": 1188.4532910000016,
+        "introspection": 0.006457999999838648,
+        "rules": 0.5583330000008573,
+        "semgrep": 1113.357500000002,
+        "assemble": 0.0545830000010028
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 32,
+      "findings": 6,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-github",
+      "slug": "mcp-arc-github",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/github",
+      "category": "developer",
+      "expectedCapabilities": [
+        "network_egress",
+        "repository_write"
+      ],
+      "ok": true,
+      "totalMs": 2419.2597080000014,
+      "phaseMs": {
+        "resolve": 1186.410458000002,
+        "introspection": 0.006582999998499872,
+        "rules": 2.5075829999987036,
+        "semgrep": 1211.001959000001,
+        "assemble": 0.06054199999925913
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "low",
+      "score": 27,
+      "findings": 4,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-SG-JS-005",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-gitlab",
+      "slug": "mcp-arc-gitlab",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/gitlab",
+      "category": "developer",
+      "expectedCapabilities": [
+        "network_egress",
+        "repository_write"
+      ],
+      "ok": true,
+      "totalMs": 2254.165709000001,
+      "phaseMs": {
+        "resolve": 1125.5903339999968,
+        "introspection": 0.010333000001992332,
+        "rules": 0.8857499999976426,
+        "semgrep": 1108.1891670000005,
+        "assemble": 0.06429099999877508
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 32,
+      "findings": 6,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-gdrive",
+      "slug": "mcp-arc-gdrive",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/gdrive",
+      "category": "document",
+      "expectedCapabilities": [
+        "document_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2259.3549999999996,
+      "phaseMs": {
+        "resolve": 1139.9936670000025,
+        "introspection": 0.009708000001410255,
+        "rules": 0.4530830000003334,
+        "semgrep": 1100.252292000001,
+        "assemble": 0.04245900000023539
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 23,
+      "findings": 3,
+      "topRules": [
+        "MCP-CODE-006",
+        "MCP-CODE-007",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-google-maps",
+      "slug": "mcp-arc-google-maps",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/google-maps",
+      "category": "geo",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2199.875250000001,
+      "phaseMs": {
+        "resolve": 1058.8272079999988,
+        "introspection": 0.013999999999214197,
+        "rules": 0.7330409999995027,
+        "semgrep": 1121.799417000002,
+        "assemble": 0.03395799999998417
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 36,
+      "findings": 9,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-postgres",
+      "slug": "mcp-arc-postgres",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/postgres",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access"
+      ],
+      "ok": true,
+      "totalMs": 2227.341833000002,
+      "phaseMs": {
+        "resolve": 1119.8894160000018,
+        "introspection": 0.011290999998891493,
+        "rules": 0.226834000000963,
+        "semgrep": 1084.4768750000003,
+        "assemble": 0.030208000000129687
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-sqlite",
+      "slug": "mcp-arc-sqlite",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/sqlite",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "filesystem_read"
+      ],
+      "ok": true,
+      "totalMs": 2233.6155,
+      "phaseMs": {
+        "resolve": 1135.1803330000002,
+        "introspection": 0.011792000001150882,
+        "rules": 0.7379589999982272,
+        "semgrep": 1078.930042,
+        "assemble": 0.03437500000291038
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": []
+    },
+    {
+      "id": "mcp-arc-redis",
+      "slug": "mcp-arc-redis",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/redis",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2314.2967920000046,
+      "phaseMs": {
+        "resolve": 1204.6689170000027,
+        "introspection": 0.010750000001280569,
+        "rules": 0.3352500000037253,
+        "semgrep": 1090.1925409999967,
+        "assemble": 0.029708000001846813
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-puppeteer",
+      "slug": "mcp-arc-puppeteer",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/puppeteer",
+      "category": "browser",
+      "expectedCapabilities": [
+        "browser_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2370.848334000002,
+      "phaseMs": {
+        "resolve": 1259.843415999996,
+        "introspection": 0.010083000001031905,
+        "rules": 0.5362499999973807,
+        "semgrep": 1090.9688339999993,
+        "assemble": 0.028749999997671694
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-slack",
+      "slug": "mcp-arc-slack",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/slack",
+      "category": "communication",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2257.883249999999,
+      "phaseMs": {
+        "resolve": 1135.1209170000002,
+        "introspection": 0.010709000001952518,
+        "rules": 0.5444579999966663,
+        "semgrep": 1103.210417000002,
+        "assemble": 0.03299999999580905
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 15,
+      "findings": 2,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-sentry",
+      "slug": "mcp-arc-sentry",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/sentry",
+      "category": "observability",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2267.5915840000016,
+      "phaseMs": {
+        "resolve": 1149.7248749999999,
+        "introspection": 0.01095799999893643,
+        "rules": 0.30829200000152923,
+        "semgrep": 1098.3919590000005,
+        "assemble": 0.02604099999734899
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": []
+    },
+    {
+      "id": "mcp-arc-everart",
+      "slug": "mcp-arc-everart",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/everart",
+      "category": "media",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2239.986082999996,
+      "phaseMs": {
+        "resolve": 1137.1838750000024,
+        "introspection": 0.011832999996840954,
+        "rules": 0.2692089999982272,
+        "semgrep": 1083.4374590000007,
+        "assemble": 0.03500000000349246
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 23,
+      "findings": 3,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-aws-kb-retrieval",
+      "slug": "mcp-arc-aws-kb-retrieval",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/aws-kb-retrieval-server",
+      "category": "cloud",
+      "expectedCapabilities": [
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 2275.985625000001,
+      "phaseMs": {
+        "resolve": 1174.5402079999985,
+        "introspection": 0.011583999999857042,
+        "rules": 0.25600000000122236,
+        "semgrep": 1082.2772079999995,
+        "assemble": 0.03366700000333367
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 23,
+      "findings": 3,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "mcp-arc-git",
+      "slug": "mcp-arc-git",
+      "locator": "github.com/modelcontextprotocol/servers-archived/src/git",
+      "category": "git",
+      "expectedCapabilities": [
+        "filesystem_read",
+        "repository_write"
+      ],
+      "ok": true,
+      "totalMs": 2240.694500000005,
+      "phaseMs": {
+        "resolve": 1134.666250000002,
+        "introspection": 0.012957999999343883,
+        "rules": 0.5726670000003651,
+        "semgrep": 1083.9571660000001,
+        "assemble": 0.038124999999126885
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 5,
+      "findings": 1,
+      "topRules": [
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "github-mcp-server",
+      "slug": "github-mcp-server",
+      "locator": "github.com/github/github-mcp-server",
+      "category": "developer",
+      "expectedCapabilities": [
+        "network_egress",
+        "repository_write"
+      ],
+      "ok": true,
+      "totalMs": 2782.2636249999996,
+      "phaseMs": {
+        "resolve": 1534.8857080000016,
+        "introspection": 0.006915999998454936,
+        "rules": 6.456041000004916,
+        "semgrep": 1221.7301660000012,
+        "assemble": 0.03879199999937555
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": [],
+      "limitations": [
+        "Additionally, Go source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
+      ]
+    },
+    {
+      "id": "cloudflare-mcp",
+      "slug": "cloudflare-mcp",
+      "locator": "github.com/cloudflare/mcp-server-cloudflare",
+      "category": "cloud",
+      "expectedCapabilities": [
+        "network_egress",
+        "deployment_action",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 3147.0882500000007,
+      "phaseMs": {
+        "resolve": 1455.0794590000005,
+        "introspection": 0.018582999997306615,
+        "rules": 26.60187500000029,
+        "semgrep": 1645.4317919999958,
+        "assemble": 0.10408299999835435
+      },
+      "decision": "BLOCK",
+      "risk": "medium",
+      "score": 41,
+      "findings": 13,
+      "topRules": [
+        "MCP-CODE-001",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-005",
+        "MCP-META-005"
+      ]
+    },
+    {
+      "id": "context7",
+      "slug": "context7",
+      "locator": "github.com/upstash/context7",
+      "category": "developer",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 5684.716957999997,
+      "phaseMs": {
+        "resolve": 4084.4357079999972,
+        "introspection": 0.012166000000433996,
+        "rules": 18.042207999998936,
+        "semgrep": 1564.0274169999975,
+        "assemble": 0.11804099999426398
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 47,
+      "findings": 38,
+      "topRules": [
+        "MCP-CODE-002",
+        "MCP-SG-JS-001",
+        "MCP-SG-JS-001",
+        "MCP-CONFIG-005",
+        "MCP-CONFIG-005"
+      ]
+    },
+    {
+      "id": "exa-mcp",
+      "slug": "exa-mcp",
+      "locator": "github.com/exa-labs/exa-mcp-server",
+      "category": "search",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2398.6117500000037,
+      "phaseMs": {
+        "resolve": 1144.4979590000003,
+        "introspection": 0.011999999995168764,
+        "rules": 7.8437920000069425,
+        "semgrep": 1226.895749999996,
+        "assemble": 0.05604200000379933
+      },
+      "decision": "APPROVE_WITH_RESTRICTIONS",
+      "risk": "medium",
+      "score": 41,
+      "findings": 19,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007"
+      ]
+    },
+    {
+      "id": "tavily-mcp",
+      "slug": "tavily-mcp",
+      "locator": "github.com/tavily-ai/tavily-mcp",
+      "category": "search",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2830.3269999999975,
+      "phaseMs": {
+        "resolve": 1648.1584169999987,
+        "introspection": 0.012834000001021195,
+        "rules": 1.3343330000061542,
+        "semgrep": 1160.455667000002,
+        "assemble": 0.033416999998735264
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "low",
+      "score": 26,
+      "findings": 4,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "supabase-mcp",
+      "slug": "supabase-mcp",
+      "locator": "github.com/supabase/mcp",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 2744.803709,
+      "phaseMs": {
+        "resolve": 1163.3605000000025,
+        "introspection": 0.012291000006371178,
+        "rules": 26.460957999996026,
+        "semgrep": 1535.3144579999935,
+        "assemble": 0.04566699999850243
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 30,
+      "findings": 7,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-META-005",
+        "MCP-META-005",
+        "MCP-META-004",
+        "MCP-SG-JS-005"
+      ]
+    },
+    {
+      "id": "playwright-mcp-microsoft",
+      "slug": "playwright-mcp-microsoft",
+      "locator": "github.com/microsoft/playwright-mcp",
+      "category": "browser",
+      "expectedCapabilities": [
+        "browser_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2226.0068750000064,
+      "phaseMs": {
+        "resolve": 1023.898874999999,
+        "introspection": 0.012582999988808297,
+        "rules": 2.01358299999265,
+        "semgrep": 1179.2523749999964,
+        "assemble": 0.05629199999384582
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 33,
+      "findings": 12,
+      "topRules": [
+        "MCP-CODE-002",
+        "MCP-CODE-002",
+        "MCP-CODE-002",
+        "MCP-CODE-002",
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "firecrawl-mcp",
+      "slug": "firecrawl-mcp",
+      "locator": "github.com/firecrawl/firecrawl-mcp-server",
+      "category": "browser",
+      "expectedCapabilities": [
+        "browser_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2797.6122909999976,
+      "phaseMs": {
+        "resolve": 1443.1490829999966,
+        "introspection": 0.011790999997174367,
+        "rules": 11.086791999987327,
+        "semgrep": 1322.8873329999915,
+        "assemble": 0.04966699999931734
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 44,
+      "findings": 19,
+      "topRules": [
+        "MCP-META-002",
+        "MCP-META-002",
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007"
+      ]
+    },
+    {
+      "id": "mcp-playwright-ea",
+      "slug": "mcp-playwright-ea",
+      "locator": "github.com/executeautomation/mcp-playwright",
+      "category": "browser",
+      "expectedCapabilities": [
+        "browser_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 5994.459042000002,
+      "phaseMs": {
+        "resolve": 4536.019499999995,
+        "introspection": 0.012500000011641532,
+        "rules": 9.674249999996391,
+        "semgrep": 1429.8193329999922,
+        "assemble": 0.07420800000545569
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 38,
+      "findings": 10,
+      "topRules": [
+        "MCP-CODE-002",
+        "MCP-CODE-002",
+        "MCP-SG-JS-001",
+        "MCP-CODE-006",
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "qdrant-mcp",
+      "slug": "qdrant-mcp",
+      "locator": "github.com/qdrant/mcp-server-qdrant",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2209.2779169999994,
+      "phaseMs": {
+        "resolve": 1070.172000000006,
+        "introspection": 0.0141250000015134,
+        "rules": 1.2544579999957932,
+        "semgrep": 1118.3823330000014,
+        "assemble": 0.0232079999987036
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": []
+    },
+    {
+      "id": "chroma-mcp",
+      "slug": "chroma-mcp",
+      "locator": "github.com/chroma-core/chroma-mcp",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2286.3096249999944,
+      "phaseMs": {
+        "resolve": 1150.2647079999879,
+        "introspection": 0.012792000008630566,
+        "rules": 2.2448330000042915,
+        "semgrep": 1114.0337500000023,
+        "assemble": 0.0297500000015134
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 18,
+      "findings": 2,
+      "topRules": [
+        "MCP-SG-PY-006",
+        "MCP-SG-PY-006"
+      ]
+    },
+    {
+      "id": "elasticsearch-mcp",
+      "slug": "elasticsearch-mcp",
+      "locator": "github.com/elastic/mcp-server-elasticsearch",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2108.8914589999913,
+      "phaseMs": {
+        "resolve": 990.6907910000009,
+        "introspection": 0.00941699999384582,
+        "rules": 0.04470900000887923,
+        "semgrep": 1098.3176250000106,
+        "assemble": 0.023167000006651506
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": [],
+      "limitations": [
+        "Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
+      ]
+    },
+    {
+      "id": "mcp-atlassian",
+      "slug": "mcp-atlassian",
+      "locator": "github.com/sooperset/mcp-atlassian",
+      "category": "communication",
+      "expectedCapabilities": [
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 2997.276457999993,
+      "phaseMs": {
+        "resolve": 1412.9449170000007,
+        "introspection": 0.012541000003693625,
+        "rules": 116.23325000000477,
+        "semgrep": 1448.7766249999986,
+        "assemble": 0.17279100000450853
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 41,
+      "findings": 50,
+      "topRules": [
+        "MCP-CODE-006",
+        "MCP-META-002",
+        "MCP-META-002",
+        "MCP-META-002",
+        "MCP-META-002"
+      ]
+    },
+    {
+      "id": "fetch-mcp",
+      "slug": "fetch-mcp",
+      "locator": "github.com/zcaceres/fetch-mcp",
+      "category": "network",
+      "expectedCapabilities": [
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 2493.0532079999975,
+      "phaseMs": {
+        "resolve": 1286.7959170000104,
+        "introspection": 0.01983400000608526,
+        "rules": 2.8401670000021113,
+        "semgrep": 1184.4016669999983,
+        "assemble": 0.032207999989623204
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "low",
+      "score": 14,
+      "findings": 2,
+      "topRules": [
+        "MCP-SG-JS-005",
+        "MCP-SUPPLY-005"
+      ]
+    },
+    {
+      "id": "awslabs-mcp",
+      "slug": "awslabs-mcp",
+      "locator": "github.com/awslabs/mcp",
+      "category": "cloud",
+      "expectedCapabilities": [
+        "network_egress",
+        "deployment_action",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 11198.131165999992,
+      "phaseMs": {
+        "resolve": 7422.022834000003,
+        "introspection": 0.014750000002095476,
+        "rules": 809.4175829999876,
+        "semgrep": 2946.394709,
+        "assemble": 0.5229580000013812
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 46,
+      "findings": 250,
+      "topRules": [
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-006"
+      ]
+    },
+    {
+      "id": "stripe-agent-toolkit",
+      "slug": "stripe-agent-toolkit",
+      "locator": "github.com/stripe/ai",
+      "category": "payment",
+      "expectedCapabilities": [
+        "payment_or_transfer",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 4991.44812500001,
+      "phaseMs": {
+        "resolve": 3054.2539160000015,
+        "introspection": 0.019792000006418675,
+        "rules": 55.201290999990306,
+        "semgrep": 1862.4862500000017,
+        "assemble": 0.21866700000828132
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 32,
+      "findings": 86,
+      "topRules": [
+        "MCP-CODE-002",
+        "MCP-CODE-002",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-006"
+      ],
+      "limitations": [
+        "Additionally, C#, Java, Ruby source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
+      ]
+    },
+    {
+      "id": "grafana-mcp",
+      "slug": "grafana-mcp",
+      "locator": "github.com/grafana/mcp-grafana",
+      "category": "observability",
+      "expectedCapabilities": [
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 2527.1070420000033,
+      "phaseMs": {
+        "resolve": 1403.6775000000052,
+        "introspection": 0.01620800000091549,
+        "rules": 3.2335409999941476,
+        "semgrep": 1101.5482920000068,
+        "assemble": 0.053583000000799075
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 26,
+      "findings": 10,
+      "topRules": [
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007",
+        "MCP-CODE-007"
+      ],
+      "limitations": [
+        "Additionally, Go source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
+      ]
+    },
+    {
+      "id": "redis-mcp",
+      "slug": "redis-mcp",
+      "locator": "github.com/redis/mcp-redis",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress"
+      ],
+      "ok": true,
+      "totalMs": 3725.526708000005,
+      "phaseMs": {
+        "resolve": 2597.0621669999964,
+        "introspection": 0.010999999998603016,
+        "rules": 10.020875000001979,
+        "semgrep": 1099.8242920000048,
+        "assemble": 0.030249999996158294
+      },
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 26,
+      "findings": 4,
+      "topRules": [
+        "MCP-SG-PY-006",
+        "MCP-SG-PY-006",
+        "MCP-SG-PY-006",
+        "MCP-SG-PY-005"
+      ]
+    },
+    {
+      "id": "mongodb-mcp",
+      "slug": "mongodb-mcp",
+      "locator": "github.com/mongodb-js/mongodb-mcp-server",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 3650.3066249999974,
+      "phaseMs": {
+        "resolve": 1695.2967910000007,
+        "introspection": 0.011124999989988282,
+        "rules": 92.93020899999829,
+        "semgrep": 1842.3806659999973,
+        "assemble": 0.19220900000073016
+      },
+      "decision": "BLOCK",
+      "risk": "medium",
+      "score": 44,
+      "findings": 88,
+      "topRules": [
+        "MCP-CODE-001",
+        "MCP-SG-JS-001",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-002"
+      ]
+    },
+    {
+      "id": "neon-mcp",
+      "slug": "neon-mcp",
+      "locator": "github.com/neondatabase/mcp-server-neon",
+      "category": "database",
+      "expectedCapabilities": [
+        "database_access",
+        "network_egress",
+        "credential_access"
+      ],
+      "ok": true,
+      "totalMs": 3070.4823340000003,
+      "phaseMs": {
+        "resolve": 1272.7681250000023,
+        "introspection": 0.012917000000015832,
+        "rules": 35.27287500000966,
+        "semgrep": 1739.1832090000098,
+        "assemble": 0.07274999999208376
+      },
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 45,
+      "findings": 18,
+      "topRules": [
+        "MCP-META-002",
+        "MCP-META-002",
+        "MCP-META-002",
+        "MCP-CODE-007",
+        "MCP-CODE-007"
+      ]
+    }
+  ],
+  "summary": {
+    "ok": 41,
+    "failed": 0,
+    "byDecision": {
+      "APPROVE_WITH_RESTRICTIONS": 3,
+      "APPROVE": 20,
+      "NEEDS_REVIEW": 16,
+      "BLOCK": 2
+    },
+    "byRisk": {
+      "medium": 17,
+      "low": 24
+    },
+    "timing": {
+      "totalWallMs": 120344.33,
+      "meanTotalMs": 2934.92,
+      "medianTotalMs": 2331.27,
+      "slowest": [
+        {
+          "id": "awslabs-mcp",
+          "totalMs": 11198.13
+        },
+        {
+          "id": "mcp-playwright-ea",
+          "totalMs": 5994.46
+        },
+        {
+          "id": "context7",
+          "totalMs": 5684.72
+        },
+        {
+          "id": "stripe-agent-toolkit",
+          "totalMs": 4991.45
+        },
+        {
+          "id": "redis-mcp",
+          "totalMs": 3725.53
+        }
+      ],
+      "phaseMeanMs": {
+        "resolve": 1608.07,
+        "config": 0,
+        "introspection": 0.01,
+        "rules": 31.13,
+        "semgrep": 1276.1,
+        "assemble": 0.08
+      },
+      "phaseShareOfTotal": {
+        "resolve": 54.79,
+        "config": 0,
+        "introspection": 0,
+        "rules": 1.06,
+        "semgrep": 43.48,
+        "assemble": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Turborepo / tooling caches
+.turbo/
+coverage/
+.vitest/
+
+# Scanner output (generated reports)
+reports/
+
+# Public benchmark: commit rendered reports + index.json + _bench.json,
+# but not the heavy raw ScanResult cache.
+public-reports/_raw/
+
+# Logs
+*.log
+pnpm-debug.log*
+npm-debug.log*
+yarn-error.log*
+
+# Secrets / local env
+.env
+.env.*
+!.env.example
+*.local
+
+# Temp
+tmp/
+*.tmp
+
+# OS / editor
+.DS_Store
+.idea/
+*.iml
+
+# Editor / local
+.vscode/
+*.log

@@ -1,0 +1,61 @@
+# Dogfood: run the MCP Trust action (local ref) against a bundled safe fixture
+# to prove the full Action path end-to-end in CI. The safe fixture resolves to
+# APPROVE, so fail-on:high does not trip the job.
+name: MCP Trust Self-Scan
+
+on:
+  push:
+    branches: [main, 'phase-*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  self-scan:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - id: scan
+        uses: ./packages/action
+        with:
+          target: ./fixtures/mcp/mock-safe
+          fail-on: high
+          # Code Scanning SARIF upload needs GitHub Advanced Security on a private
+          # repo; disabled here so the dogfood is green. The SARIF is still
+          # generated and archived as an artifact (proves generation end-to-end).
+          upload-sarif: false
+          comment-pr: false # avoid self-commenting on our own PRs
+      - name: Show decision
+        run: |
+          echo "decision=${{ steps.scan.outputs.decision }}"
+          echo "risk=${{ steps.scan.outputs.risk }}"
+          echo "score=${{ steps.scan.outputs.score }}"
+          echo "exceeded=${{ steps.scan.outputs.exceeded }}"
+
+  # Proves the acceptance criterion "action fails on high/critical" in real CI:
+  # scanning a risky fixture must fail the action step. The job itself stays green
+  # by catching that failure (continue-on-error) and asserting on the outcome.
+  fail-path:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - id: scan
+        continue-on-error: true
+        uses: ./packages/action
+        with:
+          target: ./fixtures/mcp/mock-dangerous
+          fail-on: high
+          upload-sarif: false
+          comment-pr: false
+      - name: Assert the action failed the job on a risky target
+        run: |
+          if [ "${{ steps.scan.outcome }}" != "failure" ]; then
+            echo "::error::expected the action to FAIL on mock-dangerous (fail-on=high), got outcome='${{ steps.scan.outcome }}'"
+            exit 1
+          fi
+          echo "OK: action correctly failed on a risky target (fail-on=high)."

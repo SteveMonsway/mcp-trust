@@ -1,0 +1,9 @@
+{
+  "name": "vulnerable-mcp-server-js",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "postinstall": "node ./scripts/setup.js"
+  }
+}
