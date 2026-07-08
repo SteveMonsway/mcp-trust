@@ -497,12 +497,17 @@ function decisionCounts(targets: IndexTarget[]): Record<string, number> {
 function renderIndexReadme(index: { count: number; scanner: { version: string }; targets: IndexTarget[] }): string {
   const rows = sortTargets(index.targets);
   const c = decisionCounts(rows);
+  // Underscores don't wrap, so `APPROVE_WITH_RESTRICTIONS` forces a rigid 25-char
+  // column and horizontal scroll on GitHub — show decisions with spaces so the
+  // cell can wrap. The `id` (a slug of owner/repo) is dropped: it duplicated the
+  // clickable Source link and was the other column pushing the table over-wide.
   const line = (t: IndexTarget) => {
     const src = (t.locator ?? '').replace(/^github\.com\//, '');
     const warn = t.limitations && t.limitations.length ? ' ⚠️' : '';
-    return `| \`${t.id}\` | [${src}](https://${t.locator}) | ${t.decision}${warn} | ${t.risk} | ${t.score} | ${t.findings} | [md](reports/${t.slug}.md) · [html](reports/${t.slug}.html) |`;
+    const decision = (t.decision ?? '').replace(/_/g, ' ');
+    return `| [${src}](https://${t.locator}) | ${decision}${warn} | ${t.risk} | ${t.score} | ${t.findings} | [md](reports/${t.slug}.md) · [html](reports/${t.slug}.html) |`;
   };
-  const header = '| Server | Source | Decision | Risk | Score | Findings | Report |\n|---|---|---|---|---|---|---|';
+  const header = '| Server | Decision | Risk | Score | Findings | Report |\n|---|---|---|---|---|---|';
   const out: string[] = [];
   out.push('# Public benchmark reports', '');
   out.push(
