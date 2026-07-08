@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:NoOne-hub/JSReverser-MCP</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-restrict">
+<h1>MCP Trust Report: github:NoOne-hub/JSReverser-MCP</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE_WITH_RESTRICTIONS</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">37/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">80%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>65e2e3cb70c10a79dfd1ba4410a2c876113e676c</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>This MCP server looks usable with restrictions (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.</p>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 37 falls in MEDIUM band</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>46</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (79)</h2>
+<h3 class="sev sev-high">HIGH (19)</h3>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>artifacts/tasks/_TEMPLATE/env/polyfills.js:97</code></p>
+<pre class="snippet"><code>const fn = new Function(`</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/JSVMPDeobfuscator.ts:551</code></p>
+<pre class="snippet"><code>const arrayFunc = new Function(`return ${arrayContent || &#39;[]&#39;};`);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/JSVMPDeobfuscator.ts:699</code></p>
+<pre class="snippet"><code>const func = new Function(`return ${code};`);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/JSVMPDeobfuscator.ts:752</code></p>
+<pre class="snippet"><code>const func = new Function(`${code}; return $$$$()`);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/PackerDeobfuscator.ts:153</code></p>
+<pre class="snippet"><code>const parseFunc = new Function(`return [${argsString}];`);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/PackerDeobfuscator.ts:274</code></p>
+<pre class="snippet"><code>const decoded = new Function(`return (${code})`)();</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>src/modules/browser/BrowserModeManager.ts:97</code></p>
+<pre class="snippet"><code>this.browserProcess = spawn(selectedBrowser.path, args, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>src/services/GeminiProvider.ts:292</code></p>
+<pre class="snippet"><code>const child = spawn(this.cliPath, args, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>src/services/GeminiProvider.ts:372</code></p>
+<pre class="snippet"><code>const result = spawnSync(this.cliPath, [&#39;--version&#39;], {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCache.ts:257</code></p>
+<pre class="snippet"><code>await fs.unlink(entry.file);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCache.ts:282</code></p>
+<pre class="snippet"><code>await fs.unlink(path.join(this.cacheDir, file));</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/analyzer/CodeAnalyzer.ts:1260</code></p>
+<pre class="snippet"><code>// eval(), Function(), setTimeout/setInterval with string</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/analyzer/CodeAnalyzer.ts:1268</code></p>
+<pre class="snippet"><code>&#39;Critical: Use of eval() allows arbitrary code execution&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/analyzer/CodeAnalyzer.ts:1270</code></p>
+<pre class="snippet"><code>&#39;Refactor to avoid eval(). Use JSON.parse() for data, or proper function calls&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/PageController.ts:379</code></p>
+<pre class="snippet"><code>new Function(script)();</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/JSVMPDeobfuscator.ts:766</code></p>
+<pre class="snippet"><code>const func2 = new Function(code);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/PackerDeobfuscator.ts:11</code></p>
+<pre class="snippet"><code>* 1. eval(function(p,a,c,k,e,d){...})(...) 模式</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>src/modules/hook/HookTypeRegistry.ts:998</code></p>
+<pre class="snippet"><code>description: &#39;Hook eval() and Function() constructor&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCache.ts:159</code></p>
+<pre class="snippet"><code>await fs.unlink(cachePath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (26)</h3>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→medium: this match is in build/dev-tooling code — src/tools/debugger.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>src/tools/debugger.ts:2343</code></p>
+<pre class="snippet"><code>target = eval(${JSON.stringify(expression)});</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→medium: this match is in build/dev-tooling code — src/tools/debugger.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>src/tools/debugger.ts:2017</code></p>
+<pre class="snippet"><code>obj = objectPath === &#39;window&#39; ? window : eval(objectPath);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→medium: this match is in build/dev-tooling code — src/tools/rebuild.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>src/tools/rebuild.ts:261</code></p>
+<pre class="snippet"><code>&#39;  eval(capture.targetScript.content);&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/generate-docs.ts:184</code></p>
+<pre class="snippet"><code>fs.writeFileSync(README_PATH, updated);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/generate-docs.ts:233</code></p>
+<pre class="snippet"><code>fs.writeFileSync(OUTPUT_PATH, markdown);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/post-build.ts:43</code></p>
+<pre class="snippet"><code>fs.writeFileSync(filePath, content, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/sed.ts:26</code></p>
+<pre class="snippet"><code>fs.writeFileSync(filePath, newContent, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/McpContext.ts:531</code></p>
+<pre class="snippet"><code>await fs.writeFile(filename, data);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/McpContext.ts:544</code></p>
+<pre class="snippet"><code>await fs.writeFile(filePath, data);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/logger.ts:22</code></p>
+<pre class="snippet"><code>const logFile = fs.createWriteStream(fileName, {flags: &#39;a+&#39;});</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCache.ts:209</code></p>
+<pre class="snippet"><code>await fs.writeFile(cachePath, JSON.stringify(entry, null, 2), &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/modules/debugger/DebuggerManager.ts:1171</code></p>
+<pre class="snippet"><code>await fs.writeFile(filePath, JSON.stringify(session, null, 2), &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:124</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:133</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:159</code></p>
+<pre class="snippet"><code>if (process.env.OPENAI_API_KEY) {</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:162</code></p>
+<pre class="snippet"><code>if (process.env.ANTHROPIC_API_KEY) {</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:178</code></p>
+<pre class="snippet"><code>selectedProviderConfigured: Boolean(process.env.OPENAI_API_KEY),</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:179</code></p>
+<pre class="snippet"><code>selectedProviderReason: process.env.OPENAI_API_KEY</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:189</code></p>
+<pre class="snippet"><code>selectedProviderConfigured: Boolean(process.env.ANTHROPIC_API_KEY),</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:190</code></p>
+<pre class="snippet"><code>selectedProviderReason: process.env.ANTHROPIC_API_KEY</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:197</code></p>
+<pre class="snippet"><code>const hasGeminiConfig = Boolean(process.env.GEMINI_API_KEY || geminiCliPath);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:202</code></p>
+<pre class="snippet"><code>selectedProviderReason: process.env.GEMINI_API_KEY</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:258</code></p>
+<pre class="snippet"><code>return process.env.GEMINI_API_KEY</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/modules/deobfuscator/PackerDeobfuscator.ts</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCollector.ts:964</code></p>
+<pre class="snippet"><code>const response = await fetch(url);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>src/modules/collector/CodeCollector.ts:1029</code></p>
+<pre class="snippet"><code>const response = await fetch(workerUrl);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-low">LOW (33)</h3>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — tests/unit/modules/CodeAnalyzer.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/CodeAnalyzer.extended.test.ts:416</code></p>
+<pre class="snippet"><code>cp.exec(z);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/CodeAnalyzer.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/CodeAnalyzer.extended.test.ts:337</code></p>
+<pre class="snippet"><code>eval(input);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/CodeAnalyzer.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/CodeAnalyzer.extended.test.ts:411</code></p>
+<pre class="snippet"><code>eval(input);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/CodeAnalyzer.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/CodeAnalyzer.extended.test.ts:114</code></p>
+<pre class="snippet"><code>eval(data);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/CodeAnalyzer.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/CodeAnalyzer.extended.test.ts:412</code></p>
+<pre class="snippet"><code>eval(z);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/Deobfuscator.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/Deobfuscator.extended.test.ts:131</code></p>
+<pre class="snippet"><code>eval(atob(&quot;YWJj&quot;)); Function(&quot;return 1&quot;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:19</code></p>
+<pre class="snippet"><code>PackerDeobfuscator.detect(&#39;eval(function(p,a,c,k,e,d){return p;}(...))&#39;),</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:34</code></p>
+<pre class="snippet"><code>&#39;eval(function(p,a,c,k,e,d){return p;}(...))&#39;;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:36</code></p>
+<pre class="snippet"><code>code: &#39;eval(function(p,a,c,k,e,d){return p;}(...))&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:68</code></p>
+<pre class="snippet"><code>&quot;eval(function(p,a,c,k,e,d){return p;}(&#39;0 1&#39;,62,2,&#39;hello|world&#39;,0,{}))&quot;;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:114</code></p>
+<pre class="snippet"><code>code: &#39;eval(function(p,a,c,k,e,d){return p;}(...))&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/PackerDeobfuscator.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/PackerDeobfuscator.test.ts:143</code></p>
+<pre class="snippet"><code>&quot;eval(function(p,a,c,k,e,d){return p;}(&#39;0&#39;,10,1,&#39;ok&#39;,0,{}))&quot;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/modules/SmartCodeCollector.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/SmartCodeCollector.extended.test.ts:66</code></p>
+<pre class="snippet"><code>content: &#39;eval(&quot;1&quot;); const req = require(&quot;axios&quot;)&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/services/LLMService.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/services/LLMService.test.ts:76</code></p>
+<pre class="snippet"><code>const messages = service.generateDeobfuscationPrompt(&#39;eval(atob(&quot;...&quot;))&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — tests/unit/services/LLMService.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/services/LLMService.test.ts:79</code></p>
+<pre class="snippet"><code>assert.ok(messages[1].content.includes(&#39;eval(atob&#39;));</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/unit/modules/BrowserModeManager.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/BrowserModeManager.extended.test.ts:402</code></p>
+<pre class="snippet"><code>fs.unlinkSync(fakeWinPath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope. (Severity reduced medium→low: this match is in test code — tests/unit/logger/root-logger.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/logger/root-logger.test.ts:43</code></p>
+<pre class="snippet"><code>const content = fs.readFileSync(file, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/unit/modules/BrowserModeManager.extended.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/modules/BrowserModeManager.extended.test.ts:377</code></p>
+<pre class="snippet"><code>fs.writeFileSync(fakeWinPath, &#39;x&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/unit/services/AIService.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/services/AIService.test.ts</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;==</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:122</code></p>
+<pre class="snippet"><code>if (process.env.OPENAI_API_KEY) {</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:131</code></p>
+<pre class="snippet"><code>if (process.env.ANTHROPIC_API_KEY) {</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/utils/config.ts:140</code></p>
+<pre class="snippet"><code>const geminiApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/compat/backward-compatibility.test.ts:49</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/compat/backward-compatibility.test.ts:50</code></p>
+<pre class="snippet"><code>delete process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/compat/backward-compatibility.test.ts:51</code></p>
+<pre class="snippet"><code>delete process.env.GEMINI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/diagnostics/environment.test.ts:20</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/diagnostics/environment.test.ts:21</code></p>
+<pre class="snippet"><code>delete process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/diagnostics/environment.test.ts:22</code></p>
+<pre class="snippet"><code>delete process.env.GEMINI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/tools/analyzer-ai-mode.test.ts:40</code></p>
+<pre class="snippet"><code>delete process.env.GEMINI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/utils/config.test.ts:40</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/utils/config.test.ts:43</code></p>
+<pre class="snippet"><code>delete process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/unit/utils/config.test.ts:45</code></p>
+<pre class="snippet"><code>delete process.env.GEMINI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/unit/docs/reverse-docs.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/unit/docs/reverse-docs.test.ts</code></p>
+<pre class="snippet"><code>可直接嵌入的 system prompt 片段</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<h3 class="sev sev-info">INFO (1)</h3>
+<article class="finding">
+<h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
+<p><strong>Evidence:</strong> <code>repo.files</code></p>
+<pre class="snippet"><code>no SECURITY.md found in source</code></pre>
+<p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
+<p><strong>Remediation:</strong> Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>Run only in a sandbox with least-privilege configuration.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:35:38.812Z.</footer>
+</main>
+</body>
+</html>

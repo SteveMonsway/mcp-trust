@@ -1,0 +1,1789 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:BeehiveInnovations/pal-mcp-server</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-review">
+<h1>MCP Trust Report: github:BeehiveInnovations/pal-mcp-server</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">42/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">62%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>7afc7c1cc96e23992c8f105f960132c657883bb1</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 42 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-META-003, MCP-CODE-004, MCP-META-003</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>100</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (177)</h2>
+<h3 class="sev sev-medium">MEDIUM (45)</h3>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — docker/scripts/healthcheck.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>docker/scripts/healthcheck.py:56</code></p>
+<pre class="snippet"><code>os.remove(test_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>utils/file_utils.py:210</code></p>
+<pre class="snippet"><code>with open(path, &quot;rb&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>docker/scripts/healthcheck.py:54</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/sync_version.py:31</code></p>
+<pre class="snippet"><code>with open(&quot;config.py&quot;, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>utils/file_utils.py:722</code></p>
+<pre class="snippet"><code>with open(file_path, &quot;w&quot;, encoding=&quot;utf-8&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-005: Dynamic module import (__import__ / importlib with non-literal)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>A caller-controlled module name can load and execute arbitrary code.</p>
+<p><strong>Evidence:</strong> <code>docker/scripts/healthcheck.py:35</code></p>
+<pre class="snippet"><code>__import__(module)</code></pre>
+<p><strong>Impact:</strong> A caller-controlled module name can load and execute arbitrary code.</p>
+<p><strong>Remediation:</strong> Import modules by static names; never import a computed module path.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-003: Suspicious data-exfiltration phrase in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references sending data/credentials to an external destination. (Severity reduced high→medium: this match is in build/dev-tooling code — docker/scripts/deploy.sh — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>docker/scripts/deploy.sh</code></p>
+<pre class="snippet"><code>${YELLOW}Please copy .env.example to .env and configure your API keys${NC}</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Investigate where data would be sent. Block until the destination and intent are verified.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>config.py</code></p>
+<pre class="snippet"><code>s transport constraints.
+#
+# Token to character conversion ratio: ~4 characters per token (average for code/text)
+# Default allocation: 60% of tokens for input, 40% for response
+#
+# What IS limited by</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>providers/openai_compatible.py</code></p>
+<pre class="snippet"><code>}: {exc}&quot;
+            logging.error(error_msg)
+            raise RuntimeError(error_msg) from exc
+
+    def generate_content(
+        self,
+        prompt: str,
+        model_name: str,
+        system_</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/__init__.py</code></p>
+<pre class="snippet"><code>
+System prompts for Gemini tools
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/analyze_prompt.py</code></p>
+<pre class="snippet"><code>
+Analyze tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/chat_prompt.py</code></p>
+<pre class="snippet"><code>
+Chat tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/codereview_prompt.py</code></p>
+<pre class="snippet"><code>
+CodeReview tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/consensus_prompt.py</code></p>
+<pre class="snippet"><code>
+Consensus tool system prompt for multi-model perspective gathering
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/debug_prompt.py</code></p>
+<pre class="snippet"><code>
+Debug tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/docgen_prompt.py</code></p>
+<pre class="snippet"><code>
+Documentation generation tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/generate_code_prompt.py</code></p>
+<pre class="snippet"><code>System prompt fragment enabling structured code generation exports.
+
+This prompt is injected into the system prompt for models that have the
+&#39;allow_code_generation&#39; capability enabled. It instructs th</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/generate_code_prompt.py</code></p>
+<pre class="snippet"><code>
+# Structured Code Generation Protocol
+
+**WHEN TO USE THIS PROTOCOL:**
+
+Use this structured format ONLY when you are explicitly tasked with substantial code generation, such as:
+- Creating new feature</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/planner_prompt.py</code></p>
+<pre class="snippet"><code>
+Planner tool system prompts
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/precommit_prompt.py</code></p>
+<pre class="snippet"><code>
+Precommit tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/refactor_prompt.py</code></p>
+<pre class="snippet"><code>
+Refactor tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/secaudit_prompt.py</code></p>
+<pre class="snippet"><code>
+SECAUDIT tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/testgen_prompt.py</code></p>
+<pre class="snippet"><code>
+TestGen tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/thinkdeep_prompt.py</code></p>
+<pre class="snippet"><code>
+ThinkDeep tool system prompt
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>systemprompts/tracer_prompt.py</code></p>
+<pre class="snippet"><code>
+Tracer tool system prompts
+</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/analyze.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/analyze.py</code></p>
+<pre class="snippet"><code>and providing final strategic recommendations following the structured format specified in the system prompt.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/challenge.py</code></p>
+<pre class="snippet"><code>t need a system prompt since it doesn</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/codereview.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/codereview.py</code></p>
+<pre class="snippet"><code>format specified in the system prompt.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/consensus.py</code></p>
+<pre class="snippet"><code>s in request.step for steps 2+!
+            # Steps 2+ contain summaries/notes that must NEVER be sent to other models
+            prompt = self.original_proposal if self.original_proposal else self.i</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/precommit.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/refactor.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/refactor.py</code></p>
+<pre class="snippet"><code>format specified in the system prompt.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/secaudit.py</code></p>
+<pre class="snippet"><code>Return the system prompt for expert security analysis.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/secaudit.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/secaudit.py</code></p>
+<pre class="snippet"><code>format specified in the system prompt.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/shared/base_tool.py</code></p>
+<pre class="snippet"><code>s request model.
+
+        Returns:
+            Dict[str, Any]: JSON Schema object defining required and optional parameters
+        &quot;&quot;&quot;
+        pass
+
+    @abstractmethod
+    def get_system_prompt(self</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/simple/base.py</code></p>
+<pre class="snippet"><code>t have get_provider_type method
+                            metadata[&quot;provider_used&quot;] = str(provider)
+
+            return ToolOutput(
+                status=&quot;continuation_available&quot;,
+                c</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/simple/base.py</code></p>
+<pre class="snippet"><code>
+        # Use provided system prompt or get from tool
+        if system_prompt is None:
+            system_prompt = self.get_system_prompt()
+
+        # Get user content (handles prompt.txt files)
+   </code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/testgen.py</code></p>
+<pre class="snippet"><code>Embed system prompt in expert analysis for proper context.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/testgen.py</code></p>
+<pre class="snippet"><code>workflow specified in the system prompt.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/thinkdeep.py</code></p>
+<pre class="snippet"><code>Return the system prompt for this workflow tool</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/workflow/workflow_mixin.py</code></p>
+<pre class="snippet"><code>Return the system prompt for this tool. Usually provided by BaseTool.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>tools/workflow/workflow_mixin.py</code></p>
+<pre class="snippet"><code>
+        Whether to embed the system prompt in the main prompt.
+        Override this to return True if your tool needs the system prompt embedded.
+        </code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<h3 class="sev sev-low">LOW (132)</h3>
+<article class="finding">
+<h4>MCP-CODE-004: Python shell execution (subprocess shell=True / os.system)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Runs a subprocess through a shell (shell=True) or via os.system, enabling command injection. (Severity reduced high→low: this match is in test code — simulator_tests/test_secaudit_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_secaudit_validation.py:160</code></p>
+<pre class="snippet"><code>result = subprocess.run(f&quot;cat {filename}&quot;, shell=True, capture_output=True, text=True)</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use subprocess with a list of arguments and shell=False; never pass untrusted input to a shell.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — communication_simulator_test.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>communication_simulator_test.py:437</code></p>
+<pre class="snippet"><code>shutil.rmtree(self.temp_dir)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — simulator_tests/base_test.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/base_test.py:294</code></p>
+<pre class="snippet"><code>shutil.rmtree(self.test_dir)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — simulator_tests/test_content_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_content_validation.py:175</code></p>
+<pre class="snippet"><code>os.remove(validation_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — simulator_tests/test_per_tool_deduplication.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_per_tool_deduplication.py:217</code></p>
+<pre class="snippet"><code>os.remove(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_directory_expansion_tracking.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_directory_expansion_tracking.py:74</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_docker_claude_desktop_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_docker_claude_desktop_integration.py:200</code></p>
+<pre class="snippet"><code>os.unlink(temp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_docker_implementation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_docker_implementation.py:179</code></p>
+<pre class="snippet"><code>os.unlink(env_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_docker_mcp_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_docker_mcp_validation.py:95</code></p>
+<pre class="snippet"><code>os.unlink(temp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_support_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py:202</code></p>
+<pre class="snippet"><code>os.unlink(img_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_support_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py:237</code></p>
+<pre class="snippet"><code>os.unlink(small_image_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_support_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py:239</code></p>
+<pre class="snippet"><code>os.unlink(large_image_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_support_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py:304</code></p>
+<pre class="snippet"><code>os.unlink(temp_image_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:104</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:123</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:131</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:151</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:173</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:195</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py:217</code></p>
+<pre class="snippet"><code>os.unlink(tmp_file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_integration_utf8.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_integration_utf8.py:275</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:65</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:94</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:133</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:315</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:346</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:364</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:393</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:439</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:560</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:607</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:718</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_openrouter_registry.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_registry.py:50</code></p>
+<pre class="snippet"><code>os.unlink(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_openrouter_registry.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_registry.py:83</code></p>
+<pre class="snippet"><code>os.unlink(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_openrouter_registry.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_registry.py:166</code></p>
+<pre class="snippet"><code>os.unlink(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_openrouter_registry.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_registry.py:190</code></p>
+<pre class="snippet"><code>os.unlink(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_openrouter_registry.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_registry.py:215</code></p>
+<pre class="snippet"><code>os.unlink(temp_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_per_tool_model_defaults.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_per_tool_model_defaults.py:303</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_per_tool_model_defaults.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_per_tool_model_defaults.py:435</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_per_tool_model_defaults.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_per_tool_model_defaults.py:534</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_prompt_regression.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_prompt_regression.py:119</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_prompt_regression.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_prompt_regression.py:194</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_prompt_regression.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_prompt_regression.py:290</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_prompt_regression.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_prompt_regression.py:411</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_tools.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_tools.py:360</code></p>
+<pre class="snippet"><code>shutil.rmtree(temp_dir, ignore_errors=True)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_utf8_localization.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_utf8_localization.py:216</code></p>
+<pre class="snippet"><code>os.unlink(temp_file)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — tests/test_workflow_file_embedding.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_workflow_file_embedding.py:47</code></p>
+<pre class="snippet"><code>os.unlink(file_path)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/base_test.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/base_test.py:118</code></p>
+<pre class="snippet"><code>with open(test_py, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/base_test.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/base_test.py:120</code></p>
+<pre class="snippet"><code>with open(test_config, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/base_test.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/base_test.py:284</code></p>
+<pre class="snippet"><code>with open(file_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_content_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_content_validation.py:52</code></p>
+<pre class="snippet"><code>with open(validation_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_line_number_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_line_number_validation.py:56</code></p>
+<pre class="snippet"><code>with open(test_file_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_per_tool_deduplication.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_per_tool_deduplication.py:52</code></p>
+<pre class="snippet"><code>with open(dummy_file_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_per_tool_deduplication.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_per_tool_deduplication.py:120</code></p>
+<pre class="snippet"><code>with open(new_file_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_refactor_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_refactor_validation.py:138</code></p>
+<pre class="snippet"><code>with open(self.log_file, &#39;a&#39;) as f:  # Code smell: file handling without context</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_refactor_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_refactor_validation.py:179</code></p>
+<pre class="snippet"><code>with open(output_file, &#39;w&#39;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_refactor_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_refactor_validation.py:199</code></p>
+<pre class="snippet"><code>with open(&#39;report.json&#39;, &#39;w&#39;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_refactor_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_refactor_validation.py:202</code></p>
+<pre class="snippet"><code>with open(&#39;report.txt&#39;, &#39;w&#39;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — simulator_tests/test_refactor_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_refactor_validation.py:256</code></p>
+<pre class="snippet"><code>with open(&quot;output.txt&quot;, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/sanitize_cassettes.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/sanitize_cassettes.py:66</code></p>
+<pre class="snippet"><code>with open(cassette_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:107</code></p>
+<pre class="snippet"><code>with open(small_file1, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:109</code></p>
+<pre class="snippet"><code>with open(small_file2, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:127</code></p>
+<pre class="snippet"><code>with open(small_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:129</code></p>
+<pre class="snippet"><code>with open(large_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:173</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:220</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:290</code></p>
+<pre class="snippet"><code>with open(src_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:292</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:366</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:445</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_file_features.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_file_features.py:518</code></p>
+<pre class="snippet"><code>with open(test_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_memory.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_memory.py:732</code></p>
+<pre class="snippet"><code>with open(small_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_conversation_memory.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_conversation_memory.py:734</code></p>
+<pre class="snippet"><code>with open(large_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:51</code></p>
+<pre class="snippet"><code>with open(file_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:109</code></p>
+<pre class="snippet"><code>with open(temp_prompt_file, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_refactor.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_refactor.py:129</code></p>
+<pre class="snippet"><code>with open(temp_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_refactor.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_refactor.py:147</code></p>
+<pre class="snippet"><code>with open(temp_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_refactor.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_refactor.py:164</code></p>
+<pre class="snippet"><code>with open(temp_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_refactor.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_refactor.py:180</code></p>
+<pre class="snippet"><code>with open(temp_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — tests/test_refactor.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_refactor.py:291</code></p>
+<pre class="snippet"><code>with open(temp_path, &quot;w&quot;) as f:</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — simulator_tests/test_chat_simple_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_chat_simple_validation.py</code></p>
+<pre class="snippet"><code>s an error response
+                if response3 and &quot;validation error&quot; in response3.lower():
+                    self.logger.info(&quot;    ✅ Invalid temperature properly rejected by validation&quot;)
+        </code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — simulator_tests/test_chat_simple_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_chat_simple_validation.py</code></p>
+<pre class="snippet"><code>data:image/png;base64,&lt;redacted:high-entropy&gt;==</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_image_support_integration.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py</code></p>
+<pre class="snippet"><code>data:image/png;base64,&lt;redacted:high-entropy&gt;==</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;==</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py</code></p>
+<pre class="snippet"><code>s not a data URL at all
+        with pytest.raises(ValueError) as excinfo:
+            validate_image(&quot;image/png;base64,abc123&quot;)
+        assert &quot;Image file not found&quot; in str(excinfo.value)  # Treated </code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_image_validation.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_validation.py</code></p>
+<pre class="snippet"><code>data:image/png;base64,&lt;redacted:high-entropy&gt;==</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_pii_sanitizer.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_pii_sanitizer.py</code></p>
+<pre class="snippet"><code>&lt;redacted:openai-key&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_pii_sanitizer.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_pii_sanitizer.py</code></p>
+<pre class="snippet"><code>&lt;redacted:anthropic-key&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_pii_sanitizer.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_pii_sanitizer.py</code></p>
+<pre class="snippet"><code>Bearer &lt;redacted:openai-key&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_pii_sanitizer.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_pii_sanitizer.py</code></p>
+<pre class="snippet"><code>Bearer &lt;redacted:anthropic-key&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/test_pii_sanitizer.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_pii_sanitizer.py</code></p>
+<pre class="snippet"><code>https://api.example.com/v1/users?api_key=&lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_o3_model_selection.py:34</code></p>
+<pre class="snippet"><code>has_openai = bool(os.environ.get(&quot;OPENAI_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_o3_model_selection.py:35</code></p>
+<pre class="snippet"><code>has_openrouter = bool(os.environ.get(&quot;OPENROUTER_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_openrouter_fallback.py:34</code></p>
+<pre class="snippet"><code>has_openrouter = bool(os.environ.get(&quot;OPENROUTER_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_openrouter_fallback.py:35</code></p>
+<pre class="snippet"><code>has_gemini = bool(os.environ.get(&quot;GEMINI_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_openrouter_fallback.py:36</code></p>
+<pre class="snippet"><code>has_openai = bool(os.environ.get(&quot;OPENAI_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_openrouter_models.py:35</code></p>
+<pre class="snippet"><code>has_openrouter = bool(os.environ.get(&quot;OPENROUTER_API_KEY&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>simulator_tests/test_xai_models.py:35</code></p>
+<pre class="snippet"><code>xai_key = os.environ.get(&quot;XAI_API_KEY&quot;, &quot;&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_auto_mode.py:187</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENAI_API_KEY&quot;] = &quot;&lt;redacted:openai-key&gt;&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_auto_mode_provider_selection.py:45</code></p>
+<pre class="snippet"><code>os.environ[&quot;GEMINI_API_KEY&quot;] = &quot;test-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_auto_mode_provider_selection.py:84</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENAI_API_KEY&quot;] = &quot;test-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_auto_mode_provider_selection.py:165</code></p>
+<pre class="snippet"><code>os.environ[&quot;XAI_API_KEY&quot;] = &quot;test-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_image_support_integration.py:255</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_integration_utf8.py:23</code></p>
+<pre class="snippet"><code>os.environ[&quot;GEMINI_API_KEY&quot;] = &quot;dummy-key-for-tests&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_integration_utf8.py:24</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENAI_API_KEY&quot;] = &quot;dummy-key-for-tests&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py:145</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_model_enumeration.py:27</code></p>
+<pre class="snippet"><code>&quot;GEMINI_API_KEY&quot;: os.environ.get(&quot;GEMINI_API_KEY&quot;, &quot;&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_model_enumeration.py:28</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;, &quot;&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_model_enumeration.py:29</code></p>
+<pre class="snippet"><code>&quot;XAI_API_KEY&quot;: os.environ.get(&quot;XAI_API_KEY&quot;, &quot;&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_model_enumeration.py:30</code></p>
+<pre class="snippet"><code>&quot;OPENROUTER_API_KEY&quot;: os.environ.get(&quot;OPENROUTER_API_KEY&quot;, &quot;&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_model_restrictions.py:401</code></p>
+<pre class="snippet"><code>del os.environ[&quot;OPENROUTER_API_KEY&quot;]</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_openrouter_provider.py:163</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENROUTER_API_KEY&quot;] = &quot;test-openrouter-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_provider_routing_bugs.py:76</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENROUTER_API_KEY&quot;] = &quot;test-openrouter-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_provider_routing_bugs.py:184</code></p>
+<pre class="snippet"><code>os.environ[&quot;GEMINI_API_KEY&quot;] = &quot;test-gemini-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_provider_routing_bugs.py:185</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENAI_API_KEY&quot;] = &quot;test-openai-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_server.py:31</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_thinking_modes.py:48</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_tools.py:48</code></p>
+<pre class="snippet"><code>&quot;OPENAI_API_KEY&quot;: os.environ.get(&quot;OPENAI_API_KEY&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/test_workflow_metadata.py:67</code></p>
+<pre class="snippet"><code>os.environ[&quot;OPENROUTER_API_KEY&quot;] = &quot;test-openrouter-key&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-003: Suspicious data-exfiltration phrase in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references sending data/credentials to an external destination. (Severity reduced high→low: this match is in test code — tests/test_docker_security.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_docker_security.py</code></p>
+<pre class="snippet"><code>
+        project_root = Path(__file__).parent.parent
+        dockerfile = project_root / &quot;Dockerfile&quot;
+
+        if dockerfile.exists():
+            content = dockerfile.read_text()
+
+            # .env </code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Investigate where data would be sent. Block until the destination and intent are verified.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/http_transport_recorder.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/http_transport_recorder.py</code></p>
+<pre class="snippet"><code>re trying to match
+        request_signature = self._get_request_signature(request)
+        logger.debug(f&quot;Request signature: {request_signature}&quot;)
+
+        # Find matching interaction
+        interac</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_cassette_semantic_matching.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_cassette_semantic_matching.py</code></p>
+<pre class="snippet"><code>
+Tests for cassette semantic matching to prevent breaks from prompt changes.
+
+This validates that o3 model cassettes match on semantic content (model + user question)
+rather than exact request bodies,</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_cassette_semantic_matching.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_cassette_semantic_matching.py</code></p>
+<pre class="snippet"><code>System prompt v1...\n\n=== USER REQUEST ===\nWhat is 2 + 2?\n=== END REQUEST ===\n\nMore instructions...</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_cassette_semantic_matching.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_cassette_semantic_matching.py</code></p>
+<pre class="snippet"><code>System prompt v2 (DIFFERENT)...\n\n=== USER REQUEST ===\nWhat is 2 + 2?\n=== END REQUEST ===\n\nDifferent instructions...</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_chat_simple.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_chat_simple.py</code></p>
+<pre class="snippet"><code>System prompt</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_clink_claude_agent.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_clink_claude_agent.py</code></p>
+<pre class="snippet"><code>System prompt</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py</code></p>
+<pre class="snippet"><code>t exceed limit when combined with system prompt
+        reasonable_prompt = &quot;This is a reasonable sized prompt for testing prompt.txt file handling.&quot;
+
+        # Create a temp file with reasonable cont</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_large_prompt_handling.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_large_prompt_handling.py</code></p>
+<pre class="snippet"><code>t be read
+            temp_dir = tempfile.mkdtemp()
+            try:
+                try:
+                    result = await tool.execute(
+                        {&quot;prompt&quot;: &quot;&quot;, &quot;absolute_file_paths&quot;:</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_precommit_workflow.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_precommit_workflow.py</code></p>
+<pre class="snippet"><code>Test system prompt integration</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_prompt_size_limit_bug_fix.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_prompt_size_limit_bug_fix.py</code></p>
+<pre class="snippet"><code>Test system prompt</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_provider_utf8.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_provider_utf8.py</code></p>
+<pre class="snippet"><code>Test system prompt enhancement with French locale.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target. (Severity reduced medium→low: this match is in test code — tests/test_secaudit.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/test_secaudit.py</code></p>
+<pre class="snippet"><code>Test that the workflow system prompt is correctly configured.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:23:43.678Z.</footer>
+</main>
+</body>
+</html>

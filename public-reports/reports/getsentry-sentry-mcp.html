@@ -1,0 +1,1697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:getsentry/sentry-mcp</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-block">
+<h1>MCP Trust Report: github:getsentry/sentry-mcp</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">BLOCK</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">30/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">75%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>e2da5164e2edc1f59fad25c38c68dabd14905c49</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>The scanner found high-confidence capability evidence in the server’s runtime code (e.g. command execution). Review the flagged findings before connecting this server to an agent. A BLOCK is a &quot;review required&quot;, not proof the server is malicious — the evidence may be legitimate by design (see Decision Reasons).</p>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 30 falls in MEDIUM band</li><li>Critical finding with high confidence: MCP-CODE-001, MCP-CODE-001, MCP-CODE-001, MCP-CODE-001</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>completed</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>0</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>50</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (178)</h2>
+<h3 class="sev sev-critical">CRITICAL (4)</h3>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> critical · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:160</code></p>
+<pre class="snippet"><code>exec(`open ${JSON.stringify(url)}`);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> critical · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:162</code></p>
+<pre class="snippet"><code>exec(`start &quot;&quot; ${JSON.stringify(url)}`);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> critical · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:165</code></p>
+<pre class="snippet"><code>exec(`cmd.exe /c start &quot;&quot; ${JSON.stringify(url)}`);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> critical · <strong>Confidence:</strong> 95% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:167</code></p>
+<pre class="snippet"><code>exec(`xdg-open ${JSON.stringify(url)}`);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<h3 class="sev sev-high">HIGH (2)</h3>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>packages/agent-cli-test/src/auth.ts:28</code></p>
+<pre class="snippet"><code>const child = spawn(&quot;node&quot;, [mcpServerPath, &quot;auth&quot;, subcommand], {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>packages/agent-cli-test/src/process.ts:28</code></p>
+<pre class="snippet"><code>const child = spawn(command, args, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (31)</h3>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/pre-commit-generated.mjs — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/pre-commit-generated.mjs:32</code></p>
+<pre class="snippet"><code>execFileSync(command[0], command.slice(1), {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/pre-commit-generated.mjs — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/pre-commit-generated.mjs:38</code></p>
+<pre class="snippet"><code>const output = execFileSync(</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/pre-commit-generated.mjs — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/pre-commit-generated.mjs:49</code></p>
+<pre class="snippet"><code>execFileSync(&quot;git&quot;, [&quot;diff&quot;, &quot;--quiet&quot;, path], { stdio: &quot;pipe&quot; });</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — packages/mcp-core/scripts/generate-definitions.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/scripts/generate-definitions.ts:24</code></p>
+<pre class="snippet"><code>fs.writeFileSync(file, JSON.stringify(data, null, 2));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/scripts/generate-definitions.ts:373</code></p>
+<pre class="snippet"><code>fs.writeFileSync(agentPath, updated);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/scripts/measure-token-cost.ts:219</code></p>
+<pre class="snippet"><code>fs.writeFileSync(absolutePath, JSON.stringify(output, null, 2));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/token-cache.ts:44</code></p>
+<pre class="snippet"><code>await fs.writeFile(tmpPath, JSON.stringify(data, null, 2), {</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/auth/config.ts:58</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.ts:78</code></p>
+<pre class="snippet"><code>headers.set(&quot;api-key&quot;, process.env.OPENAI_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:56</code></p>
+<pre class="snippet"><code>return Boolean(process.env.ANTHROPIC_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:59</code></p>
+<pre class="snippet"><code>return Boolean(process.env.OPENAI_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:61</code></p>
+<pre class="snippet"><code>return Boolean(process.env.OPENROUTER_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:168</code></p>
+<pre class="snippet"><code>if (process.env.ANTHROPIC_API_KEY) return &quot;anthropic&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:169</code></p>
+<pre class="snippet"><code>if (process.env.OPENAI_API_KEY) return &quot;openai&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:170</code></p>
+<pre class="snippet"><code>if (process.env.OPENROUTER_API_KEY) return &quot;openrouter&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:135</code></p>
+<pre class="snippet"><code>const hasAnthropic = Boolean(process.env.ANTHROPIC_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:136</code></p>
+<pre class="snippet"><code>const hasOpenAI = Boolean(process.env.OPENAI_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:137</code></p>
+<pre class="snippet"><code>const hasOpenRouter = Boolean(process.env.OPENROUTER_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/server/oauth/helpers.ts:343</code></p>
+<pre class="snippet"><code>const resp = await fetch(upstream_url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/server/routes/chat-oauth.ts:120</code></p>
+<pre class="snippet"><code>const response = await fetch(registrationUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/server/routes/chat-oauth.ts:171</code></p>
+<pre class="snippet"><code>const response = await fetch(tokenUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/server/routes/chat.ts:58</code></p>
+<pre class="snippet"><code>const response = await fetch(tokenUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/api-client/client.ts:781</code></p>
+<pre class="snippet"><code>response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/api-client/client.ts:4518</code></p>
+<pre class="snippet"><code>? await fetch(imageUrl)</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.ts:82</code></p>
+<pre class="snippet"><code>return fetch(new Request(requestUrl.toString(), input), {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.ts:88</code></p>
+<pre class="snippet"><code>return fetch(requestUrl.toString(), {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/fetch-utils.ts:18</code></p>
+<pre class="snippet"><code>const response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:37</code></p>
+<pre class="snippet"><code>const resp = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/device-code-flow.ts:84</code></p>
+<pre class="snippet"><code>const resp = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/auth/oauth.ts:101</code></p>
+<pre class="snippet"><code>const response = await fetch(registrationUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/auth/oauth.ts:249</code></p>
+<pre class="snippet"><code>const response = await fetch(tokenUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-low">LOW (140)</h3>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/mcp-server/src/auth/token-cache.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/token-cache.test.ts:34</code></p>
+<pre class="snippet"><code>await fs.rm(tmpDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/mcp-server/src/auth/token-cache.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/auth/token-cache.test.ts:104</code></p>
+<pre class="snippet"><code>await fs.writeFile(process.env.SENTRY_MCP_AUTH_CACHE!, &quot;not-json&quot;, &quot;utf-8&quot;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:22</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:37</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:39</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:44</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:46</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:74</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:122</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:17</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:32</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:34</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:39</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:41</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:72</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:115</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openai-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:162</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openrouter-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openrouter-provider.test.ts:11</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openrouter-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openrouter-provider.test.ts:19</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/openrouter-provider.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openrouter-provider.test.ts:21</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:22</code></p>
+<pre class="snippet"><code>delete process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:24</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:26</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:35</code></p>
+<pre class="snippet"><code>delete process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:37</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:41</code></p>
+<pre class="snippet"><code>delete process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:43</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:47</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:49</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:63</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:70</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:77</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:98</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:99</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:107</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:108</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:116</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:117</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:126</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:127</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:128</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:136</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:137</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:145</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:146</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:156</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:157</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:163</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:164</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:176</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:177</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:209</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:217</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:227</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:228</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:237</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:238</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:248</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:255</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:262</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:271</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/internal/agents/provider-factory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:282</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:129</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:135</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:141</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:108</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:118</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:124</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:130</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2401</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2403</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2888</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2889</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2890</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issue-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issue-events.test.ts:684</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issue-events.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issue-events.test.ts:686</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:154</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:156</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:211</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:212</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:213</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:338</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:339</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/search-issues.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:340</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-test-client/src/agent.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/agent.test.ts:37</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-test-client/src/agent.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/agent.test.ts:47</code></p>
+<pre class="snippet"><code>delete process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mcp-test-client/src/agent.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/agent.test.ts:49</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/add-team-to-project.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/add-team-to-project.test.ts</code></p>
+<pre class="snippet"><code>/&lt;redacted:high-entropy&gt;/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-monitor-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-monitor-details.test.ts</code></p>
+<pre class="snippet"><code>/&lt;redacted:high-entropy&gt;/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-release-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-release-details.test.ts</code></p>
+<pre class="snippet"><code>https://sentry.io/api/0/projects/MyOrg/MyProject/releases/${releaseVersion}/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-release-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-release-details.test.ts</code></p>
+<pre class="snippet"><code>https://sentry.io/api/0/projects/MyOrg/MyProject/releases/${releaseVersion}/commits/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/remove-team-from-project.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/remove-team-from-project.test.ts</code></p>
+<pre class="snippet"><code>/&lt;redacted:high-entropy&gt;/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:13</code></p>
+<pre class="snippet"><code>const originalApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.test.ts:14</code></p>
+<pre class="snippet"><code>const originalOpenRouterApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/azure-openai-provider.ts:75</code></p>
+<pre class="snippet"><code>if (process.env.OPENAI_API_KEY) {</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/callEmbeddedAgent.test.ts:38</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/callEmbeddedAgent.test.ts:39</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.integration.test.ts:48</code></p>
+<pre class="snippet"><code>const hasOpenAIKey = Boolean(process.env.OPENAI_API_KEY);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:8</code></p>
+<pre class="snippet"><code>const originalApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openai-provider.test.ts:9</code></p>
+<pre class="snippet"><code>const originalOpenRouterApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openrouter-provider.test.ts:7</code></p>
+<pre class="snippet"><code>const originalApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/openrouter-provider.ts:13</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:11</code></p>
+<pre class="snippet"><code>const originalAnthropicKey = process.env.ANTHROPIC_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:12</code></p>
+<pre class="snippet"><code>const originalOpenAIKey = process.env.OPENAI_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.test.ts:13</code></p>
+<pre class="snippet"><code>const originalOpenRouterKey = process.env.OPENROUTER_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:43</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:44</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/internal/agents/provider-factory.ts:45</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/server.ts:115</code></p>
+<pre class="snippet"><code>*   accessToken: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:16</code></p>
+<pre class="snippet"><code>const originalOpenAIApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:17</code></p>
+<pre class="snippet"><code>const originalAnthropicApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:18</code></p>
+<pre class="snippet"><code>const originalOpenRouterApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:12</code></p>
+<pre class="snippet"><code>const originalOpenAIApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:13</code></p>
+<pre class="snippet"><code>const originalAnthropicApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:14</code></p>
+<pre class="snippet"><code>const originalOpenRouterApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:124</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:125</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-events.test.ts:2402</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issue-events.test.ts:84</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issue-events.test.ts:85</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issue-events.test.ts:685</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:70</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY = &quot;&lt;redacted:secret&gt;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:71</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/search-issues.test.ts:155</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY = &quot;&quot;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:112</code></p>
+<pre class="snippet"><code>process.env.ANTHROPIC_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:113</code></p>
+<pre class="snippet"><code>process.env.OPENAI_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/index.ts:114</code></p>
+<pre class="snippet"><code>process.env.OPENROUTER_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server/src/transports/stdio.ts:15</code></p>
+<pre class="snippet"><code>*   accessToken: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/agent.test.ts:32</code></p>
+<pre class="snippet"><code>const originalOpenRouterApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/agent.ts:67</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-test-client/src/index.ts:106</code></p>
+<pre class="snippet"><code>options.accessToken || process.env.SENTRY_ACCESS_TOKEN;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts:33</code></p>
+<pre class="snippet"><code>const validResponse = await fetch(</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts:40</code></p>
+<pre class="snippet"><code>const invalidFieldsResponse = await fetch(</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-cloudflare/src/test-utils/fetch-mock-setup.test.ts:47</code></p>
+<pre class="snippet"><code>const invalidSortResponse = await fetch(</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:93</code></p>
+<pre class="snippet"><code>http.get(organizationMonitorPath, () =&gt;</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-sentry-resource.test.ts:109</code></p>
+<pre class="snippet"><code>http.get(projectMonitorPath, () =&gt;</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-snapshot-image.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-snapshot-image.test.ts:308</code></p>
+<pre class="snippet"><code>http.get(</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:28</code></p>
+<pre class="snippet"><code>http.get(sentryIoUrl, resolver, options),</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/mcp-core/src/tools/catalog/get-trace-details.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-core/src/tools/catalog/get-trace-details.test.ts:29</code></p>
+<pre class="snippet"><code>http.get(usUrl, resolver, options),</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in test code — packages/smoke-tests/src/smoke.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/smoke-tests/src/smoke.test.ts:56</code></p>
+<pre class="snippet"><code>response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-info">INFO (1)</h3>
+<article class="finding">
+<h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
+<p><strong>Evidence:</strong> <code>repo.files</code></p>
+<pre class="snippet"><code>no SECURITY.md found in source</code></pre>
+<p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
+<p><strong>Remediation:</strong> Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>Block by default; do not connect to developer workstations or production agents without review.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:36:39.369Z.</footer>
+</main>
+</body>
+</html>

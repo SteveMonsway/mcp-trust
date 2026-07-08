@@ -10,8 +10,8 @@ dist/
 coverage/
 .vitest/
 
-# Scanner output (generated reports)
-reports/
+# Scanner output (generated reports) — root only, NOT public-reports/reports/
+/reports/
 
 # Public benchmark: commit rendered reports + index.json + _bench.json,
 # but not the heavy raw ScanResult cache.

@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:hmmhmmhm/daiso-mcp</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-restrict">
+<h1>MCP Trust Report: github:hmmhmmhm/daiso-mcp</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE_WITH_RESTRICTIONS</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">42/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">72%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>b60ceeeacba847198d677cdea104f2f054cdcea5</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>This MCP server looks usable with restrictions (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.</p>
+</section>
+<section class="limitations"><h2>⚠️ Limitations</h2>
+<ul><li>Additionally, Kotlin, Swift source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe.</li></ul>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 42 falls in MEDIUM band</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>completed</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<table><thead><tr><th>Inferred capability</th><th>Confidence</th></tr></thead><tbody><tr><td>browser_access</td><td>82%</td></tr></tbody></table>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>41</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>100</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (86)</h2>
+<h3 class="sev sev-high">HIGH (1)</h3>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>src/cli/deps.ts:27</code></p>
+<pre class="snippet"><code>const child = spawn(command, args, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (37)</h3>
+<article class="finding">
+<h4>MCP-CONFIG-001: Unpinned package version in MCP startup command</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> config</p>
+<p>The startup command runs a package via npx/uvx without pinning an exact version, so the code executed can change silently between runs.</p>
+<p><strong>Evidence:</strong> <code>.mcp.json</code></p>
+<pre class="snippet"><code>npx -y @&lt;redacted:high-entropy&gt;</code></pre>
+<p><strong>Impact:</strong> The exact code run at startup is not reproducible and can be replaced by a malicious release.</p>
+<p><strong>Remediation:</strong> Pin an exact version, e.g. `npx -y @scope/server@1.2.3`. Avoid `latest`/floating ranges in startup commands.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/ops/cli-smoke.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/cli-smoke.ts:197</code></p>
+<pre class="snippet"><code>const child = spawn(command, args, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/ghidra/cli_mcp_ghidra.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/ghidra/cli_mcp_ghidra.py:97</code></p>
+<pre class="snippet"><code>os.remove(output_json)</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-msg-api-response-extract.ts:31</code></p>
+<pre class="snippet"><code>const raw = fs.readFileSync(path, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pangle-conscrypt-protobuf-likelihood.ts:143</code></p>
+<pre class="snippet"><code>const text = fs.readFileSync(file, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pangle-conscrypt-read-summary.ts:10</code></p>
+<pre class="snippet"><code>const lines = fs.readFileSync(file, &#39;utf8&#39;).split(/\r?\n/);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pangle-conscrypt-summary.ts:10</code></p>
+<pre class="snippet"><code>const text = fs.readFileSync(file, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pangle-hunt-summary.ts:19</code></p>
+<pre class="snippet"><code>const text = fs.readFileSync(file, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pangle-path-len-summary.ts:20</code></p>
+<pre class="snippet"><code>const lines = fs.readFileSync(file, &#39;utf8&#39;).split(/\r?\n/);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-301-export-replay-tuples.ts:27</code></p>
+<pre class="snippet"><code>const raw = fs.readFileSync(path, &#39;utf8&#39;).trim();</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-301-variability.ts:22</code></p>
+<pre class="snippet"><code>const raw = fs.readFileSync(path, &#39;utf8&#39;).trim();</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-protobuf-likelihood.ts:103</code></p>
+<pre class="snippet"><code>const buf = fs.readFileSync(row.file);</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/gs25-msg-api-response-extract.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-msg-api-response-extract.ts:299</code></p>
+<pre class="snippet"><code>fs.writeFileSync(jsonOut, `${JSON.stringify(summary, null, 2)}\n`, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/gs25-new-blutter-signal-extract.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-new-blutter-signal-extract.ts:117</code></p>
+<pre class="snippet"><code>await fs.writeFile(outFile, `${markdown}\n`, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/gs25-new-round-summary.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-new-round-summary.ts:166</code></p>
+<pre class="snippet"><code>fs.writeFileSync(outPath, `${text}\n`, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/ops/update-workers-invocations-chart.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/update-workers-invocations-chart.ts:365</code></p>
+<pre class="snippet"><code>await fs.writeFile(DATA_PATH, `${JSON.stringify(payload, null, 2)}\n`, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/ghidra/headless_export.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>scripts/ghidra/headless_export.py:13</code></p>
+<pre class="snippet"><code>f = open(path, &#39;w&#39;)</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-301-export-replay-tuples.ts:160</code></p>
+<pre class="snippet"><code>fs.writeFileSync(outPath, text);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-301-pipeline-extract.ts:45</code></p>
+<pre class="snippet"><code>fs.writeFileSync(javaOut, java.join(&#39;\n&#39;) + (java.length ? &#39;\n&#39; : &#39;&#39;), &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-301-pipeline-extract.ts:46</code></p>
+<pre class="snippet"><code>fs.writeFileSync(pipeOut, pipe.join(&#39;\n&#39;) + (pipe.length ? &#39;\n&#39; : &#39;&#39;), &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-export-payload-bins.ts:131</code></p>
+<pre class="snippet"><code>fs.writeFileSync(filePath, buf);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-pgl-meta-export-payload-bins.ts:142</code></p>
+<pre class="snippet"><code>fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/gs25-replay-events-to-params.ts:137</code></p>
+<pre class="snippet"><code>fs.writeFileSync(outputPath, JSON.stringify(out, null, 2));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/update-workers-invocations-chart.ts:285</code></p>
+<pre class="snippet"><code>await fs.writeFile(README_PATH, next, &#39;utf8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/update-workers-invocations-chart.ts:335</code></p>
+<pre class="snippet"><code>await fs.writeFile(CHART_PATH, chartBuffer);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>scripts/frida/gs25-pgl-meta-301-pipeline-probe.ts</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;+/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>scripts/frida/gs25-pgl-meta-hook.ts</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;+/</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecComponentsDaisoOliveyoung.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0020/A00000020061401ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsEmart24.ts</code></p>
+<pre class="snippet"><code>#/components/schemas/Emart24StoreSearchResponse</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsEmart24.ts</code></p>
+<pre class="snippet"><code>#/&lt;redacted:high-entropy&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsEmart24.ts</code></p>
+<pre class="snippet"><code>#/components/schemas/Emart24InventoryResponse</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsGs25.ts</code></p>
+<pre class="snippet"><code>#/components/schemas/Gs25StoreSearchResponse</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsGs25.ts</code></p>
+<pre class="snippet"><code>#/&lt;redacted:high-entropy&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>src/pages/openapiSpecPathsGs25.ts</code></p>
+<pre class="snippet"><code>#/components/schemas/Gs25InventoryResponse</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions.</p>
+<p><strong>Evidence:</strong> <code>vitest.config.ts</code></p>
+<pre class="snippet"><code>src/services/emart24/tools/checkInventory.ts</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>src/services/cgv/transport.ts:90</code></p>
+<pre class="snippet"><code>const response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>src/utils/http.ts:113</code></p>
+<pre class="snippet"><code>const response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-low">LOW (48)</h3>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/api/oliveyoung-handlers.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/api/oliveyoung-handlers.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/api/oliveyoung-handlers.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/api/oliveyoung-handlers.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/app/app-api-actions.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/app/app-api-actions.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/app/app-api-oliveyoung.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/app/app-api-oliveyoung.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/app/app-api-oliveyoung.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/app/app-api-oliveyoung.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/emart24/tools/checkInventory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/emart24/tools/checkInventory.test.ts</code></p>
+<pre class="snippet"><code>../../../../src/services/emart24/tools/checkInventory.js</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/emart24/tools/findNearbyStores.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/emart24/tools/findNearbyStores.test.ts</code></p>
+<pre class="snippet"><code>../../../../&lt;redacted:high-entropy&gt;.js</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/emart24/tools/searchProducts.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/emart24/tools/searchProducts.test.ts</code></p>
+<pre class="snippet"><code>../../../../src/services/emart24/tools/searchProducts.js</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/gs25/tools/findNearbyStores.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/gs25/tools/findNearbyStores.test.ts</code></p>
+<pre class="snippet"><code>../../../../&lt;redacted:high-entropy&gt;.js</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0010/A00000000001001ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>//image.oliveyoung.co.kr/uploads/images/goods/10/0000/0011/A00000000001101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0011/A00000000001101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/client.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0012/A00000000001201ko.jpg?l=ko</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/tools/checkInventory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/tools/checkInventory.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/tools/checkInventory.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/tools/checkInventory.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/tools/searchProducts.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/tools/searchProducts.test.ts</code></p>
+<pre class="snippet"><code>/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — tests/services/oliveyoung/tools/searchProducts.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/tools/searchProducts.test.ts</code></p>
+<pre class="snippet"><code>https://image.oliveyoung.co.kr/uploads/images/goods/10/0000/0001/A00000000000101ko.jpg</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>docs/oliveyoung-zyte-bandwidth-test.ts:87</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>docs/oliveyoung-zyte-replay-test.ts:86</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/update-workers-invocations-chart.ts:36</code></p>
+<pre class="snippet"><code>const API_TOKEN = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>scripts/ops/update-workers-invocations-chart.ts:38</code></p>
+<pre class="snippet"><code>const GLOBAL_API_KEY = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/cgv/tools/findTheaters.ts:49</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/cgv/tools/getTimetable.ts:52</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/cgv/tools/searchMovies.ts:40</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/cu/tools/checkInventory.ts:68</code></p>
+<pre class="snippet"><code>const googleMapsApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/lottecinema/tools/findNearbyTheaters.ts:36</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/lottecinema/tools/getRemainingSeats.ts:49</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/lottecinema/tools/listNowShowing.ts:36</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt; || process.env.GOOGLE_MAPS_API_KEY,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/megabox/tools/findNearbyTheaters.ts:42</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/megabox/tools/getRemainingSeats.ts:49</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/services/megabox/tools/listNowShowing.ts:47</code></p>
+<pre class="snippet"><code>googleMapsApiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/utils/zyte.ts:32</code></p>
+<pre class="snippet"><code>return process.env.ZYTE_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/cgv/client.test.ts:632</code></p>
+<pre class="snippet"><code>const original = process.env.ZYTE_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/cgv/tools/findTheaters.test.ts:16</code></p>
+<pre class="snippet"><code>delete process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/cgv/tools/getTimetable.test.ts:16</code></p>
+<pre class="snippet"><code>delete process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/cgv/tools/searchMovies.test.ts:16</code></p>
+<pre class="snippet"><code>delete process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/cu/tools/checkInventory.test.ts:141</code></p>
+<pre class="snippet"><code>delete process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/gs25/tools/checkInventory.test.ts:108</code></p>
+<pre class="snippet"><code>const prevGoogleKey = process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/gs25/tools/findNearbyStores.test.ts:67</code></p>
+<pre class="snippet"><code>const prevGoogleKey = process.env.GOOGLE_MAPS_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/lottecinema/tools/listNowShowing.test.ts:10</code></p>
+<pre class="snippet"><code>const originalGoogleMapsApiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/megabox/tools/findNearbyTheaters.test.ts:81</code></p>
+<pre class="snippet"><code>process.env.GOOGLE_MAPS_API_KEY = &#39;&lt;redacted:secret&gt;&#39;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/megabox/tools/getRemainingSeats.test.ts:210</code></p>
+<pre class="snippet"><code>process.env.GOOGLE_MAPS_API_KEY = &#39;&lt;redacted:secret&gt;&#39;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/megabox/tools/listNowShowing.test.ts:98</code></p>
+<pre class="snippet"><code>process.env.GOOGLE_MAPS_API_KEY = &#39;&lt;redacted:secret&gt;&#39;;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>tests/services/oliveyoung/client.test.ts:23</code></p>
+<pre class="snippet"><code>delete process.env.ZYTE_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in documentation code — docs/daiso-test-replay.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>docs/daiso-test-replay.ts:22</code></p>
+<pre class="snippet"><code>const response = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input. (Severity reduced medium→low: this match is in documentation code — docs/oliveyoung-replay-session-test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>docs/oliveyoung-replay-session-test.ts:122</code></p>
+<pre class="snippet"><code>const res = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>Run only in a sandbox with least-privilege configuration.</li><li>Pin exact package versions in the startup command.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:43:56.688Z.</footer>
+</main>
+</body>
+</html>

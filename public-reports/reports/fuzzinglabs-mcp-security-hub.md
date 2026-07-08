@@ -1,0 +1,162 @@
+# MCP Trust Report: github:FuzzingLabs/mcp-security-hub
+
+**Decision:** APPROVE_WITH_RESTRICTIONS  
+**Risk:** MEDIUM  
+**Score:** 33/100  
+**Confidence:** 77%
+
+_Resolved ref: `b6800740da9965e9dd3fde2ec3cf4c775c358f72`_
+
+## Executive Summary
+This MCP server looks usable **with restrictions** (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.
+
+## Decision Reasons
+- Overall score 33 falls in MEDIUM band
+
+## Coverage
+| Check | State |
+|---|---|
+| configScan | not_available |
+| staticScan | completed |
+| capabilityInference | static_only |
+| introspection | disabled |
+| semgrep | completed |
+| docker | disabled |
+| dependencyScan | not_available |
+| runtimeScan | not_available |
+| packageMetadata | partial |
+
+## Capability Map
+_Source: static_inference_
+
+_No tools discovered (no runtime introspection); capabilities inferred statically where possible._
+
+## Subscores
+| Subscore | Value |
+|---|---|
+| capability | 0 |
+| code | 99 |
+| config | _not assessed_ |
+| supplyChain | 0 |
+| dependency | _not assessed_ |
+| authTransport | _not assessed_ |
+| metadata | 0 |
+| maintainer | _not assessed_ |
+| runtime | _not assessed_ |
+
+## Findings (7)
+### HIGH (4)
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `code-security/go-crash-analyzer-mcp/server.py:175`
+
+```
+shutil.rmtree(workspace)
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `code-security/go-fuzzer-mcp/server.py:120`
+
+```
+shutil.rmtree(workspace)
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `code-security/go-harness-tester-mcp/server.py:128`
+
+```
+shutil.rmtree(workspace)
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `fuzzing/dharma-mcp/server.py:180`
+
+```
+os.unlink(tmp_file_path)
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+### MEDIUM (3)
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `fuzzing/boofuzz-mcp/server.py:147`
+
+```
+with open(script_path, "w") as f:
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `fuzzing/boofuzz-mcp/server.py:199`
+
+```
+with open(result_path / "stdout.log", "w") as f:
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** medium  **Confidence:** 70%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `fuzzing/boofuzz-mcp/server.py:201`
+
+```
+with open(result_path / "stderr.log", "w") as f:
+```
+
+**Impact:** File writes can modify data; a dynamic path can write outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+
+## Recommended Policy
+- Run only in a sandbox with least-privilege configuration.
+
+## Disclaimer
+> MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
+
+_Generated by mcp-trust 0.5.3 at 2026-07-08T14:37:17.868Z._

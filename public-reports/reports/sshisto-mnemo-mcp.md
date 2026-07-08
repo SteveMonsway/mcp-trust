@@ -1,0 +1,134 @@
+# MCP Trust Report: github:sshisto/mnemo-mcp
+
+**Decision:** NEEDS_REVIEW  
+**Risk:** LOW  
+**Score:** 29/100  
+**Confidence:** 87%
+
+_Resolved ref: `a7a36895181417d8725010d6d2f6a5aa5fad2f13`_
+
+## Executive Summary
+The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).
+
+## Decision Reasons
+- Overall score 29 falls in LOW band
+- Elevated to NEEDS_REVIEW by: MCP-CODE-002, MCP-CODE-002
+
+## Coverage
+| Check | State |
+|---|---|
+| configScan | not_available |
+| staticScan | completed |
+| capabilityInference | static_only |
+| introspection | disabled |
+| semgrep | completed |
+| docker | disabled |
+| dependencyScan | not_available |
+| runtimeScan | not_available |
+| packageMetadata | completed |
+
+## Capability Map
+_Source: static_inference_
+
+_No tools discovered (no runtime introspection); capabilities inferred statically where possible._
+
+## Subscores
+| Subscore | Value |
+|---|---|
+| capability | 0 |
+| code | 88 |
+| config | _not assessed_ |
+| supplyChain | 0 |
+| dependency | _not assessed_ |
+| authTransport | _not assessed_ |
+| metadata | 0 |
+| maintainer | _not assessed_ |
+| runtime | _not assessed_ |
+
+## Findings (5)
+### HIGH (1)
+#### MCP-CODE-006: Arbitrary filesystem write or delete
+**Severity:** high  **Confidence:** 80%  **Category:** code
+
+Writes or deletes files, potentially outside a scoped workspace.
+
+**Evidence:** `src/mnemo_mcp/__main__.py:23`
+
+```
+shutil.rmtree(model_cache)
+```
+
+**Impact:** File deletion can destroy data outside the intended directory.
+
+**Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
+
+### MEDIUM (2)
+#### MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)
+**Severity:** medium  **Confidence:** 95%  **Category:** code
+
+Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced critical→medium: this match is in build/dev-tooling code — scripts/clean-venv.mjs — which does not run as part of the MCP server.)
+
+**Evidence:** `scripts/clean-venv.mjs:41`
+
+```
+execSync(`"${pythonPath}" --version`, { stdio: "pipe" });
+```
+
+**Impact:** Enables arbitrary shell command execution. The argument appears to be dynamically constructed, raising injection risk.
+
+**Remediation:** Prefer spawnSync with an argument array and shell:false; validate inputs.
+
+#### MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)
+**Severity:** medium  **Confidence:** 90%  **Category:** code
+
+Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/clean-venv.mjs — which does not run as part of the MCP server.)
+
+**Evidence:** `scripts/clean-venv.mjs:78`
+
+```
+execSync("uv venv", { stdio: "inherit", cwd: targetDir });
+```
+
+**Impact:** Enables arbitrary shell command execution.
+
+**Remediation:** Prefer spawnSync with an argument array and shell:false; validate inputs.
+
+### LOW (2)
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/test_config.py:68`
+
+```
+assert os.environ.get("GOOGLE_API_KEY") == "test-key-123"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/test_config.py:123`
+
+```
+assert os.environ.get("GEMINI_API_KEY") == "test-key"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+
+## Recommended Policy
+- Run only in a sandbox with least-privilege configuration.
+
+## Disclaimer
+> MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
+
+_Generated by mcp-trust 0.5.3 at 2026-07-08T14:49:17.122Z._

@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCP Trust Report: github:vinkius-labs/mcpfusion</title>
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1a1d21;--muted:#5c636e;--border:#e2e5ea;--card:#f7f8fa;--code:#eef0f3;--accent:#3b6fb0;--sev-critical:#b42318;--sev-high:#c4571b;--sev-medium:#9a7400;--sev-low:#3b6fb0;--sev-info:#5c636e}
+@media (prefers-color-scheme:dark){:root{--bg:#14171a;--fg:#e6e9ee;--muted:#9aa3af;--border:#2a2f36;--card:#1b1f24;--code:#22272d;--accent:#7aa7dd;--sev-critical:#f0776a;--sev-high:#e6975a;--sev-medium:#d9bd63;--sev-low:#7aa7dd;--sev-info:#9aa3af}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.report{max-width:860px;margin:0 auto;padding:2rem 1.25rem 4rem}
+h1{font-size:1.5rem;margin:0 0 .75rem}
+h2{font-size:1.15rem;margin:2rem 0 .6rem;padding-bottom:.3rem;border-bottom:1px solid var(--border)}
+h3{font-size:1rem;margin:1.4rem 0 .5rem}
+h4{font-size:.98rem;margin:0 0 .4rem}
+.report-head{border-left:5px solid var(--accent);padding:1rem 1.1rem;background:var(--card);border-radius:8px}
+.decision-block{--accent:var(--sev-critical)}
+.decision-review{--accent:var(--sev-high)}
+.decision-restrict{--accent:var(--sev-medium)}
+.decision-approve{--accent:#2e8b57}
+.badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem}
+.badge{display:inline-flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:.35rem .6rem;min-width:80px}
+.badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+.badge-value{font-weight:600;font-size:1.05rem}
+.ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.muted,.report-foot{color:var(--muted)}
+p{margin:.5rem 0}
+ul{margin:.4rem 0;padding-left:1.3rem}
+li{margin:.2rem 0}
+table{border-collapse:collapse;width:100%;font-size:.9rem;margin:.4rem 0;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:.4rem .55rem;text-align:left;vertical-align:top}
+th{background:var(--card);font-weight:600}
+code{background:var(--code);padding:.1rem .35rem;border-radius:4px;font:.85em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+pre.snippet{background:var(--code);padding:.6rem .75rem;border-radius:6px;overflow-x:auto}
+pre.snippet code{background:none;padding:0}
+blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border);color:var(--muted)}
+.finding{border:1px solid var(--border);border-radius:8px;padding:.85rem 1rem;margin:.7rem 0;background:var(--card)}
+.finding-meta{font-size:.85rem;color:var(--muted)}
+.sev{padding-left:.55rem;border-left:4px solid var(--border)}
+.sev-critical{border-color:var(--sev-critical);color:var(--sev-critical)}
+.sev-high{border-color:var(--sev-high);color:var(--sev-high)}
+.sev-medium{border-color:var(--sev-medium);color:var(--sev-medium)}
+.sev-low{border-color:var(--sev-low);color:var(--sev-low)}
+.sev-info{border-color:var(--sev-info);color:var(--sev-info)}
+.report-foot{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.82rem}
+.limitations{background:color-mix(in srgb,var(--sev-medium) 12%,var(--bg));border:1px solid var(--sev-medium);border-radius:8px;padding:.4rem 1rem 1rem}
+.limitations h2{border-bottom:none;color:var(--sev-medium)}
+</style>
+</head>
+<body>
+<main class="report">
+<header class="report-head decision-review">
+<h1>MCP Trust Report: github:vinkius-labs/mcpfusion</h1>
+<div class="badges">
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">39/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">77%</span></span>
+</div>
+<p class="ref">Resolved ref: <code>2990dddf03976d599ea28f61a2adecc48847a899</code></p>
+</header>
+<section><h2>Executive Summary</h2>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
+</section>
+<section><h2>Decision Reasons</h2>
+<ul><li>Overall score 39 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-CODE-002, MCP-META-003, MCP-CODE-002</li></ul>
+</section>
+<section><h2>Coverage</h2>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+</section>
+<section><h2>Capability Map</h2>
+<p class="muted">Source: static_inference</p>
+<p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
+</section>
+<section><h2>Subscores</h2>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>63</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+</section>
+<section><h2>Findings (127)</h2>
+<h3 class="sev sev-high">HIGH (11)</h3>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/create.ts:133</code></p>
+<pre class="snippet"><code>execSync(&#39;npm install&#39;, {</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/src/TokenManager.ts:84</code></p>
+<pre class="snippet"><code>execFileSync(&#39;icacls&#39;, [</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/deploy.ts:60</code></p>
+<pre class="snippet"><code>// eval( → (0,eval)( — indirect eval, same semantics, no \b word boundary match</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/deploy.ts:62</code></p>
+<pre class="snippet"><code>// new Function( → new (0,Function)( — same semantics</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/introspection/EntitlementScanner.ts:22</code></p>
+<pre class="snippet"><code>* 2. **Code evaluation detection** — Detects `eval()`,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/introspection/EntitlementScanner.ts:23</code></p>
+<pre class="snippet"><code>*    `new Function()`, `vm` module, indirect eval, and other</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/sandbox/SandboxGuard.ts:56</code></p>
+<pre class="snippet"><code>// fail-fast for eval()/Function() — no security risk (empty Context),</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/sandbox/SandboxGuard.ts:58</code></p>
+<pre class="snippet"><code>{ pattern: /\beval\s*\(/, reason: &#39;eval() has no effect in the sandbox — use direct expressions instead.&#39; },</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/sandbox/SandboxGuard.ts:59</code></p>
+<pre class="snippet"><code>{ pattern: /\bnew\s+Function\s*\(/, reason: &#39;new Function() has no effect in the sandbox — use direct expressions instead.&#39; },</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/src/TokenManager.ts:230</code></p>
+<pre class="snippet"><code>if (fs.existsSync(filePath)) fs.unlinkSync(filePath);</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-003: Suspicious data-exfiltration phrase in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references sending data/credentials to an external destination.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/core/middleware/InputFirewall.ts</code></p>
+<pre class="snippet"><code>\`\`json
+${serialized}
+\`\`\`
+
+## What Constitutes Malicious Input
+- Prompt injection: Instructions embedded in data fields (in any language)
+- SQL injection: SQL fragments in string values
+- Command </code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Investigate where data would be sent. Block until the destination and intent are verified.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (8)</h3>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/src/TokenManager.ts:159</code></p>
+<pre class="snippet"><code>fs.writeFileSync(this.tokenFilePath, JSON.stringify(data, null, 2), { mode: FILE_MODE });</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/src/TokenManager.ts:180</code></p>
+<pre class="snippet"><code>fs.writeFileSync(this.pendingAuthFilePath, JSON.stringify(data, null, 2), { mode: FILE_MODE });</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-002: Dynamic module load (require with non-literal path)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>A caller-controlled module path can load and execute arbitrary code.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/server/autoDiscover.ts:223</code></p>
+<pre class="snippet"><code>mod = require(filePath) as Record&lt;string, unknown&gt;;</code></pre>
+<p><strong>Impact:</strong> A caller-controlled module path can load and execute arbitrary code.</p>
+<p><strong>Remediation:</strong> Require modules by static string literals; never require a computed path.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-004: Metadata references system/developer prompt</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/presenter/ResponseBuilder.ts</code></p>
+<pre class="snippet"><code>)
+     *     .build();
+     * ```
+     */
+    llmHint(hint: string): this {
+        this._hints.push(hint);
+        return this;
+    }
+
+    /**
+     * Append domain-level system rules to the response.</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/deploy.ts:490</code></p>
+<pre class="snippet"><code>res = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/npm-registry.ts:100</code></p>
+<pre class="snippet"><code>const res = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/n8n/src/N8nClient.ts:60</code></p>
+<pre class="snippet"><code>const response = await fetch(webhookUrl, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>packages/yaml/src/cli/yaml.ts:313</code></p>
+<pre class="snippet"><code>res = await fetch(url, {</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-low">LOW (108)</h3>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:69</code></p>
+<pre class="snippet"><code>const source = `exec(&#39;ls -la&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:102</code></p>
+<pre class="snippet"><code>exec(&#39;rm -rf /&#39;);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:368</code></p>
+<pre class="snippet"><code>exec(&#39;echo test&#39;);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceE2E.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceE2E.test.ts:802</code></p>
+<pre class="snippet"><code>&#39;exec(&quot;ls&quot;);&#39;,            // line 4</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceEvolutions.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceEvolutions.test.ts:166</code></p>
+<pre class="snippet"><code>exec(&#39;ls -la&#39;, callback);`;</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceEvolutions.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceEvolutions.test.ts:228</code></p>
+<pre class="snippet"><code>exec(&#39;rm -rf /&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:400</code></p>
+<pre class="snippet"><code>const source = `// child_process.exec(&#39;ls&#39;)`;</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:1834</code></p>
+<pre class="snippet"><code>exec(&#39;rm -rf /&#39;);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-001: child_process.exec usage</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses child_process.exec(), which runs a command through a shell and is prone to command injection. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:1845</code></p>
+<pre class="snippet"><code>exec(&#39;deploy.sh&#39;);</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
+<p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false, and validate against an allowlist.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses execSync (or spawnSync with shell:true), executing a command through a shell synchronously. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/entitlementIntegration-bug93.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/entitlementIntegration-bug93.test.ts:65</code></p>
+<pre class="snippet"><code>return execSync(&#39;ls&#39;).toString();</code></pre>
+<p><strong>Impact:</strong> Enables arbitrary shell command execution.</p>
+<p><strong>Remediation:</strong> Prefer spawnSync with an argument array and shell:false; validate inputs.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:369</code></p>
+<pre class="snippet"><code>eval(&#39;1+1&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:412</code></p>
+<pre class="snippet"><code>const source = `const result = eval(&#39;1+1&#39;);\nconst fn = new Function(&#39;return 42&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2055</code></p>
+<pre class="snippet"><code>const source = `const factory = new Function(&#39;a&#39;, &#39;b&#39;, &#39;return a + b&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxGuard.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxGuard.test.ts:172</code></p>
+<pre class="snippet"><code>const result = validateSandboxCode(&#39;(data) =&gt; eval(&quot;1+1&quot;)&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:317</code></p>
+<pre class="snippet"><code>[/\beval\s*\(/,                               &#39;eval()&#39;],</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:318</code></p>
+<pre class="snippet"><code>[/\bnew\s+Function\s*\(/,                     &#39;new Function()&#39;],</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:340</code></p>
+<pre class="snippet"><code>{ input: &#39;eval(&quot;code&quot;)&#39;,                   pattern: &#39;eval()&#39; },</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:341</code></p>
+<pre class="snippet"><code>{ input: &#39;var x = eval (expr)&#39;,            pattern: &#39;eval()&#39; },</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:342</code></p>
+<pre class="snippet"><code>{ input: &#39;new Function(&quot;return 1&quot;)&#39;,       pattern: &#39;new Function()&#39; },</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:370</code></p>
+<pre class="snippet"><code>&#39;eval(&quot;code&quot;);&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/cli/deployEdgeStub-bug151.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/deployEdgeStub-bug151.test.ts:373</code></p>
+<pre class="snippet"><code>&#39;new Function(&quot;x&quot;);&#39;,</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:87</code></p>
+<pre class="snippet"><code>const source = `eval(&#39;console.log(1)&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/EntitlementScanner.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/EntitlementScanner.test.ts:93</code></p>
+<pre class="snippet"><code>const source = `new Function(&#39;return 1&#39;)();`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2042</code></p>
+<pre class="snippet"><code>it(&#39;detects eval() as codeEvaluation&#39;, async () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2043</code></p>
+<pre class="snippet"><code>const source = `const result = eval(&#39;require(&quot;child_process&quot;).exec(&quot;rm -rf /&quot;)&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2048</code></p>
+<pre class="snippet"><code>it(&#39;detects indirect eval (0, eval)()&#39;, async () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2054</code></p>
+<pre class="snippet"><code>it(&#39;detects new Function()&#39;, async () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2109</code></p>
+<pre class="snippet"><code>const source = `eval(&#39;x&#39;); const fs = require(&#39;fs&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2125</code></p>
+<pre class="snippet"><code>const source = `const r = eval(&#39;1&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2132</code></p>
+<pre class="snippet"><code>const source = `const r = eval(&#39;1&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2141</code></p>
+<pre class="snippet"><code>const source = `eval(&#39;something&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2153</code></p>
+<pre class="snippet"><code>const source = `eval(&#39;safe&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:2289</code></p>
+<pre class="snippet"><code>const source = `const r = eval(&#39;payload&#39;);`;</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:5</code></p>
+<pre class="snippet"><code>*   #139 — Guard now blocks eval()/new Function() at fail-fast level</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:28</code></p>
+<pre class="snippet"><code>// Bug #139 — Guard blocks eval() / new Function()</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:31</code></p>
+<pre class="snippet"><code>describe(&#39;Bug #139: Guard blocks eval() and new Function()&#39;, () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:32</code></p>
+<pre class="snippet"><code>it(&#39;should reject eval() call&#39;, () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:33</code></p>
+<pre class="snippet"><code>const result = validateSandboxCode(&#39;(data) =&gt; eval(&quot;data.length&quot;)&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:35</code></p>
+<pre class="snippet"><code>expect(result.violation).toContain(&#39;eval()&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:39</code></p>
+<pre class="snippet"><code>it(&#39;should reject new Function() call&#39;, () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:40</code></p>
+<pre class="snippet"><code>const result = validateSandboxCode(&#39;(data) =&gt; new Function(&quot;return data&quot;)()&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:42</code></p>
+<pre class="snippet"><code>expect(result.violation).toContain(&#39;new Function()&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:47</code></p>
+<pre class="snippet"><code>// data.eval is a property access, not eval()</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:59</code></p>
+<pre class="snippet"><code>const result = validateSandboxCode(&#39;(data) =&gt; eval  (&quot;data&quot;)&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxBugs-139-142.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxBugs-139-142.test.ts:61</code></p>
+<pre class="snippet"><code>expect(result.violation).toContain(&#39;eval()&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxEdgeCases.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxEdgeCases.test.ts:114</code></p>
+<pre class="snippet"><code>it(&#39;should prevent new Function() escape&#39;, async () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxEdgeCases.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxEdgeCases.test.ts:117</code></p>
+<pre class="snippet"><code>const fn = new Function(&#39;return typeof process !== &quot;undefined&quot; ? process.env : &quot;blocked&quot;&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxEdgeCases.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxEdgeCases.test.ts:220</code></p>
+<pre class="snippet"><code>return eval(&#39;typeof process&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxGuard.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxGuard.test.ts:168</code></p>
+<pre class="snippet"><code>it(&#39;should reject &quot;eval()&quot; in code (Bug #139 — fail-fast feedback for LLM)&#39;, () =&gt; {</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxGuard.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxGuard.test.ts:169</code></p>
+<pre class="snippet"><code>// Bug #139: eval() is now blocked at the guard level for</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→low: this match is in test code — packages/core/tests/sandbox/SandboxGuard.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/sandbox/SandboxGuard.test.ts:174</code></p>
+<pre class="snippet"><code>expect(result.violation).toContain(&#39;eval()&#39;);</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:48</code></p>
+<pre class="snippet"><code>try { await fs.rm(tempDir, { recursive: true, force: true }); } catch { /* ignore */ }</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:20</code></p>
+<pre class="snippet"><code>await fs.rm(tempDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/core/tests/server/autoDiscoverOrder-bug102.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverOrder-bug102.test.ts:24</code></p>
+<pre class="snippet"><code>try { await fs.rm(tempDir, { recursive: true, force: true }); } catch { /* ignore */ }</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts:31</code></p>
+<pre class="snippet"><code>try { await fs.rm(tempDir, { recursive: true, force: true }); } catch { /* ignore */ }</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/oauth/tests/TokenManager.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/tests/TokenManager.test.ts:51</code></p>
+<pre class="snippet"><code>fs.rmSync(tmpDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/oauth/tests/TokenManagerPermissions.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/tests/TokenManagerPermissions.test.ts:26</code></p>
+<pre class="snippet"><code>fs.rmSync(tmpDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/oauth/tests/createAuthTool.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/tests/createAuthTool.test.ts:44</code></p>
+<pre class="snippet"><code>fs.rmSync(tmpDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 80% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/skills/tests/autoDiscoverSkills.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/skills/tests/autoDiscoverSkills.test.ts:20</code></p>
+<pre class="snippet"><code>await fs.rm(testDir, { recursive: true, force: true });</code></pre>
+<p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-005: Arbitrary filesystem read</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Reads files using a dynamically constructed path, allowing reads outside the intended scope. (Severity reduced medium→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:732</code></p>
+<pre class="snippet"><code>const source = `import fs from &#39;fs&#39;; fs.readFileSync(&#39;file&#39;);`;</code></pre>
+<p><strong>Impact:</strong> A caller-controlled path can read sensitive files via path traversal. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Resolve and validate paths against an allowlisted base directory before reading.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:29</code></p>
+<pre class="snippet"><code>await fs.writeFile(toolFile, `</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→low: this match is in test code — packages/oauth/tests/TokenManager.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/oauth/tests/TokenManager.test.ts:281</code></p>
+<pre class="snippet"><code>fs.writeFileSync(path.join(dirPath, &#39;pending-auth.json&#39;), &#39;not-json{{{&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:54</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:58</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:73</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:77</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:94</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:98</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/core/LowBugs-129-130-131.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/core/LowBugs-129-130-131.test.ts:115</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/introspection/GovernanceRobust.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/introspection/GovernanceRobust.test.ts:1823</code></p>
+<pre class="snippet"><code>fs.writeFileSync(&#39;output.json&#39;, data);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:45</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;tool.test.ts&#39;), &#39;export const x = 1;&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:46</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;tool.spec.ts&#39;), &#39;export const x = 1;&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:47</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;types.d.ts&#39;), &#39;export type X = string;&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:59</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;a.tool.js&#39;), `</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:62</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;b.js&#39;), `</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:82</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(subDir, &#39;invoice.js&#39;), `</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:99</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(subDir, &#39;tool.js&#39;), &#39;export const x = 1;&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/AutoDiscover.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/AutoDiscover.test.ts:121</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;custom.js&#39;), `</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverOrder-bug102.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverOrder-bug102.test.ts:31</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverOrder-bug102.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverOrder-bug102.test.ts:48</code></p>
+<pre class="snippet"><code>await fs.writeFile(</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts:44</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;my_router.tool.mjs&#39;), fileContent);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts:64</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;shared.tool.mjs&#39;), fileContent);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts:84</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;issues_queries.tool.mjs&#39;), queryFile);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/server/autoDiscoverRouterDedup-bug129.test.ts:85</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(tempDir, &#39;issues_mutations.tool.mjs&#39;), mutationFile);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/skills/tests/autoDiscoverSkills.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/skills/tests/autoDiscoverSkills.test.ts:26</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(skillDir, &#39;SKILL.md&#39;), content, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/skills/tests/autoDiscoverSkills.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/skills/tests/autoDiscoverSkills.test.ts:32</code></p>
+<pre class="snippet"><code>await fs.writeFile(fullPath, body, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/skills/tests/autoDiscoverSkills.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/skills/tests/autoDiscoverSkills.test.ts:95</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(invalidDir, &#39;SKILL.md&#39;), &#39;No frontmatter here&#39;, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced medium→low: this match is in test code — packages/skills/tests/autoDiscoverSkills.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/skills/tests/autoDiscoverSkills.test.ts:106</code></p>
+<pre class="snippet"><code>await fs.writeFile(join(invalidDir, &#39;SKILL.md&#39;), &#39;No frontmatter&#39;, &#39;utf-8&#39;);</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-005: Encoded or hidden content in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
+<p>Metadata contains zero-width/bidi control characters or long encoded payloads that can hide instructions. (Severity reduced medium→low: this match is in test code — packages/core/tests/handoff/DelegationToken.security.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/handoff/DelegationToken.security.test.ts</code></p>
+<pre class="snippet"><code>&lt;redacted:high-entropy&gt;</code></pre>
+<p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
+<p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/deploy.ts:168</code></p>
+<pre class="snippet"><code>const token = &lt;redacted:secret&gt; ?? process.env[&#39;MCPFUSION_DEPLOY_TOKEN&#39;] ?? rc.token;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/doctor.ts:94</code></p>
+<pre class="snippet"><code>const token = &lt;redacted:secret&gt; ?? process.env[&#39;MCPFUSION_DEPLOY_TOKEN&#39;];</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/commands/token.ts:59</code></p>
+<pre class="snippet"><code>const envToken = &lt;redacted:secret&gt;&#39;MCPFUSION_DEPLOY_TOKEN&#39;];</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/templates/vectors/oauth.ts:26</code></p>
+<pre class="snippet"><code>const tokenEndpoint = &lt;redacted:secret&gt;&#39;OAUTH_TOKEN_ENDPOINT&#39;];</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/cli/templates/vectors/workflow.ts:26</code></p>
+<pre class="snippet"><code>&quot;    const apiKey = &lt;redacted:secret&gt;&#39;N8N_API_KEY&#39;];&quot;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/handoff/HandoffStateStore.ts:34</code></p>
+<pre class="snippet"><code>*     delegationSecret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/handoff/middleware.ts:13</code></p>
+<pre class="snippet"><code>*     .use(requireGatewayClearance(process.env.MCPFUSION_DELEGATION_SECRET!))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/server/ServerAttachment.ts:305</code></p>
+<pre class="snippet"><code>*         secret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/src/server/ServerAttachment.ts:439</code></p>
+<pre class="snippet"><code>*         delegationSecret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/create.e2e.test.ts:699</code></p>
+<pre class="snippet"><code>expect(n8n).toContain(&quot;process.env[&#39;N8N_API_KEY&#39;]&quot;);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/create.test.ts:831</code></p>
+<pre class="snippet"><code>expect(content).toContain(&quot;process.env[&#39;N8N_API_KEY&#39;]&quot;);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/core/tests/cli/doctor.test.ts:67</code></p>
+<pre class="snippet"><code>delete process.env[&#39;MCPFUSION_DEPLOY_TOKEN&#39;];</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/jwt/src/createJwtAuthTool.ts:12</code></p>
+<pre class="snippet"><code>*     secret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/jwt/src/middleware.ts:13</code></p>
+<pre class="snippet"><code>*     .use(requireJwt({ secret: &lt;redacted:secret&gt; }))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/openapi/src/emitter/CodeEmitter.ts:466</code></p>
+<pre class="snippet"><code>lines.push(`            ...(process.env[&#39;API_KEY&#39;] ? { &#39;Authorization&#39;: \`Bearer \${process.env[&#39;API_KEY&#39;]}\` } : {}),`);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/openapi/tests/emitter/CodeEmitter.test.ts:330</code></p>
+<pre class="snippet"><code>expect(server.content).toContain(&quot;process.env[&#39;API_KEY&#39;]&quot;);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/swarm/src/SwarmGateway.ts:97</code></p>
+<pre class="snippet"><code>*     delegationSecret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/swarm/src/index.ts:15</code></p>
+<pre class="snippet"><code>*     delegationSecret: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/yaml/src/cli/yaml.ts:253</code></p>
+<pre class="snippet"><code>let token = &lt;redacted:secret&gt; ?? process.env[&#39;MCPFUSION_DEPLOY_TOKEN&#39;];</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+</section>
+<section><h2>Recommended Policy</h2>
+<ul><li>Run only in a sandbox with least-privilege configuration.</li></ul>
+</section>
+<section><h2>Disclaimer</h2>
+<blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
+</section>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:45:15.994Z.</footer>
+</main>
+</body>
+</html>
