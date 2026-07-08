@@ -8,7 +8,7 @@ import type { Finding, RiskScore, ScanContext, ScanResult } from '../types.js';
 
 export const SCHEMA_VERSION = '1.0';
 export const SCANNER_NAME = 'mcp-trust';
-export const SCANNER_VERSION = '0.5.0';
+export const SCANNER_VERSION = '0.5.2';
 
 export const DISCLAIMER =
   'MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.';

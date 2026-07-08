@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-07-08T09:56:16.402Z",
+  "generatedAt": "2026-07-08T12:49:17.947Z",
   "scanner": {
     "name": "mcp-trust",
-    "version": "0.5.0"
+    "version": "0.5.2"
   },
   "environment": {
     "node": "v24.8.0",
@@ -21,22 +21,22 @@
         "filesystem_write"
       ],
       "ok": true,
-      "totalMs": 2782.273292,
+      "totalMs": 2454.31475,
       "phaseMs": {
-        "resolve": 1512.50925,
-        "introspection": 0.11245900000017173,
-        "rules": 14.752083000000084,
-        "semgrep": 1233.564417,
-        "assemble": 0.6020000000003165
+        "resolve": 1173.720291,
+        "introspection": 0.12833299999988412,
+        "rules": 14.420542000000069,
+        "semgrep": 1244.8795839999998,
+        "assemble": 0.5455000000001746
       },
       "decision": "APPROVE_WITH_RESTRICTIONS",
       "risk": "medium",
-      "score": 42,
-      "findings": 49,
+      "score": 33,
+      "findings": 48,
       "topRules": [
         "MCP-CODE-006",
         "MCP-CODE-006",
-        "MCP-META-002",
+        "MCP-CODE-006",
         "MCP-CODE-006",
         "MCP-CODE-006"
       ]
@@ -51,13 +51,13 @@
         "repository_write"
       ],
       "ok": true,
-      "totalMs": 2268.4483330000003,
+      "totalMs": 2320.724083,
       "phaseMs": {
-        "resolve": 1145.8814589999997,
-        "introspection": 0.0058330000001660665,
-        "rules": 1.5876670000006925,
-        "semgrep": 1102.2318340000002,
-        "assemble": 0.061167000000750704
+        "resolve": 1171.799916,
+        "introspection": 0.006583000000318862,
+        "rules": 1.7302089999998316,
+        "semgrep": 1124.9948329999997,
+        "assemble": 0.0531249999994543
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -76,13 +76,13 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2193.2734579999997,
+      "totalMs": 2257.91125,
       "phaseMs": {
-        "resolve": 1084.9970410000005,
-        "introspection": 0.006167000000459666,
-        "rules": 0.6548750000001746,
-        "semgrep": 1088.101041,
-        "assemble": 0.04179199999998673
+        "resolve": 1195.4270000000006,
+        "introspection": 0.007166999999753898,
+        "rules": 0.7652499999994689,
+        "semgrep": 1038.28625,
+        "assemble": 0.038750000000618456
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -100,22 +100,22 @@
         "filesystem_write"
       ],
       "ok": true,
-      "totalMs": 2331.2734170000003,
+      "totalMs": 2344.1036249999997,
       "phaseMs": {
-        "resolve": 1171.2099170000001,
-        "introspection": 0.006375000000844011,
-        "rules": 3.4298340000004828,
-        "semgrep": 1137.4628329999996,
-        "assemble": 0.056167000000641565
+        "resolve": 1189.0449580000004,
+        "introspection": 0.0067090000011376105,
+        "rules": 2.640041000000565,
+        "semgrep": 1134.3646669999998,
+        "assemble": 0.06241700000100536
       },
-      "decision": "APPROVE_WITH_RESTRICTIONS",
-      "risk": "medium",
-      "score": 35,
-      "findings": 10,
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 26,
+      "findings": 9,
       "topRules": [
-        "MCP-META-002",
         "MCP-CODE-006",
-        "MCP-SUPPLY-005",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
         "MCP-CODE-006",
         "MCP-CODE-006"
       ]
@@ -127,13 +127,13 @@
       "category": "utility",
       "expectedCapabilities": [],
       "ok": true,
-      "totalMs": 2280.813333,
+      "totalMs": 3653.782874999999,
       "phaseMs": {
-        "resolve": 1178.8357919999999,
-        "introspection": 0.006250000000363798,
-        "rules": 1.185417000000598,
-        "semgrep": 1081.8570000000018,
-        "assemble": 0.039999999999054126
+        "resolve": 2584.6249580000003,
+        "introspection": 0.006708000000799075,
+        "rules": 1.1585830000003625,
+        "semgrep": 1045.9202910000004,
+        "assemble": 0.03920800000014424
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -148,17 +148,17 @@
       "category": "utility",
       "expectedCapabilities": [],
       "ok": true,
-      "totalMs": 2276.193292,
+      "totalMs": 2257.9030410000014,
       "phaseMs": {
-        "resolve": 1148.2192080000004,
-        "introspection": 0.006750000000465661,
-        "rules": 0.6549169999998412,
-        "semgrep": 1108.9097920000004,
-        "assemble": 0.03970899999876565
+        "resolve": 1183.5797920000005,
+        "introspection": 0.006666999999652035,
+        "rules": 1.3112909999999829,
+        "semgrep": 1049.8949169999996,
+        "assemble": 0.04049999999915599
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 5,
+      "score": 0,
       "findings": 1,
       "topRules": [
         "MCP-SUPPLY-005"
@@ -174,17 +174,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2453.138500000001,
+      "totalMs": 2456.1164160000008,
       "phaseMs": {
-        "resolve": 1149.7226250000003,
-        "introspection": 0.006583000000318862,
-        "rules": 7.117416999999477,
-        "semgrep": 1276.0406249999996,
-        "assemble": 0.10266599999886239
+        "resolve": 1164.5891250000004,
+        "introspection": 0.006084000000555534,
+        "rules": 7.671667000002344,
+        "semgrep": 1263.711625,
+        "assemble": 0.08974999999918509
       },
       "decision": "NEEDS_REVIEW",
       "risk": "low",
-      "score": 16,
+      "score": 11,
       "findings": 3,
       "topRules": [
         "MCP-META-005",
@@ -201,24 +201,24 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2321.5938749999987,
+      "totalMs": 2283.689250000003,
       "phaseMs": {
-        "resolve": 1188.4532910000016,
-        "introspection": 0.006457999999838648,
-        "rules": 0.5583330000008573,
-        "semgrep": 1113.357500000002,
-        "assemble": 0.0545830000010028
+        "resolve": 1159.2557080000006,
+        "introspection": 0.006416999996872619,
+        "rules": 0.522291999997833,
+        "semgrep": 1105.278166,
+        "assemble": 0.05537499999991269
       },
       "decision": "NEEDS_REVIEW",
-      "risk": "medium",
-      "score": 32,
+      "risk": "low",
+      "score": 25,
       "findings": 6,
       "topRules": [
-        "MCP-CODE-007",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
-        "MCP-SG-JS-005"
+        "MCP-SG-JS-005",
+        "MCP-CODE-007"
       ]
     },
     {
@@ -231,22 +231,22 @@
         "repository_write"
       ],
       "ok": true,
-      "totalMs": 2419.2597080000014,
+      "totalMs": 2376.074417,
       "phaseMs": {
-        "resolve": 1186.410458000002,
-        "introspection": 0.006582999998499872,
-        "rules": 2.5075829999987036,
-        "semgrep": 1211.001959000001,
-        "assemble": 0.06054199999925913
+        "resolve": 1200.9331669999992,
+        "introspection": 0.005667000001267297,
+        "rules": 2.193749999998545,
+        "semgrep": 1154.211457999998,
+        "assemble": 0.060790999999881024
       },
       "decision": "NEEDS_REVIEW",
       "risk": "low",
-      "score": 27,
+      "score": 19,
       "findings": 4,
       "topRules": [
-        "MCP-CODE-007",
-        "MCP-CODE-007",
+        "MCP-SG-JS-006",
         "MCP-SG-JS-005",
+        "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ]
     },
@@ -260,24 +260,24 @@
         "repository_write"
       ],
       "ok": true,
-      "totalMs": 2254.165709000001,
+      "totalMs": 2286.738707999997,
       "phaseMs": {
-        "resolve": 1125.5903339999968,
-        "introspection": 0.010333000001992332,
-        "rules": 0.8857499999976426,
-        "semgrep": 1108.1891670000005,
-        "assemble": 0.06429099999877508
+        "resolve": 1148.4933329999985,
+        "introspection": 0.007709000001341337,
+        "rules": 0.9124579999988782,
+        "semgrep": 1118.6367499999978,
+        "assemble": 0.06491599999935715
       },
       "decision": "NEEDS_REVIEW",
-      "risk": "medium",
-      "score": 32,
+      "risk": "low",
+      "score": 25,
       "findings": 6,
       "topRules": [
-        "MCP-CODE-007",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
-        "MCP-SG-JS-005"
+        "MCP-SG-JS-005",
+        "MCP-CODE-007"
       ]
     },
     {
@@ -290,17 +290,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2259.3549999999996,
+      "totalMs": 2234.0147499999985,
       "phaseMs": {
-        "resolve": 1139.9936670000025,
-        "introspection": 0.009708000001410255,
-        "rules": 0.4530830000003334,
-        "semgrep": 1100.252292000001,
-        "assemble": 0.04245900000023539
+        "resolve": 1118.2508750000015,
+        "introspection": 0.008583000002545305,
+        "rules": 0.44933299999684095,
+        "semgrep": 1097.354707999999,
+        "assemble": 0.04445800000030431
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 23,
+      "score": 13,
       "findings": 3,
       "topRules": [
         "MCP-CODE-006",
@@ -317,20 +317,20 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2199.875250000001,
+      "totalMs": 2234.048082999998,
       "phaseMs": {
-        "resolve": 1058.8272079999988,
-        "introspection": 0.013999999999214197,
-        "rules": 0.7330409999995027,
-        "semgrep": 1121.799417000002,
-        "assemble": 0.03395799999998417
+        "resolve": 1158.3150419999984,
+        "introspection": 0.011957999999140156,
+        "rules": 0.8207919999986188,
+        "semgrep": 1052.0648330000004,
+        "assemble": 0.03874999999970896
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 36,
+      "score": 30,
       "findings": 9,
       "topRules": [
-        "MCP-CODE-007",
+        "MCP-SG-JS-005",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
         "MCP-SG-JS-005",
@@ -346,17 +346,17 @@
         "database_access"
       ],
       "ok": true,
-      "totalMs": 2227.341833000002,
+      "totalMs": 2252.634249999999,
       "phaseMs": {
-        "resolve": 1119.8894160000018,
-        "introspection": 0.011290999998891493,
-        "rules": 0.226834000000963,
-        "semgrep": 1084.4768750000003,
-        "assemble": 0.030208000000129687
+        "resolve": 1183.718084,
+        "introspection": 0.01283300000068266,
+        "rules": 0.2661659999976109,
+        "semgrep": 1045.8916659999995,
+        "assemble": 0.031500000000960426
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 5,
+      "score": 0,
       "findings": 1,
       "topRules": [
         "MCP-SUPPLY-005"
@@ -372,13 +372,13 @@
         "filesystem_read"
       ],
       "ok": true,
-      "totalMs": 2233.6155,
+      "totalMs": 2211.659208000001,
       "phaseMs": {
-        "resolve": 1135.1803330000002,
-        "introspection": 0.011792000001150882,
-        "rules": 0.7379589999982272,
-        "semgrep": 1078.930042,
-        "assemble": 0.03437500000291038
+        "resolve": 1150.226541,
+        "introspection": 0.009707999997772276,
+        "rules": 0.8861670000005688,
+        "semgrep": 1038.7067909999969,
+        "assemble": 0.03216600000450853
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -396,17 +396,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2314.2967920000046,
+      "totalMs": 2274.7257920000047,
       "phaseMs": {
-        "resolve": 1204.6689170000027,
-        "introspection": 0.010750000001280569,
-        "rules": 0.3352500000037253,
-        "semgrep": 1090.1925409999967,
-        "assemble": 0.029708000001846813
+        "resolve": 1208.4282499999972,
+        "introspection": 0.01170799999817973,
+        "rules": 0.4152920000051381,
+        "semgrep": 1041.973125000004,
+        "assemble": 0.028208000003360212
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 5,
+      "score": 0,
       "findings": 1,
       "topRules": [
         "MCP-SUPPLY-005"
@@ -422,17 +422,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2370.848334000002,
+      "totalMs": 2173.6272499999977,
       "phaseMs": {
-        "resolve": 1259.843415999996,
-        "introspection": 0.010083000001031905,
-        "rules": 0.5362499999973807,
-        "semgrep": 1090.9688339999993,
-        "assemble": 0.028749999997671694
+        "resolve": 1104.2846659999996,
+        "introspection": 0.01187499999650754,
+        "rules": 0.6826249999940046,
+        "semgrep": 1044.9680000000008,
+        "assemble": 0.025374999997438863
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 5,
+      "score": 0,
       "findings": 1,
       "topRules": [
         "MCP-SUPPLY-005"
@@ -447,17 +447,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2257.883249999999,
+      "totalMs": 2409.4528750000027,
       "phaseMs": {
-        "resolve": 1135.1209170000002,
-        "introspection": 0.010709000001952518,
-        "rules": 0.5444579999966663,
-        "semgrep": 1103.210417000002,
-        "assemble": 0.03299999999580905
+        "resolve": 1149.0099589999954,
+        "introspection": 0.012332999998761807,
+        "rules": 0.7197920000035083,
+        "semgrep": 1238.2095830000035,
+        "assemble": 0.037791000002471264
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 15,
+      "score": 4,
       "findings": 2,
       "topRules": [
         "MCP-CODE-007",
@@ -473,13 +473,13 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2267.5915840000016,
+      "totalMs": 2672.7972500000033,
       "phaseMs": {
-        "resolve": 1149.7248749999999,
-        "introspection": 0.01095799999893643,
-        "rules": 0.30829200000152923,
-        "semgrep": 1098.3919590000005,
-        "assemble": 0.02604099999734899
+        "resolve": 1180.015542000001,
+        "introspection": 0.01654200000484707,
+        "rules": 0.6971669999984442,
+        "semgrep": 1464.2382080000025,
+        "assemble": 0.043541999999433756
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -496,20 +496,20 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2239.986082999996,
+      "totalMs": 2850.5237909999996,
       "phaseMs": {
-        "resolve": 1137.1838750000024,
-        "introspection": 0.011832999996840954,
-        "rules": 0.2692089999982272,
-        "semgrep": 1083.4374590000007,
-        "assemble": 0.03500000000349246
+        "resolve": 1250.4985000000015,
+        "introspection": 0.01679199999489356,
+        "rules": 0.39912500000355067,
+        "semgrep": 1564.206624999999,
+        "assemble": 0.050957999999809545
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 23,
+      "score": 13,
       "findings": 3,
       "topRules": [
-        "MCP-CODE-007",
+        "MCP-SG-JS-006",
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ]
@@ -524,17 +524,17 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 2275.985625000001,
+      "totalMs": 2721.362291999998,
       "phaseMs": {
-        "resolve": 1174.5402079999985,
-        "introspection": 0.011583999999857042,
-        "rules": 0.25600000000122236,
-        "semgrep": 1082.2772079999995,
-        "assemble": 0.03366700000333367
+        "resolve": 1192.3951250000027,
+        "introspection": 0.04466699999466073,
+        "rules": 0.28908299999602605,
+        "semgrep": 1500.444500000005,
+        "assemble": 0.05758300000161398
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 23,
+      "score": 8,
       "findings": 3,
       "topRules": [
         "MCP-CODE-007",
@@ -552,13 +552,13 @@
         "repository_write"
       ],
       "ok": true,
-      "totalMs": 2240.694500000005,
+      "totalMs": 2670.7043330000015,
       "phaseMs": {
-        "resolve": 1134.666250000002,
-        "introspection": 0.012957999999343883,
-        "rules": 0.5726670000003651,
-        "semgrep": 1083.9571660000001,
-        "assemble": 0.038124999999126885
+        "resolve": 1153.4015,
+        "introspection": 0.01750000000174623,
+        "rules": 0.9612919999999576,
+        "semgrep": 1490.046792000001,
+        "assemble": 0.04299999999784632
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -578,13 +578,13 @@
         "repository_write"
       ],
       "ok": true,
-      "totalMs": 2782.2636249999996,
+      "totalMs": 3155.6277090000003,
       "phaseMs": {
-        "resolve": 1534.8857080000016,
-        "introspection": 0.006915999998454936,
-        "rules": 6.456041000004916,
-        "semgrep": 1221.7301660000012,
-        "assemble": 0.03879199999937555
+        "resolve": 1425.5405410000021,
+        "introspection": 0.012042000002111308,
+        "rules": 5.384166000003461,
+        "semgrep": 1697.471583999999,
+        "assemble": 0.04133400000137044
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -606,17 +606,17 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 3147.0882500000007,
+      "totalMs": 3965.5046660000007,
       "phaseMs": {
-        "resolve": 1455.0794590000005,
-        "introspection": 0.018582999997306615,
-        "rules": 26.60187500000029,
-        "semgrep": 1645.4317919999958,
-        "assemble": 0.10408299999835435
+        "resolve": 1368.7977080000055,
+        "introspection": 0.04445899999700487,
+        "rules": 39.88149999999587,
+        "semgrep": 2533.194958,
+        "assemble": 0.13179200000013225
       },
       "decision": "BLOCK",
       "risk": "medium",
-      "score": 41,
+      "score": 36,
       "findings": 13,
       "topRules": [
         "MCP-CODE-001",
@@ -635,17 +635,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 5684.716957999997,
+      "totalMs": 4931.763416000002,
       "phaseMs": {
-        "resolve": 4084.4357079999972,
-        "introspection": 0.012166000000433996,
-        "rules": 18.042207999998936,
-        "semgrep": 1564.0274169999975,
-        "assemble": 0.11804099999426398
+        "resolve": 2578.7562499999985,
+        "introspection": 0.01641599999857135,
+        "rules": 24.796000000002095,
+        "semgrep": 2299.858666,
+        "assemble": 0.12841699999989942
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 47,
+      "score": 44,
       "findings": 38,
       "topRules": [
         "MCP-CODE-002",
@@ -664,20 +664,20 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2398.6117500000037,
+      "totalMs": 3050.456916000003,
       "phaseMs": {
-        "resolve": 1144.4979590000003,
-        "introspection": 0.011999999995168764,
-        "rules": 7.8437920000069425,
-        "semgrep": 1226.895749999996,
-        "assemble": 0.05604200000379933
+        "resolve": 1368.2006670000046,
+        "introspection": 0.018084000003000256,
+        "rules": 13.73241599999892,
+        "semgrep": 1640.3903749999954,
+        "assemble": 0.06095800000184681
       },
-      "decision": "APPROVE_WITH_RESTRICTIONS",
-      "risk": "medium",
-      "score": 41,
-      "findings": 19,
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 25,
+      "findings": 11,
       "topRules": [
-        "MCP-CODE-007",
+        "MCP-META-004",
         "MCP-CODE-007",
         "MCP-CODE-007",
         "MCP-CODE-007",
@@ -693,22 +693,22 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2830.3269999999975,
+      "totalMs": 3734.725749999998,
       "phaseMs": {
-        "resolve": 1648.1584169999987,
-        "introspection": 0.012834000001021195,
-        "rules": 1.3343330000061542,
-        "semgrep": 1160.455667000002,
-        "assemble": 0.033416999998735264
+        "resolve": 2201.9622910000035,
+        "introspection": 0.011041999998269603,
+        "rules": 1.4266669999924488,
+        "semgrep": 1504.275833000007,
+        "assemble": 0.06512500000826549
       },
       "decision": "NEEDS_REVIEW",
       "risk": "low",
-      "score": 26,
+      "score": 18,
       "findings": 4,
       "topRules": [
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
         "MCP-CODE-007",
-        "MCP-SG-JS-005",
-        "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ]
     },
@@ -723,23 +723,23 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 2744.803709,
+      "totalMs": 3412.729792000013,
       "phaseMs": {
-        "resolve": 1163.3605000000025,
-        "introspection": 0.012291000006371178,
-        "rules": 26.460957999996026,
-        "semgrep": 1535.3144579999935,
-        "assemble": 0.04566699999850243
+        "resolve": 1208.9713340000017,
+        "introspection": 0.020042000003741123,
+        "rules": 45.69908400000713,
+        "semgrep": 2129.164708000011,
+        "assemble": 0.05633400000806432
       },
       "decision": "NEEDS_REVIEW",
-      "risk": "medium",
-      "score": 30,
+      "risk": "low",
+      "score": 27,
       "findings": 7,
       "topRules": [
-        "MCP-CODE-007",
         "MCP-META-005",
         "MCP-META-005",
         "MCP-META-004",
+        "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ]
     },
@@ -753,13 +753,13 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2226.0068750000064,
+      "totalMs": 2554.800792000009,
       "phaseMs": {
-        "resolve": 1023.898874999999,
-        "introspection": 0.012582999988808297,
-        "rules": 2.01358299999265,
-        "semgrep": 1179.2523749999964,
-        "assemble": 0.05629199999384582
+        "resolve": 1035.442167000001,
+        "introspection": 0.018167000001994893,
+        "rules": 4.217125000010128,
+        "semgrep": 1489.1171659999964,
+        "assemble": 0.10250000000814907
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
@@ -783,24 +783,24 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2797.6122909999976,
+      "totalMs": 3176.1741670000047,
       "phaseMs": {
-        "resolve": 1443.1490829999966,
-        "introspection": 0.011790999997174367,
-        "rules": 11.086791999987327,
-        "semgrep": 1322.8873329999915,
-        "assemble": 0.04966699999931734
+        "resolve": 1421.7704159999994,
+        "introspection": 0.01699999999254942,
+        "rules": 15.133166999992682,
+        "semgrep": 1715.7292089999974,
+        "assemble": 0.09595900001295377
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 44,
-      "findings": 19,
+      "score": 32,
+      "findings": 15,
       "topRules": [
-        "MCP-META-002",
-        "MCP-META-002",
-        "MCP-CODE-007",
-        "MCP-CODE-007",
-        "MCP-CODE-007"
+        "MCP-SG-JS-006",
+        "MCP-SG-JS-006",
+        "MCP-SG-JS-006",
+        "MCP-SG-JS-006",
+        "MCP-SG-JS-005"
       ]
     },
     {
@@ -813,17 +813,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 5994.459042000002,
+      "totalMs": 9844.940833,
       "phaseMs": {
-        "resolve": 4536.019499999995,
-        "introspection": 0.012500000011641532,
-        "rules": 9.674249999996391,
-        "semgrep": 1429.8193329999922,
-        "assemble": 0.07420800000545569
+        "resolve": 7832.996875000012,
+        "introspection": 0.016833999994560145,
+        "rules": 14.218124999999418,
+        "semgrep": 1968.594959000009,
+        "assemble": 0.056041000003460795
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 38,
+      "score": 33,
       "findings": 10,
       "topRules": [
         "MCP-CODE-002",
@@ -843,13 +843,13 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2209.2779169999994,
+      "totalMs": 2566.5783329999977,
       "phaseMs": {
-        "resolve": 1070.172000000006,
-        "introspection": 0.0141250000015134,
-        "rules": 1.2544579999957932,
-        "semgrep": 1118.3823330000014,
-        "assemble": 0.0232079999987036
+        "resolve": 1079.5445409999957,
+        "introspection": 0.011708000005455688,
+        "rules": 2.5828749999927823,
+        "semgrep": 1452.4120419999963,
+        "assemble": 0.02749999999650754
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -867,17 +867,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2286.3096249999944,
+      "totalMs": 2769.7929589999985,
       "phaseMs": {
-        "resolve": 1150.2647079999879,
-        "introspection": 0.012792000008630566,
-        "rules": 2.2448330000042915,
-        "semgrep": 1114.0337500000023,
-        "assemble": 0.0297500000015134
+        "resolve": 1262.3899579999998,
+        "introspection": 0.018207999994046986,
+        "rules": 3.446291000000201,
+        "semgrep": 1472.6748329999973,
+        "assemble": 0.061625000002095476
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 18,
+      "score": 8,
       "findings": 2,
       "topRules": [
         "MCP-SG-PY-006",
@@ -894,13 +894,13 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2108.8914589999913,
+      "totalMs": 2465.4117079999996,
       "phaseMs": {
-        "resolve": 990.6907910000009,
-        "introspection": 0.00941699999384582,
-        "rules": 0.04470900000887923,
-        "semgrep": 1098.3176250000106,
-        "assemble": 0.023167000006651506
+        "resolve": 1016.270417000007,
+        "introspection": 0.012124999993829988,
+        "rules": 0.15708299999823794,
+        "semgrep": 1419.7682080000086,
+        "assemble": 0.04550000000745058
       },
       "decision": "APPROVE",
       "risk": "low",
@@ -921,24 +921,24 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 2997.276457999993,
+      "totalMs": 3569.5624580000003,
       "phaseMs": {
-        "resolve": 1412.9449170000007,
-        "introspection": 0.012541000003693625,
-        "rules": 116.23325000000477,
-        "semgrep": 1448.7766249999986,
-        "assemble": 0.17279100000450853
+        "resolve": 1471.9996249999967,
+        "introspection": 0.019083999999566004,
+        "rules": 154.82562500001222,
+        "semgrep": 1917.716625000001,
+        "assemble": 0.15116599999601021
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 41,
-      "findings": 50,
+      "score": 39,
+      "findings": 43,
       "topRules": [
         "MCP-CODE-006",
-        "MCP-META-002",
-        "MCP-META-002",
-        "MCP-META-002",
-        "MCP-META-002"
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-CODE-006",
+        "MCP-SG-PY-005"
       ]
     },
     {
@@ -950,17 +950,17 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 2493.0532079999975,
+      "totalMs": 2972.8759999999893,
       "phaseMs": {
-        "resolve": 1286.7959170000104,
-        "introspection": 0.01983400000608526,
-        "rules": 2.8401670000021113,
-        "semgrep": 1184.4016669999983,
-        "assemble": 0.032207999989623204
+        "resolve": 1374.1846249999944,
+        "introspection": 0.03366699999605771,
+        "rules": 6.595082999992883,
+        "semgrep": 1567.6143329999904,
+        "assemble": 0.05854199999885168
       },
       "decision": "NEEDS_REVIEW",
       "risk": "low",
-      "score": 14,
+      "score": 9,
       "findings": 2,
       "topRules": [
         "MCP-SG-JS-005",
@@ -978,18 +978,18 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 11198.131165999992,
+      "totalMs": 9520.980542000005,
       "phaseMs": {
-        "resolve": 7422.022834000003,
-        "introspection": 0.014750000002095476,
-        "rules": 809.4175829999876,
-        "semgrep": 2946.394709,
-        "assemble": 0.5229580000013812
+        "resolve": 4348.049333999996,
+        "introspection": 0.016792000009445474,
+        "rules": 985.4357500000042,
+        "semgrep": 4160.879125000007,
+        "assemble": 1.3226250000006985
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
       "score": 46,
-      "findings": 250,
+      "findings": 228,
       "topRules": [
         "MCP-CODE-006",
         "MCP-CODE-006",
@@ -1008,18 +1008,18 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 4991.44812500001,
+      "totalMs": 4843.311625000002,
       "phaseMs": {
-        "resolve": 3054.2539160000015,
-        "introspection": 0.019792000006418675,
-        "rules": 55.201290999990306,
-        "semgrep": 1862.4862500000017,
-        "assemble": 0.21866700000828132
+        "resolve": 2144.188083000001,
+        "introspection": 0.027332999990903772,
+        "rules": 68.76725000000442,
+        "semgrep": 2606.4481249999953,
+        "assemble": 0.22195899998769164
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
       "score": 32,
-      "findings": 86,
+      "findings": 74,
       "topRules": [
         "MCP-CODE-002",
         "MCP-CODE-002",
@@ -1041,18 +1041,18 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 2527.1070420000033,
+      "totalMs": 3303.4637499999953,
       "phaseMs": {
-        "resolve": 1403.6775000000052,
-        "introspection": 0.01620800000091549,
-        "rules": 3.2335409999941476,
-        "semgrep": 1101.5482920000068,
-        "assemble": 0.053583000000799075
+        "resolve": 1842.7530830000032,
+        "introspection": 0.02491599999484606,
+        "rules": 6.02591699999175,
+        "semgrep": 1431.115334000002,
+        "assemble": 0.057459000003291294
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 26,
-      "findings": 10,
+      "score": 20,
+      "findings": 7,
       "topRules": [
         "MCP-CODE-007",
         "MCP-CODE-007",
@@ -1074,23 +1074,23 @@
         "network_egress"
       ],
       "ok": true,
-      "totalMs": 3725.526708000005,
+      "totalMs": 2781.0779579999944,
       "phaseMs": {
-        "resolve": 2597.0621669999964,
-        "introspection": 0.010999999998603016,
-        "rules": 10.020875000001979,
-        "semgrep": 1099.8242920000048,
-        "assemble": 0.030249999996158294
+        "resolve": 1217.9539579999982,
+        "introspection": 0.016375000006519258,
+        "rules": 12.174416000008932,
+        "semgrep": 1525.1120840000076,
+        "assemble": 0.040957999997772276
       },
       "decision": "APPROVE",
       "risk": "low",
-      "score": 26,
+      "score": 18,
       "findings": 4,
       "topRules": [
+        "MCP-SG-PY-005",
         "MCP-SG-PY-006",
         "MCP-SG-PY-006",
-        "MCP-SG-PY-006",
-        "MCP-SG-PY-005"
+        "MCP-SG-PY-006"
       ]
     },
     {
@@ -1104,18 +1104,18 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 3650.3066249999974,
+      "totalMs": 4324.562875000003,
       "phaseMs": {
-        "resolve": 1695.2967910000007,
-        "introspection": 0.011124999989988282,
-        "rules": 92.93020899999829,
-        "semgrep": 1842.3806659999973,
-        "assemble": 0.19220900000073016
+        "resolve": 1596.0322499999893,
+        "introspection": 0.018125000002328306,
+        "rules": 123.36720799999603,
+        "semgrep": 2581.297332999995,
+        "assemble": 0.14545799999905284
       },
       "decision": "BLOCK",
       "risk": "medium",
-      "score": 44,
-      "findings": 88,
+      "score": 37,
+      "findings": 67,
       "topRules": [
         "MCP-CODE-001",
         "MCP-SG-JS-001",
@@ -1135,24 +1135,24 @@
         "credential_access"
       ],
       "ok": true,
-      "totalMs": 3070.4823340000003,
+      "totalMs": 3713.095749999993,
       "phaseMs": {
-        "resolve": 1272.7681250000023,
-        "introspection": 0.012917000000015832,
-        "rules": 35.27287500000966,
-        "semgrep": 1739.1832090000098,
-        "assemble": 0.07274999999208376
+        "resolve": 1196.6399999999994,
+        "introspection": 0.01600000000325963,
+        "rules": 45.389832999993814,
+        "semgrep": 2443.883375000005,
+        "assemble": 0.06120799999916926
       },
       "decision": "NEEDS_REVIEW",
       "risk": "medium",
-      "score": 45,
-      "findings": 18,
+      "score": 33,
+      "findings": 12,
       "topRules": [
-        "MCP-META-002",
-        "MCP-META-002",
-        "MCP-META-002",
-        "MCP-CODE-007",
-        "MCP-CODE-007"
+        "MCP-META-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005",
+        "MCP-SG-JS-005"
       ]
     }
   ],
@@ -1160,55 +1160,55 @@
     "ok": 41,
     "failed": 0,
     "byDecision": {
-      "APPROVE_WITH_RESTRICTIONS": 3,
-      "APPROVE": 20,
+      "APPROVE_WITH_RESTRICTIONS": 1,
+      "APPROVE": 22,
       "NEEDS_REVIEW": 16,
       "BLOCK": 2
     },
     "byRisk": {
-      "medium": 17,
-      "low": 24
+      "medium": 12,
+      "low": 29
     },
     "timing": {
-      "totalWallMs": 120344.33,
-      "meanTotalMs": 2934.92,
-      "medianTotalMs": 2331.27,
+      "totalWallMs": 132068.81,
+      "meanTotalMs": 3220.84,
+      "medianTotalMs": 2672.8,
       "slowest": [
         {
-          "id": "awslabs-mcp",
-          "totalMs": 11198.13
+          "id": "mcp-playwright-ea",
+          "totalMs": 9844.94
         },
         {
-          "id": "mcp-playwright-ea",
-          "totalMs": 5994.46
+          "id": "awslabs-mcp",
+          "totalMs": 9520.98
         },
         {
           "id": "context7",
-          "totalMs": 5684.72
+          "totalMs": 4931.76
         },
         {
           "id": "stripe-agent-toolkit",
-          "totalMs": 4991.45
+          "totalMs": 4843.31
         },
         {
-          "id": "redis-mcp",
-          "totalMs": 3725.53
+          "id": "mongodb-mcp",
+          "totalMs": 4324.56
         }
       ],
       "phaseMeanMs": {
-        "resolve": 1608.07,
+        "resolve": 1585.67,
         "config": 0,
-        "introspection": 0.01,
-        "rules": 31.13,
-        "semgrep": 1276.1,
-        "assemble": 0.08
+        "introspection": 0.02,
+        "rules": 39.35,
+        "semgrep": 1571.1,
+        "assemble": 0.11
       },
       "phaseShareOfTotal": {
-        "resolve": 54.79,
+        "resolve": 49.23,
         "config": 0,
         "introspection": 0,
-        "rules": 1.06,
-        "semgrep": 43.48,
+        "rules": 1.22,
+        "semgrep": 48.78,
         "assemble": 0
       }
     }

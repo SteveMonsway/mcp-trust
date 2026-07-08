@@ -26,8 +26,8 @@ servers, the archived reference set, and a spread of popular vendor/community se
 |---|---|---|
 | BLOCK | 2 | Runtime code with high-confidence dangerous capability; review before use |
 | NEEDS_REVIEW | 16 | Notable risk (network egress, secret access, dynamic requests) |
-| APPROVE_WITH_RESTRICTIONS | 3 | Usable with sandboxing / least privilege |
-| APPROVE | 20 | No significant risk in the available evidence |
+| APPROVE_WITH_RESTRICTIONS | 1 | Usable with sandboxing / least privilege |
+| APPROVE | 22 | No significant risk in the available evidence |
 
 The most common findings across the fleet were exactly what you'd expect from tools
 built to *do things*: secret-like environment access (`MCP-CODE-007`), filesystem
@@ -102,7 +102,7 @@ We'd rather undersell than overclaim:
 
 ## Performance, and where it goes
 
-41 targets scanned in **~120 seconds** on one laptop (mean 2.9s, median 2.3s each;
+41 targets scanned in **~112 seconds** on one laptop (mean 2.7s, median 2.3s each;
 machine-dependent). The time splits almost entirely between the **git clone (~55%)** and
 the **Semgrep subprocess (~43%)**; the deterministic rules are ~1%. Both the clone and
 Semgrep run as *synchronous* child processes, so — we checked — naive in-process

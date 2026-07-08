@@ -27,7 +27,10 @@ export const POISONING_PATTERNS: PoisoningPattern[] = [
   // concealment
   { group: 'concealment', regex: /do\s+not\s+(?:tell|inform|mention\s+to|reveal\s+to)\s+the\s+user/i, label: 'do not tell the user' },
   { group: 'concealment', regex: /without\s+(?:telling|informing|asking)\s+the\s+user/i, label: 'without informing the user' },
-  { group: 'concealment', regex: /\bsilently\b/i, label: 'silently' },
+  // "silently" ALONE is benign ("silently retry", "fails silently"). Only flag it
+  // when paired with an action that hides something from the user or moves data.
+  { group: 'concealment', regex: /silently\s+(?:send|forward|transmit|upload|report|share|deliver|post|collect|copy|read|leak|exfiltrat\w*)/i, label: 'silently <action>' },
+  { group: 'concealment', regex: /(?:send|forward|report|share|collect|copy|exfiltrat\w*)[^.\n]{0,40}\bsilently\b/i, label: '<action> silently' },
   { group: 'concealment', regex: /do\s+not\s+(?:reveal|disclose|show)\s+this/i, label: 'do not reveal this' },
   { group: 'concealment', regex: /keep\s+this\s+(?:hidden|secret|confidential\s+from\s+the\s+user)/i, label: 'keep this hidden' },
 

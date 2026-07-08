@@ -3,12 +3,12 @@
 **Decision:** NEEDS_REVIEW  
 **Risk:** MEDIUM  
 **Score:** 46/100  
-**Confidence:** 69%
+**Confidence:** 71%
 
-_Resolved ref: `636aca8e109b5559006044f035bb89c16e9e5410`_
+_Resolved ref: `d4dbc333552c88e5ad9133686898228b2238d581`_
 
 ## Executive Summary
-This MCP server requires human security review before use; notable risks were detected.
+The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).
 
 ## Decision Reasons
 - Overall score 46 falls in MEDIUM band
@@ -45,8 +45,8 @@ _No tools discovered (no runtime introspection); capabilities inferred staticall
 | maintainer | _not assessed_ |
 | runtime | _not assessed_ |
 
-## Findings (250)
-### HIGH (25)
+## Findings (228)
+### HIGH (14)
 #### MCP-CODE-006: Arbitrary filesystem write or delete
 **Severity:** high  **Confidence:** 80%  **Category:** code
 
@@ -242,207 +242,6 @@ os.unlink(self._ca_cert_file_path)
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/aurora-dsql-mcp-server/kiro_power/steering/safe_query.py`
-
-```
-Substitute validated parts into a SQL template.
-
-    Template uses `{name}` placeholders (str.format syntax). Every placeholder
-    MUST map to a Safe value; raw strings raise UnsafeSQLError so the
-  
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/aws-transform-mcp-server/awslabs/aws_transform_mcp_server/oauth.py`
-
-```
-Open a URL in the default browser.
-
-    Uses platform-specific commands (matching the npm 'open' package behavior)
-    instead of Python's webbrowser module, which can fail silently when running
-    a
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/aws-transform-mcp-server/awslabs/aws_transform_mcp_server/transform_api_models.py`
-
-```
-Pydantic request models for Transform API operations.
-
-These are hand-written (not generated) models that mirror the C2J service
-model for the subset of request shapes this MCP server actually sends.
-
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/billing-cost-management-mcp-server/awslabs/billing_cost_management_mcp_server/utilities/sql_utils.py`
-
-```
-
-    # Keys must match operation_name strings the callers pass; mismatches
-    # silently fall through to the generic (key, value) flatten branch.
-    converters = {
-        'cost_explorer_get_cost_an
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/aws_clients.py`
-
-```
-Resolve AWS region with priority: AWS_REGION > AWS_DEFAULT_REGION > profile/config > us-east-1.
-
-    We check the env vars explicitly (rather than relying on boto3's own
-    resolution) so the AWS_REG
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/dynamic_instrumentation/validation.py`
-
-```
-Validate PROBE-only constraints; return error text if invalid, else None.
-
-    PROBE differs from BREAKPOINT in two ways the SDKs enforce:
-
-    * PROBE is not supported for JavaScript.
-    * PROBE is 
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/dynamic_instrumentation/validation.py`
-
-```
-Validate location fields and return actionable error text if invalid.
-
-    Enforces the per-language fields the SDK needs to bind the instrumentation;
-    without them the SDK silently drops the confi
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/rum_tools.py`
-
-```
-Fallback platform detection by sampling recent log events.
-
-    Mobile (OTel) events have a top-level ``resource`` key or ``scope`` key;
-    web events use ``event_type`` starting with ``com.amazon.ru
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/awslabs/cloudwatch_applicationsignals_mcp_server/rum_tools.py`
-
-```
-t silently truncate to the first page.
-    # Capped at _METRIC_DATA_PAGE_CAP to bound worker-thread time and memory;
-    # returns (pages, truncated) where truncated=True means more data existed.
-    
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/cloudwatch-mcp-server/awslabs/cloudwatch_mcp_server/cloudwatch_metrics/tools.py`
-
-```
-Follow ``NextToken`` through a CloudWatch ``GetMetricData`` call, merging results.
-
-        CloudWatch returns a ``NextToken`` when a single call exceeds its data-point
-        (~100,800 datapoints) o
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/ecs-mcp-server/awslabs/ecs_mcp_server/utils/docker.py`
-
-```
-Image tag {tag} not found in repository. Push may have failed silently.
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
 #### MCP-META-003: Suspicious data-exfiltration phrase in metadata
 **Severity:** high  **Confidence:** 60%  **Category:** metadata
 
@@ -458,7 +257,7 @@ Path validation to prevent credential exfiltration via file uploads.
 
 **Remediation:** Investigate where data would be sent. Block until the destination and intent are verified.
 
-### MEDIUM (78)
+### MEDIUM (51)
 #### MCP-CODE-006: Arbitrary filesystem write or delete
 **Severity:** medium  **Confidence:** 80%  **Category:** code
 
@@ -969,246 +768,6 @@ with open(METRICS_FILE_PATH, 'w') as f:
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:84`
-
-```
-aws_access_key = <redacted:secret>'AWS_ACCESS_KEY_ID')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:85`
-
-```
-aws_secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:86`
-
-```
-aws_session_token = <redacted:secret>'AWS_SESSION_TOKEN')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:118`
-
-```
-aws_access_key = <redacted:secret>'AWS_ACCESS_KEY_ID')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:119`
-
-```
-aws_secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:120`
-
-```
-aws_session_token = <redacted:secret>'AWS_SESSION_TOKEN')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/server.py:530`
-
-```
-os.environ['AWS_ACCESS_KEY_ID'] = (
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/server.py:533`
-
-```
-os.environ['AWS_SECRET_ACCESS_KEY'] = (
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-keyspaces-mcp-server/awslabs/amazon_keyspaces_mcp_server/config.py:54`
-
-```
-cassandra_password=<redacted:secret>'DB_CASSANDRA_PASSWORD', ''),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:82`
-
-```
-self._aws_access_key_id = <redacted:secret> or os.getenv('AWS_ACCESS_KEY_ID')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:83`
-
-```
-self._aws_secret_access_key = <redacted:secret> or os.getenv('AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:84`
-
-```
-self._aws_session_token = <redacted:secret> or os.getenv('AWS_SESSION_TOKEN')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:127`
-
-```
-aws_access_key_id=<redacted:secret>'AWS_ACCESS_KEY_ID'),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:128`
-
-```
-aws_secret_access_key=<redacted:secret>'AWS_SECRET_ACCESS_KEY'),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:195`
-
-```
-has_env_creds = os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:195`
-
-```
-has_env_creds = os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
 #### MCP-SG-PY-005: Dynamic module import (__import__ / importlib with non-literal)
 **Severity:** medium  **Confidence:** 70%  **Category:** code
 
@@ -1223,141 +782,6 @@ module = importlib.import_module(module_path)
 **Impact:** A caller-controlled module name can load and execute arbitrary code.
 
 **Remediation:** Import modules by static names; never import a computed module path.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:33`
-
-```
-environ.get('AWS_ACCESS_KEY_ID') and environ.get('AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:33`
-
-```
-environ.get('AWS_ACCESS_KEY_ID') and environ.get('AWS_SECRET_ACCESS_KEY')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:58`
-
-```
-'credential_source': 'env' if environ.get('AWS_ACCESS_KEY_ID') else 'profile',
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:162`
-
-```
-access_key = <redacted:secret>'AWS_ACCESS_KEY_ID', '')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:163`
-
-```
-secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY', '')
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:205`
-
-```
-environ.get('AWS_ACCESS_KEY_ID', '') != ''
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:206`
-
-```
-and environ.get('AWS_SECRET_ACCESS_KEY', '') != ''
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:221`
-
-```
-'using_env_vars': environ.get('AWS_ACCESS_KEY_ID', '') != ''
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:222`
-
-```
-and environ.get('AWS_SECRET_ACCESS_KEY', '') != '',
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
 
 #### MCP-SG-PY-005: Dynamic module import (__import__ / importlib with non-literal)
 **Severity:** medium  **Confidence:** 70%  **Category:** code
@@ -1388,21 +812,6 @@ module = importlib.import_module(module_path)
 **Impact:** A caller-controlled module name can load and execute arbitrary code.
 
 **Remediation:** Import modules by static names; never import a computed module path.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/db_analyzer/analyzer_utils.py:89`
-
-```
-'secret_arn': kwargs.get('aws_secret_arn') or os.getenv('MYSQL_SECRET_ARN'),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
 
 #### MCP-META-005: Encoded or hidden content in metadata
 **Severity:** medium  **Confidence:** 65%  **Category:** metadata
@@ -1491,25 +900,6 @@ Metadata contains zero-width/bidi control characters or long encoded payloads th
 **Impact:** Hidden or encoded content can smuggle instructions past human review.
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** medium  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→medium: this match is in build/dev-tooling code — src/aurora-dsql-mcp-server/skills/dsql-skill/mcp/tools/safe_query.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/aurora-dsql-mcp-server/skills/dsql-skill/mcp/tools/safe_query.py`
-
-```
-Substitute validated parts into a SQL template.
-
-    Template uses `{name}` placeholders (str.format syntax). Every placeholder
-    MUST map to a Safe value; raw strings raise UnsafeSQLError so the
-  
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
 
 #### MCP-META-004: Metadata references system/developer prompt
 **Severity:** medium  **Confidence:** 60%  **Category:** metadata
@@ -1649,7 +1039,7 @@ with urllib.request.urlopen( # nosec B310
 
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
-### LOW (147)
+### LOW (163)
 #### MCP-CODE-004: Python shell execution (subprocess shell=True / os.system)
 **Severity:** low  **Confidence:** 90%  **Category:** code
 
@@ -3030,261 +2420,6 @@ with open(result_file, 'w', encoding='utf-8') as f:
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/amazon-translate-mcp-server/tests/test_aws_client.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:139`
-
-```
-os.environ['AWS_ACCESS_KEY_ID'] = '<redacted:aws-access-key>'  # pragma: allowlist secret
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/amazon-translate-mcp-server/tests/test_aws_client.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:140`
-
-```
-os.environ['AWS_SECRET_ACCESS_KEY'] = (
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/amazon-translate-mcp-server/tests/test_aws_client.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:143`
-
-```
-os.environ['AWS_SESSION_TOKEN'] = 'test-session-token-example'  # pragma: allowlist secret
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/aws-location-mcp-server/tests/test_server_integration.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/aws-location-mcp-server/tests/test_server_integration.py:73`
-
-```
-not (os.environ.get('AWS_ACCESS_KEY_ID') or os.environ.get('AWS_PROFILE')),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/aws-location-mcp-server/tests/test_server_integration.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/aws-location-mcp-server/tests/test_server_integration.py:107`
-
-```
-not (os.environ.get('AWS_ACCESS_KEY_ID') or os.environ.get('AWS_PROFILE')),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/aws-location-mcp-server/tests/test_server_integration.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/aws-location-mcp-server/tests/test_server_integration.py:174`
-
-```
-if not (os.environ.get('AWS_ACCESS_KEY_ID') or os.environ.get('AWS_PROFILE')):
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:10`
-
-```
-os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:11`
-
-```
-os.environ['AWS_SECRET_ACCESS_KEY'] = 'testing'  # pragma: allowlist secret
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:12`
-
-```
-os.environ['AWS_SECURITY_TOKEN'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:13`
-
-```
-os.environ['AWS_SESSION_TOKEN'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:43`
-
-```
-os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:44`
-
-```
-os.environ['AWS_SECURITY_TOKEN'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:45`
-
-```
-os.environ['AWS_SESSION_TOKEN'] = 'testing'
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/dynamodb-mcp-server/tests/test_dynamodb_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:685`
-
-```
-assert os.environ['AWS_ACCESS_KEY_ID'] == DynamoDBClientConfig.DUMMY_ACCESS_KEY
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/dynamodb-mcp-server/tests/test_dynamodb_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:686`
-
-```
-assert os.environ['AWS_SECRET_ACCESS_KEY'] == DynamoDBClientConfig.DUMMY_SECRET_KEY
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/dynamodb-mcp-server/tests/test_dynamodb_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:949`
-
-```
-os.environ['AWS_ACCESS_KEY_ID']
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — src/dynamodb-mcp-server/tests/test_dynamodb_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:953`
-
-```
-os.environ['AWS_SECRET_ACCESS_KEY']
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
 #### MCP-META-005: Encoded or hidden content in metadata
 **Severity:** low  **Confidence:** 65%  **Category:** metadata
 
@@ -3665,6 +2800,276 @@ Metadata contains zero-width/bidi control characters or long encoded payloads th
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
 
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:139`
+
+```
+os.environ['AWS_ACCESS_KEY_ID'] = '<redacted:aws-access-key>'  # pragma: allowlist secret
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:140`
+
+```
+os.environ['AWS_SECRET_ACCESS_KEY'] = (
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/amazon-translate-mcp-server/tests/test_aws_client.py:143`
+
+```
+os.environ['AWS_SESSION_TOKEN'] = 'test-session-token-example'  # pragma: allowlist secret
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:84`
+
+```
+aws_access_key = <redacted:secret>'AWS_ACCESS_KEY_ID')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:85`
+
+```
+aws_secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:86`
+
+```
+aws_session_token = <redacted:secret>'AWS_SESSION_TOKEN')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/aws-location-mcp-server/tests/test_server_integration.py:73`
+
+```
+not (os.environ.get('AWS_ACCESS_KEY_ID') or os.environ.get('AWS_PROFILE')),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:10`
+
+```
+os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:11`
+
+```
+os.environ['AWS_SECRET_ACCESS_KEY'] = 'testing'  # pragma: allowlist secret
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:12`
+
+```
+os.environ['AWS_SECURITY_TOKEN'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/conftest.py:13`
+
+```
+os.environ['AWS_SESSION_TOKEN'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:43`
+
+```
+os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:44`
+
+```
+os.environ['AWS_SECURITY_TOKEN'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py:45`
+
+```
+os.environ['AWS_SESSION_TOKEN'] = 'testing'
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/server.py:530`
+
+```
+os.environ['AWS_ACCESS_KEY_ID'] = (
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/server.py:533`
+
+```
+os.environ['AWS_SECRET_ACCESS_KEY'] = (
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:685`
+
+```
+assert os.environ['AWS_ACCESS_KEY_ID'] == DynamoDBClientConfig.DUMMY_ACCESS_KEY
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/dynamodb-mcp-server/tests/test_dynamodb_server.py:686`
+
+```
+assert os.environ['AWS_SECRET_ACCESS_KEY'] == DynamoDBClientConfig.DUMMY_SECRET_KEY
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
 #### MCP-META-001: Suspicious instruction-override phrase in metadata
 **Severity:** low  **Confidence:** 60%  **Category:** metadata
 
@@ -3709,106 +3114,6 @@ Asset ignore all previous instructions
 **Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
 
 **Remediation:** Treat tool/prompt metadata as untrusted. Remove instruction-override phrasing and review the server.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/amazon-bedrock-agentcore-mcp-server/tests/browser/test_unit_server_integration.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/amazon-bedrock-agentcore-mcp-server/tests/browser/test_unit_server_integration.py`
-
-```
-ValueError from get_browser (session vanished) is silently handled.
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/amazon-bedrock-agentcore-mcp-server/tests/browser/test_unit_snapshot.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/amazon-bedrock-agentcore-mcp-server/tests/browser/test_unit_snapshot.py`
-
-```
-DOM.disable failure in _resolve_selector is caught silently.
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/test_dynamic_instrumentation_tools.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/test_dynamic_instrumentation_tools.py`
-
-```
-Pin the asymmetric-by-design interface on HashLocation and UnknownLocation.
-
-    The asymmetric-by-design interface on HashLocation and the
-    forward-compat behavior on UnknownLocation, so a future 
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/cloudwatch-applicationsignals-mcp-server/tests/test_rum_tools.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-applicationsignals-mcp-server/tests/test_rum_tools.py`
-
-```
-Return service_error when every batch_get_traces call raises.
-
-    An empty success payload would be indistinguishable from 'no backend services'.
-    Also pins the shared response-shape keys so futur
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/cloudwatch-mcp-server/tests/cloudwatch_metrics/test_metrics_server.py`
-
-```
-Test that _execute_queries_batch paginates through NextToken responses.
-
-        CloudWatch GetMetricData returns a NextToken when results exceed ~100,800
-        datapoints or 500 queries. The batch-
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — src/document-loader-mcp-server/tests/test_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `src/document-loader-mcp-server/tests/test_server.py`
-
-```
-t create the PDF file — simulates soffice failing silently
-                with pytest.raises(FileNotFoundError, match=
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
 
 #### MCP-META-004: Metadata references system/developer prompt
 **Severity:** low  **Confidence:** 60%  **Category:** metadata
@@ -3889,6 +3194,321 @@ DynamoDB Schema Generator Expert System Prompt
 
 **Remediation:** Review why tool metadata references system-level prompts; treat as untrusted.
 
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-keyspaces-mcp-server/awslabs/amazon_keyspaces_mcp_server/config.py:54`
+
+```
+cassandra_password=<redacted:secret>'DB_CASSANDRA_PASSWORD', ''),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:82`
+
+```
+self._aws_access_key_id = <redacted:secret> or os.getenv('AWS_ACCESS_KEY_ID')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:83`
+
+```
+self._aws_secret_access_key = <redacted:secret> or os.getenv('AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/aws_client.py:84`
+
+```
+self._aws_session_token = <redacted:secret> or os.getenv('AWS_SESSION_TOKEN')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:127`
+
+```
+aws_access_key_id=<redacted:secret>'AWS_ACCESS_KEY_ID'),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:128`
+
+```
+aws_secret_access_key=<redacted:secret>'AWS_SECRET_ACCESS_KEY'),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:195`
+
+```
+has_env_creds = os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/amazon-translate-mcp-server/awslabs/amazon_translate_mcp_server/config.py:195`
+
+```
+has_env_creds = os.getenv('AWS_ACCESS_KEY_ID') and os.getenv('AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:118`
+
+```
+aws_access_key = <redacted:secret>'AWS_ACCESS_KEY_ID')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:119`
+
+```
+aws_secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/aws-location-mcp-server/awslabs/aws_location_server/server.py:120`
+
+```
+aws_session_token = <redacted:secret>'AWS_SESSION_TOKEN')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:33`
+
+```
+environ.get('AWS_ACCESS_KEY_ID') and environ.get('AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:33`
+
+```
+environ.get('AWS_ACCESS_KEY_ID') and environ.get('AWS_SECRET_ACCESS_KEY')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:58`
+
+```
+'credential_source': 'env' if environ.get('AWS_ACCESS_KEY_ID') else 'profile',
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:162`
+
+```
+access_key = <redacted:secret>'AWS_ACCESS_KEY_ID', '')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:163`
+
+```
+secret_key = <redacted:secret>'AWS_SECRET_ACCESS_KEY', '')
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:205`
+
+```
+environ.get('AWS_ACCESS_KEY_ID', '') != ''
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:206`
+
+```
+and environ.get('AWS_SECRET_ACCESS_KEY', '') != ''
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:221`
+
+```
+'using_env_vars': environ.get('AWS_ACCESS_KEY_ID', '') != ''
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/ccapi-mcp-server/awslabs/ccapi_mcp_server/impl/tools/session_management.py:222`
+
+```
+and environ.get('AWS_SECRET_ACCESS_KEY', '') != '',
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/dynamodb-mcp-server/awslabs/dynamodb_mcp_server/db_analyzer/analyzer_utils.py:89`
+
+```
+'secret_arn': kwargs.get('aws_secret_arn') or os.getenv('MYSQL_SECRET_ARN'),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
 
 ## Recommended Policy
 - Run only in a sandbox with least-privilege configuration.
@@ -3897,4 +3517,4 @@ DynamoDB Schema Generator Expert System Prompt
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:58.434Z._
+_Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:58.979Z._

@@ -54,17 +54,17 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h1>MCP Trust Report: github:supabase/mcp</h1>
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
-<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">30/100</span></span>
-<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">63%</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">LOW</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">27/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">62%</span></span>
 </div>
 <p class="ref">Resolved ref: <code>9679b785761cf3c521796554e3a9861ddae51b29</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>This MCP server requires human security review before use; notable risks were detected.</p>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 30 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
+<ul><li>Overall score 27 falls in LOW band</li><li>Elevated to NEEDS_REVIEW by: MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
@@ -74,19 +74,10 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>73</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>63</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>66</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>63</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
 <section><h2>Findings (7)</h2>
-<h3 class="sev sev-medium">MEDIUM (7)</h3>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/mcp-server-supabase/src/transports/stdio.ts:51</code></p>
-<pre class="snippet"><code>const accessToken = &lt;redacted:secret&gt; ?? process.env.SUPABASE_ACCESS_TOKEN;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
+<h3 class="sev sev-medium">MEDIUM (6)</h3>
 <article class="finding">
 <h4>MCP-META-005: Encoded or hidden content in metadata</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 65% · <strong>Category:</strong> metadata</p>
@@ -151,6 +142,16 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
+<h3 class="sev sev-low">LOW (1)</h3>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp-server-supabase/src/transports/stdio.ts:51</code></p>
+<pre class="snippet"><code>const accessToken = &lt;redacted:secret&gt; ?? process.env.SUPABASE_ACCESS_TOKEN;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
 </section>
 <section><h2>Recommended Policy</h2>
 <ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
@@ -158,7 +159,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:24.121Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:19.534Z.</footer>
 </main>
 </body>
 </html>

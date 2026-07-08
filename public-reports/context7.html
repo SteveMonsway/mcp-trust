@@ -55,16 +55,16 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
 <span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">47/100</span></span>
-<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">72%</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">44/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">74%</span></span>
 </div>
-<p class="ref">Resolved ref: <code>503abf87743abf6bb2fa6de3228ce81dc43c9953</code></p>
+<p class="ref">Resolved ref: <code>ea82d5585aca02f871f6567dd207d5b616504889</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>This MCP server requires human security review before use; notable risks were detected.</p>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 47 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-CODE-002, MCP-CONFIG-005, MCP-CONFIG-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
+<ul><li>Overall score 44 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-CODE-002, MCP-CONFIG-005, MCP-CONFIG-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>completed</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
@@ -74,10 +74,10 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>84</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>50</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>84</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>13</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
 <section><h2>Findings (38)</h2>
-<h3 class="sev sev-high">HIGH (8)</h3>
+<h3 class="sev sev-high">HIGH (7)</h3>
 <article class="finding">
 <h4>MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
@@ -141,16 +141,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Impact:</strong> File deletion can destroy data outside the intended directory.</p>
 <p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
 </article>
-<article class="finding">
-<h4>MCP-META-002: Suspicious concealment phrase in metadata</h4>
-<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata instructs the model to hide actions from the user (e.g. &quot;do not tell the user&quot;, &quot;silently&quot;).</p>
-<p><strong>Evidence:</strong> <code>packages/cli/src/setup/templates.ts</code></p>
-<pre class="snippet"><code>Use the \`ctx7\` CLI to fetch current documentation whenever the user asks about a library, framework, SDK, API, CLI tool, or cloud service — even well-known ones like React, Next.js, Prisma, Express,</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.</p>
-</article>
-<h3 class="sev sev-medium">MEDIUM (18)</h3>
+<h3 class="sev sev-medium">MEDIUM (10)</h3>
 <article class="finding">
 <h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
@@ -161,83 +152,11 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/cli/src/utils/api.ts:274</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/cli/src/utils/github.ts:85</code></p>
-<pre class="snippet"><code>const envToken = &lt;redacted:secret&gt; || process.env.GH_TOKEN;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/mcp/src/index.ts:623</code></p>
-<pre class="snippet"><code>stdioApiKey = &lt;redacted:secret&gt; || process.env.CONTEXT7_API_KEY;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/mcp/src/lib/constants.ts:22</code></p>
-<pre class="snippet"><code>export const OPENAI_APPS_CHALLENGE_TOKEN = &lt;redacted:secret&gt;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/mcp/src/lib/redis.ts:10</code></p>
-<pre class="snippet"><code>if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/pi/lib/api.ts:11</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Evidence:</strong> <code>packages/pi/lib/api.ts:23</code></p>
 <pre class="snippet"><code>const hasKey = Boolean(process.env.CONTEXT7_API_KEY);</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/sdk/src/client.ts:22</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.CONTEXT7_API_KEY;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>packages/sdk/src/utils/test-utils.ts:4</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.API_KEY;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
@@ -313,103 +232,76 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
-<h3 class="sev sev-low">LOW (12)</h3>
+<h3 class="sev sev-low">LOW (21)</h3>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
-<p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:6</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.API_KEY!;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:20</code></p>
 <pre class="snippet"><code>const originalEnv = process.env.CONTEXT7_API_KEY;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:21</code></p>
 <pre class="snippet"><code>const originalApiKey = &lt;redacted:secret&gt;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:23</code></p>
 <pre class="snippet"><code>delete process.env.CONTEXT7_API_KEY;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:24</code></p>
 <pre class="snippet"><code>delete process.env.API_KEY;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:30</code></p>
 <pre class="snippet"><code>if (originalEnv) process.env.CONTEXT7_API_KEY = &lt;redacted:secret&gt;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/client.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:31</code></p>
 <pre class="snippet"><code>if (originalApiKey) process.env.API_KEY = &lt;redacted:secret&gt;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/commands/get-context/index.test.ts — which does not run as part of the MCP server.)</p>
-<p><strong>Evidence:</strong> <code>packages/sdk/src/commands/get-context/index.test.ts:39</code></p>
-<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt; || process.env.API_KEY!,</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/commands/get-context/index.test.ts — which does not run as part of the MCP server.)</p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/commands/get-context/index.test.ts — which does not run as part of the MCP server.)</p>
 <p><strong>Evidence:</strong> <code>packages/sdk/src/commands/get-context/index.test.ts:56</code></p>
 <pre class="snippet"><code>apiKey: &lt;redacted:secret&gt; || process.env.API_KEY!,</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/sdk/src/commands/search-library/index.test.ts — which does not run as part of the MCP server.)</p>
-<p><strong>Evidence:</strong> <code>packages/sdk/src/commands/search-library/index.test.ts:28</code></p>
+<p>The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/sdk/src/commands/get-context/index.test.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/commands/get-context/index.test.ts:56</code></p>
 <pre class="snippet"><code>apiKey: &lt;redacted:secret&gt; || process.env.API_KEY!,</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/tools-ai-sdk/src/index.test.ts — which does not run as part of the MCP server.)</p>
-<p><strong>Evidence:</strong> <code>packages/tools-ai-sdk/src/index.test.ts:16</code></p>
-<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
@@ -422,6 +314,114 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Impact:</strong> Hidden or encoded content can smuggle instructions past human review.</p>
 <p><strong>Remediation:</strong> Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.</p>
 </article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/cli/src/utils/api.ts:274</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/cli/src/utils/github.ts:85</code></p>
+<pre class="snippet"><code>const envToken = &lt;redacted:secret&gt; || process.env.GH_TOKEN;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp/src/index.ts:623</code></p>
+<pre class="snippet"><code>stdioApiKey = &lt;redacted:secret&gt; || process.env.CONTEXT7_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp/src/lib/constants.ts:22</code></p>
+<pre class="snippet"><code>export const OPENAI_APPS_CHALLENGE_TOKEN = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/mcp/src/lib/redis.ts:10</code></p>
+<pre class="snippet"><code>if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/pi/lib/api.ts:11</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/client.test.ts:6</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.API_KEY!;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/client.ts:22</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.CONTEXT7_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/commands/get-context/index.test.ts:39</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt; || process.env.API_KEY!,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/commands/search-library/index.test.ts:28</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt; || process.env.API_KEY!,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/sdk/src/utils/test-utils.ts:4</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; || process.env.API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>packages/tools-ai-sdk/src/index.test.ts:16</code></p>
+<pre class="snippet"><code>apiKey: &lt;redacted:secret&gt;,</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
 </section>
 <section><h2>Recommended Policy</h2>
 <ul><li>Run only in a sandbox with least-privilege configuration.</li><li>Move secrets out of config into a secrets manager or environment injected at runtime.</li></ul>
@@ -429,7 +429,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:16.146Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:09.335Z.</footer>
 </main>
 </body>
 </html>

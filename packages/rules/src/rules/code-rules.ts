@@ -242,26 +242,36 @@ export const codeRules: Rule[] = [
   {
     id: 'MCP-CODE-007',
     title: 'Secret-like environment variable access',
-    description: 'Reads environment variables whose names imply secrets (tokens, keys, passwords).',
-    defaultSeverity: 'medium',
+    description:
+      'Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.',
+    defaultSeverity: 'low',
     category: 'code',
-    tags: ['code', 'secret'],
+    tags: ['code', 'secret', 'capability'],
     appliesTo: ['code-js', 'code-python'],
     remediation: 'Confirm the server needs these secrets; scope tokens narrowly and never log them.',
+    falsePositiveNotes:
+      'Reading own credentials from env (e.g. AWS_ACCESS_KEY_ID) to authenticate is expected. Only a concern if the secret is then exfiltrated — reported low/informational to avoid inflating the decision.',
     evaluate(ctx) {
       const out: Finding[] = [];
+      // Report each secret env var at most ONCE per file — the same credential
+      // is often read in several places; one informational note per file is enough.
+      const seen = new Set<string>();
       const jsHits = scan(jsFiles(ctx), /process\.env(?:\.([A-Za-z_][A-Za-z0-9_]*)|\[\s*['"]([A-Za-z_][A-Za-z0-9_]*)['"]\s*\])/);
       const pyHits = scan(pythonFiles(ctx), /os\.environ(?:\.get\(\s*['"]([A-Za-z_][A-Za-z0-9_]*)|\[\s*['"]([A-Za-z_][A-Za-z0-9_]*))/);
       for (const h of [...jsHits, ...pyHits]) {
         const name = /([A-Za-z_][A-Za-z0-9_]*)\s*['"]?\]?\s*$/.exec(h.match)?.[1] ?? '';
         if (!isSecretName(name)) continue;
+        const key = `${h.file.path}::${name}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
         out.push(
           buildFinding({
             rule: this,
             target: ctx.target,
             evidence: [{ source: h.file.path, file: h.file.path, line: h.line, column: h.column, match: h.match.trim(), snippet: h.text }],
-            confidence: 0.7,
-            impact: 'The server handles credentials; misuse or logging could leak them.',
+            severity: 'low',
+            confidence: 0.6,
+            impact: 'The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.',
           }),
         );
       }

@@ -2,16 +2,16 @@
 
 **Decision:** APPROVE  
 **Risk:** LOW  
-**Score:** 26/100  
+**Score:** 18/100  
 **Confidence:** 70%
 
 _Resolved ref: `53df2bcb7754a393f53b6c880ab710b95fefa343`_
 
 ## Executive Summary
-No significant risks were detected in the available evidence. Standard review still applies.
+No significant risks were detected in the available evidence. **This is not a safety guarantee** — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.
 
 ## Decision Reasons
-- Overall score 26 falls in LOW band
+- Overall score 18 falls in LOW band
 
 ## Coverage
 | Check | State |
@@ -35,7 +35,7 @@ _No tools discovered (no runtime introspection); capabilities inferred staticall
 | Subscore | Value |
 |---|---|
 | capability | 0 |
-| code | 78 |
+| code | 53 |
 | config | _not assessed_ |
 | supplyChain | 0 |
 | dependency | _not assessed_ |
@@ -45,52 +45,7 @@ _No tools discovered (no runtime introspection); capabilities inferred staticall
 | runtime | _not assessed_ |
 
 ## Findings (4)
-### MEDIUM (4)
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/common/config.py:38`
-
-```
-"client_secret": os.getenv("REDIS_ENTRAID_CLIENT_SECRET", None),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/common/config.py:51`
-
-```
-os.getenv(
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/common/config.py:63`
-
-```
-os.getenv(
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
+### MEDIUM (1)
 #### MCP-SG-PY-005: Dynamic module import (__import__ / importlib with non-literal)
 **Severity:** medium  **Confidence:** 70%  **Category:** code
 
@@ -106,6 +61,52 @@ importlib.import_module(f"src.tools.{module_name}")
 
 **Remediation:** Import modules by static names; never import a computed module path.
 
+### LOW (3)
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/common/config.py:38`
+
+```
+"client_secret": os.getenv("REDIS_ENTRAID_CLIENT_SECRET", None),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/common/config.py:51`
+
+```
+os.getenv(
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/common/config.py:63`
+
+```
+os.getenv(
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
 
 ## Recommended Policy
 - No elevated restrictions required beyond standard review, based on available evidence.
@@ -113,4 +114,4 @@ importlib.import_module(f"src.tools.{module_name}")
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.0 at 2026-07-08T09:56:09.680Z._
+_Generated by mcp-trust 0.5.2 at 2026-07-08T12:49:09.909Z._

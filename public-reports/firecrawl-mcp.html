@@ -55,16 +55,16 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
 <span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">44/100</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">32/100</span></span>
 <span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">65%</span></span>
 </div>
-<p class="ref">Resolved ref: <code>2bab1cc2f960e32a3071ec592c89e0c46731a45f</code></p>
+<p class="ref">Resolved ref: <code>3eb1115b1f2883ff2fb74e61b5c4acf5a9ac0fb0</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>This MCP server requires human security review before use; notable risks were detected.</p>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 44 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
+<ul><li>Overall score 32 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
@@ -74,153 +74,51 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>20</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>66</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>97</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
-<section><h2>Findings (19)</h2>
-<h3 class="sev sev-high">HIGH (2)</h3>
+<section><h2>Findings (15)</h2>
+<h3 class="sev sev-medium">MEDIUM (8)</h3>
 <article class="finding">
-<h4>MCP-META-002: Suspicious concealment phrase in metadata</h4>
-<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata instructs the model to hide actions from the user (e.g. &quot;do not tell the user&quot;, &quot;silently&quot;).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts</code></p>
-<pre class="snippet"><code>],
-    },
-    protectedResourceMetadataUrl: getOAuthProtectedResourceMetadataUrl(),
-  },
-  authenticate: async (request?: {
-    headers: IncomingHttpHeaders;
-    url?: string;
-  }): Promise&lt;SessionDat</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.</p>
-</article>
-<article class="finding">
-<h4>MCP-META-002: Suspicious concealment phrase in metadata</h4>
-<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata instructs the model to hide actions from the user (e.g. &quot;do not tell the user&quot;, &quot;silently&quot;).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts</code></p>
-<pre class="snippet"><code> means fall through to the
- * OAuth challenge rather than silently granting keyless.
- */
-async function keylessEligible(clientIp: string): Promise&lt;boolean&gt; {
-  const secret = &lt;redacted:secret&gt;</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.</p>
-</article>
-<h3 class="sev sev-medium">MEDIUM (16)</h3>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:58</code></p>
-<pre class="snippet"><code>normalizeHeader(process.env.FIRECRAWL_OAUTH_TOKEN) ??</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:59</code></p>
-<pre class="snippet"><code>normalizeHeader(process.env.FIRECRAWL_API_KEY)</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:102</code></p>
-<pre class="snippet"><code>return normalizeHeader(process.env.FIRECRAWL_OAUTH_INTROSPECT_SECRET);</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:249</code></p>
-<pre class="snippet"><code>process.env.OPENAI_APPS_CHALLENGE_TOKEN</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:297</code></p>
-<pre class="snippet"><code>process.env.KEYLESS_PROXY_SECRET &amp;&amp;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:316</code></p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:250</code></p>
 <pre class="snippet"><code>!process.env.FIRECRAWL_API_KEY &amp;&amp;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:1327</code></p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:1399</code></p>
 <pre class="snippet"><code>const secret = &lt;redacted:secret&gt;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:1370</code></p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:1442</code></p>
 <pre class="snippet"><code>if (session?.keylessClientIp &amp;&amp; process.env.KEYLESS_PROXY_SECRET) {</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<h4>MCP-SG-JS-006: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:1372</code></p>
+<p>The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:1444</code></p>
 <pre class="snippet"><code>headers[&#39;x-firecrawl-keyless-secret&#39;] = process.env.KEYLESS_PROXY_SECRET;</code></pre>
 <p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
-<h4>MCP-CODE-007: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Reads environment variables whose names imply secrets (tokens, keys, passwords).</p>
-<p><strong>Evidence:</strong> <code>src/monitor.ts:32</code></p>
-<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; ?? process.env.FIRECRAWL_API_KEY;</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
-<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
-</article>
-<article class="finding">
 <h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
 <p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Evidence:</strong> <code>src/fastmcp/FastMCP.ts:71</code></p>
-<pre class="snippet"><code>const response = await fetch(input.url);</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
-</article>
-<article class="finding">
-<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Evidence:</strong> <code>src/fastmcp/FastMCP.ts:140</code></p>
-<pre class="snippet"><code>const response = await fetch(input.url);</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
-</article>
-<article class="finding">
-<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:120</code></p>
+<p><strong>Evidence:</strong> <code>src/index.ts:162</code></p>
 <pre class="snippet"><code>const response = await fetch(getOAuthIntrospectionEndpoint(), {</code></pre>
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
@@ -229,7 +127,7 @@ async function keylessEligible(clientIp: string): Promise&lt;boolean&gt; {
 <h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
 <p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:1658</code></p>
+<p><strong>Evidence:</strong> <code>src/index.ts:1730</code></p>
 <pre class="snippet"><code>const response = await fetch(endpoint, {</code></pre>
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
@@ -238,7 +136,7 @@ async function keylessEligible(clientIp: string): Promise&lt;boolean&gt; {
 <h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
 <p>A caller-controlled URL can reach internal services or exfiltrate data.</p>
-<p><strong>Evidence:</strong> <code>src/index.ts:2485</code></p>
+<p><strong>Evidence:</strong> <code>src/index.ts:2554</code></p>
 <pre class="snippet"><code>const response = await fetch(endpoint, {</code></pre>
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
@@ -252,11 +150,66 @@ async function keylessEligible(clientIp: string): Promise&lt;boolean&gt; {
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
-<h3 class="sev sev-low">LOW (1)</h3>
+<h3 class="sev sev-low">LOW (6)</h3>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:68</code></p>
+<pre class="snippet"><code>normalizeHeader(process.env.FIRECRAWL_OAUTH_TOKEN) ??</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:69</code></p>
+<pre class="snippet"><code>normalizeHeader(process.env.FIRECRAWL_API_KEY)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:144</code></p>
+<pre class="snippet"><code>return normalizeHeader(process.env.FIRECRAWL_OAUTH_INTROSPECT_SECRET);</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:231</code></p>
+<pre class="snippet"><code>process.env.KEYLESS_PROXY_SECRET &amp;&amp;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/index.ts:380</code></p>
+<pre class="snippet"><code>process.env.OPENAI_APPS_CHALLENGE_TOKEN</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>src/monitor.ts:32</code></p>
+<pre class="snippet"><code>const apiKey = &lt;redacted:secret&gt; ?? process.env.FIRECRAWL_API_KEY;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<h3 class="sev sev-info">INFO (1)</h3>
 <article class="finding">
 <h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
-<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
-<p>The project does not provide a security policy, indicating weaker security maturity/disclosure process.</p>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
 <p><strong>Evidence:</strong> <code>repo.files</code></p>
 <pre class="snippet"><code>no SECURITY.md found in source</code></pre>
 <p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
@@ -264,12 +217,12 @@ async function keylessEligible(clientIp: string): Promise&lt;boolean&gt; {
 </article>
 </section>
 <section><h2>Recommended Policy</h2>
-<ul><li>Run only in a sandbox with least-privilege configuration.</li></ul>
+<ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
 </section>
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:29.145Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:25.266Z.</footer>
 </main>
 </body>
 </html>

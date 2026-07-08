@@ -2,6 +2,19 @@
 
 All notable changes to MCP Trust. Format loosely follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.5.2] — 2026-07-08 — precision tuning
+
+Data-driven false-positive reduction, validated against the 41-server benchmark:
+- **Secret-env access** (`MCP-CODE-007`, `MCP-SG-PY-006`) → **low/informational** and
+  deduped per (file, variable). Reading own credentials from env to authenticate is
+  normal config, not a vulnerability — it no longer inflates the decision.
+- **Concealment** (`MCP-META-002`): the bare word "silently" ("fails silently") is no
+  longer flagged; only "silently &lt;action&gt;" (e.g. "silently send …").
+- **No SECURITY.md** (`MCP-SUPPLY-005`) → **info** (best-practice gap, not a risk).
+- Clearer report wording for BLOCK / NEEDS_REVIEW ("review required", not a malware verdict).
+- Every benchmark report re-validated: complete (evidence + impact + remediation),
+  consistent, and justified (decision follows the findings).
+
 ## [0.5.1] — 2026-07-08 — packaging
 
 - Add an npm-facing README to `@mcp-trust/cli` (shown on the npm package page).

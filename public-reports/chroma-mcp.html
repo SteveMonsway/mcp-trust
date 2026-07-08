@@ -55,16 +55,16 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE</span></span>
 <span class="badge"><span class="badge-label">Risk</span><span class="badge-value">LOW</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">18/100</span></span>
-<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">70%</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">8/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">80%</span></span>
 </div>
 <p class="ref">Resolved ref: <code>98ff67589bdcc31b730a5415ff9529433f949077</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>No significant risks were detected in the available evidence. Standard review still applies.</p>
+<p>No significant risks were detected in the available evidence. This is not a safety guarantee — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 18 falls in LOW band</li></ul>
+<ul><li>Overall score 8 falls in LOW band</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
@@ -74,26 +74,26 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>53</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>23</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
 <section><h2>Findings (2)</h2>
-<h3 class="sev sev-medium">MEDIUM (2)</h3>
+<h3 class="sev sev-low">LOW (2)</h3>
 <article class="finding">
 <h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>The server handles credentials; misuse or logging could leak them.</p>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
 <p><strong>Evidence:</strong> <code>src/chroma_mcp/server.py:53</code></p>
 <pre class="snippet"><code>default=os.getenv(&#39;CHROMA_CUSTOM_AUTH_CREDENTIALS&#39;))</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 <article class="finding">
 <h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>The server handles credentials; misuse or logging could leak them.</p>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
 <p><strong>Evidence:</strong> <code>src/chroma_mcp/server.py:62</code></p>
 <pre class="snippet"><code>default=os.getenv(&#39;CHROMA_API_KEY&#39;))</code></pre>
-<p><strong>Impact:</strong> The server handles credentials; misuse or logging could leak them.</p>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
 </article>
 </section>
@@ -103,7 +103,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:39.636Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:40.448Z.</footer>
 </main>
 </body>
 </html>

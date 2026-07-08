@@ -76,7 +76,7 @@ Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 
 MCP Trust ships a reproducible benchmark over **41 real, public MCP servers**
 (`registry-seed/seed-targets.yml`). Latest run: **2 BLOCK · 16 NEEDS_REVIEW ·
-3 APPROVE_WITH_RESTRICTIONS · 20 APPROVE**, ~120s for all 41.
+1 APPROVE_WITH_RESTRICTIONS · 22 APPROVE**, ~112s for all 41.
 
 ```bash
 pnpm scan:seed        # clone + static + Semgrep for each seed target

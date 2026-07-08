@@ -2,16 +2,16 @@
 
 **Decision:** NEEDS_REVIEW  
 **Risk:** MEDIUM  
-**Score:** 41/100  
-**Confidence:** 67%
+**Score:** 39/100  
+**Confidence:** 68%
 
-_Resolved ref: `eeaefcbe776903f4ac29077b0f54abd2e99cf872`_
+_Resolved ref: `0f6f61e1bdcea0ea56521427f56e442489374452`_
 
 ## Executive Summary
-This MCP server requires human security review before use; notable risks were detected.
+The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).
 
 ## Decision Reasons
-- Overall score 41 falls in MEDIUM band
+- Overall score 39 falls in MEDIUM band
 - Elevated to NEEDS_REVIEW by: MCP-SG-PY-004, MCP-SG-PY-004, MCP-SG-PY-004
 
 ## Coverage
@@ -41,12 +41,12 @@ _No tools discovered (no runtime introspection); capabilities inferred staticall
 | supplyChain | 0 |
 | dependency | _not assessed_ |
 | authTransport | _not assessed_ |
-| metadata | 98 |
+| metadata | 73 |
 | maintainer | _not assessed_ |
 | runtime | _not assessed_ |
 
-## Findings (50)
-### HIGH (5)
+## Findings (43)
+### HIGH (1)
 #### MCP-CODE-006: Arbitrary filesystem write or delete
 **Severity:** high  **Confidence:** 80%  **Category:** code
 
@@ -62,82 +62,7 @@ shutil.rmtree(temp_dir, ignore_errors=True)
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/mcp_atlassian/jira/issues.py`
-
-```
-."
-                )
-
-            # Handle Epic and Subtask issue type names across different languages
-            actual_issue_id = None
-            if self._is_epic_issue_type(issue_type) and issue
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/mcp_atlassian/jira/issues.py`
-
-```
-re not part of fields update
-                    if not value or not isinstance(value, list | tuple):
-                        logger.warning(f"Invalid attachments value: {value}")
-
-                eli
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/mcp_atlassian/servers/jira.py`
-
-```
-Assign a Jira issue to a user using the dedicated assignment endpoint.
-
-    This is more reliable than setting assignee via update_issue, which is
-    silently ignored by some Jira configurations. Use
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `src/mcp_atlassian/utils/toolsets.py`
-
-```
-Parse the TOOLSETS env var into a set of enabled toolset names.
-
-    Supports keywords 'all' (all 21 toolsets) and 'default' (6 defaults),
-    plus comma-separated specific toolset names. Case-insensi
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-### MEDIUM (27)
+### MEDIUM (8)
 #### MCP-CODE-006: Arbitrary filesystem write or delete
 **Severity:** medium  **Confidence:** 70%  **Category:** code
 
@@ -183,201 +108,6 @@ client_id: The OAuth client ID
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:383`
-
-```
-os.environ["CONFLUENCE_API_TOKEN"] = confluence_token
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:385`
-
-```
-os.environ["CONFLUENCE_PERSONAL_TOKEN"] = confluence_personal_token
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:391`
-
-```
-os.environ["JIRA_API_TOKEN"] = jira_token
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:393`
-
-```
-os.environ["JIRA_PERSONAL_TOKEN"] = jira_personal_token
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:397`
-
-```
-os.environ["ATLASSIAN_OAUTH_CLIENT_SECRET"] = oauth_client_secret
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `src/mcp_atlassian/__init__.py:405`
-
-```
-os.environ["ATLASSIAN_OAUTH_ACCESS_TOKEN"] = oauth_access_token
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `scripts/oauth_authorize.py:315`
-
-```
-args.client_secret = <redacted:secret>"ATLASSIAN_OAUTH_CLIENT_SECRET")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/confluence/config.py:111`
-
-```
-api_token = <redacted:secret>"CONFLUENCE_API_TOKEN")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/confluence/config.py:112`
-
-```
-personal_token = <redacted:secret>"CONFLUENCE_PERSONAL_TOKEN")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/confluence/config.py:188`
-
-```
-client_key_password = <redacted:secret>"CONFLUENCE_CLIENT_KEY_PASSWORD")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/jira/config.py:179`
-
-```
-api_token = <redacted:secret>"JIRA_API_TOKEN")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/jira/config.py:180`
-
-```
-personal_token = <redacted:secret>"JIRA_PERSONAL_TOKEN")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/jira/config.py:258`
-
-```
-client_key_password = <redacted:secret>"JIRA_CLIENT_KEY_PASSWORD")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
 #### MCP-SG-PY-005: Dynamic module import (__import__ / importlib with non-literal)
 **Severity:** medium  **Confidence:** 70%  **Category:** code
 
@@ -393,81 +123,6 @@ module = import_module(module_path)
 
 **Remediation:** Import modules by static names; never import a computed module path.
 
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/servers/main.py:749`
-
-```
-os.getenv("ATLASSIAN_OAUTH_CLIENT_SECRET")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/servers/main.py:750`
-
-```
-or os.getenv("JIRA_OAUTH_CLIENT_SECRET")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/servers/main.py:751`
-
-```
-or os.getenv("CONFLUENCE_OAUTH_CLIENT_SECRET")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/utils/oauth.py:506`
-
-```
-) or os.getenv("ATLASSIAN_OAUTH_CLIENT_SECRET")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-SG-PY-006: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-The server handles credentials; misuse or logging could leak them.
-
-**Evidence:** `src/mcp_atlassian/utils/oauth.py:625`
-
-```
-) or os.getenv("ATLASSIAN_OAUTH_ACCESS_TOKEN")
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
 #### MCP-META-005: Encoded or hidden content in metadata
 **Severity:** medium  **Confidence:** 65%  **Category:** metadata
 
@@ -482,24 +137,6 @@ For example, in the URL 'https://example.atlassian.<redacted:high-entropy>',
 **Impact:** Hidden or encoded content can smuggle instructions past human review.
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** medium  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/generate_tool_docs.py — which does not run as part of the MCP server.)
-
-**Evidence:** `scripts/generate_tool_docs.py`
-
-```
-Escape characters that break MDX parsing inside Markdown table cells.
-
-    Curly braces are interpreted as JSX expressions by MDX. When they appear
-    in table-cell descriptions (outside fenced code 
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
 
 #### MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)
 **Severity:** medium  **Confidence:** 60%  **Category:** code
@@ -546,7 +183,7 @@ response = requests.post(self.token_url, data=payload, timeout=HTTP_TIMEOUT)
 
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
-### LOW (18)
+### LOW (34)
 #### MCP-CODE-006: Arbitrary filesystem write or delete
 **Severity:** low  **Confidence:** 80%  **Category:** code
 
@@ -561,126 +198,6 @@ os.unlink(test_script)
 **Impact:** File deletion can destroy data outside the intended directory.
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/e2e/cloud/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/e2e/cloud/conftest.py:62`
-
-```
-api_token=<redacted:secret>"CLOUD_E2E_API_TOKEN", ""),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/e2e/cloud/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/e2e/cloud/conftest.py:65`
-
-```
-oauth_access_token=<redacted:secret>"CLOUD_E2E_OAUTH_ACCESS_TOKEN", ""),
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/confluence/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/confluence/conftest.py:619`
-
-```
-api_token=<redacted:secret>"CONFLUENCE_API_TOKEN"],
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/jira/conftest.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/jira/conftest.py:399`
-
-```
-api_token=<redacted:secret>"JIRA_API_TOKEN"],
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/utils/test_environment.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/utils/test_environment.py:226`
-
-```
-os.environ["CONFLUENCE_API_TOKEN"] = "api_token"
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/utils/test_environment.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/utils/test_environment.py:406`
-
-```
-os.environ["ATLASSIAN_OAUTH_CLIENT_SECRET"] = "dc-secret"
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/utils/test_environment.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/utils/test_environment.py:421`
-
-```
-os.environ["JIRA_OAUTH_CLIENT_SECRET"] = "jira-dc-secret"
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/unit/utils/test_environment.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/utils/test_environment.py:432`
-
-```
-os.environ["ATLASSIAN_OAUTH_ACCESS_TOKEN"] = "my-dc-token"
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
 
 #### MCP-META-005: Encoded or hidden content in metadata
 **Severity:** low  **Confidence:** 65%  **Category:** metadata
@@ -787,43 +304,395 @@ https://example.atlassian.<redacted:high-entropy>
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
 
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
 
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — tests/unit/jira/test_issues.py — which does not run as part of the MCP server.)
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
 
-**Evidence:** `tests/unit/jira/test_issues.py`
-
-```
-s normalized format)
-        issues_mixin.get_available_transitions = MagicMock(
-            return_value=[
-                {
-                    "id": "21",
-                    "name": "In Progress",
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — tests/unit/servers/test_main_server.py — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/unit/servers/test_main_server.py`
+**Evidence:** `src/mcp_atlassian/__init__.py:383`
 
 ```
-Regression tests for the SSRF short-circuit in UserTokenMiddleware.
-
-    Covers the auth_validation_error path set by ``_process_authentication_headers``
-    when ``validate_url_for_ssrf`` flags an X-
+os.environ["CONFLUENCE_API_TOKEN"] = confluence_token
 ```
 
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
 
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/mcp_atlassian/__init__.py:385`
+
+```
+os.environ["CONFLUENCE_PERSONAL_TOKEN"] = confluence_personal_token
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/mcp_atlassian/__init__.py:391`
+
+```
+os.environ["JIRA_API_TOKEN"] = jira_token
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/mcp_atlassian/__init__.py:393`
+
+```
+os.environ["JIRA_PERSONAL_TOKEN"] = jira_personal_token
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/mcp_atlassian/__init__.py:397`
+
+```
+os.environ["ATLASSIAN_OAUTH_CLIENT_SECRET"] = oauth_client_secret
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `src/mcp_atlassian/__init__.py:405`
+
+```
+os.environ["ATLASSIAN_OAUTH_ACCESS_TOKEN"] = oauth_access_token
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/e2e/cloud/conftest.py:62`
+
+```
+api_token=<redacted:secret>"CLOUD_E2E_API_TOKEN", ""),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/e2e/cloud/conftest.py:65`
+
+```
+oauth_access_token=<redacted:secret>"CLOUD_E2E_OAUTH_ACCESS_TOKEN", ""),
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/confluence/conftest.py:619`
+
+```
+api_token=<redacted:secret>"CONFLUENCE_API_TOKEN"],
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/jira/conftest.py:399`
+
+```
+api_token=<redacted:secret>"JIRA_API_TOKEN"],
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/utils/test_environment.py:226`
+
+```
+os.environ["CONFLUENCE_API_TOKEN"] = "api_token"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/utils/test_environment.py:406`
+
+```
+os.environ["ATLASSIAN_OAUTH_CLIENT_SECRET"] = "dc-secret"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/utils/test_environment.py:421`
+
+```
+os.environ["JIRA_OAUTH_CLIENT_SECRET"] = "jira-dc-secret"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/unit/utils/test_environment.py:432`
+
+```
+os.environ["ATLASSIAN_OAUTH_ACCESS_TOKEN"] = "my-dc-token"
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `scripts/oauth_authorize.py:315`
+
+```
+args.client_secret = <redacted:secret>"ATLASSIAN_OAUTH_CLIENT_SECRET")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/confluence/config.py:111`
+
+```
+api_token = <redacted:secret>"CONFLUENCE_API_TOKEN")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/confluence/config.py:112`
+
+```
+personal_token = <redacted:secret>"CONFLUENCE_PERSONAL_TOKEN")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/confluence/config.py:188`
+
+```
+client_key_password = <redacted:secret>"CONFLUENCE_CLIENT_KEY_PASSWORD")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/jira/config.py:179`
+
+```
+api_token = <redacted:secret>"JIRA_API_TOKEN")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/jira/config.py:180`
+
+```
+personal_token = <redacted:secret>"JIRA_PERSONAL_TOKEN")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/jira/config.py:258`
+
+```
+client_key_password = <redacted:secret>"JIRA_CLIENT_KEY_PASSWORD")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/servers/main.py:749`
+
+```
+os.getenv("ATLASSIAN_OAUTH_CLIENT_SECRET")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/servers/main.py:750`
+
+```
+or os.getenv("JIRA_OAUTH_CLIENT_SECRET")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/servers/main.py:751`
+
+```
+or os.getenv("CONFLUENCE_OAUTH_CLIENT_SECRET")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/utils/oauth.py:506`
+
+```
+) or os.getenv("ATLASSIAN_OAUTH_CLIENT_SECRET")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-SG-PY-006: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Evidence:** `src/mcp_atlassian/utils/oauth.py:625`
+
+```
+) or os.getenv("ATLASSIAN_OAUTH_ACCESS_TOKEN")
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
 
 
 ## Recommended Policy
@@ -832,4 +701,4 @@ Regression tests for the SSRF short-circuit in UserTokenMiddleware.
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:44.742Z._
+_Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:46.484Z._

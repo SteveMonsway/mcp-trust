@@ -2,16 +2,16 @@
 
 **Decision:** NEEDS_REVIEW  
 **Risk:** MEDIUM  
-**Score:** 45/100  
-**Confidence:** 62%
+**Score:** 33/100  
+**Confidence:** 61%
 
 _Resolved ref: `ea2fa09d7f870f47ca043c8b7daf7312891d6a06`_
 
 ## Executive Summary
-This MCP server requires human security review before use; notable risks were detected.
+The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).
 
 ## Decision Reasons
-- Overall score 45 falls in MEDIUM band
+- Overall score 33 falls in MEDIUM band
 - Elevated to NEEDS_REVIEW by: MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005, MCP-SG-JS-005
 
 ## Coverage
@@ -38,109 +38,17 @@ _Source: static_inference_
 | Subscore | Value |
 |---|---|
 | capability | 0 |
-| code | 96 |
+| code | 92 |
 | config | _not assessed_ |
-| supplyChain | 20 |
+| supplyChain | 0 |
 | dependency | _not assessed_ |
 | authTransport | _not assessed_ |
-| metadata | 94 |
+| metadata | 29 |
 | maintainer | _not assessed_ |
 | runtime | _not assessed_ |
 
-## Findings (18)
-### HIGH (3)
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `app/api/[transport]/route.ts`
-
-```
-,
-          properties: { message, error, eventId },
-          context: contexts,
-        });
-        waitUntil(flushAnalytics());
-      };
-
-      const composedTools = getAvailableTools(
-        stat
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `app/api/[transport]/route.ts`
-
-```
-, {
-                    ...properties,
-                    isError: true,
-                    contentLength: errorResult.content?.length,
-                    firstContentType: errorResult.content?.[0]
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** high  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently").
-
-**Evidence:** `lib/errors.ts`
-
-```
-. The branch silently never fired and every
- * conforming OAuth error from Hydra surfaced as a generic 500 to the
- * browser. Fixed in the same change that adds IS_NOT_CONFORM handling.
- */
-export fun
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-### MEDIUM (12)
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `lib/config.ts:17`
-
-```
-export const CLIENT_SECRET = <redacted:secret> ?? '';
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `lib/config.ts:18`
-
-```
-export const COOKIE_SECRET = <redacted:secret> ?? '';
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
+## Findings (12)
+### MEDIUM (8)
 #### MCP-META-005: Encoded or hidden content in metadata
 **Severity:** medium  **Confidence:** 65%  **Category:** metadata
 
@@ -155,42 +63,6 @@ Metadata contains zero-width/bidi control characters or long encoded payloads th
 **Impact:** Hidden or encoded content can smuggle instructions past human review.
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** medium  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→medium: this match is in build/dev-tooling code — mcp/tools/handlers/neon-auth-config.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `mcp/tools/handlers/neon-auth-config.ts`
-
-```
-the change silently undid itself
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** medium  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→medium: this match is in build/dev-tooling code — mcp/tools/handlers/neon-auth-settings-snapshot.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `mcp/tools/handlers/neon-auth-settings-snapshot.ts`
-
-```
- as const;
-
-/**
- * Canonical Neon Auth settings shape shared by get_neon_auth_config and
- * configure_neon_auth success responses (same keys configure reads/writes).
- *
- * `trusted_origins` reflects t
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
 
 #### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
 **Severity:** medium  **Confidence:** 60%  **Category:** code
@@ -298,10 +170,56 @@ isAxiosError(error) &&
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
 ### LOW (3)
-#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
-**Severity:** low  **Confidence:** 100%  **Category:** supply_chain
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
 
-The project does not provide a security policy, indicating weaker security maturity/disclosure process.
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `e2e/global-setup.ts:110`
+
+```
+process.env.COOKIE_SECRET = <redacted:secret>
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `lib/config.ts:17`
+
+```
+export const CLIENT_SECRET = <redacted:secret> ?? '';
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `lib/config.ts:18`
+
+```
+export const COOKIE_SECRET = <redacted:secret> ?? '';
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+### INFO (1)
+#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
+**Severity:** info  **Confidence:** 100%  **Category:** supply_chain
+
+The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.
 
 **Evidence:** `repo.files`
 
@@ -313,42 +231,11 @@ no SECURITY.md found in source
 
 **Remediation:** Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.
 
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — e2e/global-setup.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `e2e/global-setup.ts:110`
-
-```
-process.env.COOKIE_SECRET = <redacted:secret>
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** low  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→low: this match is in test code — mcp/__tests__/neon-auth-config.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `mcp/__tests__/neon-auth-config.test.ts`
-
-```
-the change silently undid itself
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
 
 ## Recommended Policy
-- Run only in a sandbox with least-privilege configuration.
 - Grant read-only database access unless writes are explicitly required.
 
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.0 at 2026-07-08T09:56:16.402Z._
+_Generated by mcp-trust 0.5.2 at 2026-07-08T12:49:17.947Z._

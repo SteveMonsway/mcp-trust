@@ -55,16 +55,16 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">BLOCK</span></span>
 <span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">41/100</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">36/100</span></span>
 <span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">71%</span></span>
 </div>
 <p class="ref">Resolved ref: <code>52c633e37684fadb94ae236f74909b9bbefc0db8</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>This MCP server should not be connected to developer workstations or production agents without remediation and sandboxing.</p>
+<p>The scanner found high-confidence capability evidence in the server’s runtime code (e.g. command execution). Review the flagged findings before connecting this server to an agent. A BLOCK is a &quot;review required&quot;, not proof the server is malicious — the evidence may be legitimate by design (see Decision Reasons).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 41 falls in MEDIUM band</li><li>Critical finding with high confidence: MCP-CODE-001</li></ul>
+<ul><li>Overall score 36 falls in MEDIUM band</li><li>Critical finding with high confidence: MCP-CODE-001</li></ul>
 </section>
 <section><h2>Coverage</h2>
 <table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
@@ -74,7 +74,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>20</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>29</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>100</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>29</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
 <section><h2>Findings (13)</h2>
 <h3 class="sev sev-critical">CRITICAL (1)</h3>
@@ -188,11 +188,11 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
 </article>
-<h3 class="sev sev-low">LOW (1)</h3>
+<h3 class="sev sev-info">INFO (1)</h3>
 <article class="finding">
 <h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
-<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
-<p>The project does not provide a security policy, indicating weaker security maturity/disclosure process.</p>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
 <p><strong>Evidence:</strong> <code>repo.files</code></p>
 <pre class="snippet"><code>no SECURITY.md found in source</code></pre>
 <p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
@@ -205,7 +205,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.0 at 2026-07-08T09:55:10.461Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.2 at 2026-07-08T12:48:04.403Z.</footer>
 </main>
 </body>
 </html>

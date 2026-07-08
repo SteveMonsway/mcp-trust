@@ -2,16 +2,16 @@
 
 **Decision:** BLOCK  
 **Risk:** MEDIUM  
-**Score:** 44/100  
-**Confidence:** 79%
+**Score:** 37/100  
+**Confidence:** 81%
 
 _Resolved ref: `e99ccd0fde6b4c509d88d9941effa4847c2e93e9`_
 
 ## Executive Summary
-This MCP server should **not** be connected to developer workstations or production agents without remediation and sandboxing.
+The scanner found **high-confidence capability evidence in the server’s runtime code** (e.g. command execution). Review the flagged findings below before connecting this server to an agent. **A BLOCK is a "review required", not proof the server is malicious** — the evidence may be legitimate by design (see Decision Reasons).
 
 ## Decision Reasons
-- Overall score 44 falls in MEDIUM band
+- Overall score 37 falls in MEDIUM band
 - Critical finding with high confidence: MCP-CODE-001
 
 ## Coverage
@@ -40,14 +40,14 @@ _Source: static_inference_
 | capability | 0 |
 | code | 100 |
 | config | _not assessed_ |
-| supplyChain | 20 |
+| supplyChain | 0 |
 | dependency | _not assessed_ |
 | authTransport | _not assessed_ |
-| metadata | 63 |
+| metadata | 50 |
 | maintainer | _not assessed_ |
 | runtime | _not assessed_ |
 
-## Findings (88)
+## Findings (67)
 ### CRITICAL (1)
 #### MCP-CODE-001: child_process.exec usage
 **Severity:** critical  **Confidence:** 95%  **Category:** code
@@ -110,7 +110,7 @@ await fs.unlink(exportPath);
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-### MEDIUM (16)
+### MEDIUM (13)
 #### MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)
 **Severity:** medium  **Confidence:** 90%  **Category:** code
 
@@ -261,54 +261,6 @@ fs.writeFileSync(resolvedPath, newContent, "utf-8");
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `packages/mongodb-atlas-mcp-remote/src/config.ts:32`
-
-```
-const clientSecret = <redacted:secret>
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** medium  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords).
-
-**Evidence:** `scripts/generate-release-notes.ts:26`
-
-```
-const GROVE_API_KEY = <redacted:secret>"GROVE_API_KEY"];
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-META-002: Suspicious concealment phrase in metadata
-**Severity:** medium  **Confidence:** 60%  **Category:** metadata
-
-Metadata instructs the model to hide actions from the user (e.g. "do not tell the user", "silently"). (Severity reduced high→medium: this match is in build/dev-tooling code — scripts/createMcpb.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `scripts/createMcpb.ts`
-
-```
-t silently
-    // skip it. Without it, the platform binaries we just force-added are unreachable at runtime.
-    dependencies["@mongodb-js/atlas-local"] = atlasLocalRange;
-    delete optionalDependenc
-```
-
-**Impact:** Instruction-like text in server-controlled metadata can steer the model without user awareness.
-
-**Remediation:** Any instruction to hide behavior from the user is a strong tool-poisoning signal; do not connect without review.
-
 #### MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)
 **Severity:** medium  **Confidence:** 60%  **Category:** code
 
@@ -354,22 +306,7 @@ const response = await fetch(unauthUrl, {
 
 **Remediation:** Validate URLs against an allowlist of hosts/schemes before making outbound requests.
 
-### LOW (68)
-#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
-**Severity:** low  **Confidence:** 100%  **Category:** supply_chain
-
-The project does not provide a security policy, indicating weaker security maturity/disclosure process.
-
-**Evidence:** `repo.files`
-
-```
-no SECURITY.md found in source
-```
-
-**Impact:** Absence of a disclosure process slows remediation of future vulnerabilities.
-
-**Remediation:** Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.
-
+### LOW (49)
 #### MCP-CODE-002: Synchronous shell execution (execSync / spawnSync shell)
 **Severity:** low  **Confidence:** 95%  **Category:** code
 
@@ -580,720 +517,15 @@ await fs.writeFile(filePath, initialData, { flag: "wx" });
 
 **Remediation:** Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.
 
-#### MCP-CODE-007: Secret-like environment variable access
+#### MCP-SG-JS-006: Secret-like environment variable access
 **Severity:** low  **Confidence:** 70%  **Category:** code
 
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/mongodb-atlas-mcp-remote/src/e2e.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `packages/mongodb-atlas-mcp-remote/src/e2e.test.ts:9`
-
-```
-const shouldSkip = !process.env.REMOTE_MCP_E2E_CLIENT_ID || !process.env.REMOTE_MCP_E2E_CLIENT_SECRET;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — packages/mongodb-atlas-mcp-remote/src/e2e.test.ts — which does not run as part of the MCP server.)
+The server handles credentials; misuse or logging could leak them. (Severity reduced medium→low: this match is in test code — packages/mongodb-atlas-mcp-remote/src/e2e.test.ts — which does not run as part of the MCP server.)
 
 **Evidence:** `packages/mongodb-atlas-mcp-remote/src/e2e.test.ts:25`
 
 ```
 MDB_MCP_API_CLIENT_SECRET: <redacted:secret> ?? "",
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — scripts/cleanupAtlasTestLeftovers.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `scripts/cleanupAtlasTestLeftovers.test.ts:146`
-
-```
-clientSecret: <redacted:secret> || "",
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/aggregate.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/aggregate.autoEmbeddings.test.ts:71`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/aggregate.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/aggregate.autoEmbeddings.test.ts:72`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/aggregate.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/aggregate.autoEmbeddings.test.ts:73`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/createIndex.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/createIndex.autoEmbeddings.test.ts:78`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/createIndex.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/createIndex.autoEmbeddings.test.ts:79`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/createIndex.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/createIndex.autoEmbeddings.test.ts:80`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/insertMany.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/insertMany.autoEmbeddings.test.ts:75`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/insertMany.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/insertMany.autoEmbeddings.test.ts:76`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/insertMany.autoEmbeddings.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/insertMany.autoEmbeddings.test.ts:77`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/describeAccuracyTests.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/describeAccuracyTests.ts:89`
-
-```
-apiClientSecret: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:26`
-
-```
-return !!process.env.MDB_OPEN_AI_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:31`
-
-```
-apiKey: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:45`
-
-```
-return !!process.env.MDB_AZURE_OPEN_AI_API_KEY && !!process.env.MDB_AZURE_OPEN_AI_API_URL;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:51`
-
-```
-apiKey: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:67`
-
-```
-return !!process.env.MDB_GEMINI_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:72`
-
-```
-apiKey: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:90`
-
-```
-return !!process.env.MDB_GROVE_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:96`
-
-```
-apiKey: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:97`
-
-```
-headers: { "api-key": process.env.MDB_GROVE_API_KEY! },
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:111`
-
-```
-return !!process.env.MDB_GROVE_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:117`
-
-```
-apiKey: <redacted:secret>,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/accuracy/sdk/models.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/accuracy/sdk/models.ts:118`
-
-```
-headers: { "api-key": process.env.MDB_GROVE_API_KEY! },
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/eval/lib/shared.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/eval/lib/shared.ts:45`
-
-```
-const apiKey = <redacted:secret> ?? process.env.BRAINTRUST_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/eval/scripts/reportCi.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/eval/scripts/reportCi.ts:131`
-
-```
-const apiKey = <redacted:secret> ?? process.env.BRAINTRUST_API_KEY;
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/atlasHelpers.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:15`
-
-```
-!process.env.MDB_MCP_API_CLIENT_ID?.length || !process.env.MDB_MCP_API_CLIENT_SECRET?.length
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/atlasHelpers.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:22`
-
-```
-apiClientSecret: <redacted:secret> || "test-secret",
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/atlasHelpers.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:31`
-
-```
-!process.env.MDB_MCP_API_CLIENT_ID?.length || !process.env.MDB_MCP_API_CLIENT_SECRET?.length
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/atlasHelpers.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:38`
-
-```
-apiClientSecret: <redacted:secret> || "test-secret",
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/atlasHelpers.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:71`
-
-```
-!process.env.MDB_MCP_API_CLIENT_ID?.length || !process.env.MDB_MCP_API_CLIENT_SECRET?.length
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/atlas/performanceAdvisor.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/atlas/performanceAdvisor.test.ts:145`
-
-```
-apiClientSecret: <redacted:secret> || "test-secret",
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/createIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/createIndex.test.ts:802`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/createIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/createIndex.test.ts:803`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/createIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/createIndex.test.ts:804`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/insertMany.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/insertMany.test.ts:261`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/insertMany.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/insertMany.test.ts:262`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/create/insertMany.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/create/insertMany.test.ts:263`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/delete/dropIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/delete/dropIndex.test.ts:477`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/delete/dropIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/delete/dropIndex.test.ts:478`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/delete/dropIndex.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/delete/dropIndex.test.ts:479`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts:469`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts:470`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts:471`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/read/aggregate.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/read/aggregate.test.ts:1336`
-
-```
-mongotPassword: <redacted:secret> as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/read/aggregate.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/read/aggregate.test.ts:1337`
-
-```
-voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
-```
-
-**Impact:** The server handles credentials; misuse or logging could leak them.
-
-**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
-
-#### MCP-CODE-007: Secret-like environment variable access
-**Severity:** low  **Confidence:** 70%  **Category:** code
-
-Reads environment variables whose names imply secrets (tokens, keys, passwords). (Severity reduced medium→low: this match is in test code — tests/integration/tools/mongodb/read/aggregate.test.ts — which does not run as part of the MCP server.)
-
-**Evidence:** `tests/integration/tools/mongodb/read/aggregate.test.ts:1338`
-
-```
-voyageQueryKey: process.env.MDB_VOYAGE_API_KEY as string,
 ```
 
 **Impact:** The server handles credentials; misuse or logging could leak them.
@@ -1360,6 +592,441 @@ Metadata contains zero-width/bidi control characters or long encoded payloads th
 
 **Remediation:** Strip and inspect hidden/encoded content. Reject metadata containing zero-width or bidi control characters.
 
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `packages/mongodb-atlas-mcp-remote/src/config.ts:32`
+
+```
+const clientSecret = <redacted:secret>
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `packages/mongodb-atlas-mcp-remote/src/e2e.test.ts:9`
+
+```
+const shouldSkip = !process.env.REMOTE_MCP_E2E_CLIENT_ID || !process.env.REMOTE_MCP_E2E_CLIENT_SECRET;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `scripts/cleanupAtlasTestLeftovers.test.ts:146`
+
+```
+clientSecret: <redacted:secret> || "",
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `scripts/generate-release-notes.ts:26`
+
+```
+const GROVE_API_KEY = <redacted:secret>"GROVE_API_KEY"];
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/aggregate.autoEmbeddings.test.ts:71`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/aggregate.autoEmbeddings.test.ts:72`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/createIndex.autoEmbeddings.test.ts:78`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/createIndex.autoEmbeddings.test.ts:79`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/insertMany.autoEmbeddings.test.ts:75`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/insertMany.autoEmbeddings.test.ts:76`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/sdk/describeAccuracyTests.ts:89`
+
+```
+apiClientSecret: <redacted:secret>,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/sdk/models.ts:26`
+
+```
+return !!process.env.MDB_OPEN_AI_API_KEY;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/sdk/models.ts:45`
+
+```
+return !!process.env.MDB_AZURE_OPEN_AI_API_KEY && !!process.env.MDB_AZURE_OPEN_AI_API_URL;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/sdk/models.ts:67`
+
+```
+return !!process.env.MDB_GEMINI_API_KEY;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/accuracy/sdk/models.ts:90`
+
+```
+return !!process.env.MDB_GROVE_API_KEY;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/eval/lib/shared.ts:45`
+
+```
+const apiKey = <redacted:secret> ?? process.env.BRAINTRUST_API_KEY;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/eval/scripts/reportCi.ts:131`
+
+```
+const apiKey = <redacted:secret> ?? process.env.BRAINTRUST_API_KEY;
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/atlas/atlasHelpers.ts:15`
+
+```
+!process.env.MDB_MCP_API_CLIENT_ID?.length || !process.env.MDB_MCP_API_CLIENT_SECRET?.length
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/atlas/performanceAdvisor.test.ts:145`
+
+```
+apiClientSecret: <redacted:secret> || "test-secret",
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/create/createIndex.test.ts:802`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/create/createIndex.test.ts:803`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/create/insertMany.test.ts:261`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/create/insertMany.test.ts:262`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/delete/dropIndex.test.ts:477`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/delete/dropIndex.test.ts:478`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts:469`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/metadata/collectionIndexes.test.ts:470`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/read/aggregate.test.ts:1336`
+
+```
+mongotPassword: <redacted:secret> as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
+#### MCP-CODE-007: Secret-like environment variable access
+**Severity:** low  **Confidence:** 60%  **Category:** code
+
+Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.
+
+**Evidence:** `tests/integration/tools/mongodb/read/aggregate.test.ts:1337`
+
+```
+voyageIndexingKey: process.env.MDB_VOYAGE_API_KEY as string,
+```
+
+**Impact:** The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.
+
+**Remediation:** Confirm the server needs these secrets; scope tokens narrowly and never log them.
+
 #### MCP-META-004: Metadata references system/developer prompt
 **Severity:** low  **Confidence:** 60%  **Category:** metadata
 
@@ -1375,6 +1042,22 @@ System prompt prepended for the agent under test.
 
 **Remediation:** Review why tool metadata references system-level prompts; treat as untrusted.
 
+### INFO (1)
+#### MCP-SUPPLY-005: No security policy (SECURITY.md) found
+**Severity:** info  **Confidence:** 100%  **Category:** supply_chain
+
+The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.
+
+**Evidence:** `repo.files`
+
+```
+no SECURITY.md found in source
+```
+
+**Impact:** Absence of a disclosure process slows remediation of future vulnerabilities.
+
+**Remediation:** Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.
+
 
 ## Recommended Policy
 - Block by default; do not connect to developer workstations or production agents without review.
@@ -1383,4 +1066,4 @@ System prompt prepended for the agent under test.
 ## Disclaimer
 > MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.
 
-_Generated by mcp-trust 0.5.0 at 2026-07-08T09:56:13.331Z._
+_Generated by mcp-trust 0.5.2 at 2026-07-08T12:49:14.234Z._

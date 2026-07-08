@@ -130,8 +130,8 @@ export const supplyChainRules: Rule[] = [
   {
     id: 'MCP-SUPPLY-005',
     title: 'No security policy (SECURITY.md) found',
-    description: 'The project does not provide a security policy, indicating weaker security maturity/disclosure process.',
-    defaultSeverity: 'low',
+    description: 'The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.',
+    defaultSeverity: 'info',
     category: 'supply_chain',
     tags: ['supply-chain', 'maturity'],
     appliesTo: ['package-metadata'],

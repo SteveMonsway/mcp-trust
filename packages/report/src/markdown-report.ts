@@ -120,12 +120,12 @@ export function renderMarkdown(result: ScanResult): string {
 function executiveSummary(result: ScanResult): string {
   const d = result.score.decision;
   if (d === 'BLOCK')
-    return 'This MCP server should **not** be connected to developer workstations or production agents without remediation and sandboxing.';
+    return 'The scanner found **high-confidence capability evidence in the server’s runtime code** (e.g. command execution). Review the flagged findings below before connecting this server to an agent. **A BLOCK is a "review required", not proof the server is malicious** — the evidence may be legitimate by design (see Decision Reasons).';
   if (d === 'NEEDS_REVIEW')
-    return 'This MCP server requires human security review before use; notable risks were detected.';
+    return 'The scanner found **notable capabilities or patterns worth a human look** (listed under Decision Reasons and Findings). **This is not a rejection** — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).';
   if (d === 'APPROVE_WITH_RESTRICTIONS')
-    return 'This MCP server may be used with restrictions (sandboxing, least privilege, scoped access).';
-  return 'No significant risks were detected in the available evidence. Standard review still applies.';
+    return 'This MCP server looks usable **with restrictions** (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.';
+  return 'No significant risks were detected in the available evidence. **This is not a safety guarantee** — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.';
 }
 
 function runtimeIntrospectionSection(r: RuntimeIntrospection): string {

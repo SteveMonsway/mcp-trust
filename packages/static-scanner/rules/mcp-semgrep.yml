@@ -353,10 +353,10 @@ rules:
       mcp_id: MCP-SG-PY-006
       mcp_title: Secret-like environment variable access
       mcp_category: code
-      mcp_severity: medium
-      mcp_confidence: "0.7"
+      mcp_severity: low
+      mcp_confidence: "0.6"
       mcp_capability: credential_access
-      mcp_impact: The server handles credentials; misuse or logging could leak them.
+      mcp_impact: The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.
       mcp_remediation: Confirm the server needs these secrets; scope tokens narrowly and never log them.
       mcp_cwe: CWE-522
     patterns:
