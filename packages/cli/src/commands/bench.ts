@@ -340,6 +340,8 @@ function benchRender(outDir: string): number {
   }
 
   const rawDir = join(outDir, '_raw');
+  const reportsDir = join(outDir, 'reports');
+  mkdirSync(reportsDir, { recursive: true });
   const available = new Set(safeReaddir(rawDir).filter((f) => f.endsWith('.json')));
 
   const targets: IndexTarget[] = [];
@@ -363,10 +365,12 @@ function benchRender(outDir: string): number {
     if (r.ok && available.has(`${r.slug}.json`)) {
       try {
         const result = JSON.parse(readFileSync(join(rawDir, `${r.slug}.json`), 'utf8')) as ScanResult;
-        writeFileSync(join(outDir, `${r.slug}.md`), renderMarkdown(result));
-        writeFileSync(join(outDir, `${r.slug}.html`), renderHtml(result));
-        t.reportMd = `${r.slug}.md`;
-        t.reportHtml = `${r.slug}.html`;
+        // Per-target reports go in a `reports/` subdir so the top-level folder stays
+        // clean (README + index.html + index.json) even with thousands of targets.
+        writeFileSync(join(reportsDir, `${r.slug}.md`), renderMarkdown(result));
+        writeFileSync(join(reportsDir, `${r.slug}.html`), renderHtml(result));
+        t.reportMd = `reports/${r.slug}.md`;
+        t.reportHtml = `reports/${r.slug}.html`;
         rendered += 1;
       } catch (err) {
         t.error = `render failed: ${err instanceof Error ? err.message : String(err)}`;
@@ -414,7 +418,7 @@ function renderIndexReadme(index: { count: number; scanner: { version: string };
   const line = (t: IndexTarget) => {
     const src = (t.locator ?? '').replace(/^github\.com\//, '');
     const warn = t.limitations && t.limitations.length ? ' ⚠️' : '';
-    return `| \`${t.id}\` | [${src}](https://${t.locator}) | ${t.decision}${warn} | ${t.risk} | ${t.score} | ${t.findings} | [md](${t.slug}.md) · [html](${t.slug}.html) |`;
+    return `| \`${t.id}\` | [${src}](https://${t.locator}) | ${t.decision}${warn} | ${t.risk} | ${t.score} | ${t.findings} | [md](reports/${t.slug}.md) · [html](reports/${t.slug}.html) |`;
   };
   const header = '| Server | Source | Decision | Risk | Score | Findings | Report |\n|---|---|---|---|---|---|---|';
   const blocks = rows.filter((t) => t.decision === 'BLOCK');
@@ -434,7 +438,8 @@ function renderIndexReadme(index: { count: number; scanner: { version: string };
   );
   out.push('## 🔎 Browse');
   out.push(
-    '- **Search / filter / sort all servers:** open **[`index.html`](index.html)** (self-contained, works offline).',
+    '- **Live searchable page:** <https://stevemonsway.github.io/mcp-trust/public-reports/index.html> (search / filter by decision / sort).',
+    '- **Offline / local:** open [`index.html`](index.html) (self-contained). *(GitHub shows `.html` as source, not rendered — use the live page above.)*',
     '- **Jump to one server:** press <kbd>t</kbd> on GitHub and type its name → open `<server>.md`.',
     '- **Machine-readable:** [`index.json`](index.json).',
     '',
@@ -513,7 +518,7 @@ function render(){
     return '<tr><td><a href="https://'+esc(x.loc)+'">'+esc(x.id)+'</a><br><span class="muted">'+esc(src)+'</span></td>'+
     '<td class="d" style="color:var(--'+x.d+')">'+x.d+(x.w?' ⚠️':'')+'</td>'+
     '<td>'+esc(x.r)+'</td><td>'+x.s+'</td><td>'+x.f+'</td>'+
-    '<td><a href="'+esc(x.slug)+'.md">md</a> · <a href="'+esc(x.slug)+'.html">html</a></td></tr>';
+    '<td><a href="reports/'+esc(x.slug)+'.md">md</a> · <a href="reports/'+esc(x.slug)+'.html">html</a></td></tr>';
   }).join('');
 }
 q.addEventListener('input',render);

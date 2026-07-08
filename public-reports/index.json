@@ -85,8 +85,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "mcp-ref-filesystem.md",
-      "reportHtml": "mcp-ref-filesystem.html"
+      "reportMd": "reports/mcp-ref-filesystem.md",
+      "reportHtml": "reports/mcp-ref-filesystem.html"
     },
     {
       "id": "mcp-ref-git",
@@ -101,8 +101,8 @@
       "topRules": [
         "MCP-CODE-006"
       ],
-      "reportMd": "mcp-ref-git.md",
-      "reportHtml": "mcp-ref-git.html"
+      "reportMd": "reports/mcp-ref-git.md",
+      "reportHtml": "reports/mcp-ref-git.html"
     },
     {
       "id": "mcp-ref-fetch",
@@ -115,8 +115,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "mcp-ref-fetch.md",
-      "reportHtml": "mcp-ref-fetch.html"
+      "reportMd": "reports/mcp-ref-fetch.md",
+      "reportHtml": "reports/mcp-ref-fetch.html"
     },
     {
       "id": "mcp-ref-memory",
@@ -135,8 +135,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "mcp-ref-memory.md",
-      "reportHtml": "mcp-ref-memory.html"
+      "reportMd": "reports/mcp-ref-memory.md",
+      "reportHtml": "reports/mcp-ref-memory.html"
     },
     {
       "id": "mcp-ref-time",
@@ -149,8 +149,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "mcp-ref-time.md",
-      "reportHtml": "mcp-ref-time.html"
+      "reportMd": "reports/mcp-ref-time.md",
+      "reportHtml": "reports/mcp-ref-time.html"
     },
     {
       "id": "mcp-ref-sequentialthinking",
@@ -165,8 +165,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "mcp-ref-sequentialthinking.md",
-      "reportHtml": "mcp-ref-sequentialthinking.html"
+      "reportMd": "reports/mcp-ref-sequentialthinking.md",
+      "reportHtml": "reports/mcp-ref-sequentialthinking.html"
     },
     {
       "id": "mcp-ref-everything",
@@ -183,8 +183,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "mcp-ref-everything.md",
-      "reportHtml": "mcp-ref-everything.html"
+      "reportMd": "reports/mcp-ref-everything.md",
+      "reportHtml": "reports/mcp-ref-everything.html"
     },
     {
       "id": "chromedevtools-chrome-devtools-mcp",
@@ -203,8 +203,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "chromedevtools-chrome-devtools-mcp.md",
-      "reportHtml": "chromedevtools-chrome-devtools-mcp.html"
+      "reportMd": "reports/chromedevtools-chrome-devtools-mcp.md",
+      "reportHtml": "reports/chromedevtools-chrome-devtools-mcp.html"
     },
     {
       "id": "microsoft-playwright-mcp",
@@ -223,8 +223,8 @@
         "MCP-CODE-002",
         "MCP-CODE-006"
       ],
-      "reportMd": "microsoft-playwright-mcp.md",
-      "reportHtml": "microsoft-playwright-mcp.html"
+      "reportMd": "reports/microsoft-playwright-mcp.md",
+      "reportHtml": "reports/microsoft-playwright-mcp.html"
     },
     {
       "id": "prefecthq-fastmcp",
@@ -243,8 +243,8 @@
         "MCP-CODE-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "prefecthq-fastmcp.md",
-      "reportHtml": "prefecthq-fastmcp.html"
+      "reportMd": "reports/prefecthq-fastmcp.md",
+      "reportHtml": "reports/prefecthq-fastmcp.html"
     },
     {
       "id": "ahujasid-blender-mcp",
@@ -263,8 +263,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "ahujasid-blender-mcp.md",
-      "reportHtml": "ahujasid-blender-mcp.html"
+      "reportMd": "reports/ahujasid-blender-mcp.md",
+      "reportHtml": "reports/ahujasid-blender-mcp.html"
     },
     {
       "id": "czlonkowski-n8n-mcp",
@@ -283,8 +283,8 @@
         "MCP-CODE-003",
         "MCP-CODE-003"
       ],
-      "reportMd": "czlonkowski-n8n-mcp.md",
-      "reportHtml": "czlonkowski-n8n-mcp.html"
+      "reportMd": "reports/czlonkowski-n8n-mcp.md",
+      "reportHtml": "reports/czlonkowski-n8n-mcp.html"
     },
     {
       "id": "glips-figma-context-mcp",
@@ -303,8 +303,8 @@
         "MCP-CODE-002",
         "MCP-CODE-006"
       ],
-      "reportMd": "glips-figma-context-mcp.md",
-      "reportHtml": "glips-figma-context-mcp.html"
+      "reportMd": "reports/glips-figma-context-mcp.md",
+      "reportHtml": "reports/glips-figma-context-mcp.html"
     },
     {
       "id": "hangwin-mcp-chrome",
@@ -326,8 +326,8 @@
       "limitations": [
         "Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "hangwin-mcp-chrome.md",
-      "reportHtml": "hangwin-mcp-chrome.html"
+      "reportMd": "reports/hangwin-mcp-chrome.md",
+      "reportHtml": "reports/hangwin-mcp-chrome.html"
     },
     {
       "id": "tadata-org-fastapi_mcp",
@@ -340,8 +340,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "tadata-org-fastapi_mcp.md",
-      "reportHtml": "tadata-org-fastapi_mcp.html"
+      "reportMd": "reports/tadata-org-fastapi_mcp.md",
+      "reportHtml": "reports/tadata-org-fastapi_mcp.html"
     },
     {
       "id": "beehiveinnovations-pal-mcp-server",
@@ -360,8 +360,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "beehiveinnovations-pal-mcp-server.md",
-      "reportHtml": "beehiveinnovations-pal-mcp-server.html"
+      "reportMd": "reports/beehiveinnovations-pal-mcp-server.md",
+      "reportHtml": "reports/beehiveinnovations-pal-mcp-server.html"
     },
     {
       "id": "mcp-use-mcp-use",
@@ -380,8 +380,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "mcp-use-mcp-use.md",
-      "reportHtml": "mcp-use-mcp-use.html"
+      "reportMd": "reports/mcp-use-mcp-use.md",
+      "reportHtml": "reports/mcp-use-mcp-use.html"
     },
     {
       "id": "mrexodia-ida-pro-mcp",
@@ -403,8 +403,8 @@
       "limitations": [
         "Additionally, C source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "mrexodia-ida-pro-mcp.md",
-      "reportHtml": "mrexodia-ida-pro-mcp.html"
+      "reportMd": "reports/mrexodia-ida-pro-mcp.md",
+      "reportHtml": "reports/mrexodia-ida-pro-mcp.html"
     },
     {
       "id": "awslabs-mcp",
@@ -423,8 +423,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "awslabs-mcp.md",
-      "reportHtml": "awslabs-mcp.html"
+      "reportMd": "reports/awslabs-mcp.md",
+      "reportHtml": "reports/awslabs-mcp.html"
     },
     {
       "id": "lastmile-ai-mcp-agent",
@@ -443,8 +443,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "lastmile-ai-mcp-agent.md",
-      "reportHtml": "lastmile-ai-mcp-agent.html"
+      "reportMd": "reports/lastmile-ai-mcp-agent.md",
+      "reportHtml": "reports/lastmile-ai-mcp-agent.html"
     },
     {
       "id": "idosal-git-mcp",
@@ -463,8 +463,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "idosal-git-mcp.md",
-      "reportHtml": "idosal-git-mcp.html"
+      "reportMd": "reports/idosal-git-mcp.md",
+      "reportHtml": "reports/idosal-git-mcp.html"
     },
     {
       "id": "agentdeskai-browser-tools-mcp",
@@ -483,8 +483,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "agentdeskai-browser-tools-mcp.md",
-      "reportHtml": "agentdeskai-browser-tools-mcp.html"
+      "reportMd": "reports/agentdeskai-browser-tools-mcp.md",
+      "reportHtml": "reports/agentdeskai-browser-tools-mcp.html"
     },
     {
       "id": "firecrawl-firecrawl-mcp-server",
@@ -503,8 +503,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "firecrawl-firecrawl-mcp-server.md",
-      "reportHtml": "firecrawl-firecrawl-mcp-server.html"
+      "reportMd": "reports/firecrawl-firecrawl-mcp-server.md",
+      "reportHtml": "reports/firecrawl-firecrawl-mcp-server.html"
     },
     {
       "id": "grab-cursor-talk-to-figma-mcp",
@@ -521,8 +521,8 @@
         "MCP-SUPPLY-004",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "grab-cursor-talk-to-figma-mcp.md",
-      "reportHtml": "grab-cursor-talk-to-figma-mcp.html"
+      "reportMd": "reports/grab-cursor-talk-to-figma-mcp.md",
+      "reportHtml": "reports/grab-cursor-talk-to-figma-mcp.html"
     },
     {
       "id": "browsermcp-mcp",
@@ -539,8 +539,8 @@
         "MCP-CODE-002",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "browsermcp-mcp.md",
-      "reportHtml": "browsermcp-mcp.html"
+      "reportMd": "reports/browsermcp-mcp.md",
+      "reportHtml": "reports/browsermcp-mcp.html"
     },
     {
       "id": "cursortouch-windows-mcp",
@@ -559,8 +559,8 @@
         "MCP-SG-PY-004",
         "MCP-CODE-006"
       ],
-      "reportMd": "cursortouch-windows-mcp.md",
-      "reportHtml": "cursortouch-windows-mcp.html"
+      "reportMd": "reports/cursortouch-windows-mcp.md",
+      "reportHtml": "reports/cursortouch-windows-mcp.html"
     },
     {
       "id": "wonderwhy-er-desktopcommandermcp",
@@ -579,8 +579,8 @@
         "MCP-CODE-001",
         "MCP-CODE-001"
       ],
-      "reportMd": "wonderwhy-er-desktopcommandermcp.md",
-      "reportHtml": "wonderwhy-er-desktopcommandermcp.html"
+      "reportMd": "reports/wonderwhy-er-desktopcommandermcp.md",
+      "reportHtml": "reports/wonderwhy-er-desktopcommandermcp.html"
     },
     {
       "id": "getsentry-xcodebuildmcp",
@@ -602,8 +602,8 @@
       "limitations": [
         "Additionally, Swift source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "getsentry-xcodebuildmcp.md",
-      "reportHtml": "getsentry-xcodebuildmcp.html"
+      "reportMd": "reports/getsentry-xcodebuildmcp.md",
+      "reportHtml": "reports/getsentry-xcodebuildmcp.html"
     },
     {
       "id": "executeautomation-mcp-playwright",
@@ -622,8 +622,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "executeautomation-mcp-playwright.md",
-      "reportHtml": "executeautomation-mcp-playwright.html"
+      "reportMd": "reports/executeautomation-mcp-playwright.md",
+      "reportHtml": "reports/executeautomation-mcp-playwright.html"
     },
     {
       "id": "sooperset-mcp-atlassian",
@@ -642,8 +642,8 @@
         "MCP-CODE-006",
         "MCP-SG-PY-005"
       ],
-      "reportMd": "sooperset-mcp-atlassian.md",
-      "reportHtml": "sooperset-mcp-atlassian.html"
+      "reportMd": "reports/sooperset-mcp-atlassian.md",
+      "reportHtml": "reports/sooperset-mcp-atlassian.html"
     },
     {
       "id": "mobile-next-mobile-mcp",
@@ -662,8 +662,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "mobile-next-mobile-mcp.md",
-      "reportHtml": "mobile-next-mobile-mcp.html"
+      "reportMd": "reports/mobile-next-mobile-mcp.md",
+      "reportHtml": "reports/mobile-next-mobile-mcp.html"
     },
     {
       "id": "21st-dev-magic-mcp",
@@ -682,8 +682,8 @@
         "MCP-SG-JS-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "21st-dev-magic-mcp.md",
-      "reportHtml": "21st-dev-magic-mcp.html"
+      "reportMd": "reports/21st-dev-magic-mcp.md",
+      "reportHtml": "reports/21st-dev-magic-mcp.html"
     },
     {
       "id": "jacob-bd-notebooklm-mcp-cli",
@@ -702,8 +702,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "jacob-bd-notebooklm-mcp-cli.md",
-      "reportHtml": "jacob-bd-notebooklm-mcp-cli.html"
+      "reportMd": "reports/jacob-bd-notebooklm-mcp-cli.md",
+      "reportHtml": "reports/jacob-bd-notebooklm-mcp-cli.html"
     },
     {
       "id": "mcp-ui-org-mcp-ui",
@@ -723,8 +723,8 @@
       "limitations": [
         "Additionally, Ruby source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "mcp-ui-org-mcp-ui.md",
-      "reportHtml": "mcp-ui-org-mcp-ui.html"
+      "reportMd": "reports/mcp-ui-org-mcp-ui.md",
+      "reportHtml": "reports/mcp-ui-org-mcp-ui.html"
     },
     {
       "id": "excalidraw-excalidraw-mcp",
@@ -743,8 +743,8 @@
         "MCP-CODE-005",
         "MCP-META-005"
       ],
-      "reportMd": "excalidraw-excalidraw-mcp.md",
-      "reportHtml": "excalidraw-excalidraw-mcp.html"
+      "reportMd": "reports/excalidraw-excalidraw-mcp.md",
+      "reportHtml": "reports/excalidraw-excalidraw-mcp.html"
     },
     {
       "id": "openclaw-mcporter",
@@ -763,8 +763,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "openclaw-mcporter.md",
-      "reportHtml": "openclaw-mcporter.html"
+      "reportMd": "reports/openclaw-mcporter.md",
+      "reportHtml": "reports/openclaw-mcporter.html"
     },
     {
       "id": "jgraph-drawio-mcp",
@@ -783,8 +783,8 @@
         "MCP-CODE-002",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "jgraph-drawio-mcp.md",
-      "reportHtml": "jgraph-drawio-mcp.html"
+      "reportMd": "reports/jgraph-drawio-mcp.md",
+      "reportHtml": "reports/jgraph-drawio-mcp.html"
     },
     {
       "id": "exa-labs-exa-mcp-server",
@@ -803,8 +803,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "exa-labs-exa-mcp-server.md",
-      "reportHtml": "exa-labs-exa-mcp-server.html"
+      "reportMd": "reports/exa-labs-exa-mcp-server.md",
+      "reportHtml": "reports/exa-labs-exa-mcp-server.html"
     },
     {
       "id": "coding-solo-godot-mcp",
@@ -821,8 +821,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "coding-solo-godot-mcp.md",
-      "reportHtml": "coding-solo-godot-mcp.html"
+      "reportMd": "reports/coding-solo-godot-mcp.md",
+      "reportHtml": "reports/coding-solo-godot-mcp.html"
     },
     {
       "id": "makenotion-notion-mcp-server",
@@ -841,8 +841,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "makenotion-notion-mcp-server.md",
-      "reportHtml": "makenotion-notion-mcp-server.html"
+      "reportMd": "reports/makenotion-notion-mcp-server.md",
+      "reportHtml": "reports/makenotion-notion-mcp-server.html"
     },
     {
       "id": "open-webui-mcpo",
@@ -861,8 +861,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "open-webui-mcpo.md",
-      "reportHtml": "open-webui-mcpo.html"
+      "reportMd": "reports/open-webui-mcpo.md",
+      "reportHtml": "reports/open-webui-mcpo.html"
     },
     {
       "id": "tradesdontlie-tradingview-mcp",
@@ -881,8 +881,8 @@
         "MCP-CODE-002",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "tradesdontlie-tradingview-mcp.md",
-      "reportHtml": "tradesdontlie-tradingview-mcp.html"
+      "reportMd": "reports/tradesdontlie-tradingview-mcp.md",
+      "reportHtml": "reports/tradesdontlie-tradingview-mcp.html"
     },
     {
       "id": "antvis-mcp-server-chart",
@@ -899,8 +899,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "antvis-mcp-server-chart.md",
-      "reportHtml": "antvis-mcp-server-chart.html"
+      "reportMd": "reports/antvis-mcp-server-chart.md",
+      "reportHtml": "reports/antvis-mcp-server-chart.html"
     },
     {
       "id": "54yyyu-zotero-mcp",
@@ -919,8 +919,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "54yyyu-zotero-mcp.md",
-      "reportHtml": "54yyyu-zotero-mcp.html"
+      "reportMd": "reports/54yyyu-zotero-mcp.md",
+      "reportHtml": "reports/54yyyu-zotero-mcp.html"
     },
     {
       "id": "ibm-mcp-context-forge",
@@ -942,8 +942,8 @@
       "limitations": [
         "Additionally, Go, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "ibm-mcp-context-forge.md",
-      "reportHtml": "ibm-mcp-context-forge.html"
+      "reportMd": "reports/ibm-mcp-context-forge.md",
+      "reportHtml": "reports/ibm-mcp-context-forge.html"
     },
     {
       "id": "markuspfundstein-mcp-obsidian",
@@ -962,8 +962,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "markuspfundstein-mcp-obsidian.md",
-      "reportHtml": "markuspfundstein-mcp-obsidian.html"
+      "reportMd": "reports/markuspfundstein-mcp-obsidian.md",
+      "reportHtml": "reports/markuspfundstein-mcp-obsidian.html"
     },
     {
       "id": "haris-musa-excel-mcp-server",
@@ -978,8 +978,8 @@
       "topRules": [
         "MCP-CODE-006"
       ],
-      "reportMd": "haris-musa-excel-mcp-server.md",
-      "reportHtml": "haris-musa-excel-mcp-server.html"
+      "reportMd": "reports/haris-musa-excel-mcp-server.md",
+      "reportHtml": "reports/haris-musa-excel-mcp-server.html"
     },
     {
       "id": "cloudflare-mcp-server-cloudflare",
@@ -998,8 +998,8 @@
         "MCP-CODE-005",
         "MCP-META-005"
       ],
-      "reportMd": "cloudflare-mcp-server-cloudflare.md",
-      "reportHtml": "cloudflare-mcp-server-cloudflare.html"
+      "reportMd": "reports/cloudflare-mcp-server-cloudflare.md",
+      "reportHtml": "reports/cloudflare-mcp-server-cloudflare.html"
     },
     {
       "id": "homeassistant-ai-ha-mcp",
@@ -1018,8 +1018,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "homeassistant-ai-ha-mcp.md",
-      "reportHtml": "homeassistant-ai-ha-mcp.html"
+      "reportMd": "reports/homeassistant-ai-ha-mcp.md",
+      "reportHtml": "reports/homeassistant-ai-ha-mcp.html"
     },
     {
       "id": "minidoracat-mcp-feedback-enhanced",
@@ -1041,8 +1041,8 @@
       "limitations": [
         "Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "minidoracat-mcp-feedback-enhanced.md",
-      "reportHtml": "minidoracat-mcp-feedback-enhanced.html"
+      "reportMd": "reports/minidoracat-mcp-feedback-enhanced.md",
+      "reportHtml": "reports/minidoracat-mcp-feedback-enhanced.html"
     },
     {
       "id": "langchain-ai-langchain-mcp-adapters",
@@ -1055,8 +1055,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "langchain-ai-langchain-mcp-adapters.md",
-      "reportHtml": "langchain-ai-langchain-mcp-adapters.html"
+      "reportMd": "reports/langchain-ai-langchain-mcp-adapters.md",
+      "reportHtml": "reports/langchain-ai-langchain-mcp-adapters.html"
     },
     {
       "id": "atilaahmettaner-tradingview-mcp",
@@ -1075,8 +1075,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "atilaahmettaner-tradingview-mcp.md",
-      "reportHtml": "atilaahmettaner-tradingview-mcp.html"
+      "reportMd": "reports/atilaahmettaner-tradingview-mcp.md",
+      "reportHtml": "reports/atilaahmettaner-tradingview-mcp.html"
     },
     {
       "id": "browserbase-mcp-server-browserbase",
@@ -1095,8 +1095,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "browserbase-mcp-server-browserbase.md",
-      "reportHtml": "browserbase-mcp-server-browserbase.html"
+      "reportMd": "reports/browserbase-mcp-server-browserbase.md",
+      "reportHtml": "reports/browserbase-mcp-server-browserbase.html"
     },
     {
       "id": "punkpeye-fastmcp",
@@ -1115,8 +1115,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "punkpeye-fastmcp.md",
-      "reportHtml": "punkpeye-fastmcp.html"
+      "reportMd": "reports/punkpeye-fastmcp.md",
+      "reportHtml": "reports/punkpeye-fastmcp.html"
     },
     {
       "id": "crystaldba-postgres-mcp",
@@ -1132,8 +1132,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "crystaldba-postgres-mcp.md",
-      "reportHtml": "crystaldba-postgres-mcp.html"
+      "reportMd": "reports/crystaldba-postgres-mcp.md",
+      "reportHtml": "reports/crystaldba-postgres-mcp.html"
     },
     {
       "id": "nerding-io-n8n-nodes-mcp",
@@ -1148,8 +1148,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "nerding-io-n8n-nodes-mcp.md",
-      "reportHtml": "nerding-io-n8n-nodes-mcp.html"
+      "reportMd": "reports/nerding-io-n8n-nodes-mcp.md",
+      "reportHtml": "reports/nerding-io-n8n-nodes-mcp.html"
     },
     {
       "id": "pleaseprompto-notebooklm-mcp",
@@ -1168,8 +1168,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "pleaseprompto-notebooklm-mcp.md",
-      "reportHtml": "pleaseprompto-notebooklm-mcp.html"
+      "reportMd": "reports/pleaseprompto-notebooklm-mcp.md",
+      "reportHtml": "reports/pleaseprompto-notebooklm-mcp.html"
     },
     {
       "id": "blazickjp-arxiv-mcp-server",
@@ -1185,8 +1185,8 @@
         "MCP-CONFIG-001",
         "MCP-CODE-006"
       ],
-      "reportMd": "blazickjp-arxiv-mcp-server.md",
-      "reportHtml": "blazickjp-arxiv-mcp-server.html"
+      "reportMd": "reports/blazickjp-arxiv-mcp-server.md",
+      "reportHtml": "reports/blazickjp-arxiv-mcp-server.html"
     },
     {
       "id": "jpisnice-shadcn-ui-mcp-server",
@@ -1205,8 +1205,8 @@
         "MCP-CODE-003",
         "MCP-CODE-003"
       ],
-      "reportMd": "jpisnice-shadcn-ui-mcp-server.md",
-      "reportHtml": "jpisnice-shadcn-ui-mcp-server.html"
+      "reportMd": "reports/jpisnice-shadcn-ui-mcp-server.md",
+      "reportHtml": "reports/jpisnice-shadcn-ui-mcp-server.html"
     },
     {
       "id": "taylorwilsdon-google_workspace_mcp",
@@ -1225,8 +1225,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "taylorwilsdon-google_workspace_mcp.md",
-      "reportHtml": "taylorwilsdon-google_workspace_mcp.html"
+      "reportMd": "reports/taylorwilsdon-google_workspace_mcp.md",
+      "reportHtml": "reports/taylorwilsdon-google_workspace_mcp.html"
     },
     {
       "id": "supabase-mcp",
@@ -1245,8 +1245,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "supabase-mcp.md",
-      "reportHtml": "supabase-mcp.html"
+      "reportMd": "reports/supabase-mcp.md",
+      "reportHtml": "reports/supabase-mcp.html"
     },
     {
       "id": "ahujasid-ableton-mcp",
@@ -1259,8 +1259,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "ahujasid-ableton-mcp.md",
-      "reportHtml": "ahujasid-ableton-mcp.html"
+      "reportMd": "reports/ahujasid-ableton-mcp.md",
+      "reportHtml": "reports/ahujasid-ableton-mcp.html"
     },
     {
       "id": "zcaceres-markdownify-mcp",
@@ -1279,8 +1279,8 @@
         "MCP-SUPPLY-003",
         "MCP-CODE-006"
       ],
-      "reportMd": "zcaceres-markdownify-mcp.md",
-      "reportHtml": "zcaceres-markdownify-mcp.html"
+      "reportMd": "reports/zcaceres-markdownify-mcp.md",
+      "reportHtml": "reports/zcaceres-markdownify-mcp.html"
     },
     {
       "id": "stickerdaniel-linkedin-mcp-server",
@@ -1299,8 +1299,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "stickerdaniel-linkedin-mcp-server.md",
-      "reportHtml": "stickerdaniel-linkedin-mcp-server.html"
+      "reportMd": "reports/stickerdaniel-linkedin-mcp-server.md",
+      "reportHtml": "reports/stickerdaniel-linkedin-mcp-server.html"
     },
     {
       "id": "sparfenyuk-mcp-proxy",
@@ -1315,8 +1315,8 @@
       "topRules": [
         "MCP-SG-PY-006"
       ],
-      "reportMd": "sparfenyuk-mcp-proxy.md",
-      "reportHtml": "sparfenyuk-mcp-proxy.html"
+      "reportMd": "reports/sparfenyuk-mcp-proxy.md",
+      "reportHtml": "reports/sparfenyuk-mcp-proxy.html"
     },
     {
       "id": "googleanalytics-google-analytics-mcp",
@@ -1329,8 +1329,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "googleanalytics-google-analytics-mcp.md",
-      "reportHtml": "googleanalytics-google-analytics-mcp.html"
+      "reportMd": "reports/googleanalytics-google-analytics-mcp.md",
+      "reportHtml": "reports/googleanalytics-google-analytics-mcp.html"
     },
     {
       "id": "srbhptl39-mcp-superassistant",
@@ -1349,8 +1349,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "srbhptl39-mcp-superassistant.md",
-      "reportHtml": "srbhptl39-mcp-superassistant.html"
+      "reportMd": "reports/srbhptl39-mcp-superassistant.md",
+      "reportHtml": "reports/srbhptl39-mcp-superassistant.html"
     },
     {
       "id": "metatool-ai-metamcp",
@@ -1369,8 +1369,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "metatool-ai-metamcp.md",
-      "reportHtml": "metatool-ai-metamcp.html"
+      "reportMd": "reports/metatool-ai-metamcp.md",
+      "reportHtml": "reports/metatool-ai-metamcp.html"
     },
     {
       "id": "brightdata-brightdata-mcp",
@@ -1389,8 +1389,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "brightdata-brightdata-mcp.md",
-      "reportHtml": "brightdata-brightdata-mcp.html"
+      "reportMd": "reports/brightdata-brightdata-mcp.md",
+      "reportHtml": "reports/brightdata-brightdata-mcp.html"
     },
     {
       "id": "knowsuchagency-mcp2cli",
@@ -1409,8 +1409,8 @@
         "MCP-META-004",
         "MCP-META-004"
       ],
-      "reportMd": "knowsuchagency-mcp2cli.md",
-      "reportHtml": "knowsuchagency-mcp2cli.html"
+      "reportMd": "reports/knowsuchagency-mcp2cli.md",
+      "reportHtml": "reports/knowsuchagency-mcp2cli.html"
     },
     {
       "id": "jamubc-gemini-mcp-tool",
@@ -1429,8 +1429,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "jamubc-gemini-mcp-tool.md",
-      "reportHtml": "jamubc-gemini-mcp-tool.html"
+      "reportMd": "reports/jamubc-gemini-mcp-tool.md",
+      "reportHtml": "reports/jamubc-gemini-mcp-tool.html"
     },
     {
       "id": "financial-datasets-mcp-server",
@@ -1445,8 +1445,8 @@
       "topRules": [
         "MCP-CODE-007"
       ],
-      "reportMd": "financial-datasets-mcp-server.md",
-      "reportHtml": "financial-datasets-mcp-server.html"
+      "reportMd": "reports/financial-datasets-mcp-server.md",
+      "reportHtml": "reports/financial-datasets-mcp-server.html"
     },
     {
       "id": "samanhappy-mcphub",
@@ -1465,8 +1465,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "samanhappy-mcphub.md",
-      "reportHtml": "samanhappy-mcphub.html"
+      "reportMd": "reports/samanhappy-mcphub.md",
+      "reportHtml": "reports/samanhappy-mcphub.html"
     },
     {
       "id": "coleam00-mcp-crawl4ai-rag",
@@ -1485,8 +1485,8 @@
         "MCP-CODE-006",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "coleam00-mcp-crawl4ai-rag.md",
-      "reportHtml": "coleam00-mcp-crawl4ai-rag.html"
+      "reportMd": "reports/coleam00-mcp-crawl4ai-rag.md",
+      "reportHtml": "reports/coleam00-mcp-crawl4ai-rag.html"
     },
     {
       "id": "tavily-ai-tavily-mcp",
@@ -1504,8 +1504,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "tavily-ai-tavily-mcp.md",
-      "reportHtml": "tavily-ai-tavily-mcp.html"
+      "reportMd": "reports/tavily-ai-tavily-mcp.md",
+      "reportHtml": "reports/tavily-ai-tavily-mcp.html"
     },
     {
       "id": "chrisryugj-korean-law-mcp",
@@ -1524,8 +1524,8 @@
         "MCP-CODE-006",
         "MCP-CODE-007"
       ],
-      "reportMd": "chrisryugj-korean-law-mcp.md",
-      "reportHtml": "chrisryugj-korean-law-mcp.html"
+      "reportMd": "reports/chrisryugj-korean-law-mcp.md",
+      "reportHtml": "reports/chrisryugj-korean-law-mcp.html"
     },
     {
       "id": "louislva-claude-peers-mcp",
@@ -1541,8 +1541,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "louislva-claude-peers-mcp.md",
-      "reportHtml": "louislva-claude-peers-mcp.html"
+      "reportMd": "reports/louislva-claude-peers-mcp.md",
+      "reportHtml": "reports/louislva-claude-peers-mcp.html"
     },
     {
       "id": "yctimlin-mcp_excalidraw",
@@ -1561,8 +1561,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "yctimlin-mcp_excalidraw.md",
-      "reportHtml": "yctimlin-mcp_excalidraw.html"
+      "reportMd": "reports/yctimlin-mcp_excalidraw.md",
+      "reportHtml": "reports/yctimlin-mcp_excalidraw.html"
     },
     {
       "id": "zhizhuodemao-js-reverse-mcp",
@@ -1581,8 +1581,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "zhizhuodemao-js-reverse-mcp.md",
-      "reportHtml": "zhizhuodemao-js-reverse-mcp.html"
+      "reportMd": "reports/zhizhuodemao-js-reverse-mcp.md",
+      "reportHtml": "reports/zhizhuodemao-js-reverse-mcp.html"
     },
     {
       "id": "cjo4m06-mcp-shrimp-task-manager",
@@ -1601,8 +1601,8 @@
         "MCP-CODE-003",
         "MCP-CODE-003"
       ],
-      "reportMd": "cjo4m06-mcp-shrimp-task-manager.md",
-      "reportHtml": "cjo4m06-mcp-shrimp-task-manager.html"
+      "reportMd": "reports/cjo4m06-mcp-shrimp-task-manager.md",
+      "reportHtml": "reports/cjo4m06-mcp-shrimp-task-manager.html"
     },
     {
       "id": "joshuayoes-ios-simulator-mcp",
@@ -1620,8 +1620,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "joshuayoes-ios-simulator-mcp.md",
-      "reportHtml": "joshuayoes-ios-simulator-mcp.html"
+      "reportMd": "reports/joshuayoes-ios-simulator-mcp.md",
+      "reportHtml": "reports/joshuayoes-ios-simulator-mcp.html"
     },
     {
       "id": "openags-paper-search-mcp",
@@ -1640,8 +1640,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "openags-paper-search-mcp.md",
-      "reportHtml": "openags-paper-search-mcp.html"
+      "reportMd": "reports/openags-paper-search-mcp.md",
+      "reportHtml": "reports/openags-paper-search-mcp.html"
     },
     {
       "id": "mcp-router-mcp-router",
@@ -1660,8 +1660,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "mcp-router-mcp-router.md",
-      "reportHtml": "mcp-router-mcp-router.html"
+      "reportMd": "reports/mcp-router-mcp-router.md",
+      "reportHtml": "reports/mcp-router-mcp-router.html"
     },
     {
       "id": "chatmcp-mcpso",
@@ -1678,8 +1678,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "chatmcp-mcpso.md",
-      "reportHtml": "chatmcp-mcpso.html"
+      "reportMd": "reports/chatmcp-mcpso.md",
+      "reportHtml": "reports/chatmcp-mcpso.html"
     },
     {
       "id": "dicklesworthstone-mcp_agent_mail",
@@ -1698,8 +1698,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "dicklesworthstone-mcp_agent_mail.md",
-      "reportHtml": "dicklesworthstone-mcp_agent_mail.html"
+      "reportMd": "reports/dicklesworthstone-mcp_agent_mail.md",
+      "reportHtml": "reports/dicklesworthstone-mcp_agent_mail.html"
     },
     {
       "id": "modelcontextprotocol-mcpb",
@@ -1721,8 +1721,8 @@
       "limitations": [
         "Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "modelcontextprotocol-mcpb.md",
-      "reportHtml": "modelcontextprotocol-mcpb.html"
+      "reportMd": "reports/modelcontextprotocol-mcpb.md",
+      "reportHtml": "reports/modelcontextprotocol-mcpb.html"
     },
     {
       "id": "ibm-mcp-cli",
@@ -1741,8 +1741,8 @@
         "MCP-CODE-006",
         "MCP-CODE-005"
       ],
-      "reportMd": "ibm-mcp-cli.md",
-      "reportHtml": "ibm-mcp-cli.html"
+      "reportMd": "reports/ibm-mcp-cli.md",
+      "reportHtml": "reports/ibm-mcp-cli.html"
     },
     {
       "id": "jgravelle-jcodemunch-mcp",
@@ -1764,8 +1764,8 @@
       "limitations": [
         "Additionally, C, C#, C++, Dart, Elixir, Go, Java, PHP, Ruby, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "jgravelle-jcodemunch-mcp.md",
-      "reportHtml": "jgravelle-jcodemunch-mcp.html"
+      "reportMd": "reports/jgravelle-jcodemunch-mcp.md",
+      "reportHtml": "reports/jgravelle-jcodemunch-mcp.html"
     },
     {
       "id": "southleft-figma-console-mcp",
@@ -1784,8 +1784,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "southleft-figma-console-mcp.md",
-      "reportHtml": "southleft-figma-console-mcp.html"
+      "reportMd": "reports/southleft-figma-console-mcp.md",
+      "reportHtml": "reports/southleft-figma-console-mcp.html"
     },
     {
       "id": "benborla-mcp-server-mysql",
@@ -1803,8 +1803,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "benborla-mcp-server-mysql.md",
-      "reportHtml": "benborla-mcp-server-mysql.html"
+      "reportMd": "reports/benborla-mcp-server-mysql.md",
+      "reportHtml": "reports/benborla-mcp-server-mysql.html"
     },
     {
       "id": "dsphper-lanhu-mcp",
@@ -1823,8 +1823,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "dsphper-lanhu-mcp.md",
-      "reportHtml": "dsphper-lanhu-mcp.html"
+      "reportMd": "reports/dsphper-lanhu-mcp.md",
+      "reportHtml": "reports/dsphper-lanhu-mcp.html"
     },
     {
       "id": "microsoft-azure-devops-mcp",
@@ -1843,8 +1843,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "microsoft-azure-devops-mcp.md",
-      "reportHtml": "microsoft-azure-devops-mcp.html"
+      "reportMd": "reports/microsoft-azure-devops-mcp.md",
+      "reportHtml": "reports/microsoft-azure-devops-mcp.html"
     },
     {
       "id": "6551team-opennews-mcp",
@@ -1859,8 +1859,8 @@
       "topRules": [
         "MCP-CODE-007"
       ],
-      "reportMd": "6551team-opennews-mcp.md",
-      "reportHtml": "6551team-opennews-mcp.html"
+      "reportMd": "reports/6551team-opennews-mcp.md",
+      "reportHtml": "reports/6551team-opennews-mcp.html"
     },
     {
       "id": "zereight-gitlab-mcp",
@@ -1882,8 +1882,8 @@
       "limitations": [
         "Additionally, Ruby source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "zereight-gitlab-mcp.md",
-      "reportHtml": "zereight-gitlab-mcp.html"
+      "reportMd": "reports/zereight-gitlab-mcp.md",
+      "reportHtml": "reports/zereight-gitlab-mcp.html"
     },
     {
       "id": "microsoftdocs-mcp",
@@ -1896,8 +1896,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "microsoftdocs-mcp.md",
-      "reportHtml": "microsoftdocs-mcp.html"
+      "reportMd": "reports/microsoftdocs-mcp.md",
+      "reportHtml": "reports/microsoftdocs-mcp.html"
     },
     {
       "id": "p4nda0s-ida-no-mcp",
@@ -1916,8 +1916,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "p4nda0s-ida-no-mcp.md",
-      "reportHtml": "p4nda0s-ida-no-mcp.html"
+      "reportMd": "reports/p4nda0s-ida-no-mcp.md",
+      "reportHtml": "reports/p4nda0s-ida-no-mcp.html"
     },
     {
       "id": "vmoranv-jshookmcp",
@@ -1939,8 +1939,8 @@
       "limitations": [
         "Additionally, Java, Kotlin source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "vmoranv-jshookmcp.md",
-      "reportHtml": "vmoranv-jshookmcp.html"
+      "reportMd": "reports/vmoranv-jshookmcp.md",
+      "reportHtml": "reports/vmoranv-jshookmcp.html"
     },
     {
       "id": "apify-apify-mcp-server",
@@ -1959,8 +1959,8 @@
         "MCP-SG-JS-006",
         "MCP-META-004"
       ],
-      "reportMd": "apify-apify-mcp-server.md",
-      "reportHtml": "apify-apify-mcp-server.html"
+      "reportMd": "reports/apify-apify-mcp-server.md",
+      "reportHtml": "reports/apify-apify-mcp-server.html"
     },
     {
       "id": "noopstudios-interactive-feedback-mcp",
@@ -1978,8 +1978,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "noopstudios-interactive-feedback-mcp.md",
-      "reportHtml": "noopstudios-interactive-feedback-mcp.html"
+      "reportMd": "reports/noopstudios-interactive-feedback-mcp.md",
+      "reportHtml": "reports/noopstudios-interactive-feedback-mcp.html"
     },
     {
       "id": "supermemoryai-supermemory-mcp",
@@ -1997,8 +1997,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "supermemoryai-supermemory-mcp.md",
-      "reportHtml": "supermemoryai-supermemory-mcp.html"
+      "reportMd": "reports/supermemoryai-supermemory-mcp.md",
+      "reportHtml": "reports/supermemoryai-supermemory-mcp.html"
     },
     {
       "id": "mcp-brasil-mcp-brasil",
@@ -2017,8 +2017,8 @@
         "MCP-SG-PY-005",
         "MCP-SG-PY-005"
       ],
-      "reportMd": "mcp-brasil-mcp-brasil.md",
-      "reportHtml": "mcp-brasil-mcp-brasil.html"
+      "reportMd": "reports/mcp-brasil-mcp-brasil.md",
+      "reportHtml": "reports/mcp-brasil-mcp-brasil.html"
     },
     {
       "id": "copilotkit-open-mcp-client",
@@ -2035,8 +2035,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "copilotkit-open-mcp-client.md",
-      "reportHtml": "copilotkit-open-mcp-client.html"
+      "reportMd": "reports/copilotkit-open-mcp-client.md",
+      "reportHtml": "reports/copilotkit-open-mcp-client.html"
     },
     {
       "id": "leonardsellem-n8n-mcp-server",
@@ -2055,8 +2055,8 @@
         "MCP-SG-JS-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "leonardsellem-n8n-mcp-server.md",
-      "reportHtml": "leonardsellem-n8n-mcp-server.html"
+      "reportMd": "reports/leonardsellem-n8n-mcp-server.md",
+      "reportHtml": "reports/leonardsellem-n8n-mcp-server.html"
     },
     {
       "id": "datagouv-datagouv-mcp",
@@ -2071,8 +2071,8 @@
       "topRules": [
         "MCP-SG-PY-006"
       ],
-      "reportMd": "datagouv-datagouv-mcp.md",
-      "reportHtml": "datagouv-datagouv-mcp.html"
+      "reportMd": "reports/datagouv-datagouv-mcp.md",
+      "reportHtml": "reports/datagouv-datagouv-mcp.html"
     },
     {
       "id": "jau123-meigen-ai-design-mcp",
@@ -2091,8 +2091,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "jau123-meigen-ai-design-mcp.md",
-      "reportHtml": "jau123-meigen-ai-design-mcp.html"
+      "reportMd": "reports/jau123-meigen-ai-design-mcp.md",
+      "reportHtml": "reports/jau123-meigen-ai-design-mcp.html"
     },
     {
       "id": "anaisbetts-mcp-installer",
@@ -2109,8 +2109,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "anaisbetts-mcp-installer.md",
-      "reportHtml": "anaisbetts-mcp-installer.html"
+      "reportMd": "reports/anaisbetts-mcp-installer.md",
+      "reportHtml": "reports/anaisbetts-mcp-installer.html"
     },
     {
       "id": "minimax-ai-minimax-mcp",
@@ -2129,8 +2129,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "minimax-ai-minimax-mcp.md",
-      "reportHtml": "minimax-ai-minimax-mcp.html"
+      "reportMd": "reports/minimax-ai-minimax-mcp.md",
+      "reportHtml": "reports/minimax-ai-minimax-mcp.html"
     },
     {
       "id": "bitbonsai-mcpvault",
@@ -2146,8 +2146,8 @@
         "MCP-META-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "bitbonsai-mcpvault.md",
-      "reportHtml": "bitbonsai-mcpvault.html"
+      "reportMd": "reports/bitbonsai-mcpvault.md",
+      "reportHtml": "reports/bitbonsai-mcpvault.html"
     },
     {
       "id": "geelen-mcp-remote",
@@ -2166,8 +2166,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "geelen-mcp-remote.md",
-      "reportHtml": "geelen-mcp-remote.html"
+      "reportMd": "reports/geelen-mcp-remote.md",
+      "reportHtml": "reports/geelen-mcp-remote.html"
     },
     {
       "id": "vibheksoni-stealth-browser-mcp",
@@ -2186,8 +2186,8 @@
         "MCP-SG-PY-002",
         "MCP-CODE-006"
       ],
-      "reportMd": "vibheksoni-stealth-browser-mcp.md",
-      "reportHtml": "vibheksoni-stealth-browser-mcp.html"
+      "reportMd": "reports/vibheksoni-stealth-browser-mcp.md",
+      "reportHtml": "reports/vibheksoni-stealth-browser-mcp.html"
     },
     {
       "id": "mixelpixx-kicad-mcp-server",
@@ -2206,8 +2206,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "mixelpixx-kicad-mcp-server.md",
-      "reportHtml": "mixelpixx-kicad-mcp-server.html"
+      "reportMd": "reports/mixelpixx-kicad-mcp-server.md",
+      "reportHtml": "reports/mixelpixx-kicad-mcp-server.html"
     },
     {
       "id": "elevenlabs-elevenlabs-mcp",
@@ -2226,8 +2226,8 @@
         "MCP-CODE-006",
         "MCP-META-004"
       ],
-      "reportMd": "elevenlabs-elevenlabs-mcp.md",
-      "reportHtml": "elevenlabs-elevenlabs-mcp.html"
+      "reportMd": "reports/elevenlabs-elevenlabs-mcp.md",
+      "reportHtml": "reports/elevenlabs-elevenlabs-mcp.html"
     },
     {
       "id": "qdrant-mcp-server-qdrant",
@@ -2240,8 +2240,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "qdrant-mcp-server-qdrant.md",
-      "reportHtml": "qdrant-mcp-server-qdrant.html"
+      "reportMd": "reports/qdrant-mcp-server-qdrant.md",
+      "reportHtml": "reports/qdrant-mcp-server-qdrant.html"
     },
     {
       "id": "flux159-mcp-server-kubernetes",
@@ -2260,8 +2260,8 @@
         "MCP-META-003",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "flux159-mcp-server-kubernetes.md",
-      "reportHtml": "flux159-mcp-server-kubernetes.html"
+      "reportMd": "reports/flux159-mcp-server-kubernetes.md",
+      "reportHtml": "reports/flux159-mcp-server-kubernetes.html"
     },
     {
       "id": "samuelgursky-davinci-resolve-mcp",
@@ -2280,8 +2280,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "samuelgursky-davinci-resolve-mcp.md",
-      "reportHtml": "samuelgursky-davinci-resolve-mcp.html"
+      "reportMd": "reports/samuelgursky-davinci-resolve-mcp.md",
+      "reportHtml": "reports/samuelgursky-davinci-resolve-mcp.html"
     },
     {
       "id": "svnscha-mcp-windbg",
@@ -2301,8 +2301,8 @@
       "limitations": [
         "Additionally, C++ source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "svnscha-mcp-windbg.md",
-      "reportHtml": "svnscha-mcp-windbg.html"
+      "reportMd": "reports/svnscha-mcp-windbg.md",
+      "reportHtml": "reports/svnscha-mcp-windbg.html"
     },
     {
       "id": "6551team-opentwitter-mcp",
@@ -2317,8 +2317,8 @@
       "topRules": [
         "MCP-CODE-007"
       ],
-      "reportMd": "6551team-opentwitter-mcp.md",
-      "reportHtml": "6551team-opentwitter-mcp.html"
+      "reportMd": "reports/6551team-opentwitter-mcp.md",
+      "reportHtml": "reports/6551team-opentwitter-mcp.html"
     },
     {
       "id": "regenrek-deepwiki-mcp",
@@ -2337,8 +2337,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "regenrek-deepwiki-mcp.md",
-      "reportHtml": "regenrek-deepwiki-mcp.html"
+      "reportMd": "reports/regenrek-deepwiki-mcp.md",
+      "reportHtml": "reports/regenrek-deepwiki-mcp.html"
     },
     {
       "id": "robotmcp-ros-mcp-server",
@@ -2354,8 +2354,8 @@
         "MCP-CODE-006",
         "MCP-META-005"
       ],
-      "reportMd": "robotmcp-ros-mcp-server.md",
-      "reportHtml": "robotmcp-ros-mcp-server.html"
+      "reportMd": "reports/robotmcp-ros-mcp-server.md",
+      "reportHtml": "reports/robotmcp-ros-mcp-server.html"
     },
     {
       "id": "designcomputer-mysql_mcp_server",
@@ -2370,8 +2370,8 @@
       "topRules": [
         "MCP-SG-PY-006"
       ],
-      "reportMd": "designcomputer-mysql_mcp_server.md",
-      "reportHtml": "designcomputer-mysql_mcp_server.html"
+      "reportMd": "reports/designcomputer-mysql_mcp_server.md",
+      "reportHtml": "reports/designcomputer-mysql_mcp_server.html"
     },
     {
       "id": "nickclyde-duckduckgo-mcp-server",
@@ -2384,8 +2384,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "nickclyde-duckduckgo-mcp-server.md",
-      "reportHtml": "nickclyde-duckduckgo-mcp-server.html"
+      "reportMd": "reports/nickclyde-duckduckgo-mcp-server.md",
+      "reportHtml": "reports/nickclyde-duckduckgo-mcp-server.html"
     },
     {
       "id": "harishsg993010-damn-vulnerable-mcp-server",
@@ -2404,8 +2404,8 @@
         "MCP-CODE-004",
         "MCP-CODE-004"
       ],
-      "reportMd": "harishsg993010-damn-vulnerable-mcp-server.md",
-      "reportHtml": "harishsg993010-damn-vulnerable-mcp-server.html"
+      "reportMd": "reports/harishsg993010-damn-vulnerable-mcp-server.md",
+      "reportHtml": "reports/harishsg993010-damn-vulnerable-mcp-server.html"
     },
     {
       "id": "lgazo-drawio-mcp-server",
@@ -2424,8 +2424,8 @@
         "MCP-SG-JS-001",
         "MCP-META-005"
       ],
-      "reportMd": "lgazo-drawio-mcp-server.md",
-      "reportHtml": "lgazo-drawio-mcp-server.html"
+      "reportMd": "reports/lgazo-drawio-mcp-server.md",
+      "reportHtml": "reports/lgazo-drawio-mcp-server.html"
     },
     {
       "id": "chigwell-telegram-mcp",
@@ -2441,8 +2441,8 @@
         "MCP-CODE-006",
         "MCP-META-001"
       ],
-      "reportMd": "chigwell-telegram-mcp.md",
-      "reportHtml": "chigwell-telegram-mcp.html"
+      "reportMd": "reports/chigwell-telegram-mcp.md",
+      "reportHtml": "reports/chigwell-telegram-mcp.html"
     },
     {
       "id": "brave-brave-search-mcp-server",
@@ -2461,8 +2461,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "brave-brave-search-mcp-server.md",
-      "reportHtml": "brave-brave-search-mcp-server.html"
+      "reportMd": "reports/brave-brave-search-mcp-server.md",
+      "reportHtml": "reports/brave-brave-search-mcp-server.html"
     },
     {
       "id": "caol64-wenyan-mcp",
@@ -2481,8 +2481,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "caol64-wenyan-mcp.md",
-      "reportHtml": "caol64-wenyan-mcp.html"
+      "reportMd": "reports/caol64-wenyan-mcp.md",
+      "reportHtml": "reports/caol64-wenyan-mcp.html"
     },
     {
       "id": "neka-nat-freecad-mcp",
@@ -2501,8 +2501,8 @@
         "MCP-CODE-006",
         "MCP-CODE-005"
       ],
-      "reportMd": "neka-nat-freecad-mcp.md",
-      "reportHtml": "neka-nat-freecad-mcp.html"
+      "reportMd": "reports/neka-nat-freecad-mcp.md",
+      "reportHtml": "reports/neka-nat-freecad-mcp.html"
     },
     {
       "id": "rinadelph-agent-mcp",
@@ -2521,8 +2521,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "rinadelph-agent-mcp.md",
-      "reportHtml": "rinadelph-agent-mcp.html"
+      "reportMd": "reports/rinadelph-agent-mcp.md",
+      "reportHtml": "reports/rinadelph-agent-mcp.html"
     },
     {
       "id": "philschmid-mcp-cli",
@@ -2538,8 +2538,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "philschmid-mcp-cli.md",
-      "reportHtml": "philschmid-mcp-cli.html"
+      "reportMd": "reports/philschmid-mcp-cli.md",
+      "reportHtml": "reports/philschmid-mcp-cli.html"
     },
     {
       "id": "datalayer-jupyter-mcp-server",
@@ -2558,8 +2558,8 @@
         "MCP-CONFIG-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "datalayer-jupyter-mcp-server.md",
-      "reportHtml": "datalayer-jupyter-mcp-server.html"
+      "reportMd": "reports/datalayer-jupyter-mcp-server.md",
+      "reportHtml": "reports/datalayer-jupyter-mcp-server.html"
     },
     {
       "id": "daxianlee-cocos-mcp-server",
@@ -2578,8 +2578,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "daxianlee-cocos-mcp-server.md",
-      "reportHtml": "daxianlee-cocos-mcp-server.html"
+      "reportMd": "reports/daxianlee-cocos-mcp-server.md",
+      "reportHtml": "reports/daxianlee-cocos-mcp-server.html"
     },
     {
       "id": "nspady-google-calendar-mcp",
@@ -2598,8 +2598,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "nspady-google-calendar-mcp.md",
-      "reportHtml": "nspady-google-calendar-mcp.html"
+      "reportMd": "reports/nspady-google-calendar-mcp.md",
+      "reportHtml": "reports/nspady-google-calendar-mcp.html"
     },
     {
       "id": "ref-tools-ref-tools-mcp",
@@ -2618,8 +2618,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "ref-tools-ref-tools-mcp.md",
-      "reportHtml": "ref-tools-ref-tools-mcp.html"
+      "reportMd": "reports/ref-tools-ref-tools-mcp.md",
+      "reportHtml": "reports/ref-tools-ref-tools-mcp.html"
     },
     {
       "id": "aminforou-mcp-gsc",
@@ -2638,8 +2638,8 @@
         "MCP-CONFIG-001",
         "MCP-CONFIG-001"
       ],
-      "reportMd": "aminforou-mcp-gsc.md",
-      "reportHtml": "aminforou-mcp-gsc.html"
+      "reportMd": "reports/aminforou-mcp-gsc.md",
+      "reportHtml": "reports/aminforou-mcp-gsc.html"
     },
     {
       "id": "joooook-12306-mcp",
@@ -2655,8 +2655,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "joooook-12306-mcp.md",
-      "reportHtml": "joooook-12306-mcp.html"
+      "reportMd": "reports/joooook-12306-mcp.md",
+      "reportHtml": "reports/joooook-12306-mcp.html"
     },
     {
       "id": "mongodb-js-mongodb-mcp-server",
@@ -2675,8 +2675,8 @@
         "MCP-CODE-006",
         "MCP-CODE-002"
       ],
-      "reportMd": "mongodb-js-mongodb-mcp-server.md",
-      "reportHtml": "mongodb-js-mongodb-mcp-server.html"
+      "reportMd": "reports/mongodb-js-mongodb-mcp-server.md",
+      "reportHtml": "reports/mongodb-js-mongodb-mcp-server.html"
     },
     {
       "id": "ath-maas-pixelle-mcp",
@@ -2695,8 +2695,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "ath-maas-pixelle-mcp.md",
-      "reportHtml": "ath-maas-pixelle-mcp.html"
+      "reportMd": "reports/ath-maas-pixelle-mcp.md",
+      "reportHtml": "reports/ath-maas-pixelle-mcp.html"
     },
     {
       "id": "mukul975-cve-mcp-server",
@@ -2715,8 +2715,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "mukul975-cve-mcp-server.md",
-      "reportHtml": "mukul975-cve-mcp-server.html"
+      "reportMd": "reports/mukul975-cve-mcp-server.md",
+      "reportHtml": "reports/mukul975-cve-mcp-server.html"
     },
     {
       "id": "miguelspizza-webmcp",
@@ -2735,8 +2735,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "miguelspizza-webmcp.md",
-      "reportHtml": "miguelspizza-webmcp.html"
+      "reportMd": "reports/miguelspizza-webmcp.md",
+      "reportHtml": "reports/miguelspizza-webmcp.html"
     },
     {
       "id": "ifuryst-rednote-mcp",
@@ -2749,8 +2749,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "ifuryst-rednote-mcp.md",
-      "reportHtml": "ifuryst-rednote-mcp.html"
+      "reportMd": "reports/ifuryst-rednote-mcp.md",
+      "reportHtml": "reports/ifuryst-rednote-mcp.html"
     },
     {
       "id": "jae-jae-fetcher-mcp",
@@ -2767,8 +2767,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "jae-jae-fetcher-mcp.md",
-      "reportHtml": "jae-jae-fetcher-mcp.html"
+      "reportMd": "reports/jae-jae-fetcher-mcp.md",
+      "reportHtml": "reports/jae-jae-fetcher-mcp.html"
     },
     {
       "id": "pipeboard-co-meta-ads-mcp",
@@ -2787,8 +2787,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "pipeboard-co-meta-ads-mcp.md",
-      "reportHtml": "pipeboard-co-meta-ads-mcp.html"
+      "reportMd": "reports/pipeboard-co-meta-ads-mcp.md",
+      "reportHtml": "reports/pipeboard-co-meta-ads-mcp.html"
     },
     {
       "id": "tencentcloudbase-cloudbase-mcp",
@@ -2807,8 +2807,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "tencentcloudbase-cloudbase-mcp.md",
-      "reportHtml": "tencentcloudbase-cloudbase-mcp.html"
+      "reportMd": "reports/tencentcloudbase-cloudbase-mcp.md",
+      "reportHtml": "reports/tencentcloudbase-cloudbase-mcp.html"
     },
     {
       "id": "chatmcp-mcp-server-chatsum",
@@ -2823,8 +2823,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "chatmcp-mcp-server-chatsum.md",
-      "reportHtml": "chatmcp-mcp-server-chatsum.html"
+      "reportMd": "reports/chatmcp-mcp-server-chatsum.md",
+      "reportHtml": "reports/chatmcp-mcp-server-chatsum.html"
     },
     {
       "id": "jerry-ai-dev-modular-rag-mcp-server",
@@ -2843,8 +2843,8 @@
         "MCP-CODE-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "jerry-ai-dev-modular-rag-mcp-server.md",
-      "reportHtml": "jerry-ai-dev-modular-rag-mcp-server.html"
+      "reportMd": "reports/jerry-ai-dev-modular-rag-mcp-server.md",
+      "reportHtml": "reports/jerry-ai-dev-modular-rag-mcp-server.html"
     },
     {
       "id": "ihor-sokoliuk-mcp-searxng",
@@ -2863,8 +2863,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "ihor-sokoliuk-mcp-searxng.md",
-      "reportHtml": "ihor-sokoliuk-mcp-searxng.html"
+      "reportMd": "reports/ihor-sokoliuk-mcp-searxng.md",
+      "reportHtml": "reports/ihor-sokoliuk-mcp-searxng.html"
     },
     {
       "id": "jjsantos01-qgis_mcp",
@@ -2879,8 +2879,8 @@
       "topRules": [
         "MCP-SG-PY-002"
       ],
-      "reportMd": "jjsantos01-qgis_mcp.md",
-      "reportHtml": "jjsantos01-qgis_mcp.html"
+      "reportMd": "reports/jjsantos01-qgis_mcp.md",
+      "reportHtml": "reports/jjsantos01-qgis_mcp.html"
     },
     {
       "id": "langchain-ai-mcpdoc",
@@ -2893,8 +2893,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "langchain-ai-mcpdoc.md",
-      "reportHtml": "langchain-ai-mcpdoc.html"
+      "reportMd": "reports/langchain-ai-mcpdoc.md",
+      "reportHtml": "reports/langchain-ai-mcpdoc.html"
     },
     {
       "id": "saidsurucu-yargi-mcp",
@@ -2913,8 +2913,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "saidsurucu-yargi-mcp.md",
-      "reportHtml": "saidsurucu-yargi-mcp.html"
+      "reportMd": "reports/saidsurucu-yargi-mcp.md",
+      "reportHtml": "reports/saidsurucu-yargi-mcp.html"
     },
     {
       "id": "mrkrsl-web-search-mcp",
@@ -2933,8 +2933,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "mrkrsl-web-search-mcp.md",
-      "reportHtml": "mrkrsl-web-search-mcp.html"
+      "reportMd": "reports/mrkrsl-web-search-mcp.md",
+      "reportHtml": "reports/mrkrsl-web-search-mcp.html"
     },
     {
       "id": "cookjohn-zotero-mcp",
@@ -2952,8 +2952,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "cookjohn-zotero-mcp.md",
-      "reportHtml": "cookjohn-zotero-mcp.html"
+      "reportMd": "reports/cookjohn-zotero-mcp.md",
+      "reportHtml": "reports/cookjohn-zotero-mcp.html"
     },
     {
       "id": "cisco-ai-defense-mcp-scanner",
@@ -2972,8 +2972,8 @@
         "MCP-CODE-004",
         "MCP-CODE-004"
       ],
-      "reportMd": "cisco-ai-defense-mcp-scanner.md",
-      "reportHtml": "cisco-ai-defense-mcp-scanner.html"
+      "reportMd": "reports/cisco-ai-defense-mcp-scanner.md",
+      "reportHtml": "reports/cisco-ai-defense-mcp-scanner.html"
     },
     {
       "id": "johnhuang316-code-index-mcp",
@@ -2995,8 +2995,8 @@
       "limitations": [
         "Additionally, C#, Go, Java, Kotlin, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "johnhuang316-code-index-mcp.md",
-      "reportHtml": "johnhuang316-code-index-mcp.html"
+      "reportMd": "reports/johnhuang316-code-index-mcp.md",
+      "reportHtml": "reports/johnhuang316-code-index-mcp.html"
     },
     {
       "id": "neo4j-contrib-mcp-neo4j",
@@ -3009,8 +3009,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "neo4j-contrib-mcp-neo4j.md",
-      "reportHtml": "neo4j-contrib-mcp-neo4j.html"
+      "reportMd": "reports/neo4j-contrib-mcp-neo4j.md",
+      "reportHtml": "reports/neo4j-contrib-mcp-neo4j.html"
     },
     {
       "id": "pathintegral-institute-mcpm.sh",
@@ -3029,8 +3029,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "pathintegral-institute-mcpm.sh.md",
-      "reportHtml": "pathintegral-institute-mcpm.sh.html"
+      "reportMd": "reports/pathintegral-institute-mcpm.sh.md",
+      "reportHtml": "reports/pathintegral-institute-mcpm.sh.html"
     },
     {
       "id": "patruff-ollama-mcp-bridge",
@@ -3049,8 +3049,8 @@
         "MCP-CODE-001",
         "MCP-CODE-001"
       ],
-      "reportMd": "patruff-ollama-mcp-bridge.md",
-      "reportHtml": "patruff-ollama-mcp-bridge.html"
+      "reportMd": "reports/patruff-ollama-mcp-bridge.md",
+      "reportHtml": "reports/patruff-ollama-mcp-bridge.html"
     },
     {
       "id": "nicobailon-pi-mcp-adapter",
@@ -3069,8 +3069,8 @@
         "MCP-CODE-006",
         "MCP-META-005"
       ],
-      "reportMd": "nicobailon-pi-mcp-adapter.md",
-      "reportHtml": "nicobailon-pi-mcp-adapter.html"
+      "reportMd": "reports/nicobailon-pi-mcp-adapter.md",
+      "reportHtml": "reports/nicobailon-pi-mcp-adapter.html"
     },
     {
       "id": "jetbrains-mcp-jetbrains",
@@ -3085,8 +3085,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "jetbrains-mcp-jetbrains.md",
-      "reportHtml": "jetbrains-mcp-jetbrains.html"
+      "reportMd": "reports/jetbrains-mcp-jetbrains.md",
+      "reportHtml": "reports/jetbrains-mcp-jetbrains.html"
     },
     {
       "id": "arcadeai-arcade-mcp",
@@ -3105,8 +3105,8 @@
         "MCP-META-003",
         "MCP-META-003"
       ],
-      "reportMd": "arcadeai-arcade-mcp.md",
-      "reportHtml": "arcadeai-arcade-mcp.html"
+      "reportMd": "reports/arcadeai-arcade-mcp.md",
+      "reportHtml": "reports/arcadeai-arcade-mcp.html"
     },
     {
       "id": "saik0s-mcp-browser-use",
@@ -3123,8 +3123,8 @@
         "MCP-CODE-006",
         "MCP-CODE-007"
       ],
-      "reportMd": "saik0s-mcp-browser-use.md",
-      "reportHtml": "saik0s-mcp-browser-use.html"
+      "reportMd": "reports/saik0s-mcp-browser-use.md",
+      "reportHtml": "reports/saik0s-mcp-browser-use.html"
     },
     {
       "id": "xing5-mcp-google-sheets",
@@ -3143,8 +3143,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "xing5-mcp-google-sheets.md",
-      "reportHtml": "xing5-mcp-google-sheets.html"
+      "reportMd": "reports/xing5-mcp-google-sheets.md",
+      "reportHtml": "reports/xing5-mcp-google-sheets.html"
     },
     {
       "id": "secretiveshell-mcp-bridge",
@@ -3159,8 +3159,8 @@
       "topRules": [
         "MCP-CODE-005"
       ],
-      "reportMd": "secretiveshell-mcp-bridge.md",
-      "reportHtml": "secretiveshell-mcp-bridge.html"
+      "reportMd": "reports/secretiveshell-mcp-bridge.md",
+      "reportHtml": "reports/secretiveshell-mcp-bridge.html"
     },
     {
       "id": "davideast-stitch-mcp",
@@ -3179,8 +3179,8 @@
         "MCP-SG-JS-001",
         "MCP-CODE-006"
       ],
-      "reportMd": "davideast-stitch-mcp.md",
-      "reportHtml": "davideast-stitch-mcp.html"
+      "reportMd": "reports/davideast-stitch-mcp.md",
+      "reportHtml": "reports/davideast-stitch-mcp.html"
     },
     {
       "id": "quantgeekdev-mcp-framework",
@@ -3199,8 +3199,8 @@
         "MCP-META-003",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "quantgeekdev-mcp-framework.md",
-      "reportHtml": "quantgeekdev-mcp-framework.html"
+      "reportMd": "reports/quantgeekdev-mcp-framework.md",
+      "reportHtml": "reports/quantgeekdev-mcp-framework.html"
     },
     {
       "id": "arben-adm-mcp-sequential-thinking",
@@ -3217,8 +3217,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "arben-adm-mcp-sequential-thinking.md",
-      "reportHtml": "arben-adm-mcp-sequential-thinking.html"
+      "reportMd": "reports/arben-adm-mcp-sequential-thinking.md",
+      "reportHtml": "reports/arben-adm-mcp-sequential-thinking.html"
     },
     {
       "id": "rohitg00-kubectl-mcp-server",
@@ -3237,8 +3237,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "rohitg00-kubectl-mcp-server.md",
-      "reportHtml": "rohitg00-kubectl-mcp-server.html"
+      "reportMd": "reports/rohitg00-kubectl-mcp-server.md",
+      "reportHtml": "reports/rohitg00-kubectl-mcp-server.html"
     },
     {
       "id": "alioshr-memory-bank-mcp",
@@ -3257,8 +3257,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "alioshr-memory-bank-mcp.md",
-      "reportHtml": "alioshr-memory-bank-mcp.html"
+      "reportMd": "reports/alioshr-memory-bank-mcp.md",
+      "reportHtml": "reports/alioshr-memory-bank-mcp.html"
     },
     {
       "id": "suekou-mcp-notion-server",
@@ -3275,8 +3275,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "suekou-mcp-notion-server.md",
-      "reportHtml": "suekou-mcp-notion-server.html"
+      "reportMd": "reports/suekou-mcp-notion-server.md",
+      "reportHtml": "reports/suekou-mcp-notion-server.html"
     },
     {
       "id": "antfu-nuxt-mcp-dev",
@@ -3294,8 +3294,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "antfu-nuxt-mcp-dev.md",
-      "reportHtml": "antfu-nuxt-mcp-dev.html"
+      "reportMd": "reports/antfu-nuxt-mcp-dev.md",
+      "reportHtml": "reports/antfu-nuxt-mcp-dev.html"
     },
     {
       "id": "noone-hub-jsreverser-mcp",
@@ -3314,8 +3314,8 @@
         "MCP-CODE-003",
         "MCP-CODE-003"
       ],
-      "reportMd": "noone-hub-jsreverser-mcp.md",
-      "reportHtml": "noone-hub-jsreverser-mcp.html"
+      "reportMd": "reports/noone-hub-jsreverser-mcp.md",
+      "reportHtml": "reports/noone-hub-jsreverser-mcp.html"
     },
     {
       "id": "janwilmake-openapi-mcp-server",
@@ -3330,8 +3330,8 @@
       "topRules": [
         "MCP-SG-JS-005"
       ],
-      "reportMd": "janwilmake-openapi-mcp-server.md",
-      "reportHtml": "janwilmake-openapi-mcp-server.html"
+      "reportMd": "reports/janwilmake-openapi-mcp-server.md",
+      "reportHtml": "reports/janwilmake-openapi-mcp-server.html"
     },
     {
       "id": "shaneholloman-mcp-knowledge-graph",
@@ -3347,8 +3347,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "shaneholloman-mcp-knowledge-graph.md",
-      "reportHtml": "shaneholloman-mcp-knowledge-graph.html"
+      "reportMd": "reports/shaneholloman-mcp-knowledge-graph.md",
+      "reportHtml": "reports/shaneholloman-mcp-knowledge-graph.html"
     },
     {
       "id": "anarkh-lee-universal-db-mcp",
@@ -3367,8 +3367,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "anarkh-lee-universal-db-mcp.md",
-      "reportHtml": "anarkh-lee-universal-db-mcp.html"
+      "reportMd": "reports/anarkh-lee-universal-db-mcp.md",
+      "reportHtml": "reports/anarkh-lee-universal-db-mcp.html"
     },
     {
       "id": "alpacahq-alpaca-mcp-server",
@@ -3387,8 +3387,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "alpacahq-alpaca-mcp-server.md",
-      "reportHtml": "alpacahq-alpaca-mcp-server.html"
+      "reportMd": "reports/alpacahq-alpaca-mcp-server.md",
+      "reportHtml": "reports/alpacahq-alpaca-mcp-server.html"
     },
     {
       "id": "googleapis-gcloud-mcp",
@@ -3410,8 +3410,8 @@
       "limitations": [
         "Additionally, Go source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "googleapis-gcloud-mcp.md",
-      "reportHtml": "googleapis-gcloud-mcp.html"
+      "reportMd": "reports/googleapis-gcloud-mcp.md",
+      "reportHtml": "reports/googleapis-gcloud-mcp.html"
     },
     {
       "id": "steipete-macos-automator-mcp",
@@ -3430,8 +3430,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "steipete-macos-automator-mcp.md",
-      "reportHtml": "steipete-macos-automator-mcp.html"
+      "reportMd": "reports/steipete-macos-automator-mcp.md",
+      "reportHtml": "reports/steipete-macos-automator-mcp.html"
     },
     {
       "id": "atlassian-atlassian-mcp-server",
@@ -3444,8 +3444,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "atlassian-atlassian-mcp-server.md",
-      "reportHtml": "atlassian-atlassian-mcp-server.html"
+      "reportMd": "reports/atlassian-atlassian-mcp-server.md",
+      "reportHtml": "reports/atlassian-atlassian-mcp-server.html"
     },
     {
       "id": "alexander-zuev-supabase-mcp-server",
@@ -3458,8 +3458,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "alexander-zuev-supabase-mcp-server.md",
-      "reportHtml": "alexander-zuev-supabase-mcp-server.html"
+      "reportMd": "reports/alexander-zuev-supabase-mcp-server.md",
+      "reportHtml": "reports/alexander-zuev-supabase-mcp-server.html"
     },
     {
       "id": "zaidmukaddam-scira-mcp-chat",
@@ -3475,8 +3475,8 @@
         "MCP-SG-PY-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "zaidmukaddam-scira-mcp-chat.md",
-      "reportHtml": "zaidmukaddam-scira-mcp-chat.html"
+      "reportMd": "reports/zaidmukaddam-scira-mcp-chat.md",
+      "reportHtml": "reports/zaidmukaddam-scira-mcp-chat.html"
     },
     {
       "id": "kontext-security-browser-use-mcp-server",
@@ -3489,8 +3489,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "kontext-security-browser-use-mcp-server.md",
-      "reportHtml": "kontext-security-browser-use-mcp-server.html"
+      "reportMd": "reports/kontext-security-browser-use-mcp-server.md",
+      "reportHtml": "reports/kontext-security-browser-use-mcp-server.html"
     },
     {
       "id": "softeria-ms-365-mcp-server",
@@ -3509,8 +3509,8 @@
         "MCP-CODE-006",
         "MCP-META-002"
       ],
-      "reportMd": "softeria-ms-365-mcp-server.md",
-      "reportHtml": "softeria-ms-365-mcp-server.html"
+      "reportMd": "reports/softeria-ms-365-mcp-server.md",
+      "reportHtml": "reports/softeria-ms-365-mcp-server.html"
     },
     {
       "id": "clickhouse-mcp-clickhouse",
@@ -3529,8 +3529,8 @@
         "MCP-CODE-006",
         "MCP-CODE-007"
       ],
-      "reportMd": "clickhouse-mcp-clickhouse.md",
-      "reportHtml": "clickhouse-mcp-clickhouse.html"
+      "reportMd": "reports/clickhouse-mcp-clickhouse.md",
+      "reportHtml": "reports/clickhouse-mcp-clickhouse.html"
     },
     {
       "id": "sylphxai-pdf-reader-mcp",
@@ -3549,8 +3549,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "sylphxai-pdf-reader-mcp.md",
-      "reportHtml": "sylphxai-pdf-reader-mcp.html"
+      "reportMd": "reports/sylphxai-pdf-reader-mcp.md",
+      "reportHtml": "reports/sylphxai-pdf-reader-mcp.html"
     },
     {
       "id": "zcaceres-fetch-mcp",
@@ -3566,8 +3566,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "zcaceres-fetch-mcp.md",
-      "reportHtml": "zcaceres-fetch-mcp.html"
+      "reportMd": "reports/zcaceres-fetch-mcp.md",
+      "reportHtml": "reports/zcaceres-fetch-mcp.html"
     },
     {
       "id": "syedazharmbnr1-claude-chatgpt-mcp",
@@ -3582,8 +3582,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "syedazharmbnr1-claude-chatgpt-mcp.md",
-      "reportHtml": "syedazharmbnr1-claude-chatgpt-mcp.html"
+      "reportMd": "reports/syedazharmbnr1-claude-chatgpt-mcp.md",
+      "reportHtml": "reports/syedazharmbnr1-claude-chatgpt-mcp.html"
     },
     {
       "id": "vercel-next-devtools-mcp",
@@ -3602,8 +3602,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "vercel-next-devtools-mcp.md",
-      "reportHtml": "vercel-next-devtools-mcp.html"
+      "reportMd": "reports/vercel-next-devtools-mcp.md",
+      "reportHtml": "reports/vercel-next-devtools-mcp.html"
     },
     {
       "id": "minhalvp-android-mcp-server",
@@ -3622,8 +3622,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "minhalvp-android-mcp-server.md",
-      "reportHtml": "minhalvp-android-mcp-server.html"
+      "reportMd": "reports/minhalvp-android-mcp-server.md",
+      "reportHtml": "reports/minhalvp-android-mcp-server.html"
     },
     {
       "id": "jonigl-mcp-client-for-ollama",
@@ -3642,8 +3642,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "jonigl-mcp-client-for-ollama.md",
-      "reportHtml": "jonigl-mcp-client-for-ollama.html"
+      "reportMd": "reports/jonigl-mcp-client-for-ollama.md",
+      "reportHtml": "reports/jonigl-mcp-client-for-ollama.html"
     },
     {
       "id": "hyperbrowserai-mcp",
@@ -3662,8 +3662,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "hyperbrowserai-mcp.md",
-      "reportHtml": "hyperbrowserai-mcp.html"
+      "reportMd": "reports/hyperbrowserai-mcp.md",
+      "reportHtml": "reports/hyperbrowserai-mcp.html"
     },
     {
       "id": "getsentry-sentry-mcp",
@@ -3682,8 +3682,8 @@
         "MCP-CODE-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "getsentry-sentry-mcp.md",
-      "reportHtml": "getsentry-sentry-mcp.html"
+      "reportMd": "reports/getsentry-sentry-mcp.md",
+      "reportHtml": "reports/getsentry-sentry-mcp.html"
     },
     {
       "id": "mnemox-ai-idea-reality-mcp",
@@ -3702,8 +3702,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "mnemox-ai-idea-reality-mcp.md",
-      "reportHtml": "mnemox-ai-idea-reality-mcp.html"
+      "reportMd": "reports/mnemox-ai-idea-reality-mcp.md",
+      "reportHtml": "reports/mnemox-ai-idea-reality-mcp.html"
     },
     {
       "id": "larksuite-lark-openapi-mcp",
@@ -3722,8 +3722,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "larksuite-lark-openapi-mcp.md",
-      "reportHtml": "larksuite-lark-openapi-mcp.html"
+      "reportMd": "reports/larksuite-lark-openapi-mcp.md",
+      "reportHtml": "reports/larksuite-lark-openapi-mcp.html"
     },
     {
       "id": "karanb192-reddit-mcp-buddy",
@@ -3742,8 +3742,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "karanb192-reddit-mcp-buddy.md",
-      "reportHtml": "karanb192-reddit-mcp-buddy.html"
+      "reportMd": "reports/karanb192-reddit-mcp-buddy.md",
+      "reportHtml": "reports/karanb192-reddit-mcp-buddy.html"
     },
     {
       "id": "wh0am123-mcp-kali-server",
@@ -3762,8 +3762,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "wh0am123-mcp-kali-server.md",
-      "reportHtml": "wh0am123-mcp-kali-server.html"
+      "reportMd": "reports/wh0am123-mcp-kali-server.md",
+      "reportHtml": "reports/wh0am123-mcp-kali-server.html"
     },
     {
       "id": "taxuspt-garmin_mcp",
@@ -3782,8 +3782,8 @@
         "MCP-CODE-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "taxuspt-garmin_mcp.md",
-      "reportHtml": "taxuspt-garmin_mcp.html"
+      "reportMd": "reports/taxuspt-garmin_mcp.md",
+      "reportHtml": "reports/taxuspt-garmin_mcp.html"
     },
     {
       "id": "jina-ai-mcp",
@@ -3801,8 +3801,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "jina-ai-mcp.md",
-      "reportHtml": "jina-ai-mcp.html"
+      "reportMd": "reports/jina-ai-mcp.md",
+      "reportHtml": "reports/jina-ai-mcp.html"
     },
     {
       "id": "utensils-mcp-nixos",
@@ -3821,8 +3821,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "utensils-mcp-nixos.md",
-      "reportHtml": "utensils-mcp-nixos.html"
+      "reportMd": "reports/utensils-mcp-nixos.md",
+      "reportHtml": "reports/utensils-mcp-nixos.html"
     },
     {
       "id": "ckreiling-mcp-server-docker",
@@ -3835,8 +3835,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "ckreiling-mcp-server-docker.md",
-      "reportHtml": "ckreiling-mcp-server-docker.html"
+      "reportMd": "reports/ckreiling-mcp-server-docker.md",
+      "reportHtml": "reports/ckreiling-mcp-server-docker.html"
     },
     {
       "id": "worryzyy-howtocook-mcp",
@@ -3851,8 +3851,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "worryzyy-howtocook-mcp.md",
-      "reportHtml": "worryzyy-howtocook-mcp.html"
+      "reportMd": "reports/worryzyy-howtocook-mcp.md",
+      "reportHtml": "reports/worryzyy-howtocook-mcp.html"
     },
     {
       "id": "cursortouch-android-mcp",
@@ -3865,8 +3865,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "cursortouch-android-mcp.md",
-      "reportHtml": "cursortouch-android-mcp.html"
+      "reportMd": "reports/cursortouch-android-mcp.md",
+      "reportHtml": "reports/cursortouch-android-mcp.html"
     },
     {
       "id": "googleads-google-ads-mcp",
@@ -3885,8 +3885,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "googleads-google-ads-mcp.md",
-      "reportHtml": "googleads-google-ads-mcp.html"
+      "reportMd": "reports/googleads-google-ads-mcp.md",
+      "reportHtml": "reports/googleads-google-ads-mcp.html"
     },
     {
       "id": "stevenstavrakis-obsidian-mcp",
@@ -3905,8 +3905,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "stevenstavrakis-obsidian-mcp.md",
-      "reportHtml": "stevenstavrakis-obsidian-mcp.html"
+      "reportMd": "reports/stevenstavrakis-obsidian-mcp.md",
+      "reportHtml": "reports/stevenstavrakis-obsidian-mcp.html"
     },
     {
       "id": "googlecolab-colab-mcp",
@@ -3919,8 +3919,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "googlecolab-colab-mcp.md",
-      "reportHtml": "googlecolab-colab-mcp.html"
+      "reportMd": "reports/googlecolab-colab-mcp.md",
+      "reportHtml": "reports/googlecolab-colab-mcp.html"
     },
     {
       "id": "jlumbroso-passage-of-time-mcp",
@@ -3933,8 +3933,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "jlumbroso-passage-of-time-mcp.md",
-      "reportHtml": "jlumbroso-passage-of-time-mcp.html"
+      "reportMd": "reports/jlumbroso-passage-of-time-mcp.md",
+      "reportHtml": "reports/jlumbroso-passage-of-time-mcp.html"
     },
     {
       "id": "fuzzinglabs-mcp-security-hub",
@@ -3953,8 +3953,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "fuzzinglabs-mcp-security-hub.md",
-      "reportHtml": "fuzzinglabs-mcp-security-hub.html"
+      "reportMd": "reports/fuzzinglabs-mcp-security-hub.md",
+      "reportHtml": "reports/fuzzinglabs-mcp-security-hub.html"
     },
     {
       "id": "apify-mcpc",
@@ -3973,8 +3973,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "apify-mcpc.md",
-      "reportHtml": "apify-mcpc.html"
+      "reportMd": "reports/apify-mcpc.md",
+      "reportHtml": "reports/apify-mcpc.html"
     },
     {
       "id": "braincrew-lab-langgraph-mcp-agents",
@@ -3993,8 +3993,8 @@
         "MCP-META-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "braincrew-lab-langgraph-mcp-agents.md",
-      "reportHtml": "braincrew-lab-langgraph-mcp-agents.html"
+      "reportMd": "reports/braincrew-lab-langgraph-mcp-agents.md",
+      "reportHtml": "reports/braincrew-lab-langgraph-mcp-agents.html"
     },
     {
       "id": "jasonjmcghee-webmcp",
@@ -4013,8 +4013,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "jasonjmcghee-webmcp.md",
-      "reportHtml": "jasonjmcghee-webmcp.html"
+      "reportMd": "reports/jasonjmcghee-webmcp.md",
+      "reportHtml": "reports/jasonjmcghee-webmcp.html"
     },
     {
       "id": "cso1z-feishu-mcp",
@@ -4033,8 +4033,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "cso1z-feishu-mcp.md",
-      "reportHtml": "cso1z-feishu-mcp.html"
+      "reportMd": "reports/cso1z-feishu-mcp.md",
+      "reportHtml": "reports/cso1z-feishu-mcp.html"
     },
     {
       "id": "zinja-coder-jadx-mcp-server",
@@ -4047,8 +4047,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "zinja-coder-jadx-mcp-server.md",
-      "reportHtml": "zinja-coder-jadx-mcp-server.html"
+      "reportMd": "reports/zinja-coder-jadx-mcp-server.md",
+      "reportHtml": "reports/zinja-coder-jadx-mcp-server.html"
     },
     {
       "id": "gh05tcrew-metasploitmcp",
@@ -4064,8 +4064,8 @@
         "MCP-CODE-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "gh05tcrew-metasploitmcp.md",
-      "reportHtml": "gh05tcrew-metasploitmcp.html"
+      "reportMd": "reports/gh05tcrew-metasploitmcp.md",
+      "reportHtml": "reports/gh05tcrew-metasploitmcp.html"
     },
     {
       "id": "docling-project-docling-mcp",
@@ -4084,8 +4084,8 @@
         "MCP-CODE-006",
         "MCP-META-004"
       ],
-      "reportMd": "docling-project-docling-mcp.md",
-      "reportHtml": "docling-project-docling-mcp.html"
+      "reportMd": "reports/docling-project-docling-mcp.md",
+      "reportHtml": "reports/docling-project-docling-mcp.html"
     },
     {
       "id": "adhikasp-mcp-client-cli",
@@ -4101,8 +4101,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "adhikasp-mcp-client-cli.md",
-      "reportHtml": "adhikasp-mcp-client-cli.html"
+      "reportMd": "reports/adhikasp-mcp-client-cli.md",
+      "reportHtml": "reports/adhikasp-mcp-client-cli.html"
     },
     {
       "id": "coleam00-mcp-mem0",
@@ -4121,8 +4121,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "coleam00-mcp-mem0.md",
-      "reportHtml": "coleam00-mcp-mem0.html"
+      "reportMd": "reports/coleam00-mcp-mem0.md",
+      "reportHtml": "reports/coleam00-mcp-mem0.html"
     },
     {
       "id": "rekog-labs-mcp-nest",
@@ -4141,8 +4141,8 @@
         "MCP-SG-JS-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "rekog-labs-mcp-nest.md",
-      "reportHtml": "rekog-labs-mcp-nest.html"
+      "reportMd": "reports/rekog-labs-mcp-nest.md",
+      "reportHtml": "reports/rekog-labs-mcp-nest.html"
     },
     {
       "id": "cohnen-mcp-google-ads",
@@ -4161,8 +4161,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "cohnen-mcp-google-ads.md",
-      "reportHtml": "cohnen-mcp-google-ads.html"
+      "reportMd": "reports/cohnen-mcp-google-ads.md",
+      "reportHtml": "reports/cohnen-mcp-google-ads.html"
     },
     {
       "id": "mikechambers-adb-mcp",
@@ -4180,8 +4180,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "mikechambers-adb-mcp.md",
-      "reportHtml": "mikechambers-adb-mcp.html"
+      "reportMd": "reports/mikechambers-adb-mcp.md",
+      "reportHtml": "reports/mikechambers-adb-mcp.html"
     },
     {
       "id": "24mlight-a-share-mcp-is-just-i-need",
@@ -4194,8 +4194,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "24mlight-a-share-mcp-is-just-i-need.md",
-      "reportHtml": "24mlight-a-share-mcp-is-just-i-need.html"
+      "reportMd": "reports/24mlight-a-share-mcp-is-just-i-need.md",
+      "reportHtml": "reports/24mlight-a-share-mcp-is-just-i-need.html"
     },
     {
       "id": "cloudflare-workers-mcp",
@@ -4214,8 +4214,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "cloudflare-workers-mcp.md",
-      "reportHtml": "cloudflare-workers-mcp.html"
+      "reportMd": "reports/cloudflare-workers-mcp.md",
+      "reportHtml": "reports/cloudflare-workers-mcp.html"
     },
     {
       "id": "yuniko-software-minecraft-mcp-server",
@@ -4230,8 +4230,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "yuniko-software-minecraft-mcp-server.md",
-      "reportHtml": "yuniko-software-minecraft-mcp-server.html"
+      "reportMd": "reports/yuniko-software-minecraft-mcp-server.md",
+      "reportHtml": "reports/yuniko-software-minecraft-mcp-server.html"
     },
     {
       "id": "classfang-ssh-mcp-server",
@@ -4250,8 +4250,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "classfang-ssh-mcp-server.md",
-      "reportHtml": "classfang-ssh-mcp-server.html"
+      "reportMd": "reports/classfang-ssh-mcp-server.md",
+      "reportHtml": "reports/classfang-ssh-mcp-server.html"
     },
     {
       "id": "firstbatchxyz-mem-agent-mcp",
@@ -4270,8 +4270,8 @@
         "MCP-SG-PY-003",
         "MCP-CODE-006"
       ],
-      "reportMd": "firstbatchxyz-mem-agent-mcp.md",
-      "reportHtml": "firstbatchxyz-mem-agent-mcp.html"
+      "reportMd": "reports/firstbatchxyz-mem-agent-mcp.md",
+      "reportHtml": "reports/firstbatchxyz-mem-agent-mcp.html"
     },
     {
       "id": "arinspunk-claude-talk-to-figma-mcp",
@@ -4290,8 +4290,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "arinspunk-claude-talk-to-figma-mcp.md",
-      "reportHtml": "arinspunk-claude-talk-to-figma-mcp.html"
+      "reportMd": "reports/arinspunk-claude-talk-to-figma-mcp.md",
+      "reportHtml": "reports/arinspunk-claude-talk-to-figma-mcp.html"
     },
     {
       "id": "wshobson-maverick-mcp",
@@ -4310,8 +4310,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "wshobson-maverick-mcp.md",
-      "reportHtml": "wshobson-maverick-mcp.html"
+      "reportMd": "reports/wshobson-maverick-mcp.md",
+      "reportHtml": "reports/wshobson-maverick-mcp.html"
     },
     {
       "id": "googlecloudplatform-cloud-run-mcp",
@@ -4333,8 +4333,8 @@
       "limitations": [
         "Additionally, Go, Java source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "googlecloudplatform-cloud-run-mcp.md",
-      "reportHtml": "googlecloudplatform-cloud-run-mcp.html"
+      "reportMd": "reports/googlecloudplatform-cloud-run-mcp.md",
+      "reportHtml": "reports/googlecloudplatform-cloud-run-mcp.html"
     },
     {
       "id": "vercel-mcp-handler",
@@ -4351,8 +4351,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "vercel-mcp-handler.md",
-      "reportHtml": "vercel-mcp-handler.html"
+      "reportMd": "reports/vercel-mcp-handler.md",
+      "reportHtml": "reports/vercel-mcp-handler.html"
     },
     {
       "id": "guangxiangdebizi-financemcp",
@@ -4371,8 +4371,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "guangxiangdebizi-financemcp.md",
-      "reportHtml": "guangxiangdebizi-financemcp.html"
+      "reportMd": "reports/guangxiangdebizi-financemcp.md",
+      "reportHtml": "reports/guangxiangdebizi-financemcp.html"
     },
     {
       "id": "cyanheads-obsidian-mcp-server",
@@ -4391,8 +4391,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "cyanheads-obsidian-mcp-server.md",
-      "reportHtml": "cyanheads-obsidian-mcp-server.html"
+      "reportMd": "reports/cyanheads-obsidian-mcp-server.md",
+      "reportHtml": "reports/cyanheads-obsidian-mcp-server.html"
     },
     {
       "id": "neondatabase-mcp-server-neon",
@@ -4411,8 +4411,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "neondatabase-mcp-server-neon.md",
-      "reportHtml": "neondatabase-mcp-server-neon.html"
+      "reportMd": "reports/neondatabase-mcp-server-neon.md",
+      "reportHtml": "reports/neondatabase-mcp-server-neon.html"
     },
     {
       "id": "ariadng-metatrader-mcp-server",
@@ -4431,8 +4431,8 @@
         "MCP-CODE-004",
         "MCP-CODE-004"
       ],
-      "reportMd": "ariadng-metatrader-mcp-server.md",
-      "reportHtml": "ariadng-metatrader-mcp-server.html"
+      "reportMd": "reports/ariadng-metatrader-mcp-server.md",
+      "reportHtml": "reports/ariadng-metatrader-mcp-server.html"
     },
     {
       "id": "harsha-iiiv-openapi-mcp-generator",
@@ -4451,8 +4451,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "harsha-iiiv-openapi-mcp-generator.md",
-      "reportHtml": "harsha-iiiv-openapi-mcp-generator.html"
+      "reportMd": "reports/harsha-iiiv-openapi-mcp-generator.md",
+      "reportHtml": "reports/harsha-iiiv-openapi-mcp-generator.html"
     },
     {
       "id": "cloudflare-mcp",
@@ -4471,8 +4471,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "cloudflare-mcp.md",
-      "reportHtml": "cloudflare-mcp.html"
+      "reportMd": "reports/cloudflare-mcp.md",
+      "reportHtml": "reports/cloudflare-mcp.html"
     },
     {
       "id": "saidsurucu-borsa-mcp",
@@ -4490,8 +4490,8 @@
         "MCP-META-005",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "saidsurucu-borsa-mcp.md",
-      "reportHtml": "saidsurucu-borsa-mcp.html"
+      "reportMd": "reports/saidsurucu-borsa-mcp.md",
+      "reportHtml": "reports/saidsurucu-borsa-mcp.html"
     },
     {
       "id": "abhiemj-manim-mcp-server",
@@ -4507,8 +4507,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "abhiemj-manim-mcp-server.md",
-      "reportHtml": "abhiemj-manim-mcp-server.html"
+      "reportMd": "reports/abhiemj-manim-mcp-server.md",
+      "reportHtml": "reports/abhiemj-manim-mcp-server.html"
     },
     {
       "id": "arcadeai-blueprint-mcp",
@@ -4521,8 +4521,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "arcadeai-blueprint-mcp.md",
-      "reportHtml": "arcadeai-blueprint-mcp.html"
+      "reportMd": "reports/arcadeai-blueprint-mcp.md",
+      "reportHtml": "reports/arcadeai-blueprint-mcp.html"
     },
     {
       "id": "varunneal-spotify-mcp",
@@ -4535,8 +4535,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "varunneal-spotify-mcp.md",
-      "reportHtml": "varunneal-spotify-mcp.html"
+      "reportMd": "reports/varunneal-spotify-mcp.md",
+      "reportHtml": "reports/varunneal-spotify-mcp.html"
     },
     {
       "id": "hustcc-mcp-mermaid",
@@ -4554,8 +4554,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "hustcc-mcp-mermaid.md",
-      "reportHtml": "hustcc-mcp-mermaid.html"
+      "reportMd": "reports/hustcc-mcp-mermaid.md",
+      "reportHtml": "reports/hustcc-mcp-mermaid.html"
     },
     {
       "id": "line-line-bot-mcp-server",
@@ -4573,8 +4573,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "line-line-bot-mcp-server.md",
-      "reportHtml": "line-line-bot-mcp-server.html"
+      "reportMd": "reports/line-line-bot-mcp-server.md",
+      "reportHtml": "reports/line-line-bot-mcp-server.html"
     },
     {
       "id": "salesforceairesearch-mcp-universe",
@@ -4593,8 +4593,8 @@
         "MCP-SG-PY-002",
         "MCP-SG-PY-002"
       ],
-      "reportMd": "salesforceairesearch-mcp-universe.md",
-      "reportHtml": "salesforceairesearch-mcp-universe.html"
+      "reportMd": "reports/salesforceairesearch-mcp-universe.md",
+      "reportHtml": "reports/salesforceairesearch-mcp-universe.html"
     },
     {
       "id": "dbt-labs-dbt-mcp",
@@ -4613,8 +4613,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "dbt-labs-dbt-mcp.md",
-      "reportHtml": "dbt-labs-dbt-mcp.html"
+      "reportMd": "reports/dbt-labs-dbt-mcp.md",
+      "reportHtml": "reports/dbt-labs-dbt-mcp.html"
     },
     {
       "id": "etsd-tech-mcp-pointer",
@@ -4633,8 +4633,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "etsd-tech-mcp-pointer.md",
-      "reportHtml": "etsd-tech-mcp-pointer.html"
+      "reportMd": "reports/etsd-tech-mcp-pointer.md",
+      "reportHtml": "reports/etsd-tech-mcp-pointer.html"
     },
     {
       "id": "caiovicentino-polymarket-mcp-server",
@@ -4653,8 +4653,8 @@
         "MCP-CODE-006",
         "MCP-META-005"
       ],
-      "reportMd": "caiovicentino-polymarket-mcp-server.md",
-      "reportHtml": "caiovicentino-polymarket-mcp-server.html"
+      "reportMd": "reports/caiovicentino-polymarket-mcp-server.md",
+      "reportHtml": "reports/caiovicentino-polymarket-mcp-server.html"
     },
     {
       "id": "zinja-coder-apktool-mcp-server",
@@ -4672,8 +4672,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "zinja-coder-apktool-mcp-server.md",
-      "reportHtml": "zinja-coder-apktool-mcp-server.html"
+      "reportMd": "reports/zinja-coder-apktool-mcp-server.md",
+      "reportHtml": "reports/zinja-coder-apktool-mcp-server.html"
     },
     {
       "id": "esxr-langgraph-mcp",
@@ -4692,8 +4692,8 @@
         "MCP-META-004",
         "MCP-META-004"
       ],
-      "reportMd": "esxr-langgraph-mcp.md",
-      "reportHtml": "esxr-langgraph-mcp.html"
+      "reportMd": "reports/esxr-langgraph-mcp.md",
+      "reportHtml": "reports/esxr-langgraph-mcp.html"
     },
     {
       "id": "spences10-mcp-sequentialthinking-tools",
@@ -4711,8 +4711,8 @@
         "MCP-META-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "spences10-mcp-sequentialthinking-tools.md",
-      "reportHtml": "spences10-mcp-sequentialthinking-tools.html"
+      "reportMd": "reports/spences10-mcp-sequentialthinking-tools.md",
+      "reportHtml": "reports/spences10-mcp-sequentialthinking-tools.html"
     },
     {
       "id": "tuannvm-codex-mcp-server",
@@ -4730,8 +4730,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "tuannvm-codex-mcp-server.md",
-      "reportHtml": "tuannvm-codex-mcp-server.html"
+      "reportMd": "reports/tuannvm-codex-mcp-server.md",
+      "reportHtml": "reports/tuannvm-codex-mcp-server.html"
     },
     {
       "id": "tevonsb-homeassistant-mcp",
@@ -4750,8 +4750,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "tevonsb-homeassistant-mcp.md",
-      "reportHtml": "tevonsb-homeassistant-mcp.html"
+      "reportMd": "reports/tevonsb-homeassistant-mcp.md",
+      "reportHtml": "reports/tevonsb-homeassistant-mcp.html"
     },
     {
       "id": "kimtaeyoon83-mcp-server-youtube-transcript",
@@ -4767,8 +4767,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "kimtaeyoon83-mcp-server-youtube-transcript.md",
-      "reportHtml": "kimtaeyoon83-mcp-server-youtube-transcript.html"
+      "reportMd": "reports/kimtaeyoon83-mcp-server-youtube-transcript.md",
+      "reportHtml": "reports/kimtaeyoon83-mcp-server-youtube-transcript.html"
     },
     {
       "id": "chroma-core-chroma-mcp",
@@ -4784,8 +4784,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "chroma-core-chroma-mcp.md",
-      "reportHtml": "chroma-core-chroma-mcp.html"
+      "reportMd": "reports/chroma-core-chroma-mcp.md",
+      "reportHtml": "reports/chroma-core-chroma-mcp.html"
     },
     {
       "id": "vivekvells-mcp-pandoc",
@@ -4804,8 +4804,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "vivekvells-mcp-pandoc.md",
-      "reportHtml": "vivekvells-mcp-pandoc.html"
+      "reportMd": "reports/vivekvells-mcp-pandoc.md",
+      "reportHtml": "reports/vivekvells-mcp-pandoc.html"
     },
     {
       "id": "ferrislucas-iterm-mcp",
@@ -4820,8 +4820,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "ferrislucas-iterm-mcp.md",
-      "reportHtml": "ferrislucas-iterm-mcp.html"
+      "reportMd": "reports/ferrislucas-iterm-mcp.md",
+      "reportHtml": "reports/ferrislucas-iterm-mcp.html"
     },
     {
       "id": "kelvinqiu802-llm-mcp-rag",
@@ -4838,8 +4838,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "kelvinqiu802-llm-mcp-rag.md",
-      "reportHtml": "kelvinqiu802-llm-mcp-rag.html"
+      "reportMd": "reports/kelvinqiu802-llm-mcp-rag.md",
+      "reportHtml": "reports/kelvinqiu802-llm-mcp-rag.html"
     },
     {
       "id": "freestylefly-mcp-server-weread",
@@ -4858,8 +4858,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "freestylefly-mcp-server-weread.md",
-      "reportHtml": "freestylefly-mcp-server-weread.html"
+      "reportMd": "reports/freestylefly-mcp-server-weread.md",
+      "reportHtml": "reports/freestylefly-mcp-server-weread.html"
     },
     {
       "id": "riseandignite-mcp-shield",
@@ -4878,8 +4878,8 @@
         "MCP-META-003",
         "MCP-META-003"
       ],
-      "reportMd": "riseandignite-mcp-shield.md",
-      "reportHtml": "riseandignite-mcp-shield.html"
+      "reportMd": "reports/riseandignite-mcp-shield.md",
+      "reportHtml": "reports/riseandignite-mcp-shield.html"
     },
     {
       "id": "neiltron-apple-health-mcp",
@@ -4894,8 +4894,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "neiltron-apple-health-mcp.md",
-      "reportHtml": "neiltron-apple-health-mcp.html"
+      "reportMd": "reports/neiltron-apple-health-mcp.md",
+      "reportHtml": "reports/neiltron-apple-health-mcp.html"
     },
     {
       "id": "jackson-video-resources-claude-tradingview-mcp-trading",
@@ -4914,8 +4914,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "jackson-video-resources-claude-tradingview-mcp-trading.md",
-      "reportHtml": "jackson-video-resources-claude-tradingview-mcp-trading.html"
+      "reportMd": "reports/jackson-video-resources-claude-tradingview-mcp-trading.md",
+      "reportHtml": "reports/jackson-video-resources-claude-tradingview-mcp-trading.html"
     },
     {
       "id": "resend-resend-mcp",
@@ -4933,8 +4933,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "resend-resend-mcp.md",
-      "reportHtml": "resend-resend-mcp.html"
+      "reportMd": "reports/resend-resend-mcp.md",
+      "reportHtml": "reports/resend-resend-mcp.html"
     },
     {
       "id": "zubeidhendricks-youtube-mcp-server",
@@ -4953,8 +4953,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "zubeidhendricks-youtube-mcp-server.md",
-      "reportHtml": "zubeidhendricks-youtube-mcp-server.html"
+      "reportMd": "reports/zubeidhendricks-youtube-mcp-server.md",
+      "reportHtml": "reports/zubeidhendricks-youtube-mcp-server.html"
     },
     {
       "id": "reading-plus-ai-mcp-server-data-exploration",
@@ -4971,8 +4971,8 @@
         "MCP-CODE-004",
         "MCP-SG-PY-002"
       ],
-      "reportMd": "reading-plus-ai-mcp-server-data-exploration.md",
-      "reportHtml": "reading-plus-ai-mcp-server-data-exploration.html"
+      "reportMd": "reports/reading-plus-ai-mcp-server-data-exploration.md",
+      "reportHtml": "reports/reading-plus-ai-mcp-server-data-exploration.html"
     },
     {
       "id": "0xkoda-wiremcp",
@@ -4991,8 +4991,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "0xkoda-wiremcp.md",
-      "reportHtml": "0xkoda-wiremcp.html"
+      "reportMd": "reports/0xkoda-wiremcp.md",
+      "reportHtml": "reports/0xkoda-wiremcp.html"
     },
     {
       "id": "redis-mcp-redis",
@@ -5010,8 +5010,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "redis-mcp-redis.md",
-      "reportHtml": "redis-mcp-redis.html"
+      "reportMd": "reports/redis-mcp-redis.md",
+      "reportHtml": "reports/redis-mcp-redis.html"
     },
     {
       "id": "stuzero-pg-mcp-server",
@@ -5028,8 +5028,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "stuzero-pg-mcp-server.md",
-      "reportHtml": "stuzero-pg-mcp-server.html"
+      "reportMd": "reports/stuzero-pg-mcp-server.md",
+      "reportHtml": "reports/stuzero-pg-mcp-server.html"
     },
     {
       "id": "anaisbetts-mcp-youtube",
@@ -5047,8 +5047,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "anaisbetts-mcp-youtube.md",
-      "reportHtml": "anaisbetts-mcp-youtube.html"
+      "reportMd": "reports/anaisbetts-mcp-youtube.md",
+      "reportHtml": "reports/anaisbetts-mcp-youtube.html"
     },
     {
       "id": "quixiai-dolphin-mcp",
@@ -5067,8 +5067,8 @@
         "MCP-META-004",
         "MCP-CODE-007"
       ],
-      "reportMd": "quixiai-dolphin-mcp.md",
-      "reportHtml": "quixiai-dolphin-mcp.html"
+      "reportMd": "reports/quixiai-dolphin-mcp.md",
+      "reportHtml": "reports/quixiai-dolphin-mcp.html"
     },
     {
       "id": "argoproj-labs-mcp-for-argocd",
@@ -5087,8 +5087,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "argoproj-labs-mcp-for-argocd.md",
-      "reportHtml": "argoproj-labs-mcp-for-argocd.html"
+      "reportMd": "reports/argoproj-labs-mcp-for-argocd.md",
+      "reportHtml": "reports/argoproj-labs-mcp-for-argocd.html"
     },
     {
       "id": "tufantunc-ssh-mcp",
@@ -5105,8 +5105,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "tufantunc-ssh-mcp.md",
-      "reportHtml": "tufantunc-ssh-mcp.html"
+      "reportMd": "reports/tufantunc-ssh-mcp.md",
+      "reportHtml": "reports/tufantunc-ssh-mcp.html"
     },
     {
       "id": "doist-todoist-mcp",
@@ -5125,8 +5125,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "doist-todoist-mcp.md",
-      "reportHtml": "doist-todoist-mcp.html"
+      "reportMd": "reports/doist-todoist-mcp.md",
+      "reportHtml": "reports/doist-todoist-mcp.html"
     },
     {
       "id": "wjc9011-comsol_multiphysics_mcp",
@@ -5139,8 +5139,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "wjc9011-comsol_multiphysics_mcp.md",
-      "reportHtml": "wjc9011-comsol_multiphysics_mcp.html"
+      "reportMd": "reports/wjc9011-comsol_multiphysics_mcp.md",
+      "reportHtml": "reports/wjc9011-comsol_multiphysics_mcp.html"
     },
     {
       "id": "hald-things-mcp",
@@ -5153,8 +5153,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "hald-things-mcp.md",
-      "reportHtml": "hald-things-mcp.html"
+      "reportMd": "reports/hald-things-mcp.md",
+      "reportHtml": "reports/hald-things-mcp.html"
     },
     {
       "id": "google-mcp-security",
@@ -5173,8 +5173,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "google-mcp-security.md",
-      "reportHtml": "google-mcp-security.html"
+      "reportMd": "reports/google-mcp-security.md",
+      "reportHtml": "reports/google-mcp-security.html"
     },
     {
       "id": "sirkirby-unifi-mcp",
@@ -5193,8 +5193,8 @@
         "MCP-CONFIG-005",
         "MCP-CONFIG-005"
       ],
-      "reportMd": "sirkirby-unifi-mcp.md",
-      "reportHtml": "sirkirby-unifi-mcp.html"
+      "reportMd": "reports/sirkirby-unifi-mcp.md",
+      "reportHtml": "reports/sirkirby-unifi-mcp.html"
     },
     {
       "id": "ravitemer-mcp-hub",
@@ -5213,8 +5213,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "ravitemer-mcp-hub.md",
-      "reportHtml": "ravitemer-mcp-hub.html"
+      "reportMd": "reports/ravitemer-mcp-hub.md",
+      "reportHtml": "reports/ravitemer-mcp-hub.html"
     },
     {
       "id": "motherduckdb-mcp-server-motherduck",
@@ -5233,8 +5233,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "motherduckdb-mcp-server-motherduck.md",
-      "reportHtml": "motherduckdb-mcp-server-motherduck.html"
+      "reportMd": "reports/motherduckdb-mcp-server-motherduck.md",
+      "reportHtml": "reports/motherduckdb-mcp-server-motherduck.html"
     },
     {
       "id": "vikashloomba-copilot-mcp",
@@ -5253,8 +5253,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "vikashloomba-copilot-mcp.md",
-      "reportHtml": "vikashloomba-copilot-mcp.html"
+      "reportMd": "reports/vikashloomba-copilot-mcp.md",
+      "reportHtml": "reports/vikashloomba-copilot-mcp.html"
     },
     {
       "id": "pv-bhat-vibe-check-mcp-server",
@@ -5273,8 +5273,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "pv-bhat-vibe-check-mcp-server.md",
-      "reportHtml": "pv-bhat-vibe-check-mcp-server.html"
+      "reportMd": "reports/pv-bhat-vibe-check-mcp-server.md",
+      "reportHtml": "reports/pv-bhat-vibe-check-mcp-server.html"
     },
     {
       "id": "pab1it0-prometheus-mcp-server",
@@ -5291,8 +5291,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "pab1it0-prometheus-mcp-server.md",
-      "reportHtml": "pab1it0-prometheus-mcp-server.html"
+      "reportMd": "reports/pab1it0-prometheus-mcp-server.md",
+      "reportHtml": "reports/pab1it0-prometheus-mcp-server.html"
     },
     {
       "id": "accenture-mcp-bench",
@@ -5311,8 +5311,8 @@
         "MCP-SG-PY-002",
         "MCP-SG-PY-002"
       ],
-      "reportMd": "accenture-mcp-bench.md",
-      "reportHtml": "accenture-mcp-bench.html"
+      "reportMd": "reports/accenture-mcp-bench.md",
+      "reportHtml": "reports/accenture-mcp-bench.html"
     },
     {
       "id": "markuspfundstein-mcp-gsuite",
@@ -5329,8 +5329,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "markuspfundstein-mcp-gsuite.md",
-      "reportHtml": "markuspfundstein-mcp-gsuite.html"
+      "reportMd": "reports/markuspfundstein-mcp-gsuite.md",
+      "reportHtml": "reports/markuspfundstein-mcp-gsuite.html"
     },
     {
       "id": "quantgeekdev-docker-mcp",
@@ -5346,8 +5346,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "quantgeekdev-docker-mcp.md",
-      "reportHtml": "quantgeekdev-docker-mcp.html"
+      "reportMd": "reports/quantgeekdev-docker-mcp.md",
+      "reportHtml": "reports/quantgeekdev-docker-mcp.html"
     },
     {
       "id": "xfey-mcp-zero",
@@ -5366,8 +5366,8 @@
         "MCP-CODE-006",
         "MCP-META-004"
       ],
-      "reportMd": "xfey-mcp-zero.md",
-      "reportHtml": "xfey-mcp-zero.html"
+      "reportMd": "reports/xfey-mcp-zero.md",
+      "reportHtml": "reports/xfey-mcp-zero.html"
     },
     {
       "id": "jobsonlook-xhs-mcp",
@@ -5386,8 +5386,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "jobsonlook-xhs-mcp.md",
-      "reportHtml": "jobsonlook-xhs-mcp.html"
+      "reportMd": "reports/jobsonlook-xhs-mcp.md",
+      "reportHtml": "reports/jobsonlook-xhs-mcp.html"
     },
     {
       "id": "baryhuang-mcp-remote-macos-use",
@@ -5406,8 +5406,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "baryhuang-mcp-remote-macos-use.md",
-      "reportHtml": "baryhuang-mcp-remote-macos-use.html"
+      "reportMd": "reports/baryhuang-mcp-remote-macos-use.md",
+      "reportHtml": "reports/baryhuang-mcp-remote-macos-use.html"
     },
     {
       "id": "openbnb-org-mcp-server-airbnb",
@@ -5426,8 +5426,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "openbnb-org-mcp-server-airbnb.md",
-      "reportHtml": "openbnb-org-mcp-server-airbnb.html"
+      "reportMd": "reports/openbnb-org-mcp-server-airbnb.md",
+      "reportHtml": "reports/openbnb-org-mcp-server-airbnb.html"
     },
     {
       "id": "lamaalrajih-kicad-mcp",
@@ -5446,8 +5446,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "lamaalrajih-kicad-mcp.md",
-      "reportHtml": "lamaalrajih-kicad-mcp.html"
+      "reportMd": "reports/lamaalrajih-kicad-mcp.md",
+      "reportHtml": "reports/lamaalrajih-kicad-mcp.html"
     },
     {
       "id": "stumason-coolify-mcp",
@@ -5466,8 +5466,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "stumason-coolify-mcp.md",
-      "reportHtml": "stumason-coolify-mcp.html"
+      "reportMd": "reports/stumason-coolify-mcp.md",
+      "reportHtml": "reports/stumason-coolify-mcp.html"
     },
     {
       "id": "cyanheads-atlas-mcp-server",
@@ -5486,8 +5486,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "cyanheads-atlas-mcp-server.md",
-      "reportHtml": "cyanheads-atlas-mcp-server.html"
+      "reportMd": "reports/cyanheads-atlas-mcp-server.md",
+      "reportHtml": "reports/cyanheads-atlas-mcp-server.html"
     },
     {
       "id": "merajmehrabi-puppeteer-mcp-server",
@@ -5502,8 +5502,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "merajmehrabi-puppeteer-mcp-server.md",
-      "reportHtml": "merajmehrabi-puppeteer-mcp-server.html"
+      "reportMd": "reports/merajmehrabi-puppeteer-mcp-server.md",
+      "reportHtml": "reports/merajmehrabi-puppeteer-mcp-server.html"
     },
     {
       "id": "dakkshin-after-effects-mcp",
@@ -5522,8 +5522,8 @@
         "MCP-CODE-003",
         "MCP-SUPPLY-003"
       ],
-      "reportMd": "dakkshin-after-effects-mcp.md",
-      "reportHtml": "dakkshin-after-effects-mcp.html"
+      "reportMd": "reports/dakkshin-after-effects-mcp.md",
+      "reportHtml": "reports/dakkshin-after-effects-mcp.html"
     },
     {
       "id": "freee-freee-mcp",
@@ -5542,8 +5542,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "freee-freee-mcp.md",
-      "reportHtml": "freee-freee-mcp.html"
+      "reportMd": "reports/freee-freee-mcp.md",
+      "reportHtml": "reports/freee-freee-mcp.html"
     },
     {
       "id": "domdomegg-airtable-mcp-server",
@@ -5562,8 +5562,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "domdomegg-airtable-mcp-server.md",
-      "reportHtml": "domdomegg-airtable-mcp-server.html"
+      "reportMd": "reports/domdomegg-airtable-mcp-server.md",
+      "reportHtml": "reports/domdomegg-airtable-mcp-server.html"
     },
     {
       "id": "daobataotie-cad-mcp",
@@ -5576,8 +5576,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "daobataotie-cad-mcp.md",
-      "reportHtml": "daobataotie-cad-mcp.html"
+      "reportMd": "reports/daobataotie-cad-mcp.md",
+      "reportHtml": "reports/daobataotie-cad-mcp.html"
     },
     {
       "id": "wong2-mcp-cli",
@@ -5592,8 +5592,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "wong2-mcp-cli.md",
-      "reportHtml": "wong2-mcp-cli.html"
+      "reportMd": "reports/wong2-mcp-cli.md",
+      "reportHtml": "reports/wong2-mcp-cli.html"
     },
     {
       "id": "aaronsb-obsidian-mcp-plugin",
@@ -5612,8 +5612,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "aaronsb-obsidian-mcp-plugin.md",
-      "reportHtml": "aaronsb-obsidian-mcp-plugin.html"
+      "reportMd": "reports/aaronsb-obsidian-mcp-plugin.md",
+      "reportHtml": "reports/aaronsb-obsidian-mcp-plugin.html"
     },
     {
       "id": "angiejones-mcp-selenium",
@@ -5630,8 +5630,8 @@
         "MCP-CODE-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "angiejones-mcp-selenium.md",
-      "reportHtml": "angiejones-mcp-selenium.html"
+      "reportMd": "reports/angiejones-mcp-selenium.md",
+      "reportHtml": "reports/angiejones-mcp-selenium.html"
     },
     {
       "id": "microsoft-debugmcp",
@@ -5646,8 +5646,8 @@
       "topRules": [
         "MCP-SG-JS-005"
       ],
-      "reportMd": "microsoft-debugmcp.md",
-      "reportHtml": "microsoft-debugmcp.html"
+      "reportMd": "reports/microsoft-debugmcp.md",
+      "reportHtml": "reports/microsoft-debugmcp.html"
     },
     {
       "id": "adhikasp-mcp-reddit",
@@ -5663,8 +5663,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "adhikasp-mcp-reddit.md",
-      "reportHtml": "adhikasp-mcp-reddit.html"
+      "reportMd": "reports/adhikasp-mcp-reddit.md",
+      "reportHtml": "reports/adhikasp-mcp-reddit.html"
     },
     {
       "id": "cantian-ai-bazi-mcp",
@@ -5679,8 +5679,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "cantian-ai-bazi-mcp.md",
-      "reportHtml": "cantian-ai-bazi-mcp.html"
+      "reportMd": "reports/cantian-ai-bazi-mcp.md",
+      "reportHtml": "reports/cantian-ai-bazi-mcp.html"
     },
     {
       "id": "ryaker-outlook-mcp",
@@ -5699,8 +5699,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "ryaker-outlook-mcp.md",
-      "reportHtml": "ryaker-outlook-mcp.html"
+      "reportMd": "reports/ryaker-outlook-mcp.md",
+      "reportHtml": "reports/ryaker-outlook-mcp.html"
     },
     {
       "id": "diffbot-mcp-code-graph",
@@ -5717,8 +5717,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "diffbot-mcp-code-graph.md",
-      "reportHtml": "diffbot-mcp-code-graph.html"
+      "reportMd": "reports/diffbot-mcp-code-graph.md",
+      "reportHtml": "reports/diffbot-mcp-code-graph.html"
     },
     {
       "id": "nighttrek-software-planning-mcp",
@@ -5734,8 +5734,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "nighttrek-software-planning-mcp.md",
-      "reportHtml": "nighttrek-software-planning-mcp.html"
+      "reportMd": "reports/nighttrek-software-planning-mcp.md",
+      "reportHtml": "reports/nighttrek-software-planning-mcp.html"
     },
     {
       "id": "abhiz123-todoist-mcp-server",
@@ -5751,8 +5751,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "abhiz123-todoist-mcp-server.md",
-      "reportHtml": "abhiz123-todoist-mcp-server.html"
+      "reportMd": "reports/abhiz123-todoist-mcp-server.md",
+      "reportHtml": "reports/abhiz123-todoist-mcp-server.html"
     },
     {
       "id": "cablate-mcp-google-map",
@@ -5771,8 +5771,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "cablate-mcp-google-map.md",
-      "reportHtml": "cablate-mcp-google-map.html"
+      "reportMd": "reports/cablate-mcp-google-map.md",
+      "reportHtml": "reports/cablate-mcp-google-map.html"
     },
     {
       "id": "graphlit-graphlit-mcp-server",
@@ -5791,8 +5791,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "graphlit-graphlit-mcp-server.md",
-      "reportHtml": "graphlit-graphlit-mcp-server.html"
+      "reportMd": "reports/graphlit-graphlit-mcp-server.md",
+      "reportHtml": "reports/graphlit-graphlit-mcp-server.html"
     },
     {
       "id": "marianfoo-sap-ai-mcp-servers",
@@ -5811,8 +5811,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "marianfoo-sap-ai-mcp-servers.md",
-      "reportHtml": "marianfoo-sap-ai-mcp-servers.html"
+      "reportMd": "reports/marianfoo-sap-ai-mcp-servers.md",
+      "reportHtml": "reports/marianfoo-sap-ai-mcp-servers.html"
     },
     {
       "id": "vercel-labs-mcp-for-next.js",
@@ -5827,8 +5827,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "vercel-labs-mcp-for-next.js.md",
-      "reportHtml": "vercel-labs-mcp-for-next.js.html"
+      "reportMd": "reports/vercel-labs-mcp-for-next.js.md",
+      "reportHtml": "reports/vercel-labs-mcp-for-next.js.html"
     },
     {
       "id": "tuanle96-mcp-odoo",
@@ -5847,8 +5847,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "tuanle96-mcp-odoo.md",
-      "reportHtml": "tuanle96-mcp-odoo.html"
+      "reportMd": "reports/tuanle96-mcp-odoo.md",
+      "reportHtml": "reports/tuanle96-mcp-odoo.html"
     },
     {
       "id": "bvisible-mcp-ssh-manager",
@@ -5867,8 +5867,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "bvisible-mcp-ssh-manager.md",
-      "reportHtml": "bvisible-mcp-ssh-manager.html"
+      "reportMd": "reports/bvisible-mcp-ssh-manager.md",
+      "reportHtml": "reports/bvisible-mcp-ssh-manager.html"
     },
     {
       "id": "scriptedalchemy-devtools-debugger-mcp",
@@ -5884,8 +5884,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "scriptedalchemy-devtools-debugger-mcp.md",
-      "reportHtml": "scriptedalchemy-devtools-debugger-mcp.html"
+      "reportMd": "reports/scriptedalchemy-devtools-debugger-mcp.md",
+      "reportHtml": "reports/scriptedalchemy-devtools-debugger-mcp.html"
     },
     {
       "id": "dmontgomery40-deepseek-mcp-server",
@@ -5902,8 +5902,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "dmontgomery40-deepseek-mcp-server.md",
-      "reportHtml": "dmontgomery40-deepseek-mcp-server.html"
+      "reportMd": "reports/dmontgomery40-deepseek-mcp-server.md",
+      "reportHtml": "reports/dmontgomery40-deepseek-mcp-server.html"
     },
     {
       "id": "jerhadf-linear-mcp-server",
@@ -5919,8 +5919,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "jerhadf-linear-mcp-server.md",
-      "reportHtml": "jerhadf-linear-mcp-server.html"
+      "reportMd": "reports/jerhadf-linear-mcp-server.md",
+      "reportHtml": "reports/jerhadf-linear-mcp-server.html"
     },
     {
       "id": "elusznik-mcp-server-code-execution-mode",
@@ -5936,8 +5936,8 @@
         "MCP-CODE-005",
         "MCP-CODE-006"
       ],
-      "reportMd": "elusznik-mcp-server-code-execution-mode.md",
-      "reportHtml": "elusznik-mcp-server-code-execution-mode.html"
+      "reportMd": "reports/elusznik-mcp-server-code-execution-mode.md",
+      "reportHtml": "reports/elusznik-mcp-server-code-execution-mode.html"
     },
     {
       "id": "recursechat-mcp-server-apple-shortcuts",
@@ -5954,8 +5954,8 @@
         "MCP-CODE-002",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "recursechat-mcp-server-apple-shortcuts.md",
-      "reportHtml": "recursechat-mcp-server-apple-shortcuts.html"
+      "reportMd": "reports/recursechat-mcp-server-apple-shortcuts.md",
+      "reportHtml": "reports/recursechat-mcp-server-apple-shortcuts.html"
     },
     {
       "id": "andrea9293-mcp-documentation-server",
@@ -5974,8 +5974,8 @@
         "MCP-SG-JS-006",
         "MCP-CODE-007"
       ],
-      "reportMd": "andrea9293-mcp-documentation-server.md",
-      "reportHtml": "andrea9293-mcp-documentation-server.html"
+      "reportMd": "reports/andrea9293-mcp-documentation-server.md",
+      "reportHtml": "reports/andrea9293-mcp-documentation-server.html"
     },
     {
       "id": "ivnvxd-mcp-server-odoo",
@@ -5994,8 +5994,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "ivnvxd-mcp-server-odoo.md",
-      "reportHtml": "ivnvxd-mcp-server-odoo.html"
+      "reportMd": "reports/ivnvxd-mcp-server-odoo.md",
+      "reportHtml": "reports/ivnvxd-mcp-server-odoo.html"
     },
     {
       "id": "spences10-mcp-omnisearch",
@@ -6014,8 +6014,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "spences10-mcp-omnisearch.md",
-      "reportHtml": "spences10-mcp-omnisearch.html"
+      "reportMd": "reports/spences10-mcp-omnisearch.md",
+      "reportHtml": "reports/spences10-mcp-omnisearch.html"
     },
     {
       "id": "stefanoamorelli-sec-edgar-mcp",
@@ -6031,8 +6031,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "stefanoamorelli-sec-edgar-mcp.md",
-      "reportHtml": "stefanoamorelli-sec-edgar-mcp.html"
+      "reportMd": "reports/stefanoamorelli-sec-edgar-mcp.md",
+      "reportHtml": "reports/stefanoamorelli-sec-edgar-mcp.html"
     },
     {
       "id": "stolinski-css-mcp",
@@ -6048,8 +6048,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "stolinski-css-mcp.md",
-      "reportHtml": "stolinski-css-mcp.html"
+      "reportMd": "reports/stolinski-css-mcp.md",
+      "reportHtml": "reports/stolinski-css-mcp.html"
     },
     {
       "id": "xeroapi-xero-mcp-server",
@@ -6067,8 +6067,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "xeroapi-xero-mcp-server.md",
-      "reportHtml": "xeroapi-xero-mcp-server.html"
+      "reportMd": "reports/xeroapi-xero-mcp-server.md",
+      "reportHtml": "reports/xeroapi-xero-mcp-server.html"
     },
     {
       "id": "domdomegg-computer-use-mcp",
@@ -6087,8 +6087,8 @@
         "MCP-SG-JS-001",
         "MCP-CODE-002"
       ],
-      "reportMd": "domdomegg-computer-use-mcp.md",
-      "reportHtml": "domdomegg-computer-use-mcp.html"
+      "reportMd": "reports/domdomegg-computer-use-mcp.md",
+      "reportHtml": "reports/domdomegg-computer-use-mcp.html"
     },
     {
       "id": "omar-v2-mcp-ical",
@@ -6101,8 +6101,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "omar-v2-mcp-ical.md",
-      "reportHtml": "omar-v2-mcp-ical.html"
+      "reportMd": "reports/omar-v2-mcp-ical.md",
+      "reportHtml": "reports/omar-v2-mcp-ical.html"
     },
     {
       "id": "sammysnake-d-fast-context-mcp",
@@ -6121,8 +6121,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "sammysnake-d-fast-context-mcp.md",
-      "reportHtml": "sammysnake-d-fast-context-mcp.html"
+      "reportMd": "reports/sammysnake-d-fast-context-mcp.md",
+      "reportHtml": "reports/sammysnake-d-fast-context-mcp.html"
     },
     {
       "id": "tugcantopaloglu-godot-mcp",
@@ -6139,8 +6139,8 @@
         "MCP-SG-JS-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "tugcantopaloglu-godot-mcp.md",
-      "reportHtml": "tugcantopaloglu-godot-mcp.html"
+      "reportMd": "reports/tugcantopaloglu-godot-mcp.md",
+      "reportHtml": "reports/tugcantopaloglu-godot-mcp.html"
     },
     {
       "id": "adhikasp-mcp-git-ingest",
@@ -6156,8 +6156,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "adhikasp-mcp-git-ingest.md",
-      "reportHtml": "adhikasp-mcp-git-ingest.html"
+      "reportMd": "reports/adhikasp-mcp-git-ingest.md",
+      "reportHtml": "reports/adhikasp-mcp-git-ingest.html"
     },
     {
       "id": "anklebreaker-studio-unity-mcp-server",
@@ -6176,8 +6176,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "anklebreaker-studio-unity-mcp-server.md",
-      "reportHtml": "anklebreaker-studio-unity-mcp-server.html"
+      "reportMd": "reports/anklebreaker-studio-unity-mcp-server.md",
+      "reportHtml": "reports/anklebreaker-studio-unity-mcp-server.html"
     },
     {
       "id": "newtype-01-obsidian-mcp",
@@ -6196,8 +6196,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "newtype-01-obsidian-mcp.md",
-      "reportHtml": "newtype-01-obsidian-mcp.html"
+      "reportMd": "reports/newtype-01-obsidian-mcp.md",
+      "reportHtml": "reports/newtype-01-obsidian-mcp.html"
     },
     {
       "id": "hmmhmmhm-daiso-mcp",
@@ -6219,8 +6219,8 @@
       "limitations": [
         "Additionally, Kotlin, Swift source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "hmmhmmhm-daiso-mcp.md",
-      "reportHtml": "hmmhmmhm-daiso-mcp.html"
+      "reportMd": "reports/hmmhmmhm-daiso-mcp.md",
+      "reportHtml": "reports/hmmhmmhm-daiso-mcp.html"
     },
     {
       "id": "goldentrii-agentrecall-mcp",
@@ -6239,8 +6239,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "goldentrii-agentrecall-mcp.md",
-      "reportHtml": "goldentrii-agentrecall-mcp.html"
+      "reportMd": "reports/goldentrii-agentrecall-mcp.md",
+      "reportHtml": "reports/goldentrii-agentrecall-mcp.html"
     },
     {
       "id": "voska-hass-mcp",
@@ -6256,8 +6256,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "voska-hass-mcp.md",
-      "reportHtml": "voska-hass-mcp.html"
+      "reportMd": "reports/voska-hass-mcp.md",
+      "reportHtml": "reports/voska-hass-mcp.html"
     },
     {
       "id": "volcengine-mcp-server",
@@ -6279,8 +6279,8 @@
       "limitations": [
         "Additionally, Go source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "volcengine-mcp-server.md",
-      "reportHtml": "volcengine-mcp-server.html"
+      "reportMd": "reports/volcengine-mcp-server.md",
+      "reportHtml": "reports/volcengine-mcp-server.html"
     },
     {
       "id": "getdatanaut-openmcp",
@@ -6299,8 +6299,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "getdatanaut-openmcp.md",
-      "reportHtml": "getdatanaut-openmcp.html"
+      "reportMd": "reports/getdatanaut-openmcp.md",
+      "reportHtml": "reports/getdatanaut-openmcp.html"
     },
     {
       "id": "artokun-comfyui-mcp",
@@ -6319,8 +6319,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "artokun-comfyui-mcp.md",
-      "reportHtml": "artokun-comfyui-mcp.html"
+      "reportMd": "reports/artokun-comfyui-mcp.md",
+      "reportHtml": "reports/artokun-comfyui-mcp.html"
     },
     {
       "id": "intuit-quickbooks-online-mcp-server",
@@ -6339,8 +6339,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "intuit-quickbooks-online-mcp-server.md",
-      "reportHtml": "intuit-quickbooks-online-mcp-server.html"
+      "reportMd": "reports/intuit-quickbooks-online-mcp-server.md",
+      "reportHtml": "reports/intuit-quickbooks-online-mcp-server.html"
     },
     {
       "id": "vikashloomba-mcp-server-playwright",
@@ -6359,8 +6359,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "vikashloomba-mcp-server-playwright.md",
-      "reportHtml": "vikashloomba-mcp-server-playwright.html"
+      "reportMd": "reports/vikashloomba-mcp-server-playwright.md",
+      "reportHtml": "reports/vikashloomba-mcp-server-playwright.html"
     },
     {
       "id": "coleam00-remote-mcp-server-with-auth",
@@ -6376,8 +6376,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "coleam00-remote-mcp-server-with-auth.md",
-      "reportHtml": "coleam00-remote-mcp-server-with-auth.html"
+      "reportMd": "reports/coleam00-remote-mcp-server-with-auth.md",
+      "reportHtml": "reports/coleam00-remote-mcp-server-with-auth.html"
     },
     {
       "id": "dainfernalcoder-perplexity-mcp",
@@ -6396,8 +6396,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "dainfernalcoder-perplexity-mcp.md",
-      "reportHtml": "dainfernalcoder-perplexity-mcp.html"
+      "reportMd": "reports/dainfernalcoder-perplexity-mcp.md",
+      "reportHtml": "reports/dainfernalcoder-perplexity-mcp.html"
     },
     {
       "id": "cbcoutinho-nextcloud-mcp-server",
@@ -6416,8 +6416,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "cbcoutinho-nextcloud-mcp-server.md",
-      "reportHtml": "cbcoutinho-nextcloud-mcp-server.html"
+      "reportMd": "reports/cbcoutinho-nextcloud-mcp-server.md",
+      "reportHtml": "reports/cbcoutinho-nextcloud-mcp-server.html"
     },
     {
       "id": "rekklesna-proxmoxmcp-plus",
@@ -6436,8 +6436,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "rekklesna-proxmoxmcp-plus.md",
-      "reportHtml": "rekklesna-proxmoxmcp-plus.html"
+      "reportMd": "reports/rekklesna-proxmoxmcp-plus.md",
+      "reportHtml": "reports/rekklesna-proxmoxmcp-plus.html"
     },
     {
       "id": "nickgnd-tmux-mcp",
@@ -6453,8 +6453,8 @@
         "MCP-CODE-001",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "nickgnd-tmux-mcp.md",
-      "reportHtml": "nickgnd-tmux-mcp.html"
+      "reportMd": "reports/nickgnd-tmux-mcp.md",
+      "reportHtml": "reports/nickgnd-tmux-mcp.html"
     },
     {
       "id": "amxv-mcp-manager",
@@ -6471,8 +6471,8 @@
         "MCP-META-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "amxv-mcp-manager.md",
-      "reportHtml": "amxv-mcp-manager.html"
+      "reportMd": "reports/amxv-mcp-manager.md",
+      "reportHtml": "reports/amxv-mcp-manager.html"
     },
     {
       "id": "yoshiko-pg-o3-search-mcp",
@@ -6488,8 +6488,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "yoshiko-pg-o3-search-mcp.md",
-      "reportHtml": "yoshiko-pg-o3-search-mcp.html"
+      "reportMd": "reports/yoshiko-pg-o3-search-mcp.md",
+      "reportHtml": "reports/yoshiko-pg-o3-search-mcp.html"
     },
     {
       "id": "erickwendel-erickwendel-contributions-mcp",
@@ -6504,8 +6504,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "erickwendel-erickwendel-contributions-mcp.md",
-      "reportHtml": "erickwendel-erickwendel-contributions-mcp.html"
+      "reportMd": "reports/erickwendel-erickwendel-contributions-mcp.md",
+      "reportHtml": "reports/erickwendel-erickwendel-contributions-mcp.html"
     },
     {
       "id": "kiliczsh-mcp-mongo-server",
@@ -6520,8 +6520,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "kiliczsh-mcp-mongo-server.md",
-      "reportHtml": "kiliczsh-mcp-mongo-server.html"
+      "reportMd": "reports/kiliczsh-mcp-mongo-server.md",
+      "reportHtml": "reports/kiliczsh-mcp-mongo-server.html"
     },
     {
       "id": "postmanlabs-postman-mcp-server",
@@ -6540,8 +6540,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "postmanlabs-postman-mcp-server.md",
-      "reportHtml": "postmanlabs-postman-mcp-server.html"
+      "reportMd": "reports/postmanlabs-postman-mcp-server.md",
+      "reportHtml": "reports/postmanlabs-postman-mcp-server.html"
     },
     {
       "id": "echelon-ai-labs-servicenow-mcp",
@@ -6560,8 +6560,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "echelon-ai-labs-servicenow-mcp.md",
-      "reportHtml": "echelon-ai-labs-servicenow-mcp.html"
+      "reportMd": "reports/echelon-ai-labs-servicenow-mcp.md",
+      "reportHtml": "reports/echelon-ai-labs-servicenow-mcp.html"
     },
     {
       "id": "appsecco-vulnerable-mcp-servers-lab",
@@ -6580,8 +6580,8 @@
         "MCP-CODE-006",
         "MCP-META-005"
       ],
-      "reportMd": "appsecco-vulnerable-mcp-servers-lab.md",
-      "reportHtml": "appsecco-vulnerable-mcp-servers-lab.html"
+      "reportMd": "reports/appsecco-vulnerable-mcp-servers-lab.md",
+      "reportHtml": "reports/appsecco-vulnerable-mcp-servers-lab.html"
     },
     {
       "id": "harimxchoi-google-surf-mcp",
@@ -6600,8 +6600,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "harimxchoi-google-surf-mcp.md",
-      "reportHtml": "harimxchoi-google-surf-mcp.html"
+      "reportMd": "reports/harimxchoi-google-surf-mcp.md",
+      "reportHtml": "reports/harimxchoi-google-surf-mcp.html"
     },
     {
       "id": "makeplane-plane-mcp-server",
@@ -6620,8 +6620,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "makeplane-plane-mcp-server.md",
-      "reportHtml": "makeplane-plane-mcp-server.html"
+      "reportMd": "reports/makeplane-plane-mcp-server.md",
+      "reportHtml": "reports/makeplane-plane-mcp-server.html"
     },
     {
       "id": "aliargun-mcp-server-gemini",
@@ -6638,8 +6638,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "aliargun-mcp-server-gemini.md",
-      "reportHtml": "aliargun-mcp-server-gemini.html"
+      "reportMd": "reports/aliargun-mcp-server-gemini.md",
+      "reportHtml": "reports/aliargun-mcp-server-gemini.html"
     },
     {
       "id": "codespar-mcp-dev-latam",
@@ -6658,8 +6658,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "codespar-mcp-dev-latam.md",
-      "reportHtml": "codespar-mcp-dev-latam.html"
+      "reportMd": "reports/codespar-mcp-dev-latam.md",
+      "reportHtml": "reports/codespar-mcp-dev-latam.html"
     },
     {
       "id": "vinkius-labs-mcpfusion",
@@ -6678,8 +6678,8 @@
         "MCP-CODE-003",
         "MCP-CODE-003"
       ],
-      "reportMd": "vinkius-labs-mcpfusion.md",
-      "reportHtml": "vinkius-labs-mcpfusion.html"
+      "reportMd": "reports/vinkius-labs-mcpfusion.md",
+      "reportHtml": "reports/vinkius-labs-mcpfusion.html"
     },
     {
       "id": "mcp-defender-mcp-defender",
@@ -6698,8 +6698,8 @@
         "MCP-CODE-006",
         "MCP-META-003"
       ],
-      "reportMd": "mcp-defender-mcp-defender.md",
-      "reportHtml": "mcp-defender-mcp-defender.html"
+      "reportMd": "reports/mcp-defender-mcp-defender.md",
+      "reportHtml": "reports/mcp-defender-mcp-defender.html"
     },
     {
       "id": "w0h1v-mcp-maigret",
@@ -6714,8 +6714,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "w0h1v-mcp-maigret.md",
-      "reportHtml": "w0h1v-mcp-maigret.html"
+      "reportMd": "reports/w0h1v-mcp-maigret.md",
+      "reportHtml": "reports/w0h1v-mcp-maigret.html"
     },
     {
       "id": "gdli6177-mcp-prompt-server",
@@ -6730,8 +6730,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "gdli6177-mcp-prompt-server.md",
-      "reportHtml": "gdli6177-mcp-prompt-server.html"
+      "reportMd": "reports/gdli6177-mcp-prompt-server.md",
+      "reportHtml": "reports/gdli6177-mcp-prompt-server.html"
     },
     {
       "id": "wenb1n-dev-mysql_mcp_server_pro",
@@ -6747,8 +6747,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "wenb1n-dev-mysql_mcp_server_pro.md",
-      "reportHtml": "wenb1n-dev-mysql_mcp_server_pro.html"
+      "reportMd": "reports/wenb1n-dev-mysql_mcp_server_pro.md",
+      "reportHtml": "reports/wenb1n-dev-mysql_mcp_server_pro.html"
     },
     {
       "id": "liuyoshio-mcp-compass",
@@ -6763,8 +6763,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "liuyoshio-mcp-compass.md",
-      "reportHtml": "liuyoshio-mcp-compass.html"
+      "reportMd": "reports/liuyoshio-mcp-compass.md",
+      "reportHtml": "reports/liuyoshio-mcp-compass.html"
     },
     {
       "id": "dryeab-mcp-telegram",
@@ -6779,8 +6779,8 @@
       "topRules": [
         "MCP-CODE-006"
       ],
-      "reportMd": "dryeab-mcp-telegram.md",
-      "reportHtml": "dryeab-mcp-telegram.html"
+      "reportMd": "reports/dryeab-mcp-telegram.md",
+      "reportHtml": "reports/dryeab-mcp-telegram.html"
     },
     {
       "id": "peng-shawn-mermaid-mcp-server",
@@ -6799,8 +6799,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "peng-shawn-mermaid-mcp-server.md",
-      "reportHtml": "peng-shawn-mermaid-mcp-server.html"
+      "reportMd": "reports/peng-shawn-mermaid-mcp-server.md",
+      "reportHtml": "reports/peng-shawn-mermaid-mcp-server.html"
     },
     {
       "id": "salacoste-mcp-n8n-workflow-builder",
@@ -6819,8 +6819,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "salacoste-mcp-n8n-workflow-builder.md",
-      "reportHtml": "salacoste-mcp-n8n-workflow-builder.html"
+      "reportMd": "reports/salacoste-mcp-n8n-workflow-builder.md",
+      "reportHtml": "reports/salacoste-mcp-n8n-workflow-builder.html"
     },
     {
       "id": "surendranb-google-analytics-mcp",
@@ -6842,8 +6842,8 @@
       "limitations": [
         "Additionally, Ruby source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "surendranb-google-analytics-mcp.md",
-      "reportHtml": "surendranb-google-analytics-mcp.html"
+      "reportMd": "reports/surendranb-google-analytics-mcp.md",
+      "reportHtml": "reports/surendranb-google-analytics-mcp.html"
     },
     {
       "id": "skills-integrate-mcp-with-copilot",
@@ -6856,8 +6856,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "skills-integrate-mcp-with-copilot.md",
-      "reportHtml": "skills-integrate-mcp-with-copilot.html"
+      "reportMd": "reports/skills-integrate-mcp-with-copilot.md",
+      "reportHtml": "reports/skills-integrate-mcp-with-copilot.html"
     },
     {
       "id": "sepinetam-mcp-for-stata",
@@ -6876,8 +6876,8 @@
         "MCP-CODE-004",
         "MCP-CODE-004"
       ],
-      "reportMd": "sepinetam-mcp-for-stata.md",
-      "reportHtml": "sepinetam-mcp-for-stata.html"
+      "reportMd": "reports/sepinetam-mcp-for-stata.md",
+      "reportHtml": "reports/sepinetam-mcp-for-stata.html"
     },
     {
       "id": "tranhoaihung-figma-ui-mcp",
@@ -6896,8 +6896,8 @@
         "MCP-SG-JS-004",
         "MCP-SG-JS-004"
       ],
-      "reportMd": "tranhoaihung-figma-ui-mcp.md",
-      "reportHtml": "tranhoaihung-figma-ui-mcp.html"
+      "reportMd": "reports/tranhoaihung-figma-ui-mcp.md",
+      "reportHtml": "reports/tranhoaihung-figma-ui-mcp.html"
     },
     {
       "id": "kazuph-mcp-taskmanager",
@@ -6916,8 +6916,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "kazuph-mcp-taskmanager.md",
-      "reportHtml": "kazuph-mcp-taskmanager.html"
+      "reportMd": "reports/kazuph-mcp-taskmanager.md",
+      "reportHtml": "reports/kazuph-mcp-taskmanager.html"
     },
     {
       "id": "tkasperczyk-thunderbird-mcp",
@@ -6936,8 +6936,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "tkasperczyk-thunderbird-mcp.md",
-      "reportHtml": "tkasperczyk-thunderbird-mcp.html"
+      "reportMd": "reports/tkasperczyk-thunderbird-mcp.md",
+      "reportHtml": "reports/tkasperczyk-thunderbird-mcp.html"
     },
     {
       "id": "bazinga012-mcp_code_executor",
@@ -6952,8 +6952,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "bazinga012-mcp_code_executor.md",
-      "reportHtml": "bazinga012-mcp_code_executor.html"
+      "reportMd": "reports/bazinga012-mcp_code_executor.md",
+      "reportHtml": "reports/bazinga012-mcp_code_executor.html"
     },
     {
       "id": "antonpk1-gibber-mcp",
@@ -6968,8 +6968,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "antonpk1-gibber-mcp.md",
-      "reportHtml": "antonpk1-gibber-mcp.html"
+      "reportMd": "reports/antonpk1-gibber-mcp.md",
+      "reportHtml": "reports/antonpk1-gibber-mcp.html"
     },
     {
       "id": "conechoai-nano-banana-mcp",
@@ -6988,8 +6988,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "conechoai-nano-banana-mcp.md",
-      "reportHtml": "conechoai-nano-banana-mcp.html"
+      "reportMd": "reports/conechoai-nano-banana-mcp.md",
+      "reportHtml": "reports/conechoai-nano-banana-mcp.html"
     },
     {
       "id": "aartiq-servicenow-mcp",
@@ -7008,8 +7008,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "aartiq-servicenow-mcp.md",
-      "reportHtml": "aartiq-servicenow-mcp.html"
+      "reportMd": "reports/aartiq-servicenow-mcp.md",
+      "reportHtml": "reports/aartiq-servicenow-mcp.html"
     },
     {
       "id": "waldzellai-waldzell-mcp",
@@ -7028,8 +7028,8 @@
         "MCP-CODE-003",
         "MCP-META-001"
       ],
-      "reportMd": "waldzellai-waldzell-mcp.md",
-      "reportHtml": "waldzellai-waldzell-mcp.html"
+      "reportMd": "reports/waldzellai-waldzell-mcp.md",
+      "reportHtml": "reports/waldzellai-waldzell-mcp.html"
     },
     {
       "id": "dmontgomery40-mcp-3d-printer-server",
@@ -7048,8 +7048,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "dmontgomery40-mcp-3d-printer-server.md",
-      "reportHtml": "dmontgomery40-mcp-3d-printer-server.html"
+      "reportMd": "reports/dmontgomery40-mcp-3d-printer-server.md",
+      "reportHtml": "reports/dmontgomery40-mcp-3d-printer-server.html"
     },
     {
       "id": "omar-haris-smart-coding-mcp",
@@ -7068,8 +7068,8 @@
         "MCP-CODE-005",
         "MCP-CODE-005"
       ],
-      "reportMd": "omar-haris-smart-coding-mcp.md",
-      "reportHtml": "omar-haris-smart-coding-mcp.html"
+      "reportMd": "reports/omar-haris-smart-coding-mcp.md",
+      "reportHtml": "reports/omar-haris-smart-coding-mcp.html"
     },
     {
       "id": "paoloricciuti-tmcp",
@@ -7088,8 +7088,8 @@
         "MCP-META-004",
         "MCP-META-004"
       ],
-      "reportMd": "paoloricciuti-tmcp.md",
-      "reportHtml": "paoloricciuti-tmcp.html"
+      "reportMd": "reports/paoloricciuti-tmcp.md",
+      "reportHtml": "reports/paoloricciuti-tmcp.html"
     },
     {
       "id": "azure-samples-mcp-agent-langchainjs",
@@ -7108,8 +7108,8 @@
         "MCP-SG-JS-005",
         "MCP-CODE-003"
       ],
-      "reportMd": "azure-samples-mcp-agent-langchainjs.md",
-      "reportHtml": "azure-samples-mcp-agent-langchainjs.html"
+      "reportMd": "reports/azure-samples-mcp-agent-langchainjs.md",
+      "reportHtml": "reports/azure-samples-mcp-agent-langchainjs.html"
     },
     {
       "id": "jaipreet15-tradingview-mcp",
@@ -7125,8 +7125,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "jaipreet15-tradingview-mcp.md",
-      "reportHtml": "jaipreet15-tradingview-mcp.html"
+      "reportMd": "reports/jaipreet15-tradingview-mcp.md",
+      "reportHtml": "reports/jaipreet15-tradingview-mcp.html"
     },
     {
       "id": "h1papc11-voice-mcp-agent",
@@ -7148,8 +7148,8 @@
       "limitations": [
         "Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "h1papc11-voice-mcp-agent.md",
-      "reportHtml": "h1papc11-voice-mcp-agent.html"
+      "reportMd": "reports/h1papc11-voice-mcp-agent.md",
+      "reportHtml": "reports/h1papc11-voice-mcp-agent.html"
     },
     {
       "id": "matanyemini-bitbucket-mcp",
@@ -7168,8 +7168,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "matanyemini-bitbucket-mcp.md",
-      "reportHtml": "matanyemini-bitbucket-mcp.html"
+      "reportMd": "reports/matanyemini-bitbucket-mcp.md",
+      "reportHtml": "reports/matanyemini-bitbucket-mcp.html"
     },
     {
       "id": "qpd-v-mcp-ragdocs",
@@ -7186,8 +7186,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "qpd-v-mcp-ragdocs.md",
-      "reportHtml": "qpd-v-mcp-ragdocs.html"
+      "reportMd": "reports/qpd-v-mcp-ragdocs.md",
+      "reportHtml": "reports/qpd-v-mcp-ragdocs.html"
     },
     {
       "id": "fr0zon3-notion-mcp",
@@ -7206,8 +7206,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "fr0zon3-notion-mcp.md",
-      "reportHtml": "fr0zon3-notion-mcp.html"
+      "reportMd": "reports/fr0zon3-notion-mcp.md",
+      "reportHtml": "reports/fr0zon3-notion-mcp.html"
     },
     {
       "id": "atagon-gmbh-kogiqa-mcp",
@@ -7226,8 +7226,8 @@
         "MCP-SG-JS-001",
         "MCP-CODE-006"
       ],
-      "reportMd": "atagon-gmbh-kogiqa-mcp.md",
-      "reportHtml": "atagon-gmbh-kogiqa-mcp.html"
+      "reportMd": "reports/atagon-gmbh-kogiqa-mcp.md",
+      "reportHtml": "reports/atagon-gmbh-kogiqa-mcp.html"
     },
     {
       "id": "dynamics365ninja-d365fo-mcp-server",
@@ -7249,8 +7249,8 @@
       "limitations": [
         "Additionally, C# source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "dynamics365ninja-d365fo-mcp-server.md",
-      "reportHtml": "dynamics365ninja-d365fo-mcp-server.html"
+      "reportMd": "reports/dynamics365ninja-d365fo-mcp-server.md",
+      "reportHtml": "reports/dynamics365ninja-d365fo-mcp-server.html"
     },
     {
       "id": "danosb-onenote-mcp",
@@ -7269,8 +7269,8 @@
         "MCP-SG-JS-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "danosb-onenote-mcp.md",
-      "reportHtml": "danosb-onenote-mcp.html"
+      "reportMd": "reports/danosb-onenote-mcp.md",
+      "reportHtml": "reports/danosb-onenote-mcp.html"
     },
     {
       "id": "uholli-browser-mcp",
@@ -7288,8 +7288,8 @@
         "MCP-CODE-002",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "uholli-browser-mcp.md",
-      "reportHtml": "uholli-browser-mcp.html"
+      "reportMd": "reports/uholli-browser-mcp.md",
+      "reportHtml": "reports/uholli-browser-mcp.html"
     },
     {
       "id": "iswalle-getnote-mcp",
@@ -7308,8 +7308,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "iswalle-getnote-mcp.md",
-      "reportHtml": "iswalle-getnote-mcp.html"
+      "reportMd": "reports/iswalle-getnote-mcp.md",
+      "reportHtml": "reports/iswalle-getnote-mcp.html"
     },
     {
       "id": "appwrite-mcp",
@@ -7326,8 +7326,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "appwrite-mcp.md",
-      "reportHtml": "appwrite-mcp.html"
+      "reportMd": "reports/appwrite-mcp.md",
+      "reportHtml": "reports/appwrite-mcp.html"
     },
     {
       "id": "jztan-redmine-mcp-server",
@@ -7346,8 +7346,8 @@
         "MCP-SG-PY-004",
         "MCP-CODE-006"
       ],
-      "reportMd": "jztan-redmine-mcp-server.md",
-      "reportHtml": "jztan-redmine-mcp-server.html"
+      "reportMd": "reports/jztan-redmine-mcp-server.md",
+      "reportHtml": "reports/jztan-redmine-mcp-server.html"
     },
     {
       "id": "codelogicincengineering-codelogic-mcp-server",
@@ -7366,8 +7366,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "codelogicincengineering-codelogic-mcp-server.md",
-      "reportHtml": "codelogicincengineering-codelogic-mcp-server.html"
+      "reportMd": "reports/codelogicincengineering-codelogic-mcp-server.md",
+      "reportHtml": "reports/codelogicincengineering-codelogic-mcp-server.html"
     },
     {
       "id": "azure-samples-mcp-workshop-dotnet",
@@ -7383,8 +7383,8 @@
       "limitations": [
         "Additionally, C# source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "azure-samples-mcp-workshop-dotnet.md",
-      "reportHtml": "azure-samples-mcp-workshop-dotnet.html"
+      "reportMd": "reports/azure-samples-mcp-workshop-dotnet.md",
+      "reportHtml": "reports/azure-samples-mcp-workshop-dotnet.html"
     },
     {
       "id": "iseppo-e-arveldaja-mcp",
@@ -7403,8 +7403,8 @@
         "MCP-CODE-002",
         "MCP-SG-JS-006"
       ],
-      "reportMd": "iseppo-e-arveldaja-mcp.md",
-      "reportHtml": "iseppo-e-arveldaja-mcp.html"
+      "reportMd": "reports/iseppo-e-arveldaja-mcp.md",
+      "reportHtml": "reports/iseppo-e-arveldaja-mcp.html"
     },
     {
       "id": "brilliantdirectories-brilliant-directories-mcp",
@@ -7423,8 +7423,8 @@
         "MCP-SG-JS-001",
         "MCP-CODE-003"
       ],
-      "reportMd": "brilliantdirectories-brilliant-directories-mcp.md",
-      "reportHtml": "brilliantdirectories-brilliant-directories-mcp.html"
+      "reportMd": "reports/brilliantdirectories-brilliant-directories-mcp.md",
+      "reportHtml": "reports/brilliantdirectories-brilliant-directories-mcp.html"
     },
     {
       "id": "hack23-european-parliament-mcp-server",
@@ -7443,8 +7443,8 @@
         "MCP-CODE-006",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "hack23-european-parliament-mcp-server.md",
-      "reportHtml": "hack23-european-parliament-mcp-server.html"
+      "reportMd": "reports/hack23-european-parliament-mcp-server.md",
+      "reportHtml": "reports/hack23-european-parliament-mcp-server.html"
     },
     {
       "id": "growilabs-growi-mcp-server",
@@ -7459,8 +7459,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "growilabs-growi-mcp-server.md",
-      "reportHtml": "growilabs-growi-mcp-server.html"
+      "reportMd": "reports/growilabs-growi-mcp-server.md",
+      "reportHtml": "reports/growilabs-growi-mcp-server.html"
     },
     {
       "id": "heznpc-airmcp",
@@ -7482,8 +7482,8 @@
       "limitations": [
         "Additionally, Swift source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "heznpc-airmcp.md",
-      "reportHtml": "heznpc-airmcp.html"
+      "reportMd": "reports/heznpc-airmcp.md",
+      "reportHtml": "reports/heznpc-airmcp.html"
     },
     {
       "id": "uyuni-project-mcp-server-uyuni",
@@ -7502,8 +7502,8 @@
         "MCP-CODE-006",
         "MCP-CODE-007"
       ],
-      "reportMd": "uyuni-project-mcp-server-uyuni.md",
-      "reportHtml": "uyuni-project-mcp-server-uyuni.html"
+      "reportMd": "reports/uyuni-project-mcp-server-uyuni.md",
+      "reportHtml": "reports/uyuni-project-mcp-server-uyuni.html"
     },
     {
       "id": "daanjonk-shopify-mcp-v1",
@@ -7520,8 +7520,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "daanjonk-shopify-mcp-v1.md",
-      "reportHtml": "daanjonk-shopify-mcp-v1.html"
+      "reportMd": "reports/daanjonk-shopify-mcp-v1.md",
+      "reportHtml": "reports/daanjonk-shopify-mcp-v1.html"
     },
     {
       "id": "saadkhan1150-telegram-mcp",
@@ -7540,8 +7540,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "saadkhan1150-telegram-mcp.md",
-      "reportHtml": "saadkhan1150-telegram-mcp.html"
+      "reportMd": "reports/saadkhan1150-telegram-mcp.md",
+      "reportHtml": "reports/saadkhan1150-telegram-mcp.html"
     },
     {
       "id": "yuridivonis-whoop-mcp-server",
@@ -7559,8 +7559,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "yuridivonis-whoop-mcp-server.md",
-      "reportHtml": "yuridivonis-whoop-mcp-server.html"
+      "reportMd": "reports/yuridivonis-whoop-mcp-server.md",
+      "reportHtml": "reports/yuridivonis-whoop-mcp-server.html"
     },
     {
       "id": "huangcvs-meigen-ai-design-mcp",
@@ -7579,8 +7579,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "huangcvs-meigen-ai-design-mcp.md",
-      "reportHtml": "huangcvs-meigen-ai-design-mcp.html"
+      "reportMd": "reports/huangcvs-meigen-ai-design-mcp.md",
+      "reportHtml": "reports/huangcvs-meigen-ai-design-mcp.html"
     },
     {
       "id": "decisionsdev-ibm-decision-intelligence-mcp-server",
@@ -7599,8 +7599,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "decisionsdev-ibm-decision-intelligence-mcp-server.md",
-      "reportHtml": "decisionsdev-ibm-decision-intelligence-mcp-server.html"
+      "reportMd": "reports/decisionsdev-ibm-decision-intelligence-mcp-server.md",
+      "reportHtml": "reports/decisionsdev-ibm-decision-intelligence-mcp-server.html"
     },
     {
       "id": "bobitenta-website-design-systems-mcp",
@@ -7618,8 +7618,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "bobitenta-website-design-systems-mcp.md",
-      "reportHtml": "bobitenta-website-design-systems-mcp.html"
+      "reportMd": "reports/bobitenta-website-design-systems-mcp.md",
+      "reportHtml": "reports/bobitenta-website-design-systems-mcp.html"
     },
     {
       "id": "signnow-sn-mcp-server",
@@ -7638,8 +7638,8 @@
         "MCP-SG-PY-004",
         "MCP-CODE-007"
       ],
-      "reportMd": "signnow-sn-mcp-server.md",
-      "reportHtml": "signnow-sn-mcp-server.html"
+      "reportMd": "reports/signnow-sn-mcp-server.md",
+      "reportHtml": "reports/signnow-sn-mcp-server.html"
     },
     {
       "id": "hypasmarty-sumo-mcp-server",
@@ -7656,8 +7656,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "hypasmarty-sumo-mcp-server.md",
-      "reportHtml": "hypasmarty-sumo-mcp-server.html"
+      "reportMd": "reports/hypasmarty-sumo-mcp-server.md",
+      "reportHtml": "reports/hypasmarty-sumo-mcp-server.html"
     },
     {
       "id": "paladini-devutils-mcp-server",
@@ -7670,8 +7670,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "paladini-devutils-mcp-server.md",
-      "reportHtml": "paladini-devutils-mcp-server.html"
+      "reportMd": "reports/paladini-devutils-mcp-server.md",
+      "reportHtml": "reports/paladini-devutils-mcp-server.html"
     },
     {
       "id": "rrsaldanha-burp-mcp-agents",
@@ -7684,8 +7684,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "rrsaldanha-burp-mcp-agents.md",
-      "reportHtml": "rrsaldanha-burp-mcp-agents.html"
+      "reportMd": "reports/rrsaldanha-burp-mcp-agents.md",
+      "reportHtml": "reports/rrsaldanha-burp-mcp-agents.html"
     },
     {
       "id": "makeitfree-mcp-x-web",
@@ -7704,8 +7704,8 @@
         "MCP-META-005",
         "MCP-META-005"
       ],
-      "reportMd": "makeitfree-mcp-x-web.md",
-      "reportHtml": "makeitfree-mcp-x-web.html"
+      "reportMd": "reports/makeitfree-mcp-x-web.md",
+      "reportHtml": "reports/makeitfree-mcp-x-web.html"
     },
     {
       "id": "maksimsarychau-mcp-zebrunner",
@@ -7724,8 +7724,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "maksimsarychau-mcp-zebrunner.md",
-      "reportHtml": "maksimsarychau-mcp-zebrunner.html"
+      "reportMd": "reports/maksimsarychau-mcp-zebrunner.md",
+      "reportHtml": "reports/maksimsarychau-mcp-zebrunner.html"
     },
     {
       "id": "elsakkk-mnemos-mcp",
@@ -7741,8 +7741,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "elsakkk-mnemos-mcp.md",
-      "reportHtml": "elsakkk-mnemos-mcp.html"
+      "reportMd": "reports/elsakkk-mnemos-mcp.md",
+      "reportHtml": "reports/elsakkk-mnemos-mcp.html"
     },
     {
       "id": "nunner322-mcp-arr",
@@ -7761,8 +7761,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "nunner322-mcp-arr.md",
-      "reportHtml": "nunner322-mcp-arr.html"
+      "reportMd": "reports/nunner322-mcp-arr.md",
+      "reportHtml": "reports/nunner322-mcp-arr.html"
     },
     {
       "id": "alanhoff-newrelic-mcp",
@@ -7781,8 +7781,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "alanhoff-newrelic-mcp.md",
-      "reportHtml": "alanhoff-newrelic-mcp.html"
+      "reportMd": "reports/alanhoff-newrelic-mcp.md",
+      "reportHtml": "reports/alanhoff-newrelic-mcp.html"
     },
     {
       "id": "jjvm2000-terminal-mcp",
@@ -7801,8 +7801,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "jjvm2000-terminal-mcp.md",
-      "reportHtml": "jjvm2000-terminal-mcp.html"
+      "reportMd": "reports/jjvm2000-terminal-mcp.md",
+      "reportHtml": "reports/jjvm2000-terminal-mcp.html"
     },
     {
       "id": "ly1595-nmap-mcp",
@@ -7815,8 +7815,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "ly1595-nmap-mcp.md",
-      "reportHtml": "ly1595-nmap-mcp.html"
+      "reportMd": "reports/ly1595-nmap-mcp.md",
+      "reportHtml": "reports/ly1595-nmap-mcp.html"
     },
     {
       "id": "daenerys888-noapi-google-search-mcp",
@@ -7835,8 +7835,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "daenerys888-noapi-google-search-mcp.md",
-      "reportHtml": "daenerys888-noapi-google-search-mcp.html"
+      "reportMd": "reports/daenerys888-noapi-google-search-mcp.md",
+      "reportHtml": "reports/daenerys888-noapi-google-search-mcp.html"
     },
     {
       "id": "parkyongseok1120-ue5_local_llm_mcp_lmstudio",
@@ -7858,8 +7858,8 @@
       "limitations": [
         "Additionally, C#, C++ source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "parkyongseok1120-ue5_local_llm_mcp_lmstudio.md",
-      "reportHtml": "parkyongseok1120-ue5_local_llm_mcp_lmstudio.html"
+      "reportMd": "reports/parkyongseok1120-ue5_local_llm_mcp_lmstudio.md",
+      "reportHtml": "reports/parkyongseok1120-ue5_local_llm_mcp_lmstudio.html"
     },
     {
       "id": "rexnzm-mcp-rag-with-chromadb",
@@ -7876,8 +7876,8 @@
         "MCP-CODE-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "rexnzm-mcp-rag-with-chromadb.md",
-      "reportHtml": "rexnzm-mcp-rag-with-chromadb.html"
+      "reportMd": "reports/rexnzm-mcp-rag-with-chromadb.md",
+      "reportHtml": "reports/rexnzm-mcp-rag-with-chromadb.html"
     },
     {
       "id": "browserless-browserless-mcp",
@@ -7896,8 +7896,8 @@
         "MCP-SG-JS-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "browserless-browserless-mcp.md",
-      "reportHtml": "browserless-browserless-mcp.html"
+      "reportMd": "reports/browserless-browserless-mcp.md",
+      "reportHtml": "reports/browserless-browserless-mcp.html"
     },
     {
       "id": "nvmtoxic-ai-books-mcp-server",
@@ -7912,8 +7912,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "nvmtoxic-ai-books-mcp-server.md",
-      "reportHtml": "nvmtoxic-ai-books-mcp-server.html"
+      "reportMd": "reports/nvmtoxic-ai-books-mcp-server.md",
+      "reportHtml": "reports/nvmtoxic-ai-books-mcp-server.html"
     },
     {
       "id": "naveenkm007-spaceship-mcp",
@@ -7931,8 +7931,8 @@
         "MCP-CODE-007",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "naveenkm007-spaceship-mcp.md",
-      "reportHtml": "naveenkm007-spaceship-mcp.html"
+      "reportMd": "reports/naveenkm007-spaceship-mcp.md",
+      "reportHtml": "reports/naveenkm007-spaceship-mcp.html"
     },
     {
       "id": "gowthaman90-mcp-bastion",
@@ -7951,8 +7951,8 @@
         "MCP-META-005",
         "MCP-META-001"
       ],
-      "reportMd": "gowthaman90-mcp-bastion.md",
-      "reportHtml": "gowthaman90-mcp-bastion.html"
+      "reportMd": "reports/gowthaman90-mcp-bastion.md",
+      "reportHtml": "reports/gowthaman90-mcp-bastion.html"
     },
     {
       "id": "nnico56-universal-db-mcp",
@@ -7971,8 +7971,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "nnico56-universal-db-mcp.md",
-      "reportHtml": "nnico56-universal-db-mcp.html"
+      "reportMd": "reports/nnico56-universal-db-mcp.md",
+      "reportHtml": "reports/nnico56-universal-db-mcp.html"
     },
     {
       "id": "bayyyyyuuu-veniai-hukuk-emsalkarar-mcpserver",
@@ -7985,8 +7985,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "bayyyyyuuu-veniai-hukuk-emsalkarar-mcpserver.md",
-      "reportHtml": "bayyyyyuuu-veniai-hukuk-emsalkarar-mcpserver.html"
+      "reportMd": "reports/bayyyyyuuu-veniai-hukuk-emsalkarar-mcpserver.md",
+      "reportHtml": "reports/bayyyyyuuu-veniai-hukuk-emsalkarar-mcpserver.html"
     },
     {
       "id": "jamald33n-tweetsave-mcp",
@@ -8001,8 +8001,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "jamald33n-tweetsave-mcp.md",
-      "reportHtml": "jamald33n-tweetsave-mcp.html"
+      "reportMd": "reports/jamald33n-tweetsave-mcp.md",
+      "reportHtml": "reports/jamald33n-tweetsave-mcp.html"
     },
     {
       "id": "ankitohlan-google-workspace-mcp-with-script",
@@ -8019,8 +8019,8 @@
         "MCP-CODE-006",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "ankitohlan-google-workspace-mcp-with-script.md",
-      "reportHtml": "ankitohlan-google-workspace-mcp-with-script.html"
+      "reportMd": "reports/ankitohlan-google-workspace-mcp-with-script.md",
+      "reportHtml": "reports/ankitohlan-google-workspace-mcp-with-script.html"
     },
     {
       "id": "yandatini-mcp-agent-framework",
@@ -8033,8 +8033,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "yandatini-mcp-agent-framework.md",
-      "reportHtml": "yandatini-mcp-agent-framework.html"
+      "reportMd": "reports/yandatini-mcp-agent-framework.md",
+      "reportHtml": "reports/yandatini-mcp-agent-framework.html"
     },
     {
       "id": "kyle122497-llamator-mcp-server",
@@ -8053,8 +8053,8 @@
         "MCP-META-004",
         "MCP-META-004"
       ],
-      "reportMd": "kyle122497-llamator-mcp-server.md",
-      "reportHtml": "kyle122497-llamator-mcp-server.html"
+      "reportMd": "reports/kyle122497-llamator-mcp-server.md",
+      "reportHtml": "reports/kyle122497-llamator-mcp-server.html"
     },
     {
       "id": "haytam111234-trainingpeaks-mcp",
@@ -8067,8 +8067,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "haytam111234-trainingpeaks-mcp.md",
-      "reportHtml": "haytam111234-trainingpeaks-mcp.html"
+      "reportMd": "reports/haytam111234-trainingpeaks-mcp.md",
+      "reportHtml": "reports/haytam111234-trainingpeaks-mcp.html"
     },
     {
       "id": "zhaoyue722-llm-usage-mcp",
@@ -8081,8 +8081,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "zhaoyue722-llm-usage-mcp.md",
-      "reportHtml": "zhaoyue722-llm-usage-mcp.html"
+      "reportMd": "reports/zhaoyue722-llm-usage-mcp.md",
+      "reportHtml": "reports/zhaoyue722-llm-usage-mcp.html"
     },
     {
       "id": "biggy44-mcp-server",
@@ -8095,8 +8095,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "biggy44-mcp-server.md",
-      "reportHtml": "biggy44-mcp-server.html"
+      "reportMd": "reports/biggy44-mcp-server.md",
+      "reportHtml": "reports/biggy44-mcp-server.html"
     },
     {
       "id": "yt314-weather-mcp-playwright",
@@ -8112,8 +8112,8 @@
         "MCP-SG-PY-006",
         "MCP-SG-PY-006"
       ],
-      "reportMd": "yt314-weather-mcp-playwright.md",
-      "reportHtml": "yt314-weather-mcp-playwright.html"
+      "reportMd": "reports/yt314-weather-mcp-playwright.md",
+      "reportHtml": "reports/yt314-weather-mcp-playwright.html"
     },
     {
       "id": "smksamir-searchmcp",
@@ -8126,8 +8126,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "smksamir-searchmcp.md",
-      "reportHtml": "smksamir-searchmcp.html"
+      "reportMd": "reports/smksamir-searchmcp.md",
+      "reportHtml": "reports/smksamir-searchmcp.html"
     },
     {
       "id": "securingtherealm-str-mcp-purview",
@@ -8144,8 +8144,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "securingtherealm-str-mcp-purview.md",
-      "reportHtml": "securingtherealm-str-mcp-purview.html"
+      "reportMd": "reports/securingtherealm-str-mcp-purview.md",
+      "reportHtml": "reports/securingtherealm-str-mcp-purview.html"
     },
     {
       "id": "carlos132nx-ralph-mcp",
@@ -8164,8 +8164,8 @@
         "MCP-CODE-002",
         "MCP-CODE-002"
       ],
-      "reportMd": "carlos132nx-ralph-mcp.md",
-      "reportHtml": "carlos132nx-ralph-mcp.html"
+      "reportMd": "reports/carlos132nx-ralph-mcp.md",
+      "reportHtml": "reports/carlos132nx-ralph-mcp.html"
     },
     {
       "id": "mahesans-bnbchain-mcp",
@@ -8187,8 +8187,8 @@
       "limitations": [
         "Additionally, Rust source is present but was NOT analyzed — MCP Trust has code rules for JavaScript, TypeScript and Python only. Absence of code findings does not imply this server is safe."
       ],
-      "reportMd": "mahesans-bnbchain-mcp.md",
-      "reportHtml": "mahesans-bnbchain-mcp.html"
+      "reportMd": "reports/mahesans-bnbchain-mcp.md",
+      "reportHtml": "reports/mahesans-bnbchain-mcp.html"
     },
     {
       "id": "ninjacazul-hono-mcp-server",
@@ -8203,8 +8203,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "ninjacazul-hono-mcp-server.md",
-      "reportHtml": "ninjacazul-hono-mcp-server.html"
+      "reportMd": "reports/ninjacazul-hono-mcp-server.md",
+      "reportHtml": "reports/ninjacazul-hono-mcp-server.html"
     },
     {
       "id": "sshisto-mnemo-mcp",
@@ -8223,8 +8223,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "sshisto-mnemo-mcp.md",
-      "reportHtml": "sshisto-mnemo-mcp.html"
+      "reportMd": "reports/sshisto-mnemo-mcp.md",
+      "reportHtml": "reports/sshisto-mnemo-mcp.html"
     },
     {
       "id": "chrismmt-mcp-adversarial-suite",
@@ -8243,8 +8243,8 @@
         "MCP-META-003",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "chrismmt-mcp-adversarial-suite.md",
-      "reportHtml": "chrismmt-mcp-adversarial-suite.html"
+      "reportMd": "reports/chrismmt-mcp-adversarial-suite.md",
+      "reportHtml": "reports/chrismmt-mcp-adversarial-suite.html"
     },
     {
       "id": "guru111244-claude-team-mcp",
@@ -8263,8 +8263,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "guru111244-claude-team-mcp.md",
-      "reportHtml": "guru111244-claude-team-mcp.html"
+      "reportMd": "reports/guru111244-claude-team-mcp.md",
+      "reportHtml": "reports/guru111244-claude-team-mcp.html"
     },
     {
       "id": "sidneybissoli-senado-br-mcp-cloudflare",
@@ -8283,8 +8283,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "sidneybissoli-senado-br-mcp-cloudflare.md",
-      "reportHtml": "sidneybissoli-senado-br-mcp-cloudflare.html"
+      "reportMd": "reports/sidneybissoli-senado-br-mcp-cloudflare.md",
+      "reportHtml": "reports/sidneybissoli-senado-br-mcp-cloudflare.html"
     },
     {
       "id": "nutriandrea-adobe-indesign-mcp",
@@ -8303,8 +8303,8 @@
         "MCP-META-005",
         "MCP-CODE-007"
       ],
-      "reportMd": "nutriandrea-adobe-indesign-mcp.md",
-      "reportHtml": "nutriandrea-adobe-indesign-mcp.html"
+      "reportMd": "reports/nutriandrea-adobe-indesign-mcp.md",
+      "reportHtml": "reports/nutriandrea-adobe-indesign-mcp.html"
     },
     {
       "id": "samarthanalytics-sj-samarth-analytics-mcp",
@@ -8323,8 +8323,8 @@
         "MCP-META-002",
         "MCP-META-002"
       ],
-      "reportMd": "samarthanalytics-sj-samarth-analytics-mcp.md",
-      "reportHtml": "samarthanalytics-sj-samarth-analytics-mcp.html"
+      "reportMd": "reports/samarthanalytics-sj-samarth-analytics-mcp.md",
+      "reportHtml": "reports/samarthanalytics-sj-samarth-analytics-mcp.html"
     },
     {
       "id": "sbsdbs-simple_mcp_server",
@@ -8340,8 +8340,8 @@
         "MCP-SG-JS-005",
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "sbsdbs-simple_mcp_server.md",
-      "reportHtml": "sbsdbs-simple_mcp_server.html"
+      "reportMd": "reports/sbsdbs-simple_mcp_server.md",
+      "reportHtml": "reports/sbsdbs-simple_mcp_server.html"
     },
     {
       "id": "breadstisx-claudemcp",
@@ -8357,8 +8357,8 @@
         "MCP-SG-PY-004",
         "MCP-SG-PY-004"
       ],
-      "reportMd": "breadstisx-claudemcp.md",
-      "reportHtml": "breadstisx-claudemcp.html"
+      "reportMd": "reports/breadstisx-claudemcp.md",
+      "reportHtml": "reports/breadstisx-claudemcp.html"
     },
     {
       "id": "idfkit-idfkit-mcp",
@@ -8376,8 +8376,8 @@
         "MCP-SG-PY-004",
         "MCP-META-005"
       ],
-      "reportMd": "idfkit-idfkit-mcp.md",
-      "reportHtml": "idfkit-idfkit-mcp.html"
+      "reportMd": "reports/idfkit-idfkit-mcp.md",
+      "reportHtml": "reports/idfkit-idfkit-mcp.html"
     },
     {
       "id": "sailorpepe-undesirables-mcp-server",
@@ -8396,8 +8396,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "sailorpepe-undesirables-mcp-server.md",
-      "reportHtml": "sailorpepe-undesirables-mcp-server.html"
+      "reportMd": "reports/sailorpepe-undesirables-mcp-server.md",
+      "reportHtml": "reports/sailorpepe-undesirables-mcp-server.html"
     },
     {
       "id": "citychip-fortress-mcp",
@@ -8416,8 +8416,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "citychip-fortress-mcp.md",
-      "reportHtml": "citychip-fortress-mcp.html"
+      "reportMd": "reports/citychip-fortress-mcp.md",
+      "reportHtml": "reports/citychip-fortress-mcp.html"
     },
     {
       "id": "alex-jordan547-renforge-mcp",
@@ -8436,8 +8436,8 @@
         "MCP-SG-JS-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "alex-jordan547-renforge-mcp.md",
-      "reportHtml": "alex-jordan547-renforge-mcp.html"
+      "reportMd": "reports/alex-jordan547-renforge-mcp.md",
+      "reportHtml": "reports/alex-jordan547-renforge-mcp.html"
     },
     {
       "id": "kcao3034-markdown-editor-mcp-server",
@@ -8456,8 +8456,8 @@
         "MCP-CODE-006",
         "MCP-CODE-006"
       ],
-      "reportMd": "kcao3034-markdown-editor-mcp-server.md",
-      "reportHtml": "kcao3034-markdown-editor-mcp-server.html"
+      "reportMd": "reports/kcao3034-markdown-editor-mcp-server.md",
+      "reportHtml": "reports/kcao3034-markdown-editor-mcp-server.html"
     },
     {
       "id": "dykeruv-argus-mcp",
@@ -8475,8 +8475,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "dykeruv-argus-mcp.md",
-      "reportHtml": "dykeruv-argus-mcp.html"
+      "reportMd": "reports/dykeruv-argus-mcp.md",
+      "reportHtml": "reports/dykeruv-argus-mcp.html"
     },
     {
       "id": "trannhat12363-0nmcp",
@@ -8495,8 +8495,8 @@
         "MCP-CODE-005",
         "MCP-CODE-005"
       ],
-      "reportMd": "trannhat12363-0nmcp.md",
-      "reportHtml": "trannhat12363-0nmcp.html"
+      "reportMd": "reports/trannhat12363-0nmcp.md",
+      "reportHtml": "reports/trannhat12363-0nmcp.html"
     },
     {
       "id": "hilitb-project-mcp",
@@ -8509,8 +8509,8 @@
       "score": 0,
       "findings": 0,
       "topRules": [],
-      "reportMd": "hilitb-project-mcp.md",
-      "reportHtml": "hilitb-project-mcp.html"
+      "reportMd": "reports/hilitb-project-mcp.md",
+      "reportHtml": "reports/hilitb-project-mcp.html"
     },
     {
       "id": "niku3325singh-ukrainian-stats-mcp-server",
@@ -8525,8 +8525,8 @@
       "topRules": [
         "MCP-SUPPLY-005"
       ],
-      "reportMd": "niku3325singh-ukrainian-stats-mcp-server.md",
-      "reportHtml": "niku3325singh-ukrainian-stats-mcp-server.html"
+      "reportMd": "reports/niku3325singh-ukrainian-stats-mcp-server.md",
+      "reportHtml": "reports/niku3325singh-ukrainian-stats-mcp-server.html"
     },
     {
       "id": "llallum-msdefender-mcp",
@@ -8545,8 +8545,8 @@
         "MCP-SG-JS-001",
         "MCP-SG-JS-001"
       ],
-      "reportMd": "llallum-msdefender-mcp.md",
-      "reportHtml": "llallum-msdefender-mcp.html"
+      "reportMd": "reports/llallum-msdefender-mcp.md",
+      "reportHtml": "reports/llallum-msdefender-mcp.html"
     },
     {
       "id": "stellify-software-ltd-stellify-mcp",
@@ -8565,8 +8565,8 @@
         "MCP-CODE-007",
         "MCP-CODE-007"
       ],
-      "reportMd": "stellify-software-ltd-stellify-mcp.md",
-      "reportHtml": "stellify-software-ltd-stellify-mcp.html"
+      "reportMd": "reports/stellify-software-ltd-stellify-mcp.md",
+      "reportHtml": "reports/stellify-software-ltd-stellify-mcp.html"
     },
     {
       "id": "substreambc-helium-mcp",
@@ -8585,8 +8585,8 @@
         "MCP-META-005",
         "MCP-SG-JS-005"
       ],
-      "reportMd": "substreambc-helium-mcp.md",
-      "reportHtml": "substreambc-helium-mcp.html"
+      "reportMd": "reports/substreambc-helium-mcp.md",
+      "reportHtml": "reports/substreambc-helium-mcp.html"
     }
   ]
 }

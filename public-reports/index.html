@@ -49,7 +49,7 @@ function render(){
     return '<tr><td><a href="https://'+esc(x.loc)+'">'+esc(x.id)+'</a><br><span class="muted">'+esc(src)+'</span></td>'+
     '<td class="d" style="color:var(--'+x.d+')">'+x.d+(x.w?' ⚠️':'')+'</td>'+
     '<td>'+esc(x.r)+'</td><td>'+x.s+'</td><td>'+x.f+'</td>'+
-    '<td><a href="'+esc(x.slug)+'.md">md</a> · <a href="'+esc(x.slug)+'.html">html</a></td></tr>';
+    '<td><a href="reports/'+esc(x.slug)+'.md">md</a> · <a href="reports/'+esc(x.slug)+'.html">html</a></td></tr>';
   }).join('');
 }
 q.addEventListener('input',render);
