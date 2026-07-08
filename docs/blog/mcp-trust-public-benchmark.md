@@ -25,8 +25,8 @@ servers, the archived reference set, and a spread of popular vendor/community se
 | Decision | Count | Meaning |
 |---|---|---|
 | BLOCK | 32 | Runtime code with high-confidence dangerous capability; review before use |
-| NEEDS_REVIEW | 91 | Notable patterns worth a human look before use |
-| APPROVE_WITH_RESTRICTIONS | 112 | Usable with sandboxing / least privilege |
+| NEEDS_REVIEW | 92 | Notable patterns worth a human look before use |
+| APPROVE_WITH_RESTRICTIONS | 111 | Usable with sandboxing / least privilege |
 | APPROVE | 217 | No significant risk in the available evidence |
 
 The most common patterns across the fleet were exactly what you'd expect from tools built
@@ -102,11 +102,11 @@ We'd rather undersell than overclaim:
 
 ## Performance, and where it goes
 
-452 targets scanned in **~28 minutes** on one laptop, sequential (mean 3.7s, median 2.4s
-each; machine-dependent). The time splits almost entirely between the **git clone (~64%)**
-and the **Semgrep subprocess (~35%)**; the deterministic rules are ~1%. Both run as
-*synchronous* child processes, one target at a time — so scanning parallel clones (async
-spawn, ~8–10 at once) would cut this to a few minutes. That's the next performance lever.
+452 targets scanned in **~4.5 minutes** on one laptop with `--concurrency 8` (down from ~28
+minutes sequential — a ~6× speedup). The git clone (~64%) and Semgrep (~35%) run as synchronous
+child processes per target, so the runner scans several targets in parallel child processes; the
+deterministic rules are ~1%. It stays fully deterministic — parallel and sequential give identical
+per-target results.
 
 ## Reproduce it
 

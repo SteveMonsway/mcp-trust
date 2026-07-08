@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-08T14:50:09.787Z",
+  "generatedAt": "2026-07-08T15:52:45.179Z",
   "scanner": {
     "name": "mcp-trust",
     "version": "0.5.3"
@@ -14,9 +14,9 @@
     "ok": 452,
     "failed": 0,
     "byDecision": {
-      "APPROVE_WITH_RESTRICTIONS": 112,
+      "APPROVE_WITH_RESTRICTIONS": 111,
       "APPROVE": 217,
-      "NEEDS_REVIEW": 91,
+      "NEEDS_REVIEW": 92,
       "BLOCK": 32
     },
     "byRisk": {
@@ -24,46 +24,46 @@
       "low": 236
     },
     "timing": {
-      "totalWallMs": 1664563.86,
-      "meanTotalMs": 3682.34,
-      "medianTotalMs": 2440.17,
+      "totalWallMs": 267349.31,
+      "meanTotalMs": 4520.45,
+      "medianTotalMs": 2714.95,
       "slowest": [
         {
           "id": "wjc9011-comsol_multiphysics_mcp",
-          "totalMs": 90038.15
-        },
-        {
-          "id": "ifuryst-rednote-mcp",
-          "totalMs": 90037.27
-        },
-        {
-          "id": "neo4j-contrib-mcp-neo4j",
-          "totalMs": 90032.61
-        },
-        {
-          "id": "rohitg00-kubectl-mcp-server",
-          "totalMs": 28802.24
+          "totalMs": 90020.06
         },
         {
           "id": "mcp-use-mcp-use",
-          "totalMs": 17033.23
+          "totalMs": 64634.43
+        },
+        {
+          "id": "tencentcloudbase-cloudbase-mcp",
+          "totalMs": 61691.46
+        },
+        {
+          "id": "rohitg00-kubectl-mcp-server",
+          "totalMs": 55773.38
+        },
+        {
+          "id": "wonderwhy-er-desktopcommandermcp",
+          "totalMs": 51250.07
         }
       ],
       "phaseMeanMs": {
-        "resolve": 2357.16,
+        "resolve": 2886.81,
         "config": 0,
-        "introspection": 0.01,
-        "rules": 31.46,
-        "semgrep": 1278.07,
-        "assemble": 0.06
+        "introspection": 0.13,
+        "rules": 41.8,
+        "semgrep": 1574.97,
+        "assemble": 0.58
       },
       "phaseShareOfTotal": {
-        "resolve": 64.01,
+        "resolve": 63.86,
         "config": 0,
         "introspection": 0,
-        "rules": 0.85,
-        "semgrep": 34.71,
-        "assemble": 0
+        "rules": 0.92,
+        "semgrep": 34.84,
+        "assemble": 0.01
       }
     }
   },
@@ -2746,9 +2746,13 @@
       "ok": true,
       "decision": "APPROVE",
       "risk": "low",
-      "score": 0,
-      "findings": 0,
-      "topRules": [],
+      "score": 24,
+      "findings": 3,
+      "topRules": [
+        "MCP-CODE-006",
+        "MCP-CODE-003",
+        "MCP-SUPPLY-005"
+      ],
       "reportMd": "reports/ifuryst-rednote-mcp.md",
       "reportHtml": "reports/ifuryst-rednote-mcp.html"
     },
@@ -3004,11 +3008,17 @@
       "locator": "github.com/neo4j-contrib/mcp-neo4j",
       "category": "python",
       "ok": true,
-      "decision": "APPROVE",
-      "risk": "low",
-      "score": 0,
-      "findings": 0,
-      "topRules": [],
+      "decision": "NEEDS_REVIEW",
+      "risk": "medium",
+      "score": 35,
+      "findings": 27,
+      "topRules": [
+        "MCP-SG-PY-004",
+        "MCP-SG-PY-004",
+        "MCP-SG-PY-004",
+        "MCP-SG-PY-004",
+        "MCP-SG-PY-004"
+      ],
       "reportMd": "reports/neo4j-contrib-mcp-neo4j.md",
       "reportHtml": "reports/neo4j-contrib-mcp-neo4j.html"
     },
@@ -7077,17 +7087,11 @@
       "locator": "github.com/paoloricciuti/tmcp",
       "category": "javascript",
       "ok": true,
-      "decision": "APPROVE_WITH_RESTRICTIONS",
-      "risk": "medium",
-      "score": 30,
-      "findings": 8,
-      "topRules": [
-        "MCP-CONFIG-001",
-        "MCP-CODE-006",
-        "MCP-CODE-006",
-        "MCP-META-004",
-        "MCP-META-004"
-      ],
+      "decision": "APPROVE",
+      "risk": "low",
+      "score": 0,
+      "findings": 0,
+      "topRules": [],
       "reportMd": "reports/paoloricciuti-tmcp.md",
       "reportHtml": "reports/paoloricciuti-tmcp.html"
     },

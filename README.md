@@ -76,7 +76,7 @@ Inputs: `target` (default: workspace), `fail-on`, `output` (`sarif,md,json`),
 
 MCP Trust ships a reproducible benchmark over **452 real, public MCP servers**
 (JavaScript / TypeScript / Python; `registry-seed/seed-targets.yml`). Latest run:
-**32 BLOCK · 91 NEEDS_REVIEW · 112 APPROVE_WITH_RESTRICTIONS · 217 APPROVE**.
+**32 BLOCK · 92 NEEDS_REVIEW · 111 APPROVE_WITH_RESTRICTIONS · 217 APPROVE**.
 
 ```bash
 pnpm scan:seed        # clone + static + Semgrep for each seed target

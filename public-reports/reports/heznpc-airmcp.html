@@ -58,7 +58,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <span class="badge"><span class="badge-label">Score</span><span class="badge-value">42/100</span></span>
 <span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">85%</span></span>
 </div>
-<p class="ref">Resolved ref: <code>eb2639d0aa2b112b877887510dfcc93508069cce</code></p>
+<p class="ref">Resolved ref: <code>14cf9f37a1e84fe6acdb90f964ed43a09b2210ce</code></p>
 </header>
 <section><h2>Executive Summary</h2>
 <p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
@@ -94,7 +94,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:107</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:109</code></p>
 <pre class="snippet"><code>const ver = execFileSync(&quot;sw_vers&quot;, [&quot;-productVersion&quot;], { encoding: &quot;utf8&quot;, timeout: 3000 }).trim();</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -103,7 +103,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:116</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:118</code></p>
 <pre class="snippet"><code>const latest = execFileSync(&quot;npm&quot;, [&quot;view&quot;, NPM_PACKAGE_NAME, &quot;version&quot;], {</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -112,7 +112,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:198</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:200</code></p>
 <pre class="snippet"><code>const output = execFileSync(&quot;claude&quot;, [&quot;mcp&quot;, &quot;list&quot;], {</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -121,7 +121,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:479</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:514</code></p>
 <pre class="snippet"><code>execFileSync(</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -130,7 +130,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:510</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:545</code></p>
 <pre class="snippet"><code>execFileSync(&quot;which&quot;, [&quot;gws&quot;], { stdio: &quot;pipe&quot;, timeout: 3000 });</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -139,7 +139,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-001: Shell command execution (child_process.exec/execSync)</h4>
 <p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 90% · <strong>Category:</strong> code</p>
 <p>Enables arbitrary shell command execution with the process privileges.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:514</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:549</code></p>
 <pre class="snippet"><code>execFileSync(&quot;npx&quot;, [&quot;-y&quot;, &quot;@googleworkspace/cli&quot;, &quot;--version&quot;], { stdio: &quot;pipe&quot;, timeout: 10000 });</code></pre>
 <p><strong>Impact:</strong> Enables arbitrary shell command execution with the process privileges.</p>
 <p><strong>Remediation:</strong> Use execFile/spawn with an argument array and shell:false; validate against an allowlist.</p>
@@ -678,7 +678,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
 <p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
 <p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:55</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:57</code></p>
 <pre class="snippet"><code>return await fetch(url, { ...init, signal: controller.signal });</code></pre>
 <p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
 <p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
@@ -814,7 +814,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <h4>MCP-CODE-007: Secret-like environment variable access</h4>
 <p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
 <p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
-<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:420</code></p>
+<p><strong>Evidence:</strong> <code>src/cli/doctor.ts:455</code></p>
 <pre class="snippet"><code>const httpToken = &lt;redacted:secret&gt; ?? &quot;&quot;;</code></pre>
 <p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
 <p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
@@ -1146,7 +1146,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:47:20.053Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T15:52:12.570Z.</footer>
 </main>
 </body>
 </html>

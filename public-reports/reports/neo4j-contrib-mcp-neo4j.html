@@ -50,33 +50,278 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 </head>
 <body>
 <main class="report">
-<header class="report-head decision-approve">
+<header class="report-head decision-review">
 <h1>MCP Trust Report: github:neo4j-contrib/mcp-neo4j</h1>
 <div class="badges">
-<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE</span></span>
-<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">LOW</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">0/100</span></span>
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">NEEDS_REVIEW</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">35/100</span></span>
 <span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">60%</span></span>
 </div>
+<p class="ref">Resolved ref: <code>dbc01ba78f171851f2d57dcd125b028c29912fd1</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>No significant risks were detected in the available evidence. This is not a safety guarantee — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.</p>
+<p>The scanner found notable capabilities or patterns worth a human look (listed under Decision Reasons and Findings). This is not a rejection — read the specific findings and decide based on your threat model. Many are expected for what the server does (e.g. network access for a fetch server).</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 0 falls in LOW band</li></ul>
+<ul><li>Overall score 35 falls in MEDIUM band</li><li>Elevated to NEEDS_REVIEW by: MCP-META-003, MCP-META-003</li></ul>
 </section>
 <section><h2>Coverage</h2>
-<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>not_available</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>not_available</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>partial</td></tr></tbody></table>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>partial</td></tr></tbody></table>
 </section>
 <section><h2>Capability Map</h2>
 <p class="muted">Source: static_inference</p>
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>not assessed</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>99</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>23</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
-<section><h2>Findings (0)</h2>
-<p><em>No findings.</em></p>
+<section><h2>Findings (27)</h2>
+<h3 class="sev sev-medium">MEDIUM (10)</h3>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:95</code></p>
+<pre class="snippet"><code>response = requests.get(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:110</code></p>
+<pre class="snippet"><code>response = requests.get(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:117</code></p>
+<pre class="snippet"><code>response = requests.get(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:198</code></p>
+<pre class="snippet"><code>response = requests.post(url, headers=self._get_headers(), json=payload)</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:223</code></p>
+<pre class="snippet"><code>response = requests.patch(url, headers=self._get_headers(), json=payload)</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:229</code></p>
+<pre class="snippet"><code>response = requests.post(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:235</code></p>
+<pre class="snippet"><code>response = requests.post(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:241</code></p>
+<pre class="snippet"><code>response = requests.get(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:247</code></p>
+<pre class="snippet"><code>response = requests.get(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-004: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/aura_api_client.py:260</code></p>
+<pre class="snippet"><code>response = requests.delete(url, headers=self._get_headers())</code></pre>
+<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
+<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
+</article>
+<h3 class="sev sev-low">LOW (17)</h3>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/__init__.py:21</code></p>
+<pre class="snippet"><code>default=os.environ.get(&quot;NEO4J_AURA_CLIENT_SECRET&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/tests/integration/conftest.py:14</code></p>
+<pre class="snippet"><code>if (not os.environ.get(&quot;NEO4J_AURA_CLIENT_ID&quot;) or not os.environ.get(&quot;NEO4J_AURA_CLIENT_SECRET&quot;)):</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/tests/integration/test_aura_IT.py:14</code></p>
+<pre class="snippet"><code>not os.environ.get(&quot;NEO4J_AURA_CLIENT_ID&quot;) or not os.environ.get(&quot;NEO4J_AURA_CLIENT_SECRET&quot;),</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/tests/integration/test_http_transport_IT.py:38</code></p>
+<pre class="snippet"><code>client_secret = &lt;redacted:secret&gt;&quot;NEO4J_AURA_CLIENT_SECRET&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/tests/unit/test_utils.py:156</code></p>
+<pre class="snippet"><code>os.environ[&quot;NEO4J_AURA_CLIENT_SECRET&quot;] = &quot;env-client-secret&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cypher/tests/unit/test_utils.py:471</code></p>
+<pre class="snippet"><code>os.environ[&quot;NEO4J_RESPONSE_TOKEN_LIMIT&quot;] = &quot;3000&quot;</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-CODE-007: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>Reads environment variables whose names imply secrets (tokens, keys, passwords). Reading credentials from the environment is normal configuration; this is an informational capability signal, not a vulnerability by itself.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-memory/tests/integration/test_neo4j_memory_IT.py:11</code></p>
+<pre class="snippet"><code>password = &lt;redacted:secret&gt;&quot;NEO4J_PASSWORD&quot;, &quot;password&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-003: Suspicious data-exfiltration phrase in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references sending data/credentials to an external destination. (Severity reduced high→low: this match is in test code — servers/mcp-neo4j-memory/tests/unit/test_neo4j_memory.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-memory/tests/unit/test_neo4j_memory.py</code></p>
+<pre class="snippet"><code>X` WITH 1 as x MATCH (s:Secret) CREATE (e:Exfiltrated {data: s.name + &#39;:&#39; + s.value}) //</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Investigate where data would be sent. Block until the destination and intent are verified.</p>
+</article>
+<article class="finding">
+<h4>MCP-META-003: Suspicious data-exfiltration phrase in metadata</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
+<p>Metadata references sending data/credentials to an external destination. (Severity reduced high→low: this match is in test code — servers/mcp-neo4j-memory/tests/unit/test_neo4j_memory.py — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-memory/tests/unit/test_neo4j_memory.py</code></p>
+<pre class="snippet"><code>exfiltration_injection</code></pre>
+<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
+<p><strong>Remediation:</strong> Investigate where data would be sent. Block until the destination and intent are verified.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/utils.py:97</code></p>
+<pre class="snippet"><code>if os.getenv(&quot;NEO4J_AURA_CLIENT_SECRET&quot;) is not None:</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cloud-aura-api/src/mcp_neo4j_aura_manager/utils.py:98</code></p>
+<pre class="snippet"><code>return os.getenv(&quot;NEO4J_AURA_CLIENT_SECRET&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cypher/src/mcp_neo4j_cypher/utils.py:93</code></p>
+<pre class="snippet"><code>if os.getenv(&quot;NEO4J_PASSWORD&quot;) is not None:</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cypher/src/mcp_neo4j_cypher/utils.py:94</code></p>
+<pre class="snippet"><code>config[&quot;password&quot;] = os.getenv(&quot;NEO4J_PASSWORD&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cypher/src/mcp_neo4j_cypher/utils.py:253</code></p>
+<pre class="snippet"><code>if os.getenv(&quot;NEO4J_RESPONSE_TOKEN_LIMIT&quot;) is not None:</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-cypher/src/mcp_neo4j_cypher/utils.py:254</code></p>
+<pre class="snippet"><code>config[&quot;token_limit&quot;] = int(os.getenv(&quot;NEO4J_RESPONSE_TOKEN_LIMIT&quot;))</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-memory/src/mcp_neo4j_memory/utils.py:65</code></p>
+<pre class="snippet"><code>if os.getenv(&quot;NEO4J_PASSWORD&quot;) is not None:</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
+<article class="finding">
+<h4>MCP-SG-PY-006: Secret-like environment variable access</h4>
+<p class="finding-meta"><strong>Severity:</strong> low · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
+<p>The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Evidence:</strong> <code>servers/mcp-neo4j-memory/src/mcp_neo4j_memory/utils.py:66</code></p>
+<pre class="snippet"><code>config[&quot;neo4j_password&quot;] = os.getenv(&quot;NEO4J_PASSWORD&quot;)</code></pre>
+<p><strong>Impact:</strong> The server reads credentials from the environment (credential_access capability); normal configuration, a concern only if they are logged or sent externally.</p>
+<p><strong>Remediation:</strong> Confirm the server needs these secrets; scope tokens narrowly and never log them.</p>
+</article>
 </section>
 <section><h2>Recommended Policy</h2>
 <ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
@@ -84,7 +329,7 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:34:27.751Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T15:50:04.505Z.</footer>
 </main>
 </body>
 </html>

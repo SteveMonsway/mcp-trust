@@ -4,6 +4,16 @@ All notable changes to MCP Trust. Format loosely follows [Keep a Changelog](http
 
 ## [0.5.3] — 2026-07-08 — precision tuning (network + redaction)
 
+Tooling (no change to scan results):
+- `bench scan` runs targets in **parallel child processes** (`--concurrency`, default 8) — the
+  452-server benchmark went from ~28 min to ~4.5 min (~6×). Fully deterministic: parallel and
+  sequential give identical per-target results.
+- `reports:public` now emits a compact folder `README.md`, a self-contained searchable
+  `index.html`, and puts per-target reports in a `public-reports/reports/` subfolder so the
+  folder page stays clean at any scale. `.nojekyll` serves the index as static GitHub Pages.
+
+Precision:
+
 - **Outbound request with a dynamic URL** (`MCP-SG-JS-005` / `MCP-SG-PY-004`, SSRF) no longer
   by itself forces `NEEDS_REVIEW`. Almost every MCP server makes outbound requests, so this was
   flagging ~half of all servers; it stays a medium finding (visible in the report and capability

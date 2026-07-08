@@ -41,9 +41,9 @@ detected capability is itself a signal worth reading.
 ## Latest run
 
 - **Targets scanned:** 452 public MCP servers (all GitHub, JS/TS/Python), 452 ok, 0 failed.
-- **Decisions:** 32 BLOCK · 91 NEEDS_REVIEW · 112 APPROVE_WITH_RESTRICTIONS · 217 APPROVE.
+- **Decisions:** 32 BLOCK · 92 NEEDS_REVIEW · 111 APPROVE_WITH_RESTRICTIONS · 217 APPROVE.
 - **Risk:** 236 low · 216 medium · 0 high · 0 critical.
-- **Timing (this run, darwin / Node v24.8.0):** ~28 min (1665s), sequential; mean 3.7s, median 2.4s per target. ~64% git clone + ~35% Semgrep; parallel clones would cut this to minutes (roadmap).
+- **Timing (this run, darwin / Node v24.8.0, `--concurrency 8`):** ~4.5 min for all 452 (mean 4.5s per target). Parallel child processes — ~6× faster than the sequential ~28 min; ~64% git clone + ~35% Semgrep per target.
 - **Environment:** Node v24.8.0, darwin, Semgrep available. Scanner v0.5.3.
 
 ## How to read these results
@@ -131,5 +131,5 @@ confidence — so an APPROVE is never misread as "fully analyzed, safe". In this
 | 59 | `llallum-msdefender-mcp` | javascript | NEEDS_REVIEW | medium | 41 | 19 |  |
 | 60 | `czlonkowski-n8n-mcp` | typescript | NEEDS_REVIEW | medium | 40 | 316 |  |
 
-_… 392 more — see the full index: [](../public-reports/README.md)._
+_… 392 more — see the full index: [`public-reports/`](../public-reports/README.md)._
 <!-- BENCHMARK_SUMMARY_END -->

@@ -55,36 +55,66 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 <div class="badges">
 <span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE</span></span>
 <span class="badge"><span class="badge-label">Risk</span><span class="badge-value">LOW</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">0/100</span></span>
-<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">60%</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">24/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">79%</span></span>
 </div>
+<p class="ref">Resolved ref: <code>74bf739a3db5c5b8e86fc8323ede09038cd89f48</code></p>
 </header>
 <section><h2>Executive Summary</h2>
 <p>No significant risks were detected in the available evidence. This is not a safety guarantee — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 0 falls in LOW band</li></ul>
+<ul><li>Overall score 24 falls in LOW band</li></ul>
 </section>
 <section><h2>Coverage</h2>
-<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>not_available</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>not_available</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>partial</td></tr></tbody></table>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>completed</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
 </section>
 <section><h2>Capability Map</h2>
 <p class="muted">Source: static_inference</p>
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>not assessed</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>71</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
-<section><h2>Findings (0)</h2>
-<p><em>No findings.</em></p>
+<section><h2>Findings (3)</h2>
+<h3 class="sev sev-high">HIGH (1)</h3>
+<article class="finding">
+<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
+<p class="finding-meta"><strong>Severity:</strong> high · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
+<p>Writes or deletes files, potentially outside a scoped workspace.</p>
+<p><strong>Evidence:</strong> <code>src/utils/logger.ts:82</code></p>
+<pre class="snippet"><code>const output = fs.createWriteStream(path.join(process.cwd(), &#39;rednote-logs.zip&#39;));</code></pre>
+<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
+<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
+</article>
+<h3 class="sev sev-medium">MEDIUM (1)</h3>
+<article class="finding">
+<h4>MCP-CODE-003: Dynamic code evaluation (eval / Function)</h4>
+<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 85% · <strong>Category:</strong> code</p>
+<p>Uses eval() or the Function constructor to execute dynamically constructed code. (Severity reduced high→medium: this match is in build/dev-tooling code — src/tools/rednoteTools.ts — which does not run as part of the MCP server.)</p>
+<p><strong>Evidence:</strong> <code>src/tools/rednoteTools.ts:138</code></p>
+<pre class="snippet"><code>await noteItems[i].$eval(&#39;a.cover.mask.ld&#39;, (el: HTMLElement) =&gt; el.click())</code></pre>
+<p><strong>Impact:</strong> Dynamically evaluated code can execute attacker-controlled logic.</p>
+<p><strong>Remediation:</strong> Remove eval/Function. Parse data with JSON.parse and use explicit dispatch tables.</p>
+</article>
+<h3 class="sev sev-info">INFO (1)</h3>
+<article class="finding">
+<h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
+<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
+<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
+<p><strong>Evidence:</strong> <code>repo.files</code></p>
+<pre class="snippet"><code>no SECURITY.md found in source</code></pre>
+<p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
+<p><strong>Remediation:</strong> Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.</p>
+</article>
 </section>
 <section><h2>Recommended Policy</h2>
-<ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
+<ul><li>Run only in a sandbox with least-privilege configuration.</li></ul>
 </section>
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:32:16.114Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T15:49:55.010Z.</footer>
 </main>
 </body>
 </html>

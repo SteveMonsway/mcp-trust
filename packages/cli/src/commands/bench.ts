@@ -1,3 +1,4 @@
+import { spawn } from 'node:child_process';
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, resolve as resolvePath } from 'node:path';
 import yaml from 'js-yaml';
@@ -101,16 +102,114 @@ export async function cmdBench(positionals: string[], flags: Map<string, string 
   if (sub === 'scan') {
     const seedArg = positionals[1];
     if (!seedArg) {
-      process.stderr.write('Usage: mcp-trust bench scan <seed.yml> [--out public-reports]\n');
+      process.stderr.write('Usage: mcp-trust bench scan <seed.yml> [--out public-reports] [--concurrency 8]\n');
       return 3;
     }
-    return benchScan(resolvePath(invokeCwd(), seedArg), outDir);
+    const cRaw = flags.get('concurrency');
+    const concurrency = typeof cRaw === 'string' ? Math.max(1, Math.min(16, Number(cRaw) || 8)) : 8;
+    return benchScan(resolvePath(invokeCwd(), seedArg), outDir, concurrency);
   }
   if (sub === 'render') {
     return benchRender(outDir);
   }
-  process.stderr.write('Usage:\n  mcp-trust bench scan <seed.yml> [--out dir]\n  mcp-trust bench render [--out dir]\n');
+  // Internal: scan ONE target, write the full ScanResult to <outPath>, and print a
+  // small summary JSON to stdout. Used by `bench scan` to run targets in parallel
+  // child processes (each does its own blocking clone+Semgrep, so N processes overlap
+  // without touching the sync resolver). Writing the (possibly multi-MB) result to a
+  // file — not stdout — avoids truncation/backpressure on large repos.
+  if (sub === 'scan-one') {
+    return benchScanOne(positionals[1], positionals[2]);
+  }
+  process.stderr.write('Usage:\n  mcp-trust bench scan <seed.yml> [--out dir] [--concurrency N]\n  mcp-trust bench render [--out dir]\n');
   return 3;
+}
+
+const SCAN_ONE_OPTIONS: ScanOptions = {
+  formats: [],
+  failOn: 'high',
+  noExec: true,
+  introspect: false,
+  sandbox: 'none',
+  semgrep: true,
+  timeoutMs: 90_000,
+};
+
+async function benchScanOne(locator: string | undefined, outPath: string | undefined): Promise<number> {
+  if (!locator || !outPath) {
+    process.stderr.write('bench scan-one needs a locator and an output path\n');
+    return 3;
+  }
+  const emit = (o: unknown) => process.stdout.write(JSON.stringify(o) + '\n');
+  const parsed = parseTarget(locator);
+  if (!parsed.ok) {
+    emit({ ok: false, error: `target parse failed: ${parsed.message}` });
+    return 0;
+  }
+  const phaseMs: Partial<Record<ScanPhase, number>> = {};
+  const t0 = performance.now();
+  try {
+    const result = await runScan(parsed.target, SCAN_ONE_OPTIONS, {
+      onPhase: (name, ms) => {
+        phaseMs[name] = (phaseMs[name] ?? 0) + ms;
+      },
+    });
+    // The full result (possibly multi-MB) goes to a file; stdout carries only a summary.
+    writeFileSync(outPath, JSON.stringify(result, null, 2));
+    emit({
+      ok: true,
+      totalMs: performance.now() - t0,
+      phaseMs,
+      decision: result.score.decision,
+      risk: result.score.risk,
+      score: result.score.overall,
+      findings: result.findings.length,
+      topRules: result.findings.slice(0, 5).map((f) => f.ruleId),
+      limitations: result.limitations ?? null,
+    });
+  } catch (err) {
+    emit({ ok: false, totalMs: performance.now() - t0, phaseMs, error: err instanceof Error ? err.message : String(err) });
+  }
+  return 0;
+}
+
+interface ChildScanSummary {
+  ok: boolean;
+  totalMs?: number;
+  phaseMs?: Partial<Record<ScanPhase, number>>;
+  decision?: Decision;
+  risk?: RiskBand;
+  score?: number;
+  findings?: number;
+  topRules?: string[];
+  limitations?: string[] | null;
+  error?: string;
+}
+
+/** Run one target in a child process (replicates our own invocation: node + loader
+ * flags + this entry script). The child writes the full result to `outPath` and prints
+ * a small summary JSON line to stdout. */
+function runScanChild(locator: string, outPath: string): Promise<ChildScanSummary> {
+  return new Promise((resolve) => {
+    const args = [...process.execArgv, process.argv[1] ?? '', 'bench', 'scan-one', locator, outPath];
+    const child = spawn(process.execPath, args, { env: process.env, stdio: ['ignore', 'pipe', 'pipe'] });
+    let out = '';
+    let err = '';
+    child.stdout.on('data', (d) => (out += d));
+    child.stderr.on('data', (d) => (err += d));
+    child.on('error', (e) => resolve({ ok: false, error: `spawn failed: ${e.message}` }));
+    child.on('close', () => {
+      const lastLine = out.trim().split('\n').filter(Boolean).pop();
+      if (!lastLine) {
+        resolve({ ok: false, error: `child produced no output: ${err.slice(0, 200)}` });
+        return;
+      }
+      try {
+        resolve(JSON.parse(lastLine) as ChildScanSummary);
+      } catch {
+        resolve({ ok: false, error: `unparseable child output: ${lastLine.slice(0, 120)}` });
+      }
+    });
+  });
 }
 
 function loadSeed(seedPath: string): SeedEntry[] {
@@ -147,7 +246,7 @@ function loadSeed(seedPath: string): SeedEntry[] {
   return out;
 }
 
-async function benchScan(seedPath: string, outDir: string): Promise<number> {
+async function benchScan(seedPath: string, outDir: string, concurrency: number): Promise<number> {
   let seed: SeedEntry[];
   try {
     seed = loadSeed(seedPath);
@@ -163,61 +262,42 @@ async function benchScan(seedPath: string, outDir: string): Promise<number> {
   const rawDir = join(outDir, '_raw');
   mkdirSync(rawDir, { recursive: true });
 
-  // Benchmark scans never execute the target: static + Semgrep only. Introspection
-  // is off (github targets are never run anyway) and no report files are written
-  // by runScan itself — we persist the raw ScanResult ourselves for the render step.
-  const options: ScanOptions = {
-    formats: [],
-    failOn: 'high',
-    noExec: true,
-    introspect: false,
-    sandbox: 'none',
-    semgrep: true,
-    timeoutMs: 90_000,
-  };
-
-  const records: BenchRecord[] = [];
+  // Scan targets in parallel child processes. Each child does its own blocking
+  // clone + Semgrep (which the sync resolver requires), so N of them overlap and
+  // the wall-clock is roughly (sequential total / concurrency). Order-preserving.
+  const records: BenchRecord[] = new Array(seed.length);
   const wall0 = performance.now();
-  let idx = 0;
-  for (const entry of seed) {
-    idx += 1;
-    const slug = slugFromId(entry.id);
-    process.stderr.write(`[${idx}/${seed.length}] ${entry.id}  (${entry.locator})\n`);
+  let next = 0;
+  let done = 0;
+  process.stderr.write(`Scanning ${seed.length} targets, ${concurrency} at a time…\n`);
 
-    const parsed = parseTarget(entry.locator);
-    if (!parsed.ok) {
-      records.push(baseRecord(entry, slug, 0, {}, `target parse failed: ${parsed.message}`));
-      continue;
+  const worker = async (): Promise<void> => {
+    for (;;) {
+      const i = next++;
+      if (i >= seed.length) return;
+      const entry = seed[i]!;
+      const slug = slugFromId(entry.id);
+      const out = await runScanChild(entry.locator, join(rawDir, `${slug}.json`));
+      done += 1;
+      if (!out.ok) {
+        records[i] = baseRecord(entry, slug, out.totalMs ?? 0, out.phaseMs ?? {}, out.error ?? 'scan failed');
+        process.stderr.write(`[${done}/${seed.length}] ${entry.id} — FAILED (${out.error ?? 'no result'})\n`);
+        continue;
+      }
+      records[i] = {
+        ...baseRecord(entry, slug, out.totalMs ?? 0, out.phaseMs ?? {}),
+        ok: true,
+        decision: out.decision,
+        risk: out.risk,
+        score: out.score,
+        findings: out.findings,
+        topRules: out.topRules,
+        limitations: out.limitations ?? undefined,
+      };
+      process.stderr.write(`[${done}/${seed.length}] ${entry.id} — ${out.decision}\n`);
     }
-
-    const phaseMs: Partial<Record<ScanPhase, number>> = {};
-    const t0 = performance.now();
-    let result: ScanResult;
-    try {
-      result = await runScan(parsed.target, options, {
-        onPhase: (name, ms) => {
-          phaseMs[name] = (phaseMs[name] ?? 0) + ms;
-        },
-      });
-    } catch (err) {
-      const totalMs = performance.now() - t0;
-      records.push(baseRecord(entry, slug, totalMs, phaseMs, err instanceof Error ? err.message : String(err)));
-      continue;
-    }
-    const totalMs = performance.now() - t0;
-
-    writeFileSync(join(rawDir, `${slug}.json`), JSON.stringify(result, null, 2));
-    records.push({
-      ...baseRecord(entry, slug, totalMs, phaseMs),
-      ok: true,
-      decision: result.score.decision,
-      risk: result.score.risk,
-      score: result.score.overall,
-      findings: result.findings.length,
-      topRules: result.findings.slice(0, 5).map((f) => f.ruleId),
-      limitations: result.limitations,
-    });
-  }
+  };
+  await Promise.all(Array.from({ length: Math.min(concurrency, seed.length) }, () => worker()));
   const totalWallMs = performance.now() - wall0;
 
   const benchFile: BenchFile = {

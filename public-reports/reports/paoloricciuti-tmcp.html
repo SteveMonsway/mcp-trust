@@ -50,129 +50,41 @@ blockquote{margin:.4rem 0;padding:.5rem .9rem;border-left:3px solid var(--border
 </head>
 <body>
 <main class="report">
-<header class="report-head decision-restrict">
+<header class="report-head decision-approve">
 <h1>MCP Trust Report: github:paoloricciuti/tmcp</h1>
 <div class="badges">
-<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE_WITH_RESTRICTIONS</span></span>
-<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">MEDIUM</span></span>
-<span class="badge"><span class="badge-label">Score</span><span class="badge-value">30/100</span></span>
-<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">68%</span></span>
+<span class="badge"><span class="badge-label">Decision</span><span class="badge-value">APPROVE</span></span>
+<span class="badge"><span class="badge-label">Risk</span><span class="badge-value">LOW</span></span>
+<span class="badge"><span class="badge-label">Score</span><span class="badge-value">0/100</span></span>
+<span class="badge"><span class="badge-label">Confidence</span><span class="badge-value">60%</span></span>
 </div>
-<p class="ref">Resolved ref: <code>7645627bf298170fc4451e1934d42ec0370a3b9c</code></p>
 </header>
 <section><h2>Executive Summary</h2>
-<p>This MCP server looks usable with restrictions (sandboxing, least privilege, scoped access). Review the findings and apply the recommended policy.</p>
+<p>No significant risks were detected in the available evidence. This is not a safety guarantee — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.</p>
 </section>
 <section><h2>Decision Reasons</h2>
-<ul><li>Overall score 30 falls in MEDIUM band</li></ul>
+<ul><li>Overall score 0 falls in LOW band</li></ul>
 </section>
 <section><h2>Coverage</h2>
-<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>completed</td></tr><tr><td>staticScan</td><td>completed</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>partial</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>completed</td></tr></tbody></table>
+<table><thead><tr><th>Check</th><th>State</th></tr></thead><tbody><tr><td>configScan</td><td>not_available</td></tr><tr><td>staticScan</td><td>not_available</td></tr><tr><td>capabilityInference</td><td>static_only</td></tr><tr><td>introspection</td><td>disabled</td></tr><tr><td>semgrep</td><td>not_available</td></tr><tr><td>docker</td><td>disabled</td></tr><tr><td>dependencyScan</td><td>not_available</td></tr><tr><td>runtimeScan</td><td>not_available</td></tr><tr><td>packageMetadata</td><td>partial</td></tr></tbody></table>
 </section>
 <section><h2>Capability Map</h2>
 <p class="muted">Source: static_inference</p>
 <p><em>No tools discovered (no runtime introspection); capabilities inferred statically where possible.</em></p>
 </section>
 <section><h2>Subscores</h2>
-<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>67</td></tr><tr><td>config</td><td>41</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>61</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
+<table><thead><tr><th>Subscore</th><th>Value</th></tr></thead><tbody><tr><td>capability</td><td>0</td></tr><tr><td>code</td><td>not assessed</td></tr><tr><td>config</td><td>not assessed</td></tr><tr><td>supplyChain</td><td>0</td></tr><tr><td>dependency</td><td>not assessed</td></tr><tr><td>authTransport</td><td>not assessed</td></tr><tr><td>metadata</td><td>0</td></tr><tr><td>maintainer</td><td>not assessed</td></tr><tr><td>runtime</td><td>not assessed</td></tr></tbody></table>
 </section>
-<section><h2>Findings (8)</h2>
-<h3 class="sev sev-medium">MEDIUM (7)</h3>
-<article class="finding">
-<h4>MCP-CONFIG-001: Unpinned package version in MCP startup command</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 90% · <strong>Category:</strong> config</p>
-<p>The startup command runs a package via npx/uvx without pinning an exact version, so the code executed can change silently between runs.</p>
-<p><strong>Evidence:</strong> <code>.mcp.json</code></p>
-<pre class="snippet"><code>npx -y context-coder --mini --stdio</code></pre>
-<p><strong>Impact:</strong> The exact code run at startup is not reproducible and can be replaced by a malicious release.</p>
-<p><strong>Remediation:</strong> Pin an exact version, e.g. `npx -y @scope/server@1.2.3`. Avoid `latest`/floating ranges in startup commands.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 75% · <strong>Category:</strong> code</p>
-<p>Writes or deletes files, potentially outside a scoped workspace. (Severity reduced high→medium: this match is in build/dev-tooling code — packages/tmcp/scripts/fix-unique-symbol.ts — which does not run as part of the MCP server.)</p>
-<p><strong>Evidence:</strong> <code>packages/tmcp/scripts/fix-unique-symbol.ts:22</code></p>
-<pre class="snippet"><code>fs.writeFile(FILE_PATH, declarations + &#39;\n&#39; + fixed_dts);</code></pre>
-<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory. The argument appears to be dynamically constructed, raising injection risk.</p>
-<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
-</article>
-<article class="finding">
-<h4>MCP-CODE-006: Arbitrary filesystem write or delete</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 70% · <strong>Category:</strong> code</p>
-<p>Writes or deletes files, potentially outside a scoped workspace.</p>
-<p><strong>Evidence:</strong> <code>packages/internal-ts-helpers/src/abstractify.js:166</code></p>
-<pre class="snippet"><code>fs.writeFileSync(file_path, output, &#39;utf8&#39;);</code></pre>
-<p><strong>Impact:</strong> File writes can modify data; a dynamic path can write outside the intended directory.</p>
-<p><strong>Remediation:</strong> Constrain writes/deletes to a validated workspace directory; never delete based on unvalidated input.</p>
-</article>
-<article class="finding">
-<h4>MCP-META-004: Metadata references system/developer prompt</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
-<p><strong>Evidence:</strong> <code>packages/tmcp/src/types/index.d.ts</code></p>
-<pre class="snippet"><code>s understanding of available tools, resources, etc. It can be thought of like a &quot;hint&quot; to the model. For example, this information MAY be added to the system prompt.
-		 */
-		readonly instructions: v.O</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
-</article>
-<article class="finding">
-<h4>MCP-META-004: Metadata references system/developer prompt</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
-<p><strong>Evidence:</strong> <code>packages/tmcp/src/validation/index.js</code></p>
-<pre class="snippet"><code>s understanding of available tools, resources, etc. It can be thought of like a &quot;hint&quot; to the model. For example, this information MAY be added to the system prompt.
-	 */
-	instructions: v.optional(v.s</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
-</article>
-<article class="finding">
-<h4>MCP-META-004: Metadata references system/developer prompt</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> metadata</p>
-<p>Metadata references the system or developer prompt, a common prompt-injection target.</p>
-<p><strong>Evidence:</strong> <code>packages/tmcp/src/validation/index.js</code></p>
-<pre class="snippet"><code>]),
-	content: v.union([
-		TextContentSchema,
-		ImageContentSchema,
-		AudioContentSchema,
-	]),
-});
-
-export const CreateMessageRequestParamsSchema = v.object({
-	...BaseRequestParamsSchema.entries,
-	mess</code></pre>
-<p><strong>Impact:</strong> Instruction-like text in server-controlled metadata can steer the model without user awareness.</p>
-<p><strong>Remediation:</strong> Review why tool metadata references system-level prompts; treat as untrusted.</p>
-</article>
-<article class="finding">
-<h4>MCP-SG-JS-005: Outbound request with dynamic URL (SSRF / exfiltration)</h4>
-<p class="finding-meta"><strong>Severity:</strong> medium · <strong>Confidence:</strong> 60% · <strong>Category:</strong> code</p>
-<p>A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
-<p><strong>Evidence:</strong> <code>packages/auth/src/oauth.js:526</code></p>
-<pre class="snippet"><code>await fetch(url).then((res) =&gt; res.json())</code></pre>
-<p><strong>Impact:</strong> A caller-controlled URL can reach internal services or exfiltrate data. Note — almost every MCP server makes outbound requests; this is reported as evidence (medium) but does not by itself force NEEDS_REVIEW. Real SSRF needs the URL to come from tool input.</p>
-<p><strong>Remediation:</strong> Validate URLs against an allowlist of hosts/schemes before making outbound requests.</p>
-</article>
-<h3 class="sev sev-info">INFO (1)</h3>
-<article class="finding">
-<h4>MCP-SUPPLY-005: No security policy (SECURITY.md) found</h4>
-<p class="finding-meta"><strong>Severity:</strong> info · <strong>Confidence:</strong> 100% · <strong>Category:</strong> supply_chain</p>
-<p>The project does not provide a security policy. This is a maturity/best-practice gap, not a vulnerability — reported informational so it never drives the decision.</p>
-<p><strong>Evidence:</strong> <code>repo.files</code></p>
-<pre class="snippet"><code>no SECURITY.md found in source</code></pre>
-<p><strong>Impact:</strong> Absence of a disclosure process slows remediation of future vulnerabilities.</p>
-<p><strong>Remediation:</strong> Prefer projects that publish a SECURITY.md with a vulnerability disclosure process.</p>
-</article>
+<section><h2>Findings (0)</h2>
+<p><em>No findings.</em></p>
 </section>
 <section><h2>Recommended Policy</h2>
-<ul><li>Pin exact package versions in the startup command.</li></ul>
+<ul><li>No elevated restrictions required beyond standard review, based on available evidence.</li></ul>
 </section>
 <section><h2>Disclaimer</h2>
 <blockquote>MCP Trust provides evidence-based risk assessment. It does not guarantee that a server is safe or malicious. Use results as input to security review, sandboxing and policy decisions.</blockquote>
 </section>
-<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T14:46:11.265Z.</footer>
+<footer class="report-foot">Generated by mcp-trust 0.5.3 at 2026-07-08T15:52:24.235Z.</footer>
 </main>
 </body>
 </html>
