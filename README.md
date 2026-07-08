@@ -90,7 +90,7 @@ findings in tests, examples and build scripts are severity-capped so they don't 
 false BLOCK, and code in languages MCP Trust can't analyze (Go, Rust, …) is flagged with a
 **⚠️ Limitations** note so an APPROVE is never misread as a clean bill.
 
-**Browse the reports:** [`public-reports/`](public-reports/README.md) (searchable by server /
+**Browse the reports:** [`public-reports/index.html`](public-reports/index.html) (searchable/filterable) or [`public-reports/`](public-reports/README.md) (by server /
 company name) · write-up: [`docs/benchmark.md`](docs/benchmark.md) · methodology:
 [`docs/blog/mcp-trust-public-benchmark.md`](docs/blog/mcp-trust-public-benchmark.md).
 
