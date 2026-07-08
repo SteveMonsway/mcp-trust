@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 68%
 
+**Source:** [github.com/elevenlabs/elevenlabs-mcp](https://github.com/elevenlabs/elevenlabs-mcp)
+
 _Resolved ref: `afc22357432db9e8b33991a83d41906001f6d759`_
 
 ## Executive Summary

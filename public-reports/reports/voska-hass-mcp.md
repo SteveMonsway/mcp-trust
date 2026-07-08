@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/voska/hass-mcp](https://github.com/voska/hass-mcp)
+
 _Resolved ref: `6da04f79ff66f6cb88d56e87f77fcbcccc9daf86`_
 
 ## Executive Summary

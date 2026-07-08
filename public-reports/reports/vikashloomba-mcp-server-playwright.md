@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 74%
 
+**Source:** [github.com/VikashLoomba/MCP-Server-Playwright](https://github.com/VikashLoomba/MCP-Server-Playwright)
+
 _Resolved ref: `d84bf80a3b41aa2545aa6f453957e9d9969bc671`_
 
 ## Executive Summary

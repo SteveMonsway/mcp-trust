@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 78%
 
+**Source:** [github.com/AgentDeskAI/browser-tools-mcp](https://github.com/AgentDeskAI/browser-tools-mcp)
+
 _Resolved ref: `d298068137c3dfd01e7a6f24038a6c199790da1e`_
 
 ## Executive Summary

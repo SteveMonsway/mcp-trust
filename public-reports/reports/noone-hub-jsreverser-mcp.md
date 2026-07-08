@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 80%
 
+**Source:** [github.com/NoOne-hub/JSReverser-MCP](https://github.com/NoOne-hub/JSReverser-MCP)
+
 _Resolved ref: `65e2e3cb70c10a79dfd1ba4410a2c876113e676c`_
 
 ## Executive Summary

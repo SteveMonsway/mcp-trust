@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/NvmToxic/ai-books-mcp-server](https://github.com/NvmToxic/ai-books-mcp-server)
+
 _Resolved ref: `d01dd90b89af609d4fa1539ec7e33e3d0f9d24d3`_
 
 ## Executive Summary

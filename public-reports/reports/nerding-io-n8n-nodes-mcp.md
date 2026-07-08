@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/nerding-io/n8n-nodes-mcp](https://github.com/nerding-io/n8n-nodes-mcp)
+
 _Resolved ref: `6ee215b30e514251b4334f7dba577d5a94276785`_
 
 ## Executive Summary

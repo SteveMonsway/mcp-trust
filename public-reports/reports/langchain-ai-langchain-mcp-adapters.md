@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/langchain-ai/langchain-mcp-adapters](https://github.com/langchain-ai/langchain-mcp-adapters)
+
 _Resolved ref: `6a10b83516e825b8ff73870e5595113acc1c8c6d`_
 
 ## Executive Summary

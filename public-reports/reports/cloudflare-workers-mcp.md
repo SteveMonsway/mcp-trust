@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 73%
 
+**Source:** [github.com/cloudflare/workers-mcp](https://github.com/cloudflare/workers-mcp)
+
 _Resolved ref: `e22d7c46c49f34e3f825d750c0c316f7aa9728dd`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 67%
 
+**Source:** [github.com/Wh0am123/MCP-Kali-Server](https://github.com/Wh0am123/MCP-Kali-Server)
+
 _Resolved ref: `00154c053845b2ec4c3eef49ad09dd9bb2d3b7aa`_
 
 ## Executive Summary

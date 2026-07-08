@@ -5,6 +5,8 @@
 **Score:** 21/100  
 **Confidence:** 70%
 
+**Source:** [github.com/uyuni-project/mcp-server-uyuni](https://github.com/uyuni-project/mcp-server-uyuni)
+
 _Resolved ref: `5edb7ba8642b90ecd648aad50cf549ae92a2ba59`_
 
 ## Executive Summary

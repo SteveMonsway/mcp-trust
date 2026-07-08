@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 67%
 
+**Source:** [github.com/wshobson/maverick-mcp](https://github.com/wshobson/maverick-mcp)
+
 _Resolved ref: `88bef247aa490a9f7fd363dfa435444edb69e2d2`_
 
 ## Executive Summary

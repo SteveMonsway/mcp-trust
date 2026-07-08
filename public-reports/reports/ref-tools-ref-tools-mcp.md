@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 63%
 
+**Source:** [github.com/ref-tools/ref-tools-mcp](https://github.com/ref-tools/ref-tools-mcp)
+
 _Resolved ref: `83970a35627785a0589ae2dbe5510b4a3dd04146`_
 
 ## Executive Summary

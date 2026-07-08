@@ -5,6 +5,8 @@
 **Score:** 48/100  
 **Confidence:** 78%
 
+**Source:** [github.com/wonderwhy-er/DesktopCommanderMCP](https://github.com/wonderwhy-er/DesktopCommanderMCP)
+
 _Resolved ref: `d627e1baf8b51c5e0c64bf8e3da78c148743e44a`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 76%
 
+**Source:** [github.com/zinja-coder/apktool-mcp-server](https://github.com/zinja-coder/apktool-mcp-server)
+
 _Resolved ref: `12bb33134af905923a0a58643dcc35fd694ad6f6`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 80%
 
+**Source:** [github.com/vivekVells/mcp-pandoc](https://github.com/vivekVells/mcp-pandoc)
+
 _Resolved ref: `1ed1007bbf3a753cad1e05c18b02e8127ec6a91b`_
 
 ## Executive Summary

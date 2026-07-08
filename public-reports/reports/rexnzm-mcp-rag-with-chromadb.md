@@ -5,6 +5,8 @@
 **Score:** 25/100  
 **Confidence:** 79%
 
+**Source:** [github.com/rexnzm/MCP-rag-with-Chromadb](https://github.com/rexnzm/MCP-rag-with-Chromadb)
+
 _Resolved ref: `63ff565d563dbb7e1d369956a8eb504b2a93be98`_
 
 ## Executive Summary

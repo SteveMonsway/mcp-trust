@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 71%
 
+**Source:** [github.com/googleapis/gcloud-mcp](https://github.com/googleapis/gcloud-mcp)
+
 _Resolved ref: `7a07667457b7305acd05fb95ded13f4e996628c8`_
 
 ## Executive Summary

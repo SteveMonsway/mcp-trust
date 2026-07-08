@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 70%
 
+**Source:** [github.com/alioshr/memory-bank-mcp](https://github.com/alioshr/memory-bank-mcp)
+
 _Resolved ref: `559e42274147bb60f263b24c496d54593fb7f807`_
 
 ## Executive Summary

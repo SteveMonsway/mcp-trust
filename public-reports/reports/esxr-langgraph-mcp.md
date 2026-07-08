@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 60%
 
+**Source:** [github.com/esxr/langgraph-mcp](https://github.com/esxr/langgraph-mcp)
+
 _Resolved ref: `16944242d980bafe56876f78224982efd2c1c074`_
 
 ## Executive Summary

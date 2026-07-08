@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 70%
 
+**Source:** [github.com/nnico56/universal-db-mcp](https://github.com/nnico56/universal-db-mcp)
+
 _Resolved ref: `37f59fc2172cfe196dc9fcc50b7b3305ce1245ca`_
 
 ## Executive Summary

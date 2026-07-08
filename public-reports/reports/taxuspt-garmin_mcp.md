@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 74%
 
+**Source:** [github.com/Taxuspt/garmin_mcp](https://github.com/Taxuspt/garmin_mcp)
+
 _Resolved ref: `2974244bfda1595b00836b3f942f579ec2d6f7d6`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/daobataotie/CAD-MCP](https://github.com/daobataotie/CAD-MCP)
+
 _Resolved ref: `352541820a56823568a90993dd773e7014205f44`_
 
 ## Executive Summary

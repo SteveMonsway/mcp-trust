@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 85%
 
+**Source:** [github.com/southleft/figma-console-mcp](https://github.com/southleft/figma-console-mcp)
+
 _Resolved ref: `f139a1a25b9140f54c208dfe6723b22ba3c20721`_
 
 ## Executive Summary

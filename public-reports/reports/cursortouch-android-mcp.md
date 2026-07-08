@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/CursorTouch/Android-MCP](https://github.com/CursorTouch/Android-MCP)
+
 _Resolved ref: `5fa453b4d142463bf3cc1a362d03540a16b84774`_
 
 ## Executive Summary

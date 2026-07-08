@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 90%
 
+**Source:** [github.com/angiejones/mcp-selenium](https://github.com/angiejones/mcp-selenium)
+
 _Resolved ref: `363ecf0f71958adc2b74a98389c1d31133011fb0`_
 
 ## Executive Summary

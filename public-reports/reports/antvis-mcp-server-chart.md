@@ -5,6 +5,8 @@
 **Score:** 13/100  
 **Confidence:** 60%
 
+**Source:** [github.com/antvis/mcp-server-chart](https://github.com/antvis/mcp-server-chart)
+
 _Resolved ref: `33178096abfa58f245b456f5bacb18bc37f5cbaf`_
 
 ## Executive Summary

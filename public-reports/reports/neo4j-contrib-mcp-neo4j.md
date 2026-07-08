@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 60%
 
+**Source:** [github.com/neo4j-contrib/mcp-neo4j](https://github.com/neo4j-contrib/mcp-neo4j)
+
 _Resolved ref: `dbc01ba78f171851f2d57dcd125b028c29912fd1`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 70%
 
+**Source:** [github.com/arben-adm/mcp-sequential-thinking](https://github.com/arben-adm/mcp-sequential-thinking)
+
 _Resolved ref: `527ba64d86b68c4ca54f7986b65537ded19510fa`_
 
 ## Executive Summary

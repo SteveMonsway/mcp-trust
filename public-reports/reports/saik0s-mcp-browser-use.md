@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 79%
 
+**Source:** [github.com/Saik0s/mcp-browser-use](https://github.com/Saik0s/mcp-browser-use)
+
 _Resolved ref: `03e0dad7f429568f922e0cc09b72849472cb867c`_
 
 ## Executive Summary

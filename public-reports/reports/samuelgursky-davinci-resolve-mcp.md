@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 76%
 
+**Source:** [github.com/samuelgursky/davinci-resolve-mcp](https://github.com/samuelgursky/davinci-resolve-mcp)
+
 _Resolved ref: `3d81c422081421417d59f17a2de033bdf7567868`_
 
 ## Executive Summary

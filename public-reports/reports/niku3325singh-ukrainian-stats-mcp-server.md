@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/niku3325singh/ukrainian-stats-mcp-server](https://github.com/niku3325singh/ukrainian-stats-mcp-server)
+
 _Resolved ref: `f46e4683d3cd63aee82473406a39ccc0fb353a51`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 6/100  
 **Confidence:** 80%
 
+**Source:** [github.com/haris-musa/excel-mcp-server](https://github.com/haris-musa/excel-mcp-server)
+
 _Resolved ref: `f51340ecd5778952405044b203d3a2d4c8a46833`_
 
 ## Executive Summary

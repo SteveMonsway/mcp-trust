@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/paladini/devutils-mcp-server](https://github.com/paladini/devutils-mcp-server)
+
 _Resolved ref: `edcec7f1e5d5e5f92c2731884a7f695f411b3aa2`_
 
 ## Executive Summary

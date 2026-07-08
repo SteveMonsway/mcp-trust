@@ -5,6 +5,8 @@
 **Score:** 52/100  
 **Confidence:** 84%
 
+**Source:** [github.com/getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP)
+
 _Resolved ref: `db7e055c39d4e2c23cbd030f14ac8bc8329f61d8`_
 
 ## Executive Summary

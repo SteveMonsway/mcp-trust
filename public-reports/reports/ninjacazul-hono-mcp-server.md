@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ninjacazul/hono-mcp-server](https://github.com/ninjacazul/hono-mcp-server)
+
 _Resolved ref: `d5672ec1754d91d5c756d3316781a00cf20a4033`_
 
 ## Executive Summary

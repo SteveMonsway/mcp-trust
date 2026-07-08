@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 70%
 
+**Source:** [github.com/chigwell/telegram-mcp](https://github.com/chigwell/telegram-mcp)
+
 _Resolved ref: `f1a2d8e00a7f127bb7702655c58fdfcee7e73a5a`_
 
 ## Executive Summary

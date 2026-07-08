@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 70%
 
+**Source:** [github.com/Daenerys888/noapi-google-search-mcp](https://github.com/Daenerys888/noapi-google-search-mcp)
+
 _Resolved ref: `5acaffe929fd9336fa4a49a55c7aec2dffbb1c83`_
 
 ## Executive Summary

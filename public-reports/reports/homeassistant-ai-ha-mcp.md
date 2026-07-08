@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 67%
 
+**Source:** [github.com/homeassistant-ai/ha-mcp](https://github.com/homeassistant-ai/ha-mcp)
+
 _Resolved ref: `2913104bf706adccc53c06a2c31e82deb82479bc`_
 
 ## Executive Summary

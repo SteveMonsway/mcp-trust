@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 90%
 
+**Source:** [github.com/diffbot/mcp-code-graph](https://github.com/diffbot/mcp-code-graph)
+
 _Resolved ref: `908180f07e49f845a9cfb1a8fe2025186908870a`_
 
 ## Executive Summary

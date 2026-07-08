@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 74%
 
+**Source:** [github.com/aaronsb/obsidian-mcp-plugin](https://github.com/aaronsb/obsidian-mcp-plugin)
+
 _Resolved ref: `2349a2b13d992476a9a273d08bdaefe8bd3d9c65`_
 
 ## Executive Summary

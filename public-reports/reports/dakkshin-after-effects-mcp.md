@@ -5,6 +5,8 @@
 **Score:** 38/100  
 **Confidence:** 86%
 
+**Source:** [github.com/Dakkshin/after-effects-mcp](https://github.com/Dakkshin/after-effects-mcp)
+
 _Resolved ref: `88d5fbf08b7ae9f015ee98e5f8c4904095cf8202`_
 
 ## Executive Summary

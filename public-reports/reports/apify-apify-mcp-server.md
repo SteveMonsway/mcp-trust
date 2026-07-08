@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 71%
 
+**Source:** [github.com/apify/apify-mcp-server](https://github.com/apify/apify-mcp-server)
+
 _Resolved ref: `f05e17378f04c7898175eb7f906dc72f267e9f33`_
 
 ## Executive Summary

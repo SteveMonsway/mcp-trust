@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 80%
 
+**Source:** [github.com/crystaldba/postgres-mcp](https://github.com/crystaldba/postgres-mcp)
+
 _Resolved ref: `07eb329c8c48e49640e0d1b5b35465d4d024c3ee`_
 
 ## Executive Summary

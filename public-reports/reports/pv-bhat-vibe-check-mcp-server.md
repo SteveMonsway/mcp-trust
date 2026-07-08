@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 75%
 
+**Source:** [github.com/PV-Bhat/vibe-check-mcp-server](https://github.com/PV-Bhat/vibe-check-mcp-server)
+
 _Resolved ref: `ecac9cc34b76e6f9e7b58419ea908cc65b2c723a`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 69%
 
+**Source:** [github.com/brilliantdirectories/brilliant-directories-mcp](https://github.com/brilliantdirectories/brilliant-directories-mcp)
+
 _Resolved ref: `3b087709d62404b49e928857cce658190647620b`_
 
 ## Executive Summary

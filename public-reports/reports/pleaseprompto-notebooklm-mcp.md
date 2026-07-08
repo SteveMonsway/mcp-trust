@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 79%
 
+**Source:** [github.com/PleasePrompto/notebooklm-mcp](https://github.com/PleasePrompto/notebooklm-mcp)
+
 _Resolved ref: `50b3e7f67f8535d9899c5e2b1b68f37d17b72aef`_
 
 ## Executive Summary

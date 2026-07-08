@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 90%
 
+**Source:** [github.com/tugcantopaloglu/godot-mcp](https://github.com/tugcantopaloglu/godot-mcp)
+
 _Resolved ref: `b77dfc7c62606d6bc10ee86a0e28a115c237644d`_
 
 ## Executive Summary

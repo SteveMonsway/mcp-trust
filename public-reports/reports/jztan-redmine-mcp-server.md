@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 64%
 
+**Source:** [github.com/jztan/redmine-mcp-server](https://github.com/jztan/redmine-mcp-server)
+
 _Resolved ref: `6497c11ec842515739209eee5db38eef8676ca53`_
 
 ## Executive Summary

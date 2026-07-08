@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 79%
 
+**Source:** [github.com/vercel/next-devtools-mcp](https://github.com/vercel/next-devtools-mcp)
+
 _Resolved ref: `fd4524da66454d416181eca0f29cac71cc5ec082`_
 
 ## Executive Summary

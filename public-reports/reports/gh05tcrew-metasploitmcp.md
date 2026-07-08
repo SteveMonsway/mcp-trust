@@ -5,6 +5,8 @@
 **Score:** 13/100  
 **Confidence:** 70%
 
+**Source:** [github.com/GH05TCREW/MetasploitMCP](https://github.com/GH05TCREW/MetasploitMCP)
+
 _Resolved ref: `afc792d9ee17540f8a94349b20a3b203e6961a92`_
 
 ## Executive Summary

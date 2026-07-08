@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 62%
 
+**Source:** [github.com/cohnen/mcp-google-ads](https://github.com/cohnen/mcp-google-ads)
+
 _Resolved ref: `461a1d673cf1c369e8b95fc9b5b1d9cb7f3ebb4a`_
 
 ## Executive Summary

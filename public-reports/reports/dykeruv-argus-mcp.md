@@ -5,6 +5,8 @@
 **Score:** 12/100  
 **Confidence:** 60%
 
+**Source:** [github.com/dykeruv/argus-mcp](https://github.com/dykeruv/argus-mcp)
+
 _Resolved ref: `a9de7f2bc40652771f97f7e6c00014f6a889054a`_
 
 ## Executive Summary

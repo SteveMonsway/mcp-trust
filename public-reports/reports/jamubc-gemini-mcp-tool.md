@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 86%
 
+**Source:** [github.com/jamubc/gemini-mcp-tool](https://github.com/jamubc/gemini-mcp-tool)
+
 _Resolved ref: `588e73dfff07c29f5eeec988e886b46cc8cd6330`_
 
 ## Executive Summary

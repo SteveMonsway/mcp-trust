@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 70%
 
+**Source:** [github.com/Minidoracat/mcp-feedback-enhanced](https://github.com/Minidoracat/mcp-feedback-enhanced)
+
 _Resolved ref: `541ca1e5db8f5d1357d856f163feaacda1eb7144`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 77%
 
+**Source:** [github.com/modelcontextprotocol/mcpb](https://github.com/modelcontextprotocol/mcpb)
+
 _Resolved ref: `70fe3b34cd6dff1b3bba046638edc72a6467a4fb`_
 
 ## Executive Summary

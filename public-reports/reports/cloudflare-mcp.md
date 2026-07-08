@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 67%
 
+**Source:** [github.com/cloudflare/mcp](https://github.com/cloudflare/mcp)
+
 _Resolved ref: `fe731a8babb9dfef8816904bdd4e2c840d70af4c`_
 
 ## Executive Summary

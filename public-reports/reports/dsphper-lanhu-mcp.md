@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 70%
 
+**Source:** [github.com/dsphper/lanhu-mcp](https://github.com/dsphper/lanhu-mcp)
+
 _Resolved ref: `3636342139cd7f270000fc129579b763812d7200`_
 
 ## Executive Summary

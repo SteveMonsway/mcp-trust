@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 65%
 
+**Source:** [github.com/dbt-labs/dbt-mcp](https://github.com/dbt-labs/dbt-mcp)
+
 _Resolved ref: `3c532dbaf7304d3f6db0c67af633ddfba2e9c847`_
 
 ## Executive Summary

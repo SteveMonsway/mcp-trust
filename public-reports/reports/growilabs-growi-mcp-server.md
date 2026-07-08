@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/growilabs/growi-mcp-server](https://github.com/growilabs/growi-mcp-server)
+
 _Resolved ref: `0a8acb7886c8d6a9f70910519139d46f8707367d`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 71%
 
+**Source:** [github.com/pipeboard-co/meta-ads-mcp](https://github.com/pipeboard-co/meta-ads-mcp)
+
 _Resolved ref: `555ae487f4a88cf4ea148ca58d9ff33d56c356c1`_
 
 ## Executive Summary

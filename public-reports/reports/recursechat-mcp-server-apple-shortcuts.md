@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 90%
 
+**Source:** [github.com/recursechat/mcp-server-apple-shortcuts](https://github.com/recursechat/mcp-server-apple-shortcuts)
+
 _Resolved ref: `910a56d4965c1a39d4afb9890f21580f02f3f71d`_
 
 ## Executive Summary

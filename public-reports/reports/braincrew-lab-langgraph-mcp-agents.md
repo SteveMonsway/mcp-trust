@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 68%
 
+**Source:** [github.com/braincrew-lab/langgraph-mcp-agents](https://github.com/braincrew-lab/langgraph-mcp-agents)
+
 _Resolved ref: `d4694e9db841343a2bd4dd3a30175a02b63d9144`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 85%
 
+**Source:** [github.com/rekog-labs/MCP-Nest](https://github.com/rekog-labs/MCP-Nest)
+
 _Resolved ref: `c3a79af5d26c962ed6a1bb47afb62affda727a0a`_
 
 ## Executive Summary

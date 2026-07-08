@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 80%
 
+**Source:** [github.com/cookjohn/zotero-mcp](https://github.com/cookjohn/zotero-mcp)
+
 _Resolved ref: `bbaf5cfc1190f3a97f84a6ce407a68d0f27748f6`_
 
 ## Executive Summary

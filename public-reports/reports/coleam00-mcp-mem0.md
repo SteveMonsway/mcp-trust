@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 80%
 
+**Source:** [github.com/coleam00/mcp-mem0](https://github.com/coleam00/mcp-mem0)
+
 _Resolved ref: `22fb7af0432e15fbe379ad7c7c7beac911fa2648`_
 
 ## Executive Summary

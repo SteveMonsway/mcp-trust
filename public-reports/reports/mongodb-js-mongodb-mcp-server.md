@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 81%
 
+**Source:** [github.com/mongodb-js/mongodb-mcp-server](https://github.com/mongodb-js/mongodb-mcp-server)
+
 _Resolved ref: `e99ccd0fde6b4c509d88d9941effa4847c2e93e9`_
 
 ## Executive Summary

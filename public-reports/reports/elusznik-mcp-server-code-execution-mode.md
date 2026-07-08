@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 73%
 
+**Source:** [github.com/elusznik/mcp-server-code-execution-mode](https://github.com/elusznik/mcp-server-code-execution-mode)
+
 _Resolved ref: `27d23b8e2c7666c442708d02dbe4e838e9a63038`_
 
 ## Executive Summary

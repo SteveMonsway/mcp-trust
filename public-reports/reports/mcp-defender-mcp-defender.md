@@ -5,6 +5,8 @@
 **Score:** 38/100  
 **Confidence:** 72%
 
+**Source:** [github.com/MCP-Defender/MCP-Defender](https://github.com/MCP-Defender/MCP-Defender)
+
 _Resolved ref: `7fa7e7571a22de10dc2af5d63d8874d7d682c2fa`_
 
 ## Executive Summary

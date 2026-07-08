@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 75%
 
+**Source:** [github.com/Dicklesworthstone/mcp_agent_mail](https://github.com/Dicklesworthstone/mcp_agent_mail)
+
 _Resolved ref: `35e774fa9ae636c6e1662ab7925d7e68938bb718`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 60%
 
+**Source:** [github.com/Gowthaman90/mcp-bastion](https://github.com/Gowthaman90/mcp-bastion)
+
 _Resolved ref: `46291dda84be9c3f4ca64b1af7c66873338f0cfe`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ariadng/metatrader-mcp-server](https://github.com/ariadng/metatrader-mcp-server)
+
 _Resolved ref: `bd2ff591e32cb492fafefe74221d502dd78b71ef`_
 
 ## Executive Summary

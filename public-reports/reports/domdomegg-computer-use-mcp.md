@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 92%
 
+**Source:** [github.com/domdomegg/computer-use-mcp](https://github.com/domdomegg/computer-use-mcp)
+
 _Resolved ref: `fdda599012d80bfe8835d3330c2c03fda03f4493`_
 
 ## Executive Summary

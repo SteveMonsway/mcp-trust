@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 65%
 
+**Source:** [github.com/ryaker/outlook-mcp](https://github.com/ryaker/outlook-mcp)
+
 _Resolved ref: `95d6ff2d248903c086f17782c2de28e16016e6aa`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 83%
 
+**Source:** [github.com/jackson-video-resources/claude-tradingview-mcp-trading](https://github.com/jackson-video-resources/claude-tradingview-mcp-trading)
+
 _Resolved ref: `bd22e7b5cbd435a09d878a8f0b0108f36c17e3fb`_
 
 ## Executive Summary

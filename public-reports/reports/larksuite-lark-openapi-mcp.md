@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 66%
 
+**Source:** [github.com/larksuite/lark-openapi-mcp](https://github.com/larksuite/lark-openapi-mcp)
+
 _Resolved ref: `21920354ec6e3966b52e89152620c5085e496b55`_
 
 ## Executive Summary

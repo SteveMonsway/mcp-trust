@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/Azure-Samples/mcp-workshop-dotnet](https://github.com/Azure-Samples/mcp-workshop-dotnet)
+
 _Resolved ref: `0795eeadb6b9a0fcd5734a36208a99d9c44528d0`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 66%
 
+**Source:** [github.com/MiniMax-AI/MiniMax-MCP](https://github.com/MiniMax-AI/MiniMax-MCP)
+
 _Resolved ref: `f4d6a61ba176d714637c0c1bf7231c6ece019cf9`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 60%
 
+**Source:** [github.com/StuMason/coolify-mcp](https://github.com/StuMason/coolify-mcp)
+
 _Resolved ref: `d389db8687e9050c0614f4c94b14ff71a88f246f`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/antonpk1/gibber-mcp](https://github.com/antonpk1/gibber-mcp)
+
 _Resolved ref: `0cd69424737dd3b0515bdddbb95a124c25ea0b8e`_
 
 ## Executive Summary

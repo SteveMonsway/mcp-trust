@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 76%
 
+**Source:** [github.com/abhiemj/manim-mcp-server](https://github.com/abhiemj/manim-mcp-server)
+
 _Resolved ref: `da23214426a56ce3ba4da39b0718d64cf97cd23c`_
 
 ## Executive Summary

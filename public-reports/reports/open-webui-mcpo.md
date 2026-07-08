@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 70%
 
+**Source:** [github.com/open-webui/mcpo](https://github.com/open-webui/mcpo)
+
 _Resolved ref: `788ff92e5288a899a743a252edd5748f4ad4ab1f`_
 
 ## Executive Summary

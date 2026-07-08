@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 72%
 
+**Source:** [github.com/cso1z/Feishu-MCP](https://github.com/cso1z/Feishu-MCP)
+
 _Resolved ref: `ae620e2f76f4ec8a4e546ed10b1b0572f8e2f77d`_
 
 ## Executive Summary

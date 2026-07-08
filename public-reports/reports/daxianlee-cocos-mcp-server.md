@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 77%
 
+**Source:** [github.com/DaxianLee/cocos-mcp-server](https://github.com/DaxianLee/cocos-mcp-server)
+
 _Resolved ref: `a5db895b3299dccd78979ca0268193e4b6ebf037`_
 
 ## Executive Summary

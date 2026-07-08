@@ -5,6 +5,8 @@
 **Score:** 3/100  
 **Confidence:** 80%
 
+**Source:** [github.com/louislva/claude-peers-mcp](https://github.com/louislva/claude-peers-mcp)
+
 _Resolved ref: `640183fa7048443bf0a6592de45579e813df4587`_
 
 ## Executive Summary

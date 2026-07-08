@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 60%
 
+**Source:** [github.com/taylorwilsdon/google_workspace_mcp](https://github.com/taylorwilsdon/google_workspace_mcp)
+
 _Resolved ref: `3f19c7d4a2654238e5fed1b767174fac5615555b`_
 
 ## Executive Summary

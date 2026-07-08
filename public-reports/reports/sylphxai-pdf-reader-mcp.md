@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 73%
 
+**Source:** [github.com/SylphxAI/pdf-reader-mcp](https://github.com/SylphxAI/pdf-reader-mcp)
+
 _Resolved ref: `f8f978a31d633c8e4546f1c45ed493fcf55da4e5`_
 
 ## Executive Summary

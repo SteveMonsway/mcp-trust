@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 65%
 
+**Source:** [github.com/google/mcp-security](https://github.com/google/mcp-security)
+
 _Resolved ref: `fb807e909aa12356b0b52db02cb4b651af1ae35b`_
 
 ## Executive Summary

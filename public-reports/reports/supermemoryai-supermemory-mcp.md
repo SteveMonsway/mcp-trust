@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 62%
 
+**Source:** [github.com/supermemoryai/supermemory-mcp](https://github.com/supermemoryai/supermemory-mcp)
+
 _Resolved ref: `84f5dc9f1cf077ba753decbf56805205b5c0443a`_
 
 ## Executive Summary

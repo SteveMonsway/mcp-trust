@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 90%
 
+**Source:** [github.com/nutriandrea/adobe-indesign-mcp](https://github.com/nutriandrea/adobe-indesign-mcp)
+
 _Resolved ref: `d0d6f499a15f547b9a71cf5d60ebec19b2a012d0`_
 
 ## Executive Summary

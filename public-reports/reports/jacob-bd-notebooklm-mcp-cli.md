@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 75%
 
+**Source:** [github.com/jacob-bd/notebooklm-mcp-cli](https://github.com/jacob-bd/notebooklm-mcp-cli)
+
 _Resolved ref: `ad9882417d4172a09a5dd1f062d73acfdfd82d16`_
 
 ## Executive Summary

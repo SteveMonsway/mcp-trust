@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/alexander-zuev/supabase-mcp-server](https://github.com/alexander-zuev/supabase-mcp-server)
+
 _Resolved ref: `bca07008fe46cae791221c2ee30df034c963ec56`_
 
 ## Executive Summary

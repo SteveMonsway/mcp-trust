@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/skills/integrate-mcp-with-copilot](https://github.com/skills/integrate-mcp-with-copilot)
+
 _Resolved ref: `44bdbe736da5055f51f5a73297a7d2c0506f7c1e`_
 
 ## Executive Summary

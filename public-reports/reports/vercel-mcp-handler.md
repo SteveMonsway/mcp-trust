@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 73%
 
+**Source:** [github.com/vercel/mcp-handler](https://github.com/vercel/mcp-handler)
+
 _Resolved ref: `ce0f0cee3ce60f23746a5c5d28e19d22bed91770`_
 
 ## Executive Summary

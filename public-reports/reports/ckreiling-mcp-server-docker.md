@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ckreiling/mcp-server-docker](https://github.com/ckreiling/mcp-server-docker)
+
 _Resolved ref: `6288015cee6b76b2e2bf2c64232f0748baf48c1c`_
 
 ## Executive Summary

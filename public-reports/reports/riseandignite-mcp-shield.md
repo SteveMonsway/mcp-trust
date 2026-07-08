@@ -5,6 +5,8 @@
 **Score:** 19/100  
 **Confidence:** 61%
 
+**Source:** [github.com/riseandignite/mcp-shield](https://github.com/riseandignite/mcp-shield)
+
 _Resolved ref: `379140c3555bf35c6f8f451ee320da24302e792e`_
 
 ## Executive Summary

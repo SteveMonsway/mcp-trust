@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/kiliczsh/mcp-mongo-server](https://github.com/kiliczsh/mcp-mongo-server)
+
 _Resolved ref: `65c57d45a11271ba33bf56fcf972b26977395b8c`_
 
 ## Executive Summary

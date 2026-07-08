@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/DMontgomery40/deepseek-mcp-server](https://github.com/DMontgomery40/deepseek-mcp-server)
+
 _Resolved ref: `3c766b46eb301def7897af26350b64859a59c832`_
 
 ## Executive Summary

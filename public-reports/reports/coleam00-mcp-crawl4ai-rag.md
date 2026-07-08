@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 73%
 
+**Source:** [github.com/coleam00/mcp-crawl4ai-rag](https://github.com/coleam00/mcp-crawl4ai-rag)
+
 _Resolved ref: `a1c16f675fe0ab1b0026f4ea1103cb205080792e`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/varunneal/spotify-mcp](https://github.com/varunneal/spotify-mcp)
+
 _Resolved ref: `a854b00b5cd917cb155ee1fa68c77d9cab360998`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 68%
 
+**Source:** [github.com/Parkyongseok1120/UE5_Local_LLM_MCP_lmstudio](https://github.com/Parkyongseok1120/UE5_Local_LLM_MCP_lmstudio)
+
 _Resolved ref: `cc4a0fa1fa664ef5cafbfe0f62e64294ebf7aea0`_
 
 ## Executive Summary

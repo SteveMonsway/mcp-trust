@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 71%
 
+**Source:** [github.com/cloudflare/mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare)
+
 _Resolved ref: `52c633e37684fadb94ae236f74909b9bbefc0db8`_
 
 ## Executive Summary

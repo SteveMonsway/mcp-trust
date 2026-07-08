@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 66%
 
+**Source:** [github.com/geelen/mcp-remote](https://github.com/geelen/mcp-remote)
+
 _Resolved ref: `02619aff36e79803d7c894e8c8ae7b34b2d11f8c`_
 
 ## Executive Summary

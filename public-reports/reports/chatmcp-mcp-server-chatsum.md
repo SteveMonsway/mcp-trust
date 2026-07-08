@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/chatmcp/mcp-server-chatsum](https://github.com/chatmcp/mcp-server-chatsum)
+
 _Resolved ref: `5bf9298aa095da8b4af277137f48cc468f736797`_
 
 ## Executive Summary

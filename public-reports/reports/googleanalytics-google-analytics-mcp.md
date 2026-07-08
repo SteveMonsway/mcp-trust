@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/googleanalytics/google-analytics-mcp](https://github.com/googleanalytics/google-analytics-mcp)
+
 _Resolved ref: `c09abcba1c565f191351169894d61b54a2502e17`_
 
 ## Executive Summary

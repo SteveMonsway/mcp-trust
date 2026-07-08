@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 91%
 
+**Source:** [github.com/patruff/ollama-mcp-bridge](https://github.com/patruff/ollama-mcp-bridge)
+
 _Resolved ref: `e4f42d095af02efd65d19e81931f949e5a75a152`_
 
 ## Executive Summary

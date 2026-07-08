@@ -5,6 +5,8 @@
 **Score:** 10/100  
 **Confidence:** 70%
 
+**Source:** [github.com/NightTrek/Software-planning-mcp](https://github.com/NightTrek/Software-planning-mcp)
+
 _Resolved ref: `8f5458556c25e01a0843a0732998ff39bbb5504f`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 21/100  
 **Confidence:** 90%
 
+**Source:** [github.com/ScriptedAlchemy/devtools-debugger-mcp](https://github.com/ScriptedAlchemy/devtools-debugger-mcp)
+
 _Resolved ref: `87db7bc6f3b7663eee84549899f3e2b77b1d32aa`_
 
 ## Executive Summary

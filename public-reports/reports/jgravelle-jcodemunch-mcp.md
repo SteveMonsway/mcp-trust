@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 74%
 
+**Source:** [github.com/jgravelle/jcodemunch-mcp](https://github.com/jgravelle/jcodemunch-mcp)
+
 _Resolved ref: `fbc14e40c7057ebc6d718fb48083d30522afe15f`_
 
 ## Executive Summary

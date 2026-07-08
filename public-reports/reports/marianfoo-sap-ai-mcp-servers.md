@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 69%
 
+**Source:** [github.com/marianfoo/sap-ai-mcp-servers](https://github.com/marianfoo/sap-ai-mcp-servers)
+
 _Resolved ref: `7223b929a7e5a39ce4401e4f121c254798dc833b`_
 
 ## Executive Summary

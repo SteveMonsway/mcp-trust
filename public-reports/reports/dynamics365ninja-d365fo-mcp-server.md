@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 74%
 
+**Source:** [github.com/dynamics365ninja/d365fo-mcp-server](https://github.com/dynamics365ninja/d365fo-mcp-server)
+
 _Resolved ref: `fd78ece618048b5f7e03c11c4c60e99649e5d244`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 77%
 
+**Source:** [github.com/vinkius-labs/mcpfusion](https://github.com/vinkius-labs/mcpfusion)
+
 _Resolved ref: `2990dddf03976d599ea28f61a2adecc48847a899`_
 
 ## Executive Summary

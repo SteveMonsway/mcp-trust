@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 78%
 
+**Source:** [github.com/peng-shawn/mermaid-mcp-server](https://github.com/peng-shawn/mermaid-mcp-server)
+
 _Resolved ref: `81dc507991c6bfcc09bb59805916d47c9bfd03c5`_
 
 ## Executive Summary

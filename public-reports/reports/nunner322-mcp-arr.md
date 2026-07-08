@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 60%
 
+**Source:** [github.com/nunner322/mcp-arr](https://github.com/nunner322/mcp-arr)
+
 _Resolved ref: `fc0d63d8750ddeabf9dc165ef2514704fc9ac483`_
 
 ## Executive Summary

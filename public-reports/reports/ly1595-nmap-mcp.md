@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ly1595/nmap-mcp](https://github.com/ly1595/nmap-mcp)
+
 _Resolved ref: `518c1591235dbe502b3d073c60bca6376b552a18`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 75%
 
+**Source:** [github.com/VikashLoomba/copilot-mcp](https://github.com/VikashLoomba/copilot-mcp)
+
 _Resolved ref: `96c3ed5ca739a6bac928d2a735e20fb301baadfe`_
 
 ## Executive Summary

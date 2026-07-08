@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 92%
 
+**Source:** [github.com/carlos132nx/ralph-mcp](https://github.com/carlos132nx/ralph-mcp)
+
 _Resolved ref: `ed1e8350d6bc6244e65f13fdb6334f5e1c4de316`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 77%
 
+**Source:** [github.com/FuzzingLabs/mcp-security-hub](https://github.com/FuzzingLabs/mcp-security-hub)
+
 _Resolved ref: `b6800740da9965e9dd3fde2ec3cf4c775c358f72`_
 
 ## Executive Summary

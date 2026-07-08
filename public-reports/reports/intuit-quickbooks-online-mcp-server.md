@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 72%
 
+**Source:** [github.com/intuit/quickbooks-online-mcp-server](https://github.com/intuit/quickbooks-online-mcp-server)
+
 _Resolved ref: `def36872cb512fe621b6d49f1ccce3f2fbeabea8`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/adhikasp/mcp-reddit](https://github.com/adhikasp/mcp-reddit)
+
 _Resolved ref: `5dcae6742a5246a33dee6da2ad77e7b703715491`_
 
 ## Executive Summary

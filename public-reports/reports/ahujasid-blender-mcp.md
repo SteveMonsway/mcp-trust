@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 71%
 
+**Source:** [github.com/ahujasid/blender-mcp](https://github.com/ahujasid/blender-mcp)
+
 _Resolved ref: `6e99eb5a442b83766a5796975ec7bb5bfc791341`_
 
 ## Executive Summary

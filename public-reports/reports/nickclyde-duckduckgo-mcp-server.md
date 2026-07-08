@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/nickclyde/duckduckgo-mcp-server](https://github.com/nickclyde/duckduckgo-mcp-server)
+
 _Resolved ref: `8992977d65a086995c82826ceead42e890aa17c1`_
 
 ## Executive Summary

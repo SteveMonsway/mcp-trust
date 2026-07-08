@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 79%
 
+**Source:** [github.com/excalidraw/excalidraw-mcp](https://github.com/excalidraw/excalidraw-mcp)
+
 _Resolved ref: `157aa23ceb1976008aadc89eb05e3444060f09d6`_
 
 ## Executive Summary

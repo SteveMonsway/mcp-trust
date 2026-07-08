@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 79%
 
+**Source:** [github.com/newtype-01/obsidian-mcp](https://github.com/newtype-01/obsidian-mcp)
+
 _Resolved ref: `dc048e47d063e0f0e867e3473f099a9e64a98af1`_
 
 ## Executive Summary

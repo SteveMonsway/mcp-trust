@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 80%
 
+**Source:** [github.com/domdomegg/airtable-mcp-server](https://github.com/domdomegg/airtable-mcp-server)
+
 _Resolved ref: `2a5896d0891d13558e1313155b177fc0a4bc95d6`_
 
 ## Executive Summary

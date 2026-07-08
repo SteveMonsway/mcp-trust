@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 60%
 
+**Source:** [github.com/signnow/sn-mcp-server](https://github.com/signnow/sn-mcp-server)
+
 _Resolved ref: `288c4bfbc33b6256b1a36394e4ec5581be31e0dd`_
 
 ## Executive Summary

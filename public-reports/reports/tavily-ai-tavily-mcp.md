@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 60%
 
+**Source:** [github.com/tavily-ai/tavily-mcp](https://github.com/tavily-ai/tavily-mcp)
+
 _Resolved ref: `8c02eedf0fbfe9fe5fb87fb8f6e9fbd3aec157ff`_
 
 ## Executive Summary

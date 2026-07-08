@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 70%
 
+**Source:** [github.com/leonardsellem/n8n-mcp-server](https://github.com/leonardsellem/n8n-mcp-server)
+
 _Resolved ref: `3b97d467ae076564afd2a597a8e986463c227153`_
 
 ## Executive Summary

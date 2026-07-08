@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 73%
 
+**Source:** [github.com/davideast/stitch-mcp](https://github.com/davideast/stitch-mcp)
+
 _Resolved ref: `d8d055b02d76578b0d289bd1c0606a8416374d75`_
 
 ## Executive Summary

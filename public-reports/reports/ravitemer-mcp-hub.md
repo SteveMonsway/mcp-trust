@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 77%
 
+**Source:** [github.com/ravitemer/mcp-hub](https://github.com/ravitemer/mcp-hub)
+
 _Resolved ref: `9c7670a4c341ed3cf738a6242c0fde1cea40bccf`_
 
 ## Executive Summary

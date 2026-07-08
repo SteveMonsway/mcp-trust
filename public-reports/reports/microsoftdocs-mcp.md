@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/MicrosoftDocs/mcp](https://github.com/MicrosoftDocs/mcp)
+
 _Resolved ref: `caa3d670bf2814171dba4f7346ece5080964021e`_
 
 ## Executive Summary

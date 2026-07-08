@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 65%
 
+**Source:** [github.com/xfey/MCP-Zero](https://github.com/xfey/MCP-Zero)
+
 _Resolved ref: `fd666c44c9290a671949b974444c30f4ab161622`_
 
 ## Executive Summary

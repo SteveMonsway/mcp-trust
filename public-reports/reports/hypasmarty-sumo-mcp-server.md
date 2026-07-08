@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 72%
 
+**Source:** [github.com/HypaSMarty/SUMO-MCP-Server](https://github.com/HypaSMarty/SUMO-MCP-Server)
+
 _Resolved ref: `120c2ee34cdb214dceb1ea77bd1ab3de960a2ecf`_
 
 ## Executive Summary

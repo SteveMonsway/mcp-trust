@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/kimtaeyoon83/mcp-server-youtube-transcript](https://github.com/kimtaeyoon83/mcp-server-youtube-transcript)
+
 _Resolved ref: `ef4fdaad7eab61ef667d6d65e85693d1977e7ac3`_
 
 ## Executive Summary

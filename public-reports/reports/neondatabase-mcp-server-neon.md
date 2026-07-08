@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 61%
 
+**Source:** [github.com/neondatabase/mcp-server-neon](https://github.com/neondatabase/mcp-server-neon)
+
 _Resolved ref: `ea2fa09d7f870f47ca043c8b7daf7312891d6a06`_
 
 ## Executive Summary

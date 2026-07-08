@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 80%
 
+**Source:** [github.com/artokun/comfyui-mcp](https://github.com/artokun/comfyui-mcp)
+
 _Resolved ref: `08390ce2bd651bbc61064643fe07c6dd9b9988e6`_
 
 ## Executive Summary

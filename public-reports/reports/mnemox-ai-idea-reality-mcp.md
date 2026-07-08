@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 90%
 
+**Source:** [github.com/mnemox-ai/idea-reality-mcp](https://github.com/mnemox-ai/idea-reality-mcp)
+
 _Resolved ref: `73bfbb3741e298d4782a838d5fb0b4446ff07474`_
 
 ## Executive Summary

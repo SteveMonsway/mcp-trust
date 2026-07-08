@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 63%
 
+**Source:** [github.com/googleads/google-ads-mcp](https://github.com/googleads/google-ads-mcp)
+
 _Resolved ref: `62e572adb9639256de8bf3fc1d790950f77e8d3b`_
 
 ## Executive Summary

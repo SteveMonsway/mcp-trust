@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 70%
 
+**Source:** [github.com/AnkitOhlan/google-workspace-mcp-with-script](https://github.com/AnkitOhlan/google-workspace-mcp-with-script)
+
 _Resolved ref: `c94b69a92893e0a198b747a266f0599e55236919`_
 
 ## Executive Summary

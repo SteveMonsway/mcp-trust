@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 66%
 
+**Source:** [github.com/sailorpepe/undesirables-mcp-server](https://github.com/sailorpepe/undesirables-mcp-server)
+
 _Resolved ref: `903ea6efeaeb715c3b3f95363740e7391aac8463`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 72%
 
+**Source:** [github.com/GLips/Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP)
+
 _Resolved ref: `c083d65c7e002923e7cb98f4e3bdafb105e90f6d`_
 
 ## Executive Summary

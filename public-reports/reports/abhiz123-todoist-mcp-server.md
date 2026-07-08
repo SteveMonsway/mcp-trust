@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/abhiz123/todoist-mcp-server](https://github.com/abhiz123/todoist-mcp-server)
+
 _Resolved ref: `70802047442604b197c59e3ea0706f173f4e6e48`_
 
 ## Executive Summary

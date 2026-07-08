@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 75%
 
+**Source:** [github.com/browserbase/mcp-server-browserbase](https://github.com/browserbase/mcp-server-browserbase)
+
 _Resolved ref: `1e196b3d3c4dc70944e0d19038dd9eb3608b207a`_
 
 ## Executive Summary

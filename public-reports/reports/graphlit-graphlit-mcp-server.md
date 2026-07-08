@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 69%
 
+**Source:** [github.com/graphlit/graphlit-mcp-server](https://github.com/graphlit/graphlit-mcp-server)
+
 _Resolved ref: `1b94b887ba1692f7226ebc306b9ab7a02ce8b0f4`_
 
 ## Executive Summary

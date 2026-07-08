@@ -5,6 +5,8 @@
 **Score:** 47/100  
 **Confidence:** 77%
 
+**Source:** [github.com/jjvm2000/terminal-mcp](https://github.com/jjvm2000/terminal-mcp)
+
 _Resolved ref: `94356fb5216dd8725d8ced036e7d6648810fc7f0`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 78%
 
+**Source:** [github.com/stickerdaniel/linkedin-mcp-server](https://github.com/stickerdaniel/linkedin-mcp-server)
+
 _Resolved ref: `8f76ad8c680a9a726844d2633fad77865cda8499`_
 
 ## Executive Summary

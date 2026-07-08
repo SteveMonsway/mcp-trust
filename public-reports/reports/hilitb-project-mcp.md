@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/hilitb/project-mcp](https://github.com/hilitb/project-mcp)
+
 _Resolved ref: `8308cdf17a6afa052a1118b81778ad8584805e38`_
 
 ## Executive Summary

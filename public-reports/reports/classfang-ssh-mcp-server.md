@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 85%
 
+**Source:** [github.com/classfang/ssh-mcp-server](https://github.com/classfang/ssh-mcp-server)
+
 _Resolved ref: `15b912459e91924737f47b38dfa9ea05bfad386b`_
 
 ## Executive Summary

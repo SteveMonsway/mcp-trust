@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 79%
 
+**Source:** [github.com/AminForou/mcp-gsc](https://github.com/AminForou/mcp-gsc)
+
 _Resolved ref: `daab327277e28f8efcc83d9964fb1466a91a1d68`_
 
 ## Executive Summary

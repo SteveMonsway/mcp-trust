@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/coleam00/remote-mcp-server-with-auth](https://github.com/coleam00/remote-mcp-server-with-auth)
+
 _Resolved ref: `2da7bb83099b59900bf0564a3896d025f6f9baf9`_
 
 ## Executive Summary

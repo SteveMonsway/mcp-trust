@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 85%
 
+**Source:** [github.com/0xKoda/WireMCP](https://github.com/0xKoda/WireMCP)
+
 _Resolved ref: `7f45f8b2b4adeb76be8c6227eefb38533fdd6b1e`_
 
 ## Executive Summary

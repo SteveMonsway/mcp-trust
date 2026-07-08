@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 61%
 
+**Source:** [github.com/zereight/gitlab-mcp](https://github.com/zereight/gitlab-mcp)
+
 _Resolved ref: `ad6acc1ac6f9aac28e5f9d700cfec76b8b1665af`_
 
 ## Executive Summary

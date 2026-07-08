@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 67%
 
+**Source:** [github.com/SalesforceAIResearch/MCP-Universe](https://github.com/SalesforceAIResearch/MCP-Universe)
+
 _Resolved ref: `48b453021694d9823d308627fb7f6b7edd29541a`_
 
 ## Executive Summary

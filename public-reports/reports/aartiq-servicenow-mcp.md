@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 78%
 
+**Source:** [github.com/aartiq/servicenow-mcp](https://github.com/aartiq/servicenow-mcp)
+
 _Resolved ref: `29b61e7e37118d373a499c89549ea910c63e77c2`_
 
 ## Executive Summary

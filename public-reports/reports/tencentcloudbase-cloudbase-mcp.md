@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 80%
 
+**Source:** [github.com/TencentCloudBase/CloudBase-MCP](https://github.com/TencentCloudBase/CloudBase-MCP)
+
 _Resolved ref: `a69eebbddc8c9803a466b81bb606b46e638a857f`_
 
 ## Executive Summary

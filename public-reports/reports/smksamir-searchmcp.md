@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/smksamir/SearchMCP](https://github.com/smksamir/SearchMCP)
+
 _Resolved ref: `a2ed859826d37d596775b4d9c999b81e9e21344d`_
 
 ## Executive Summary

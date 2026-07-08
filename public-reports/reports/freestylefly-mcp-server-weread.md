@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 60%
 
+**Source:** [github.com/freestylefly/mcp-server-weread](https://github.com/freestylefly/mcp-server-weread)
+
 _Resolved ref: `4a8caadbaa117c603bfb7a83e884fd939f87c6df`_
 
 ## Executive Summary

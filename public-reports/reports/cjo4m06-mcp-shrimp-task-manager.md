@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 71%
 
+**Source:** [github.com/cjo4m06/mcp-shrimp-task-manager](https://github.com/cjo4m06/mcp-shrimp-task-manager)
+
 _Resolved ref: `8a3be6bced310c7b660e5cfc3f42e4e5e45f2f61`_
 
 ## Executive Summary

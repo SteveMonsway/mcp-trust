@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 60%
 
+**Source:** [github.com/pab1it0/prometheus-mcp-server](https://github.com/pab1it0/prometheus-mcp-server)
+
 _Resolved ref: `b2ae908cc683066a3fc2ece9d4b012b5603b4a0e`_
 
 ## Executive Summary

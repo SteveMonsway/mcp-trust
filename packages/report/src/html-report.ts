@@ -42,6 +42,24 @@ function targetLabel(t: ScanTarget): string {
   }
 }
 
+/** Public source URL for the scanned target, if one exists — the repo the report
+ * assessed (github), or the package page (npm/PyPI). Local/config scans have no
+ * public URL. */
+function targetSource(t: ScanTarget): { url: string; label: string } | undefined {
+  switch (t.type) {
+    case 'github':
+      return { url: t.url, label: `github.com/${t.owner}/${t.repo}` };
+    case 'npm':
+      return { url: `https://www.npmjs.com/package/${t.packageName}`, label: `npm: ${t.packageName}` };
+    case 'pypi':
+      return { url: `https://pypi.org/project/${t.packageName}/`, label: `PyPI: ${t.packageName}` };
+    case 'remote-http':
+      return { url: t.url, label: t.url };
+    default:
+      return undefined;
+  }
+}
+
 const SEVERITY_ORDER: Severity[] = ['critical', 'high', 'medium', 'low', 'info'];
 
 /** CSS accent color per decision — kept low-saturation and theme-neutral. */
@@ -65,6 +83,10 @@ export function renderHtml(result: ScanResult): string {
   body.push(badge('Score', `${score.overall}/100`));
   body.push(badge('Confidence', `${Math.round(score.confidence * 100)}%`));
   body.push('</div>');
+  const source = targetSource(result.target);
+  if (source) {
+    body.push(`<p class="source">Source: <a href="${esc(source.url)}">${esc(source.label)}</a></p>`);
+  }
   if (result.resolvedRef) {
     body.push(`<p class="ref">Resolved ref: <code>${esc(result.resolvedRef)}</code></p>`);
   }
@@ -283,6 +305,8 @@ h4{font-size:.98rem;margin:0 0 .4rem}
 .badge-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
 .badge-value{font-weight:600;font-size:1.05rem}
 .ref{color:var(--muted);font-size:.85rem;margin:.6rem 0 0}
+.source{font-size:.9rem;margin:.6rem 0 0}
+.source a{color:var(--accent)}
 .muted,.report-foot{color:var(--muted)}
 p{margin:.5rem 0}
 ul{margin:.4rem 0;padding-left:1.3rem}

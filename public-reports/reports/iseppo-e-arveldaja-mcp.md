@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 63%
 
+**Source:** [github.com/iseppo/e-arveldaja-mcp](https://github.com/iseppo/e-arveldaja-mcp)
+
 _Resolved ref: `e374d390e03e44a123d793bfc13eee39c46186ea`_
 
 ## Executive Summary

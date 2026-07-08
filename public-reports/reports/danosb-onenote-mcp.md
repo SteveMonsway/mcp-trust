@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 64%
 
+**Source:** [github.com/danosb/onenote-mcp](https://github.com/danosb/onenote-mcp)
+
 _Resolved ref: `c60ad7e0db3a7d9ab4acee5d593ef2ff7dbabd79`_
 
 ## Executive Summary

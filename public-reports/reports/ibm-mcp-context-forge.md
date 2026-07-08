@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 66%
 
+**Source:** [github.com/IBM/mcp-context-forge](https://github.com/IBM/mcp-context-forge)
+
 _Resolved ref: `925eee46b730cd217cbbec2eadb06384d22ba0d3`_
 
 ## Executive Summary

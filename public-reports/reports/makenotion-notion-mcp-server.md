@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 75%
 
+**Source:** [github.com/makenotion/notion-mcp-server](https://github.com/makenotion/notion-mcp-server)
+
 _Resolved ref: `d7e3bbd62890f9efca2cd54449ac072f3bd1a4ba`_
 
 ## Executive Summary

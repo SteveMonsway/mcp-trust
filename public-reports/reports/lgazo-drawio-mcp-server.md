@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 82%
 
+**Source:** [github.com/lgazo/drawio-mcp-server](https://github.com/lgazo/drawio-mcp-server)
+
 _Resolved ref: `7b33675f1047f9e9e1356865bfd244ec0cb223cf`_
 
 ## Executive Summary

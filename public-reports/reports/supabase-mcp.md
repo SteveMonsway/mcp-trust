@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 62%
 
+**Source:** [github.com/supabase/mcp](https://github.com/supabase/mcp)
+
 _Resolved ref: `9679b785761cf3c521796554e3a9861ddae51b29`_
 
 ## Executive Summary

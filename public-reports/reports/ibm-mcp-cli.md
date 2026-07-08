@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 65%
 
+**Source:** [github.com/IBM/mcp-cli](https://github.com/IBM/mcp-cli)
+
 _Resolved ref: `a47fcbeb49e798f185d686f5ea433abcd0f661fe`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 46/100  
 **Confidence:** 74%
 
+**Source:** [github.com/mcp-router/mcp-router](https://github.com/mcp-router/mcp-router)
+
 _Resolved ref: `2df1bf4f264b2e5597f7ea049ce2ad09b0256eb8`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 73%
 
+**Source:** [github.com/anaisbetts/mcp-installer](https://github.com/anaisbetts/mcp-installer)
+
 _Resolved ref: `747fbd88aa2e54368f98252fc9e8d228748dc594`_
 
 ## Executive Summary

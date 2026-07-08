@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 80%
 
+**Source:** [github.com/StevenStavrakis/obsidian-mcp](https://github.com/StevenStavrakis/obsidian-mcp)
+
 _Resolved ref: `07801f301e8d55876c281891726e394e495a6355`_
 
 ## Executive Summary

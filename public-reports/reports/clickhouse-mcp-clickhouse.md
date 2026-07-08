@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 72%
 
+**Source:** [github.com/ClickHouse/mcp-clickhouse](https://github.com/ClickHouse/mcp-clickhouse)
+
 _Resolved ref: `ccef141dbd4e482111c8b8803962339b1f3bf1d7`_
 
 ## Executive Summary

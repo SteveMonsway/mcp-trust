@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 71%
 
+**Source:** [github.com/cbcoutinho/nextcloud-mcp-server](https://github.com/cbcoutinho/nextcloud-mcp-server)
+
 _Resolved ref: `517b414f9bc1dfe372fddba98c0a4436df15a7b6`_
 
 ## Executive Summary

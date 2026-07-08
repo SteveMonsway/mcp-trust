@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 90%
 
+**Source:** [github.com/tuannvm/codex-mcp-server](https://github.com/tuannvm/codex-mcp-server)
+
 _Resolved ref: `a57acb6080ae41139211fdfabf2bce4851a86b1a`_
 
 ## Executive Summary

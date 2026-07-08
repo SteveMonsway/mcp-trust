@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 66%
 
+**Source:** [github.com/jonigl/mcp-client-for-ollama](https://github.com/jonigl/mcp-client-for-ollama)
+
 _Resolved ref: `bf02f4f7cdfe4f0ce766220a02af39be0b9c06b0`_
 
 ## Executive Summary

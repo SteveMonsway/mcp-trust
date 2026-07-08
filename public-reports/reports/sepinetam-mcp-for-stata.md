@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 78%
 
+**Source:** [github.com/SepineTam/mcp-for-stata](https://github.com/SepineTam/mcp-for-stata)
+
 _Resolved ref: `e8a9ea23756e7f325a370b8801f77a38d544d30a`_
 
 ## Executive Summary

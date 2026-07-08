@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/zaidmukaddam/scira-mcp-chat](https://github.com/zaidmukaddam/scira-mcp-chat)
+
 _Resolved ref: `c9467dc212fc3574fd813fb18dcdb0a044d095c2`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 90%
 
+**Source:** [github.com/Coding-Solo/godot-mcp](https://github.com/Coding-Solo/godot-mcp)
+
 _Resolved ref: `1209744fad78f3998f98c7394fd0f6ef50da5281`_
 
 ## Executive Summary

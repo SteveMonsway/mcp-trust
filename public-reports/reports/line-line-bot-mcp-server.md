@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 68%
 
+**Source:** [github.com/line/line-bot-mcp-server](https://github.com/line/line-bot-mcp-server)
+
 _Resolved ref: `15d8573efc82fd88512482b5d66323ec90e84937`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/chroma-core/chroma-mcp](https://github.com/chroma-core/chroma-mcp)
+
 _Resolved ref: `98ff67589bdcc31b730a5415ff9529433f949077`_
 
 ## Executive Summary

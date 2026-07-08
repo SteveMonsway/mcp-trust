@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 78%
 
+**Source:** [github.com/SecuringTheRealm/str-mcp-purview](https://github.com/SecuringTheRealm/str-mcp-purview)
+
 _Resolved ref: `6a9ff3fae71484cb2388c010c0cc5de38ecfe068`_
 
 ## Executive Summary

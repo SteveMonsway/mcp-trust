@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ArcadeAI/blueprint-mcp](https://github.com/ArcadeAI/blueprint-mcp)
+
 _Resolved ref: `fdd2efb86001c4cfd8208ab092d13a07ac20ebc2`_
 
 ## Executive Summary

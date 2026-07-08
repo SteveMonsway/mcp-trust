@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 70%
 
+**Source:** [github.com/openbnb-org/mcp-server-airbnb](https://github.com/openbnb-org/mcp-server-airbnb)
+
 _Resolved ref: `4e3ffe9daab7eb17d5709fd955a12243fc8dc848`_
 
 ## Executive Summary

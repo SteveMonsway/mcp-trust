@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 65%
 
+**Source:** [github.com/brave/brave-search-mcp-server](https://github.com/brave/brave-search-mcp-server)
+
 _Resolved ref: `fd28e3e7b3e1911b4a2ba87a199feb86ec173c60`_
 
 ## Executive Summary

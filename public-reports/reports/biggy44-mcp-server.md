@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/biggy44/mcp-server](https://github.com/biggy44/mcp-server)
+
 _Resolved ref: `f4c317ce972a1f3e81ebd76c257a3dfb8d91509f`_
 
 ## Executive Summary

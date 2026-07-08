@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 71%
 
+**Source:** [github.com/getdatanaut/openmcp](https://github.com/getdatanaut/openmcp)
+
 _Resolved ref: `4d09956b60e113e6e61d492dfce0938d751cf819`_
 
 ## Executive Summary

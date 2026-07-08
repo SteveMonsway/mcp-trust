@@ -5,6 +5,8 @@
 **Score:** 25/100  
 **Confidence:** 60%
 
+**Source:** [github.com/exa-labs/exa-mcp-server](https://github.com/exa-labs/exa-mcp-server)
+
 _Resolved ref: `9c69a3b45b228243215c59673e54c5bf321bb416`_
 
 ## Executive Summary

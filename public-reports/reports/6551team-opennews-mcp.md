@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/6551Team/opennews-mcp](https://github.com/6551Team/opennews-mcp)
+
 _Resolved ref: `1762f473aa58606e9536ae298ef332b295bba30c`_
 
 ## Executive Summary

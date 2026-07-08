@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/qdrant/mcp-server-qdrant](https://github.com/qdrant/mcp-server-qdrant)
+
 _Resolved ref: `f1a4d04e4f91c4d3e2b7c63d5283f3f4338fd2e5`_
 
 ## Executive Summary

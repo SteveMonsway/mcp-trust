@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/Omar-V2/mcp-ical](https://github.com/Omar-V2/mcp-ical)
+
 _Resolved ref: `6746f872e8c26ec4f404a2af7a5dc897603d541d`_
 
 ## Executive Summary

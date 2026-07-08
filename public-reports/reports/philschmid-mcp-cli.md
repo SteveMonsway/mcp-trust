@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/philschmid/mcp-cli](https://github.com/philschmid/mcp-cli)
+
 _Resolved ref: `d77672a1ce800ec3fec1f43829909badb2ffbd32`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 72%
 
+**Source:** [github.com/MarkusPfundstein/mcp-gsuite](https://github.com/MarkusPfundstein/mcp-gsuite)
+
 _Resolved ref: `af509cf2d608537d69fd80981672c97a94116f05`_
 
 ## Executive Summary

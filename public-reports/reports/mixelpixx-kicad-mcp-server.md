@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 76%
 
+**Source:** [github.com/mixelpixx/KiCAD-MCP-Server](https://github.com/mixelpixx/KiCAD-MCP-Server)
+
 _Resolved ref: `693da5f875409ef8a20cfd2d808135b8ad82ee7b`_
 
 ## Executive Summary

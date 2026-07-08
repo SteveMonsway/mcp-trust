@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 86%
 
+**Source:** [github.com/etsd-tech/mcp-pointer](https://github.com/etsd-tech/mcp-pointer)
+
 _Resolved ref: `59601d17ed63176e994f82d20558c386272cad4f`_
 
 ## Executive Summary

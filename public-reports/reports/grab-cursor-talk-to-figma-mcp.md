@@ -5,6 +5,8 @@
 **Score:** 5/100  
 **Confidence:** 65%
 
+**Source:** [github.com/grab/cursor-talk-to-figma-mcp](https://github.com/grab/cursor-talk-to-figma-mcp)
+
 _Resolved ref: `1c46823f08af9e5da54e78f36b018e95491b33e1`_
 
 ## Executive Summary

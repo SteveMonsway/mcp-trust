@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 60%
 
+**Source:** [github.com/MarkusPfundstein/mcp-obsidian](https://github.com/MarkusPfundstein/mcp-obsidian)
+
 _Resolved ref: `32285e9ac07049a8a23ea7d7903603a3e48a1bf7`_
 
 ## Executive Summary

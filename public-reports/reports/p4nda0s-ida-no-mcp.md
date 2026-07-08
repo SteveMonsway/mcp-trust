@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 73%
 
+**Source:** [github.com/P4nda0s/IDA-NO-MCP](https://github.com/P4nda0s/IDA-NO-MCP)
+
 _Resolved ref: `c1607f6f1ea3262f1e131d013d23760a48d2d9b7`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 94%
 
+**Source:** [github.com/UHolli/browser-mcp](https://github.com/UHolli/browser-mcp)
+
 _Resolved ref: `45acc025d73293d015f15f8206047f59f5b6d690`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 90%
 
+**Source:** [github.com/cyanheads/obsidian-mcp-server](https://github.com/cyanheads/obsidian-mcp-server)
+
 _Resolved ref: `9e9861be17395e942ee7aac3b3607cf9dc4d97b2`_
 
 ## Executive Summary

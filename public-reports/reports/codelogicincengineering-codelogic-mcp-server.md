@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 70%
 
+**Source:** [github.com/CodeLogicIncEngineering/codelogic-mcp-server](https://github.com/CodeLogicIncEngineering/codelogic-mcp-server)
+
 _Resolved ref: `036be3ed03812bd35424d814f9a3c3ea345d3959`_
 
 ## Executive Summary

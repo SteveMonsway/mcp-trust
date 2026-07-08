@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 80%
 
+**Source:** [github.com/docling-project/docling-mcp](https://github.com/docling-project/docling-mcp)
+
 _Resolved ref: `43b3638e6b5e673cf0bb311d2488b6ec8cf10f5a`_
 
 ## Executive Summary

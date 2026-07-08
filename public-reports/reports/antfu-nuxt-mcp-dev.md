@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 72%
 
+**Source:** [github.com/antfu/nuxt-mcp-dev](https://github.com/antfu/nuxt-mcp-dev)
+
 _Resolved ref: `54b979536b66c86e248fb174c6c3713dbe0706a1`_
 
 ## Executive Summary

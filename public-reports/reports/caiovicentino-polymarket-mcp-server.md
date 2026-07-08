@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 64%
 
+**Source:** [github.com/caiovicentino/polymarket-mcp-server](https://github.com/caiovicentino/polymarket-mcp-server)
+
 _Resolved ref: `b96412357750b9c9499497f9de91303bf5cdebb7`_
 
 ## Executive Summary

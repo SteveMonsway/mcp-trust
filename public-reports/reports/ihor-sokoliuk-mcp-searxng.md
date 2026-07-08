@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 65%
 
+**Source:** [github.com/ihor-sokoliuk/mcp-searxng](https://github.com/ihor-sokoliuk/mcp-searxng)
+
 _Resolved ref: `813cfa3f623e5363ff21c8ecdadf2c828a68a3c8`_
 
 ## Executive Summary

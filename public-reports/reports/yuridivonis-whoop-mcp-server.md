@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 60%
 
+**Source:** [github.com/yuridivonis/whoop-mcp-server](https://github.com/yuridivonis/whoop-mcp-server)
+
 _Resolved ref: `cd237f76041e15a21e78b0a178082d823bbdb9f6`_
 
 ## Executive Summary

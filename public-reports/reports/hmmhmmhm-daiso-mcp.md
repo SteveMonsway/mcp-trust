@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 72%
 
+**Source:** [github.com/hmmhmmhm/daiso-mcp](https://github.com/hmmhmmhm/daiso-mcp)
+
 _Resolved ref: `b60ceeeacba847198d677cdea104f2f054cdcea5`_
 
 ## Executive Summary

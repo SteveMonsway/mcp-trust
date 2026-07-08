@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/atlassian/atlassian-mcp-server](https://github.com/atlassian/atlassian-mcp-server)
+
 _Resolved ref: `c4b148f24027ac2a9466f11a993a6cc56a195469`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/24mlight/a-share-mcp-is-just-i-need](https://github.com/24mlight/a-share-mcp-is-just-i-need)
+
 _Resolved ref: `4a2d4b730e13a689782f0adef7e0446a4f3cf926`_
 
 ## Executive Summary

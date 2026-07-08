@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 85%
 
+**Source:** [github.com/jjsantos01/qgis_mcp](https://github.com/jjsantos01/qgis_mcp)
+
 _Resolved ref: `e37bf6f095e1658a8939cb7d8467c1e61d138bd2`_
 
 ## Executive Summary

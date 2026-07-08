@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/syedazharmbnr1/claude-chatgpt-mcp](https://github.com/syedazharmbnr1/claude-chatgpt-mcp)
+
 _Resolved ref: `bb2c313adb9044896082ac4c11183ddd1f88d94a`_
 
 ## Executive Summary

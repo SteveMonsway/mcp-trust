@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 76%
 
+**Source:** [github.com/DMontgomery40/mcp-3D-printer-server](https://github.com/DMontgomery40/mcp-3D-printer-server)
+
 _Resolved ref: `85fa6185b39cd6d8b7c16630c1291608296dafd6`_
 
 ## Executive Summary

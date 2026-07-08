@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 62%
 
+**Source:** [github.com/microsoft/azure-devops-mcp](https://github.com/microsoft/azure-devops-mcp)
+
 _Resolved ref: `de8dd3439d0366c3e8fcdc703bbf0c56c06cda14`_
 
 ## Executive Summary

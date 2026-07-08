@@ -5,6 +5,8 @@
 **Score:** 44/100  
 **Confidence:** 85%
 
+**Source:** [github.com/rohitg00/kubectl-mcp-server](https://github.com/rohitg00/kubectl-mcp-server)
+
 _Resolved ref: `14f9c138a7efd80a2bbb83e7ecfcdbe259f6e598`_
 
 ## Executive Summary

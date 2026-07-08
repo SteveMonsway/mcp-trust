@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/yoshiko-pg/o3-search-mcp](https://github.com/yoshiko-pg/o3-search-mcp)
+
 _Resolved ref: `1ad6938fcfe504246feef32c153e840436f0496c`_
 
 ## Executive Summary

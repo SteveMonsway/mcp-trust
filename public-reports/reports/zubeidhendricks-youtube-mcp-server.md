@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 74%
 
+**Source:** [github.com/ZubeidHendricks/youtube-mcp-server](https://github.com/ZubeidHendricks/youtube-mcp-server)
+
 _Resolved ref: `fafa8bbe3bd34f141a00bd04bf34ba22b38745e7`_
 
 ## Executive Summary

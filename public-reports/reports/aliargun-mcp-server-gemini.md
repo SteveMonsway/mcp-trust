@@ -5,6 +5,8 @@
 **Score:** 6/100  
 **Confidence:** 60%
 
+**Source:** [github.com/aliargun/mcp-server-gemini](https://github.com/aliargun/mcp-server-gemini)
+
 _Resolved ref: `d90346a45bf89088944063a03c95904bfc3b833f`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 76%
 
+**Source:** [github.com/QuantGeekDev/mcp-framework](https://github.com/QuantGeekDev/mcp-framework)
+
 _Resolved ref: `ead9c4bbcd5fd098e80ccf64758bd6bf43234f90`_
 
 ## Executive Summary

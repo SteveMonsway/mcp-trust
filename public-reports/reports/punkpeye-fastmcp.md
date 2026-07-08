@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 60%
 
+**Source:** [github.com/punkpeye/fastmcp](https://github.com/punkpeye/fastmcp)
+
 _Resolved ref: `b170e78c2c0bfadbfcacae86447b4b9a4419e8e4`_
 
 ## Executive Summary

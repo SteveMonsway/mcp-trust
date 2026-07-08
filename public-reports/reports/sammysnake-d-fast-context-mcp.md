@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 73%
 
+**Source:** [github.com/SammySnake-d/fast-context-mcp](https://github.com/SammySnake-d/fast-context-mcp)
+
 _Resolved ref: `1fb45dab4cab009fe6ab247a6beca7008cca1b1b`_
 
 ## Executive Summary

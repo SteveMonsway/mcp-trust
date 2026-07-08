@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 68%
 
+**Source:** [github.com/sooperset/mcp-atlassian](https://github.com/sooperset/mcp-atlassian)
+
 _Resolved ref: `58dd067d949551a10799ce9486e33ff1e3c53ff7`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 91%
 
+**Source:** [github.com/reading-plus-ai/mcp-server-data-exploration](https://github.com/reading-plus-ai/mcp-server-data-exploration)
+
 _Resolved ref: `0cd67660c2591f05fe8dfe5bf93c9d5b66c5b95d`_
 
 ## Executive Summary

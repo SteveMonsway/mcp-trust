@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 85%
 
+**Source:** [github.com/heznpc/AirMCP](https://github.com/heznpc/AirMCP)
+
 _Resolved ref: `14cf9f37a1e84fe6acdb90f964ed43a09b2210ce`_
 
 ## Executive Summary

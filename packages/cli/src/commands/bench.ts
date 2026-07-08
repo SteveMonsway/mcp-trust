@@ -491,7 +491,9 @@ function decisionCounts(targets: IndexTarget[]): Record<string, number> {
   return c;
 }
 
-/** Compact folder README: summary + the notable (BLOCK) rows, full list collapsed. */
+/** Folder README: summary + one full, visible table of every server, sorted so the
+ * BLOCK rows (review-first) come on top. No collapsed section — the whole list must
+ * be readable directly on the GitHub folder page. */
 function renderIndexReadme(index: { count: number; scanner: { version: string }; targets: IndexTarget[] }): string {
   const rows = sortTargets(index.targets);
   const c = decisionCounts(rows);
@@ -501,7 +503,6 @@ function renderIndexReadme(index: { count: number; scanner: { version: string };
     return `| \`${t.id}\` | [${src}](https://${t.locator}) | ${t.decision}${warn} | ${t.risk} | ${t.score} | ${t.findings} | [md](reports/${t.slug}.md) · [html](reports/${t.slug}.html) |`;
   };
   const header = '| Server | Source | Decision | Risk | Score | Findings | Report |\n|---|---|---|---|---|---|---|';
-  const blocks = rows.filter((t) => t.decision === 'BLOCK');
   const out: string[] = [];
   out.push('# Public benchmark reports', '');
   out.push(
@@ -524,11 +525,9 @@ function renderIndexReadme(index: { count: number; scanner: { version: string };
     '- **Machine-readable:** [`index.json`](index.json).',
     '',
   );
-  out.push(`## Runtime-command servers — review first (BLOCK, ${blocks.length})`);
-  out.push(header, ...blocks.map(line), '');
-  out.push('<details>', `<summary>Full list — all ${index.count} servers</summary>`, '');
+  out.push(`## All ${index.count} servers`);
+  out.push(`_Sorted BLOCK → NEEDS_REVIEW → APPROVE_WITH_RESTRICTIONS → APPROVE (review-first), then by score._`, '');
   out.push(header, ...rows.map(line), '');
-  out.push('</details>', '');
   out.push('_Regenerate: `pnpm scan:seed && pnpm reports:public`._');
   return out.join('\n') + '\n';
 }

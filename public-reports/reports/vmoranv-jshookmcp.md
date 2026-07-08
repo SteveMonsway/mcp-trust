@@ -5,6 +5,8 @@
 **Score:** 52/100  
 **Confidence:** 79%
 
+**Source:** [github.com/vmoranv/jshookmcp](https://github.com/vmoranv/jshookmcp)
+
 _Resolved ref: `4de821b27c60c5b40ce6d7e605fdc012936d2f7d`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 47/100  
 **Confidence:** 81%
 
+**Source:** [github.com/sirkirby/unifi-mcp](https://github.com/sirkirby/unifi-mcp)
+
 _Resolved ref: `ffb4488eae5790c16677c134ff45584c4e616113`_
 
 ## Executive Summary

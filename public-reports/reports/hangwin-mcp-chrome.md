@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 71%
 
+**Source:** [github.com/hangwin/mcp-chrome](https://github.com/hangwin/mcp-chrome)
+
 _Resolved ref: `f48e71751e00bc09725c7e173423cff4f2ccd12a`_
 
 ## Executive Summary

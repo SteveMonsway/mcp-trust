@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/vercel-labs/mcp-for-next.js](https://github.com/vercel-labs/mcp-for-next.js)
+
 _Resolved ref: `ca4a1f0cc97e61758112908bdbda0384b787a41d`_
 
 ## Executive Summary

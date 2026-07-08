@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/datagouv/datagouv-mcp](https://github.com/datagouv/datagouv-mcp)
+
 _Resolved ref: `6f1fdcd36c8f82995a984eec8199312857125756`_
 
 ## Executive Summary

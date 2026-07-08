@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 62%
 
+**Source:** [github.com/metatool-ai/metamcp](https://github.com/metatool-ai/metamcp)
+
 _Resolved ref: `ff4ff2de9d25453c52dcc7be32680b30700a6012`_
 
 ## Executive Summary

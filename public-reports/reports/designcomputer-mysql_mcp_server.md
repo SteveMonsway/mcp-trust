@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/designcomputer/mysql_mcp_server](https://github.com/designcomputer/mysql_mcp_server)
+
 _Resolved ref: `e25be7fc4e9e79d7efc52eb69d776129429a837f`_
 
 ## Executive Summary

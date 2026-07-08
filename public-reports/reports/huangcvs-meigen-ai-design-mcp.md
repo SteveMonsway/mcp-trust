@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 62%
 
+**Source:** [github.com/HUANGcvs/MeiGen-AI-Design-MCP](https://github.com/HUANGcvs/MeiGen-AI-Design-MCP)
+
 _Resolved ref: `84e2d04e8daeed2b750569ca540754b03056049d`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 77%
 
+**Source:** [github.com/andrea9293/mcp-documentation-server](https://github.com/andrea9293/mcp-documentation-server)
+
 _Resolved ref: `ec9f71541aba941d8c60196b741c8dc207145992`_
 
 ## Executive Summary

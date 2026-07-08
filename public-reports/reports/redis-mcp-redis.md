@@ -5,6 +5,8 @@
 **Score:** 18/100  
 **Confidence:** 70%
 
+**Source:** [github.com/redis/mcp-redis](https://github.com/redis/mcp-redis)
+
 _Resolved ref: `53df2bcb7754a393f53b6c880ab710b95fefa343`_
 
 ## Executive Summary

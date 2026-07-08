@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 76%
 
+**Source:** [github.com/czlonkowski/n8n-mcp](https://github.com/czlonkowski/n8n-mcp)
+
 _Resolved ref: `d1115d85142be57331dde1fcb711e99e3ad23734`_
 
 ## Executive Summary

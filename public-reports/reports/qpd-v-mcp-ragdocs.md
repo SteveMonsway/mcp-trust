@@ -5,6 +5,8 @@
 **Score:** 12/100  
 **Confidence:** 60%
 
+**Source:** [github.com/qpd-v/mcp-ragdocs](https://github.com/qpd-v/mcp-ragdocs)
+
 _Resolved ref: `a0fa0651cc63463a6309bab37c1088c39535e538`_
 
 ## Executive Summary

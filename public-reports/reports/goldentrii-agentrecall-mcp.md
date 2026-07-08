@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 74%
 
+**Source:** [github.com/Goldentrii/AgentRecall-MCP](https://github.com/Goldentrii/AgentRecall-MCP)
+
 _Resolved ref: `256a0cb796e7c143699fdef9e33d3fd8048d6c60`_
 
 ## Executive Summary

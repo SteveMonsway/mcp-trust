@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 83%
 
+**Source:** [github.com/Doist/todoist-mcp](https://github.com/Doist/todoist-mcp)
+
 _Resolved ref: `e633e99400509b7b77bd4ccdd7c5155edaa1134f`_
 
 ## Executive Summary

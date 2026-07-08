@@ -5,6 +5,8 @@
 **Score:** 25/100  
 **Confidence:** 60%
 
+**Source:** [github.com/idosal/git-mcp](https://github.com/idosal/git-mcp)
+
 _Resolved ref: `c487a29895dcfcb5b672247e646426a56e2051c1`_
 
 ## Executive Summary

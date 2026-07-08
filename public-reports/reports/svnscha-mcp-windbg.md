@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 75%
 
+**Source:** [github.com/svnscha/mcp-windbg](https://github.com/svnscha/mcp-windbg)
+
 _Resolved ref: `0c01c283edae5b3ac8d630f8ba95a0a8c83b08d6`_
 
 ## Executive Summary

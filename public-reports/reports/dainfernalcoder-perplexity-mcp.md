@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 63%
 
+**Source:** [github.com/DaInfernalCoder/perplexity-mcp](https://github.com/DaInfernalCoder/perplexity-mcp)
+
 _Resolved ref: `8dd10c64e9c1c8e2871369a169acfc963e5b8036`_
 
 ## Executive Summary

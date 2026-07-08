@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 72%
 
+**Source:** [github.com/idfkit/idfkit-mcp](https://github.com/idfkit/idfkit-mcp)
+
 _Resolved ref: `3f0456bc352a7b3907db9c242572ab51af02e442`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 73%
 
+**Source:** [github.com/vibheksoni/stealth-browser-mcp](https://github.com/vibheksoni/stealth-browser-mcp)
+
 _Resolved ref: `d96a9c650f55f8705c703f94c42e3d2c4ec8051b`_
 
 ## Executive Summary

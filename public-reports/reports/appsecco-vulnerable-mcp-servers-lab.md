@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 69%
 
+**Source:** [github.com/appsecco/vulnerable-mcp-servers-lab](https://github.com/appsecco/vulnerable-mcp-servers-lab)
+
 _Resolved ref: `47b7f2082261136b667daa7be9273698e66e479e`_
 
 ## Executive Summary

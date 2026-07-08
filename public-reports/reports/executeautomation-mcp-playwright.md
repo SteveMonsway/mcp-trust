@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 83%
 
+**Source:** [github.com/executeautomation/mcp-playwright](https://github.com/executeautomation/mcp-playwright)
+
 _Resolved ref: `2349c2891e7c499c8c07b7d78c7f3fb4c797a1da`_
 
 ## Executive Summary

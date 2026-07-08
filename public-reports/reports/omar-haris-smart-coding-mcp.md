@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 75%
 
+**Source:** [github.com/omar-haris/smart-coding-mcp](https://github.com/omar-haris/smart-coding-mcp)
+
 _Resolved ref: `ef8e842fdd5002247a436056b7650f60fd99279b`_
 
 ## Executive Summary

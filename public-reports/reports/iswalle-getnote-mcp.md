@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 60%
 
+**Source:** [github.com/iswalle/getnote-mcp](https://github.com/iswalle/getnote-mcp)
+
 _Resolved ref: `5465fadf9df8208aa32263652f97c6d173437669`_
 
 ## Executive Summary

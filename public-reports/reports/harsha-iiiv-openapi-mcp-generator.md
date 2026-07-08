@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 72%
 
+**Source:** [github.com/harsha-iiiv/openapi-mcp-generator](https://github.com/harsha-iiiv/openapi-mcp-generator)
+
 _Resolved ref: `8f6714ffcdeefbcddea25d8143dc610e4cbbc5f3`_
 
 ## Executive Summary

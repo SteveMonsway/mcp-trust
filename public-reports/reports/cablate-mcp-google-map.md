@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 66%
 
+**Source:** [github.com/cablate/mcp-google-map](https://github.com/cablate/mcp-google-map)
+
 _Resolved ref: `6c34d268126a31390f2e236d888b0a00fed59f11`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 85%
 
+**Source:** [github.com/alpacahq/alpaca-mcp-server](https://github.com/alpacahq/alpaca-mcp-server)
+
 _Resolved ref: `88722ce0ead33a5c69c41f9bfe5deec0a759cbf6`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 60%
 
+**Source:** [github.com/BreadStisx/claudemcp](https://github.com/BreadStisx/claudemcp)
+
 _Resolved ref: `ea0972f1c0d6481dce703c11c3d2f01232c1d891`_
 
 ## Executive Summary

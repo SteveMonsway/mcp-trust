@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 75%
 
+**Source:** [github.com/johnhuang316/code-index-mcp](https://github.com/johnhuang316/code-index-mcp)
+
 _Resolved ref: `5e8d5fce10a29a58b71f736824253fb22e239610`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 60%
 
+**Source:** [github.com/makeplane/plane-mcp-server](https://github.com/makeplane/plane-mcp-server)
+
 _Resolved ref: `b0fb1363b58b54370f248a2149f02b1dac13c0af`_
 
 ## Executive Summary

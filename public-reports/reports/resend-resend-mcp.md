@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 60%
 
+**Source:** [github.com/resend/resend-mcp](https://github.com/resend/resend-mcp)
+
 _Resolved ref: `c5438f21d12fea8fa7ead7d64c2553e50327e9a2`_
 
 ## Executive Summary

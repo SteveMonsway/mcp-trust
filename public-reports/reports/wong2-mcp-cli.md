@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/wong2/mcp-cli](https://github.com/wong2/mcp-cli)
+
 _Resolved ref: `7d12b4648b1c3e2a7341113407002c1b0f700d1b`_
 
 ## Executive Summary

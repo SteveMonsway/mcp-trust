@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 70%
 
+**Source:** [github.com/appwrite/mcp](https://github.com/appwrite/mcp)
+
 _Resolved ref: `aad13e77ddf2f12c46380f80b59182af82505891`_
 
 ## Executive Summary

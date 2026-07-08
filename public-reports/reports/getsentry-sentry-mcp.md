@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 75%
 
+**Source:** [github.com/getsentry/sentry-mcp](https://github.com/getsentry/sentry-mcp)
+
 _Resolved ref: `e2da5164e2edc1f59fad25c38c68dabd14905c49`_
 
 ## Executive Summary

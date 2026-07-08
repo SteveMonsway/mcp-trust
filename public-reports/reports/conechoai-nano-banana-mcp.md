@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 76%
 
+**Source:** [github.com/ConechoAI/Nano-Banana-MCP](https://github.com/ConechoAI/Nano-Banana-MCP)
+
 _Resolved ref: `6ccf50aef325ffa8d6b905d7fa1ccdf33ada57d2`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 89%
 
+**Source:** [github.com/tradesdontlie/tradingview-mcp](https://github.com/tradesdontlie/tradingview-mcp)
+
 _Resolved ref: `55534aab8c11f24655b7d8d4de82e6bece14c8b4`_
 
 ## Executive Summary

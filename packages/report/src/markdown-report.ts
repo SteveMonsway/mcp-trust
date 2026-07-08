@@ -22,6 +22,25 @@ function targetLabel(t: ScanTarget): string {
   }
 }
 
+/** Public source URL for the scanned target, if one exists — the repo the report
+ * assessed (github), or the package page (npm/PyPI). Local/config scans have no
+ * public URL. Identifiers come from the parsed locator (constrained charset), so
+ * they are safe inside a Markdown link. */
+function targetSource(t: ScanTarget): { url: string; label: string } | undefined {
+  switch (t.type) {
+    case 'github':
+      return { url: t.url, label: `github.com/${t.owner}/${t.repo}` };
+    case 'npm':
+      return { url: `https://www.npmjs.com/package/${t.packageName}`, label: `npm: ${t.packageName}` };
+    case 'pypi':
+      return { url: `https://pypi.org/project/${t.packageName}/`, label: `PyPI: ${t.packageName}` };
+    case 'remote-http':
+      return { url: t.url, label: t.url };
+    default:
+      return undefined;
+  }
+}
+
 const SEVERITY_HEADERS: Finding['severity'][] = ['critical', 'high', 'medium', 'low', 'info'];
 
 /** Neutralize a value going into a Markdown table cell: escape `|`, angle
@@ -51,6 +70,8 @@ export function renderMarkdown(result: ScanResult): string {
   lines.push(`**Risk:** ${score.risk.toUpperCase()}  `);
   lines.push(`**Score:** ${score.overall}/100  `);
   lines.push(`**Confidence:** ${Math.round(score.confidence * 100)}%`);
+  const source = targetSource(result.target);
+  if (source) lines.push(`\n**Source:** [${mdInline(source.label)}](${source.url})`);
   if (result.resolvedRef) lines.push(`\n_Resolved ref: \`${result.resolvedRef}\`_`);
   lines.push('');
 

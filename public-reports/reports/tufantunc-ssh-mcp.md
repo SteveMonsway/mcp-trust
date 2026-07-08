@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/tufantunc/ssh-mcp](https://github.com/tufantunc/ssh-mcp)
+
 _Resolved ref: `463d25fee532990be75794afd674523eac423321`_
 
 ## Executive Summary

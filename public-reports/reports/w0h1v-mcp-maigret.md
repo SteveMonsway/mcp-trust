@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/w0h1v/mcp-maigret](https://github.com/w0h1v/mcp-maigret)
+
 _Resolved ref: `1a7c9a4b1e4e8ffd12ac03058aee3e90161f1846`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 76%
 
+**Source:** [github.com/Softeria/ms-365-mcp-server](https://github.com/Softeria/ms-365-mcp-server)
+
 _Resolved ref: `c6e6eac7795ec98e5209ebf9c9b337af20a8b7c4`_
 
 ## Executive Summary

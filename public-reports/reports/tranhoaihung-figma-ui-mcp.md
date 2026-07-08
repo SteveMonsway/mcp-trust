@@ -5,6 +5,8 @@
 **Score:** 40/100  
 **Confidence:** 72%
 
+**Source:** [github.com/TranHoaiHung/figma-ui-mcp](https://github.com/TranHoaiHung/figma-ui-mcp)
+
 _Resolved ref: `0ee03b7dd01ecb6e590b7bd4653c4a1e371ef170`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 87%
 
+**Source:** [github.com/arinspunk/claude-talk-to-figma-mcp](https://github.com/arinspunk/claude-talk-to-figma-mcp)
+
 _Resolved ref: `c7adf243fc2967fcda3862415d3283bd239af56d`_
 
 ## Executive Summary

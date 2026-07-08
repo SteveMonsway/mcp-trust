@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/haytam111234/trainingpeaks-mcp](https://github.com/haytam111234/trainingpeaks-mcp)
+
 _Resolved ref: `98b34fbcb61d190cd5ac33c7586a9a2eebc69eda`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 70%
 
+**Source:** [github.com/jobsonlook/xhs-mcp](https://github.com/jobsonlook/xhs-mcp)
+
 _Resolved ref: `09e55b1dd56fb63157d60ef197dcc2a553e92e50`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 67%
 
+**Source:** [github.com/waldzellai/waldzell-mcp](https://github.com/waldzellai/waldzell-mcp)
+
 _Resolved ref: `ef5663783b2a754ebc2e9289d53a7a379ed3d595`_
 
 ## Executive Summary

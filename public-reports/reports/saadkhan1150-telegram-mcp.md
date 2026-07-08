@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 74%
 
+**Source:** [github.com/saadkhan1150/telegram-mcp](https://github.com/saadkhan1150/telegram-mcp)
+
 _Resolved ref: `ef38e2048422e94572a29fe4b6636db6aa14db2c`_
 
 ## Executive Summary

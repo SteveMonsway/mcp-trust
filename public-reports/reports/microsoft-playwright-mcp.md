@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 83%
 
+**Source:** [github.com/microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)
+
 _Resolved ref: `36ec986b8b1fc6b4d11f2b6971147755e1b0bc84`_
 
 ## Executive Summary

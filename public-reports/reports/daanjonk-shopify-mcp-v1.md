@@ -5,6 +5,8 @@
 **Score:** 11/100  
 **Confidence:** 70%
 
+**Source:** [github.com/daanjonk/shopify-mcp-v1](https://github.com/daanjonk/shopify-mcp-v1)
+
 _Resolved ref: `674c1a6fa872de59a137636a61ae5402c59cb83e`_
 
 ## Executive Summary

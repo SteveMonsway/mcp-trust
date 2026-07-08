@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer](https://github.com/bayyyyyuuu/VeniAI-Hukuk-EmsalKarar-MCPServer)
+
 _Resolved ref: `c60b5c01c2c4f0e4d41e6073e8cba056a75115b1`_
 
 ## Executive Summary

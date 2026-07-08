@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 73%
 
+**Source:** [github.com/saidsurucu/borsa-mcp](https://github.com/saidsurucu/borsa-mcp)
+
 _Resolved ref: `f806373b255caf0ef2bb4952991e8d19337d7ad9`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/googlecolab/colab-mcp](https://github.com/googlecolab/colab-mcp)
+
 _Resolved ref: `b9ab3899e0f1fa493390b1fd6d54aa2e464ecdf1`_
 
 ## Executive Summary

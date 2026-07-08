@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/gdli6177/mcp-prompt-server](https://github.com/gdli6177/mcp-prompt-server)
+
 _Resolved ref: `a27941f53b81ff263e55358004d156451ab6bb66`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 63%
 
+**Source:** [github.com/chrismmt/mcp-adversarial-suite](https://github.com/chrismmt/mcp-adversarial-suite)
+
 _Resolved ref: `53d55836ae18d061e7c50dadf303dd46369d9100`_
 
 ## Executive Summary

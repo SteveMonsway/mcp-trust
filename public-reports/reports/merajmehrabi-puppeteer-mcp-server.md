@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/merajmehrabi/puppeteer-mcp-server](https://github.com/merajmehrabi/puppeteer-mcp-server)
+
 _Resolved ref: `41d656953cba033d6d993ccca589be72c2e1db3f`_
 
 ## Executive Summary

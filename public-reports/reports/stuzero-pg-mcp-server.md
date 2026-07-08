@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 70%
 
+**Source:** [github.com/stuzero/pg-mcp-server](https://github.com/stuzero/pg-mcp-server)
+
 _Resolved ref: `d693c43b3df7fdbaf8a5e4505f9fcafa6c577119`_
 
 ## Executive Summary

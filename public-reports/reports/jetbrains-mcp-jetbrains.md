@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/JetBrains/mcp-jetbrains](https://github.com/JetBrains/mcp-jetbrains)
+
 _Resolved ref: `c8c2b85bc6f029130542fdddc3daf066e404df41`_
 
 ## Executive Summary

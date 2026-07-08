@@ -5,6 +5,8 @@
 **Score:** 46/100  
 **Confidence:** 71%
 
+**Source:** [github.com/awslabs/mcp](https://github.com/awslabs/mcp)
+
 _Resolved ref: `d4dbc333552c88e5ad9133686898228b2238d581`_
 
 ## Executive Summary

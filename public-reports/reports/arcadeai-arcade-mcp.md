@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 69%
 
+**Source:** [github.com/ArcadeAI/arcade-mcp](https://github.com/ArcadeAI/arcade-mcp)
+
 _Resolved ref: `c2bf679424493a0b08767cedf7a5697ea12a7a72`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 76%
 
+**Source:** [github.com/ELSAKKK/mnemos-mcp](https://github.com/ELSAKKK/mnemos-mcp)
+
 _Resolved ref: `32ac3c4820a1855c8862ad7ddbb41a60d8c3b61b`_
 
 ## Executive Summary

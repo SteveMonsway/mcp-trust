@@ -5,6 +5,8 @@
 **Score:** 6/100  
 **Confidence:** 65%
 
+**Source:** [github.com/chatmcp/mcpso](https://github.com/chatmcp/mcpso)
+
 _Resolved ref: `ddcdb9d54576baec7ab9929af3bf7d5d71497498`_
 
 ## Executive Summary

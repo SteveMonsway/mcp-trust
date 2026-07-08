@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 77%
 
+**Source:** [github.com/Hack23/European-Parliament-MCP-Server](https://github.com/Hack23/European-Parliament-MCP-Server)
+
 _Resolved ref: `582ddbf6e7ab25bc9f36b485fef09313c64e15da`_
 
 ## Executive Summary

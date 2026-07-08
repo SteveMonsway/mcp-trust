@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/cantian-ai/bazi-mcp](https://github.com/cantian-ai/bazi-mcp)
+
 _Resolved ref: `61b9012759fb804859a980e75183ec0551e6df58`_
 
 ## Executive Summary

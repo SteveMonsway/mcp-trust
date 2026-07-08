@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 78%
 
+**Source:** [github.com/GoogleCloudPlatform/cloud-run-mcp](https://github.com/GoogleCloudPlatform/cloud-run-mcp)
+
 _Resolved ref: `674cee61086db512edfa9ab7a979a80b8f589a18`_
 
 ## Executive Summary

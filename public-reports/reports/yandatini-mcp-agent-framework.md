@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 70%
 
+**Source:** [github.com/Yandatini/mcp-agent-framework](https://github.com/Yandatini/mcp-agent-framework)
+
 _Resolved ref: `0a406e9a7b944b18017fe03e5664aee12255169d`_
 
 ## Executive Summary

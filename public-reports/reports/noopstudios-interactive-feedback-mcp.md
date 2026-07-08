@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 81%
 
+**Source:** [github.com/noopstudios/interactive-feedback-mcp](https://github.com/noopstudios/interactive-feedback-mcp)
+
 _Resolved ref: `b3b9620608df27ae1515b5de89dd63189574e9b9`_
 
 ## Executive Summary

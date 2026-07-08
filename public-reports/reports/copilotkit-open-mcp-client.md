@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/CopilotKit/open-mcp-client](https://github.com/CopilotKit/open-mcp-client)
+
 _Resolved ref: `c8ea97b205ac860f08a4017dc36acba4d255b126`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 77%
 
+**Source:** [github.com/hustcc/mcp-mermaid](https://github.com/hustcc/mcp-mermaid)
+
 _Resolved ref: `13497062a98061295ed2f7546612bd6d235219eb`_
 
 ## Executive Summary

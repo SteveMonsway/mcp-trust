@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 75%
 
+**Source:** [github.com/KelvinQiu802/llm-mcp-rag](https://github.com/KelvinQiu802/llm-mcp-rag)
+
 _Resolved ref: `46e01f23f8282766148eefbae0dbe1d130ae047f`_
 
 ## Executive Summary

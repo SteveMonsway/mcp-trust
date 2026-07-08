@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 69%
 
+**Source:** [github.com/zhizhuodemao/js-reverse-mcp](https://github.com/zhizhuodemao/js-reverse-mcp)
+
 _Resolved ref: `0e19693f496b4600dbc9381e76293d7afa96c001`_
 
 ## Executive Summary

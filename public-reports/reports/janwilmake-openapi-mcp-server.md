@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/janwilmake/openapi-mcp-server](https://github.com/janwilmake/openapi-mcp-server)
+
 _Resolved ref: `7350f0c9c1892c4633e1846cdbb8de198975fec0`_
 
 ## Executive Summary

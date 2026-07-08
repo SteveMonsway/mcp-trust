@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/neiltron/apple-health-mcp](https://github.com/neiltron/apple-health-mcp)
+
 _Resolved ref: `947ccfa4a0fa33fab0d6ef8335e185caa660674a`_
 
 ## Executive Summary

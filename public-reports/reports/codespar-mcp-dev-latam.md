@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 60%
 
+**Source:** [github.com/codespar/mcp-dev-latam](https://github.com/codespar/mcp-dev-latam)
+
 _Resolved ref: `4d7ccaf67617ba127a0a1baa206590cd65332cad`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 60%
 
+**Source:** [github.com/ivnvxd/mcp-server-odoo](https://github.com/ivnvxd/mcp-server-odoo)
+
 _Resolved ref: `b7be7dcc0c422275da2d61a8e422ef5414156abd`_
 
 ## Executive Summary

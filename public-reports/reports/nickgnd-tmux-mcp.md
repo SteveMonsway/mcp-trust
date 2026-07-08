@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 95%
 
+**Source:** [github.com/nickgnd/tmux-mcp](https://github.com/nickgnd/tmux-mcp)
+
 _Resolved ref: `ec68b1061cf3b0d1faa9c5ef5e3f703918e07ba8`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/stolinski/css-mcp](https://github.com/stolinski/css-mcp)
+
 _Resolved ref: `40412096402015e012f6e3972082297ae4b12dbc`_
 
 ## Executive Summary

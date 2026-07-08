@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 64%
 
+**Source:** [github.com/argoproj-labs/mcp-for-argocd](https://github.com/argoproj-labs/mcp-for-argocd)
+
 _Resolved ref: `25589071381e66505fd7e2da41f7b305b98bfd8c`_
 
 ## Executive Summary

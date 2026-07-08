@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 72%
 
+**Source:** [github.com/freee/freee-mcp](https://github.com/freee/freee-mcp)
+
 _Resolved ref: `cede90ad8377c8df3b466f73086e871d5eac9edb`_
 
 ## Executive Summary

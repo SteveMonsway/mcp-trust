@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/Joooook/12306-mcp](https://github.com/Joooook/12306-mcp)
+
 _Resolved ref: `ab86a66b8af02b3e0e6c6f5c5a647938e1b5e3b7`_
 
 ## Executive Summary

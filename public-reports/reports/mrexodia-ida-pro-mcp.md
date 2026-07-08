@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 78%
 
+**Source:** [github.com/mrexodia/ida-pro-mcp](https://github.com/mrexodia/ida-pro-mcp)
+
 _Resolved ref: `abb2732ad0d759d750c2e38b616f7f3e949ed2f9`_
 
 ## Executive Summary

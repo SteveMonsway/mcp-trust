@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/bazinga012/mcp_code_executor](https://github.com/bazinga012/mcp_code_executor)
+
 _Resolved ref: `be728894dac7dac53193ba31f24b4d2b397fc84d`_
 
 ## Executive Summary

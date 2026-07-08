@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/zinja-coder/jadx-mcp-server](https://github.com/zinja-coder/jadx-mcp-server)
+
 _Resolved ref: `c35984ebebd1ae7559aeae925038aac1a0f96037`_
 
 ## Executive Summary

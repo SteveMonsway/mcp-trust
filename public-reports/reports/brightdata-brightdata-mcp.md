@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 81%
 
+**Source:** [github.com/brightdata/brightdata-mcp](https://github.com/brightdata/brightdata-mcp)
+
 _Resolved ref: `adbfdd49b8805136662a264490118c2688da3e29`_
 
 ## Executive Summary

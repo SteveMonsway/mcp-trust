@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 75%
 
+**Source:** [github.com/Kcao3034/markdown-editor-mcp-server](https://github.com/Kcao3034/markdown-editor-mcp-server)
+
 _Resolved ref: `7633e0a375c63bc295eeef7ecfca70b25d38b66b`_
 
 ## Executive Summary

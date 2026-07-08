@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 60%
 
+**Source:** [github.com/guru111244/claude-team-mcp](https://github.com/guru111244/claude-team-mcp)
+
 _Resolved ref: `0b0d9c3cec250dc3e0ad640c77be18c2908fb7f3`_
 
 ## Executive Summary

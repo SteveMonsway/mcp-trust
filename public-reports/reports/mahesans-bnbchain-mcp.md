@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 65%
 
+**Source:** [github.com/mahesans/bnbchain-mcp](https://github.com/mahesans/bnbchain-mcp)
+
 _Resolved ref: `a3a97c6a82e595c88444bbf42de9ff44fc99a9cb`_
 
 ## Executive Summary

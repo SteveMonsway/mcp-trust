@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 73%
 
+**Source:** [github.com/llallum/MSDefender-MCP](https://github.com/llallum/MSDefender-MCP)
+
 _Resolved ref: `baa519888fbd136b13cf96383feba19246d5fae2`_
 
 ## Executive Summary

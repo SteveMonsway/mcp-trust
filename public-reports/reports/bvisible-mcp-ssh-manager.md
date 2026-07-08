@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 81%
 
+**Source:** [github.com/bvisible/mcp-ssh-manager](https://github.com/bvisible/mcp-ssh-manager)
+
 _Resolved ref: `998551eb1602603a2dbe534bb16b0eba5ca0076e`_
 
 ## Executive Summary

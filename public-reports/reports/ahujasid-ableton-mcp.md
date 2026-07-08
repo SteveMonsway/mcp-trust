@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ahujasid/ableton-mcp](https://github.com/ahujasid/ableton-mcp)
+
 _Resolved ref: `5e9ffbd246bae60994699900f4fef34ad7b40407`_
 
 ## Executive Summary

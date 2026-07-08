@@ -5,6 +5,8 @@
 **Score:** 50/100  
 **Confidence:** 72%
 
+**Source:** [github.com/volcengine/mcp-server](https://github.com/volcengine/mcp-server)
+
 _Resolved ref: `355ec42b10659fbb9629d0f5b2f16d929dbe6d3b`_
 
 ## Executive Summary

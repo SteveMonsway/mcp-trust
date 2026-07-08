@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 86%
 
+**Source:** [github.com/FR0ZON3/notion-mcp](https://github.com/FR0ZON3/notion-mcp)
+
 _Resolved ref: `3a2ab379fe6452a57a664858c891345abd670f2d`_
 
 ## Executive Summary

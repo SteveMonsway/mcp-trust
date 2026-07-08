@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/yuniko-software/minecraft-mcp-server](https://github.com/yuniko-software/minecraft-mcp-server)
+
 _Resolved ref: `240c8cec337ce152cc9e058ebdef511055808406`_
 
 ## Executive Summary

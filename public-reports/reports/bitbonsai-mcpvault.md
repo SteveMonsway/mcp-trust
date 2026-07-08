@@ -5,6 +5,8 @@
 **Score:** 5/100  
 **Confidence:** 80%
 
+**Source:** [github.com/bitbonsai/mcpvault](https://github.com/bitbonsai/mcpvault)
+
 _Resolved ref: `ed18307c205c4c8bedc242601304fc4c50f63918`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/langchain-ai/mcpdoc](https://github.com/langchain-ai/mcpdoc)
+
 _Resolved ref: `31bbc25a008d93b8afe792402ae482d8f693adbd`_
 
 ## Executive Summary

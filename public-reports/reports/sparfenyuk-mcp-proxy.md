@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/sparfenyuk/mcp-proxy](https://github.com/sparfenyuk/mcp-proxy)
+
 _Resolved ref: `153a96a61fde2bf5a23961c64a3dd96b5e385108`_
 
 ## Executive Summary

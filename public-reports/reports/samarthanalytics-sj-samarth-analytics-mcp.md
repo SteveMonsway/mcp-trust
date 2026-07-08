@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 69%
 
+**Source:** [github.com/samarthanalytics-sj/samarth-analytics-mcp](https://github.com/samarthanalytics-sj/samarth-analytics-mcp)
+
 _Resolved ref: `7df6dd9d5e7dd47301c6d382aa0cd1d6a4429930`_
 
 ## Executive Summary

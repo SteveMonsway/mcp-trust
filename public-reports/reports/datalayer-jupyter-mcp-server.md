@@ -5,6 +5,8 @@
 **Score:** 44/100  
 **Confidence:** 72%
 
+**Source:** [github.com/datalayer/jupyter-mcp-server](https://github.com/datalayer/jupyter-mcp-server)
+
 _Resolved ref: `27b91e551d8bbca2da32c334f9f13267290ff815`_
 
 ## Executive Summary

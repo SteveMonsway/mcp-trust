@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 64%
 
+**Source:** [github.com/MatanYemini/bitbucket-mcp](https://github.com/MatanYemini/bitbucket-mcp)
+
 _Resolved ref: `d3594e2cfaae879ae2aa2ef15b0139c0aa6dc0f6`_
 
 ## Executive Summary

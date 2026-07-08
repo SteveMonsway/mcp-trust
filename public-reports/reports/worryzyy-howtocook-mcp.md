@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/worryzyy/HowToCook-mcp](https://github.com/worryzyy/HowToCook-mcp)
+
 _Resolved ref: `d702e22896b930146974dc3ab0eadf60cdcfeb04`_
 
 ## Executive Summary

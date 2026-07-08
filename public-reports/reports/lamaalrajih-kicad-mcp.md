@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 74%
 
+**Source:** [github.com/lamaalrajih/kicad-mcp](https://github.com/lamaalrajih/kicad-mcp)
+
 _Resolved ref: `98c9ea41cb393393a8bafd157a93e84431e00afb`_
 
 ## Executive Summary

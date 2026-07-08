@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 62%
 
+**Source:** [github.com/BeehiveInnovations/pal-mcp-server](https://github.com/BeehiveInnovations/pal-mcp-server)
+
 _Resolved ref: `7afc7c1cc96e23992c8f105f960132c657883bb1`_
 
 ## Executive Summary

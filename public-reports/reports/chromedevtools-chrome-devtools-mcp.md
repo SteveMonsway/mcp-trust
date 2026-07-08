@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 78%
 
+**Source:** [github.com/ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
 _Resolved ref: `ff53b7bb823cc61ccde0eb6dc235450ff9884d0a`_
 
 ## Executive Summary

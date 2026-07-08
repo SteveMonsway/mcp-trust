@@ -5,6 +5,8 @@
 **Score:** 44/100  
 **Confidence:** 89%
 
+**Source:** [github.com/postmanlabs/postman-mcp-server](https://github.com/postmanlabs/postman-mcp-server)
+
 _Resolved ref: `89d87667898d08443d2791fb19312b2f2084a697`_
 
 ## Executive Summary

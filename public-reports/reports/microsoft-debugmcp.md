@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/microsoft/DebugMCP](https://github.com/microsoft/DebugMCP)
+
 _Resolved ref: `c7cc190199cbb4de4c682bc0ec5c8905afcc2715`_
 
 ## Executive Summary

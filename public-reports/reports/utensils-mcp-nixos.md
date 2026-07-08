@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 60%
 
+**Source:** [github.com/utensils/mcp-nixos](https://github.com/utensils/mcp-nixos)
+
 _Resolved ref: `0ef99b6a5674e60ca315dc55a0f458673bb1e4fa`_
 
 ## Executive Summary

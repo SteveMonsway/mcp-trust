@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 60%
 
+**Source:** [github.com/browserless/browserless-mcp](https://github.com/browserless/browserless-mcp)
+
 _Resolved ref: `4707dc756bae300e260b07de6cf6c3dde65bdc59`_
 
 ## Executive Summary

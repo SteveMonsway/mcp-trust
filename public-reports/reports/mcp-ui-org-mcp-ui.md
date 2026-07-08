@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 75%
 
+**Source:** [github.com/MCP-UI-Org/mcp-ui](https://github.com/MCP-UI-Org/mcp-ui)
+
 _Resolved ref: `2b10490910943640deeb2d9012ad417d4c0e9025`_
 
 ## Executive Summary

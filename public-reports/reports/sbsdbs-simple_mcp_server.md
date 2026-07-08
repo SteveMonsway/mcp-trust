@@ -5,6 +5,8 @@
 **Score:** 7/100  
 **Confidence:** 60%
 
+**Source:** [github.com/sbsdbs/simple_mcp_server](https://github.com/sbsdbs/simple_mcp_server)
+
 _Resolved ref: `d1ca91eff0159c2ffc13a4dbdc30380a1b29aa2f`_
 
 ## Executive Summary

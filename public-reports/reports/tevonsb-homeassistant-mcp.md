@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 70%
 
+**Source:** [github.com/tevonsb/homeassistant-mcp](https://github.com/tevonsb/homeassistant-mcp)
+
 _Resolved ref: `da5c30bc5ef83a7dd96fd1ef8122f0b2f3b8c94b`_
 
 ## Executive Summary

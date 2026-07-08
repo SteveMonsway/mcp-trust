@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 70%
 
+**Source:** [github.com/knowsuchagency/mcp2cli](https://github.com/knowsuchagency/mcp2cli)
+
 _Resolved ref: `dd2a5a6353060a7bf8d2599bf5d037d75b26a7ae`_
 
 ## Executive Summary

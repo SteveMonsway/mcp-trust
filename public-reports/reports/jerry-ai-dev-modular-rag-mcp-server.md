@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 75%
 
+**Source:** [github.com/jerry-ai-dev/MODULAR-RAG-MCP-SERVER](https://github.com/jerry-ai-dev/MODULAR-RAG-MCP-SERVER)
+
 _Resolved ref: `f658c5a4011c8b826707a65a3b11ce9301b0626f`_
 
 ## Executive Summary

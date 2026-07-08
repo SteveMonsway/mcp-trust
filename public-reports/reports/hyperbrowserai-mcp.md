@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 65%
 
+**Source:** [github.com/hyperbrowserai/mcp](https://github.com/hyperbrowserai/mcp)
+
 _Resolved ref: `7492e83cf1825b3cf9725bfa25c5086df702599a`_
 
 ## Executive Summary

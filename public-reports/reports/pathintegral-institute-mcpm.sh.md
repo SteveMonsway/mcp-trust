@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 71%
 
+**Source:** [github.com/pathintegral-institute/mcpm.sh](https://github.com/pathintegral-institute/mcpm.sh)
+
 _Resolved ref: `6a92e54c748766973add4b8c153fcc85738d2d89`_
 
 ## Executive Summary

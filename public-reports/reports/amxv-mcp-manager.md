@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 65%
 
+**Source:** [github.com/amxv/mcp-manager](https://github.com/amxv/mcp-manager)
+
 _Resolved ref: `59871bf37732ff73b90404e7b1cd1cdf468e1188`_
 
 ## Executive Summary

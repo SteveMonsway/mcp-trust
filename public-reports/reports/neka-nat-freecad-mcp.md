@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 80%
 
+**Source:** [github.com/neka-nat/freecad-mcp](https://github.com/neka-nat/freecad-mcp)
+
 _Resolved ref: `8564937ad6197ff96486e19db9325b18d925304e`_
 
 ## Executive Summary

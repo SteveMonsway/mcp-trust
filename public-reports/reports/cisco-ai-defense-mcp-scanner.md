@@ -5,6 +5,8 @@
 **Score:** 42/100  
 **Confidence:** 72%
 
+**Source:** [github.com/cisco-ai-defense/mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner)
+
 _Resolved ref: `0b7e1bafe2afb51b8e848300e6ddbded644ef8b5`_
 
 ## Executive Summary

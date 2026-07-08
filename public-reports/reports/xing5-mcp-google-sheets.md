@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 70%
 
+**Source:** [github.com/xing5/mcp-google-sheets](https://github.com/xing5/mcp-google-sheets)
+
 _Resolved ref: `b2f98244590f1d0982505f4faa908731278ea998`_
 
 ## Executive Summary

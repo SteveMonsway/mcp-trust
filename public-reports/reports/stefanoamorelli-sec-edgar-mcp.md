@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 60%
 
+**Source:** [github.com/stefanoamorelli/sec-edgar-mcp](https://github.com/stefanoamorelli/sec-edgar-mcp)
+
 _Resolved ref: `c9726addaecec76f8a225f54e77d4ab955f8ddfb`_
 
 ## Executive Summary

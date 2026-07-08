@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 65%
 
+**Source:** [github.com/Azure-Samples/mcp-agent-langchainjs](https://github.com/Azure-Samples/mcp-agent-langchainjs)
+
 _Resolved ref: `8c376a282080793a0802539efdb18bc0aadb3647`_
 
 ## Executive Summary

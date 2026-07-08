@@ -5,6 +5,8 @@
 **Score:** 30/100  
 **Confidence:** 61%
 
+**Source:** [github.com/echelon-ai-labs/servicenow-mcp](https://github.com/echelon-ai-labs/servicenow-mcp)
+
 _Resolved ref: `06250607bdfc814f9bb56551bba16c3a7fb5a8c9`_
 
 ## Executive Summary

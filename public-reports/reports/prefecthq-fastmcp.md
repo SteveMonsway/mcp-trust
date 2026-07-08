@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 70%
 
+**Source:** [github.com/PrefectHQ/fastmcp](https://github.com/PrefectHQ/fastmcp)
+
 _Resolved ref: `8ba5b89918d9ebcc2b7760f504cf5a682e26d808`_
 
 ## Executive Summary

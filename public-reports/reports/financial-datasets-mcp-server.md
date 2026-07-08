@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/financial-datasets/mcp-server](https://github.com/financial-datasets/mcp-server)
+
 _Resolved ref: `08e7a3dbb949d3d99bbd6d6f3a22e5f02973ec58`_
 
 ## Executive Summary

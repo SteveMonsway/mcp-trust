@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 77%
 
+**Source:** [github.com/substreambc/helium-mcp](https://github.com/substreambc/helium-mcp)
+
 _Resolved ref: `037961cd69f73c9b3f34c9cfe565a4275c35aa74`_
 
 ## Executive Summary

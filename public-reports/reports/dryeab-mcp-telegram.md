@@ -5,6 +5,8 @@
 **Score:** 19/100  
 **Confidence:** 80%
 
+**Source:** [github.com/dryeab/mcp-telegram](https://github.com/dryeab/mcp-telegram)
+
 _Resolved ref: `653a1ed43c4927b28b4060e6759d3c4009d5ea00`_
 
 ## Executive Summary

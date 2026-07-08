@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 87%
 
+**Source:** [github.com/sshisto/mnemo-mcp](https://github.com/sshisto/mnemo-mcp)
+
 _Resolved ref: `a7a36895181417d8725010d6d2f6a5aa5fad2f13`_
 
 ## Executive Summary

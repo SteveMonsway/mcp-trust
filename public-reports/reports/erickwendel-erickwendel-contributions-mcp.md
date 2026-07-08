@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ErickWendel/erickwendel-contributions-mcp](https://github.com/ErickWendel/erickwendel-contributions-mcp)
+
 _Resolved ref: `3716a45de655dfc8a034e71dc4c4104ea14d4824`_
 
 ## Executive Summary

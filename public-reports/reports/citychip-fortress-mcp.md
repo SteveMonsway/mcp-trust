@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 70%
 
+**Source:** [github.com/citychip/fortress-mcp](https://github.com/citychip/fortress-mcp)
+
 _Resolved ref: `cbe2814a3be135a9ef6e27fd7934a651dd75999e`_
 
 ## Executive Summary

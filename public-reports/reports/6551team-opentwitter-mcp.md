@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/6551Team/opentwitter-mcp](https://github.com/6551Team/opentwitter-mcp)
+
 _Resolved ref: `ad361cdc9e334bdbfa2539e900b07caf172714f3`_
 
 ## Executive Summary

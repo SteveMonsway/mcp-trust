@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/adhikasp/mcp-client-cli](https://github.com/adhikasp/mcp-client-cli)
+
 _Resolved ref: `808972daf5f542de4a44c75d9243a45372edd5e9`_
 
 ## Executive Summary

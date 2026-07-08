@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 62%
 
+**Source:** [github.com/guangxiangdebizi/FinanceMCP](https://github.com/guangxiangdebizi/FinanceMCP)
+
 _Resolved ref: `ad52965c6a1dfb2903f15f492c341c0746256408`_
 
 ## Executive Summary

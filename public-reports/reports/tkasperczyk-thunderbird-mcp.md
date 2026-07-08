@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 76%
 
+**Source:** [github.com/TKasperczyk/thunderbird-mcp](https://github.com/TKasperczyk/thunderbird-mcp)
+
 _Resolved ref: `02b05d4b61a0b1fccc9428da95ff99bc83ee6c51`_
 
 ## Executive Summary

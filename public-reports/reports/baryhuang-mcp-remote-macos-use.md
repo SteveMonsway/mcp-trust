@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 60%
 
+**Source:** [github.com/baryhuang/mcp-remote-macos-use](https://github.com/baryhuang/mcp-remote-macos-use)
+
 _Resolved ref: `58c13c785ce76ad1d37975e9b7aa32303b8d7c22`_
 
 ## Executive Summary

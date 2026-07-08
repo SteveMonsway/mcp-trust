@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 60%
 
+**Source:** [github.com/wjc9011/COMSOL_Multiphysics_MCP](https://github.com/wjc9011/COMSOL_Multiphysics_MCP)
+
 ## Executive Summary
 No significant risks were detected in the available evidence. **This is not a safety guarantee** — standard review still applies, and see Coverage/Limitations for what was and wasn’t assessed.
 

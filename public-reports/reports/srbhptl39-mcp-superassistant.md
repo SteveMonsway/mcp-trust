@@ -5,6 +5,8 @@
 **Score:** 51/100  
 **Confidence:** 72%
 
+**Source:** [github.com/srbhptl39/MCP-SuperAssistant](https://github.com/srbhptl39/MCP-SuperAssistant)
+
 _Resolved ref: `c26168ee2c5708a3a65ef5afd88cda1a97c81734`_
 
 ## Executive Summary

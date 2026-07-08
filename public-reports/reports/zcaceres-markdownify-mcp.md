@@ -5,6 +5,8 @@
 **Score:** 43/100  
 **Confidence:** 81%
 
+**Source:** [github.com/zcaceres/markdownify-mcp](https://github.com/zcaceres/markdownify-mcp)
+
 _Resolved ref: `024f97cea9a94cd842c445eea4503c442c79bd71`_
 
 ## Executive Summary

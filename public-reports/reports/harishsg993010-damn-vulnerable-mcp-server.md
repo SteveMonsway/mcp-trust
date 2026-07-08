@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 76%
 
+**Source:** [github.com/harishsg993010/damn-vulnerable-MCP-server](https://github.com/harishsg993010/damn-vulnerable-MCP-server)
+
 _Resolved ref: `79734c19f5104cd11486c90926d245560f53befa`_
 
 ## Executive Summary

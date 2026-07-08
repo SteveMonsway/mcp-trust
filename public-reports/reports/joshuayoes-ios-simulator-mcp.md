@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 83%
 
+**Source:** [github.com/joshuayoes/ios-simulator-mcp](https://github.com/joshuayoes/ios-simulator-mcp)
+
 _Resolved ref: `8f3c6710bf0d247b2389e1cc883ff78c57672960`_
 
 ## Executive Summary

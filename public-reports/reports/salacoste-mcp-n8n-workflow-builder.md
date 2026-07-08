@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 60%
 
+**Source:** [github.com/salacoste/mcp-n8n-workflow-builder](https://github.com/salacoste/mcp-n8n-workflow-builder)
+
 _Resolved ref: `7157ab089f00690f0576d81ff3f429524e7927ac`_
 
 ## Executive Summary

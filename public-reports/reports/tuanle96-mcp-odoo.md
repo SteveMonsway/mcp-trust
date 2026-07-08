@@ -5,6 +5,8 @@
 **Score:** 37/100  
 **Confidence:** 65%
 
+**Source:** [github.com/tuanle96/mcp-odoo](https://github.com/tuanle96/mcp-odoo)
+
 _Resolved ref: `b609cda55715734b6f92bb77ace6362d9f46bf30`_
 
 ## Executive Summary

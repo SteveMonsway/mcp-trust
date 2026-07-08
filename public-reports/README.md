@@ -12,44 +12,8 @@ Evidence-based scan reports for **452 real public MCP servers** (JavaScript / Ty
 - **Jump to one server:** press <kbd>t</kbd> on GitHub and type its name → open `<server>.md`.
 - **Machine-readable:** [`index.json`](index.json).
 
-## Runtime-command servers — review first (BLOCK, 32)
-| Server | Source | Decision | Risk | Score | Findings | Report |
-|---|---|---|---|---|---|---|
-| `getsentry-xcodebuildmcp` | [getsentry/XcodeBuildMCP](https://github.com/getsentry/XcodeBuildMCP) | BLOCK ⚠️ | medium | 52 | 93 | [md](reports/getsentry-xcodebuildmcp.md) · [html](reports/getsentry-xcodebuildmcp.html) |
-| `srbhptl39-mcp-superassistant` | [srbhptl39/MCP-SuperAssistant](https://github.com/srbhptl39/MCP-SuperAssistant) | BLOCK | medium | 51 | 23 | [md](reports/srbhptl39-mcp-superassistant.md) · [html](reports/srbhptl39-mcp-superassistant.html) |
-| `wonderwhy-er-desktopcommandermcp` | [wonderwhy-er/DesktopCommanderMCP](https://github.com/wonderwhy-er/DesktopCommanderMCP) | BLOCK | medium | 48 | 206 | [md](reports/wonderwhy-er-desktopcommandermcp.md) · [html](reports/wonderwhy-er-desktopcommandermcp.html) |
-| `atagon-gmbh-kogiqa-mcp` | [atagon-GmbH/kogiqa-mcp](https://github.com/atagon-GmbH/kogiqa-mcp) | BLOCK | medium | 44 | 12 | [md](reports/atagon-gmbh-kogiqa-mcp.md) · [html](reports/atagon-gmbh-kogiqa-mcp.html) |
-| `ibm-mcp-context-forge` | [IBM/mcp-context-forge](https://github.com/IBM/mcp-context-forge) | BLOCK ⚠️ | medium | 42 | 249 | [md](reports/ibm-mcp-context-forge.md) · [html](reports/ibm-mcp-context-forge.html) |
-| `cisco-ai-defense-mcp-scanner` | [cisco-ai-defense/mcp-scanner](https://github.com/cisco-ai-defense/mcp-scanner) | BLOCK | medium | 42 | 490 | [md](reports/cisco-ai-defense-mcp-scanner.md) · [html](reports/cisco-ai-defense-mcp-scanner.html) |
-| `artokun-comfyui-mcp` | [artokun/comfyui-mcp](https://github.com/artokun/comfyui-mcp) | BLOCK | medium | 42 | 156 | [md](reports/artokun-comfyui-mcp.md) · [html](reports/artokun-comfyui-mcp.html) |
-| `sepinetam-mcp-for-stata` | [SepineTam/mcp-for-stata](https://github.com/SepineTam/mcp-for-stata) | BLOCK | medium | 42 | 26 | [md](reports/sepinetam-mcp-for-stata.md) · [html](reports/sepinetam-mcp-for-stata.html) |
-| `aartiq-servicenow-mcp` | [aartiq/servicenow-mcp](https://github.com/aartiq/servicenow-mcp) | BLOCK | medium | 41 | 61 | [md](reports/aartiq-servicenow-mcp.md) · [html](reports/aartiq-servicenow-mcp.html) |
-| `softeria-ms-365-mcp-server` | [Softeria/ms-365-mcp-server](https://github.com/Softeria/ms-365-mcp-server) | BLOCK | medium | 39 | 24 | [md](reports/softeria-ms-365-mcp-server.md) · [html](reports/softeria-ms-365-mcp-server.html) |
-| `maksimsarychau-mcp-zebrunner` | [maksimsarychau/mcp-zebrunner](https://github.com/maksimsarychau/mcp-zebrunner) | BLOCK | medium | 39 | 93 | [md](reports/maksimsarychau-mcp-zebrunner.md) · [html](reports/maksimsarychau-mcp-zebrunner.html) |
-| `dakkshin-after-effects-mcp` | [Dakkshin/after-effects-mcp](https://github.com/Dakkshin/after-effects-mcp) | BLOCK | medium | 38 | 10 | [md](reports/dakkshin-after-effects-mcp.md) · [html](reports/dakkshin-after-effects-mcp.html) |
-| `jamubc-gemini-mcp-tool` | [jamubc/gemini-mcp-tool](https://github.com/jamubc/gemini-mcp-tool) | BLOCK | medium | 37 | 25 | [md](reports/jamubc-gemini-mcp-tool.md) · [html](reports/jamubc-gemini-mcp-tool.html) |
-| `mongodb-js-mongodb-mcp-server` | [mongodb-js/mongodb-mcp-server](https://github.com/mongodb-js/mongodb-mcp-server) | BLOCK | medium | 37 | 67 | [md](reports/mongodb-js-mongodb-mcp-server.md) · [html](reports/mongodb-js-mongodb-mcp-server.html) |
-| `quantgeekdev-mcp-framework` | [QuantGeekDev/mcp-framework](https://github.com/QuantGeekDev/mcp-framework) | BLOCK | medium | 37 | 82 | [md](reports/quantgeekdev-mcp-framework.md) · [html](reports/quantgeekdev-mcp-framework.html) |
-| `cloudflare-mcp-server-cloudflare` | [cloudflare/mcp-server-cloudflare](https://github.com/cloudflare/mcp-server-cloudflare) | BLOCK | medium | 36 | 13 | [md](reports/cloudflare-mcp-server-cloudflare.md) · [html](reports/cloudflare-mcp-server-cloudflare.html) |
-| `agentdeskai-browser-tools-mcp` | [AgentDeskAI/browser-tools-mcp](https://github.com/AgentDeskAI/browser-tools-mcp) | BLOCK | medium | 33 | 15 | [md](reports/agentdeskai-browser-tools-mcp.md) · [html](reports/agentdeskai-browser-tools-mcp.html) |
-| `jgraph-drawio-mcp` | [jgraph/drawio-mcp](https://github.com/jgraph/drawio-mcp) | BLOCK | medium | 33 | 13 | [md](reports/jgraph-drawio-mcp.md) · [html](reports/jgraph-drawio-mcp.html) |
-| `tradesdontlie-tradingview-mcp` | [tradesdontlie/tradingview-mcp](https://github.com/tradesdontlie/tradingview-mcp) | BLOCK | medium | 33 | 5 | [md](reports/tradesdontlie-tradingview-mcp.md) · [html](reports/tradesdontlie-tradingview-mcp.html) |
-| `southleft-figma-console-mcp` | [southleft/figma-console-mcp](https://github.com/southleft/figma-console-mcp) | BLOCK | medium | 33 | 21 | [md](reports/southleft-figma-console-mcp.md) · [html](reports/southleft-figma-console-mcp.html) |
-| `rinadelph-agent-mcp` | [rinadelph/Agent-MCP](https://github.com/rinadelph/Agent-MCP) | BLOCK | medium | 33 | 68 | [md](reports/rinadelph-agent-mcp.md) · [html](reports/rinadelph-agent-mcp.html) |
-| `patruff-ollama-mcp-bridge` | [patruff/ollama-mcp-bridge](https://github.com/patruff/ollama-mcp-bridge) | BLOCK | medium | 33 | 12 | [md](reports/patruff-ollama-mcp-bridge.md) · [html](reports/patruff-ollama-mcp-bridge.html) |
-| `stevenstavrakis-obsidian-mcp` | [StevenStavrakis/obsidian-mcp](https://github.com/StevenStavrakis/obsidian-mcp) | BLOCK | medium | 33 | 23 | [md](reports/stevenstavrakis-obsidian-mcp.md) · [html](reports/stevenstavrakis-obsidian-mcp.html) |
-| `cso1z-feishu-mcp` | [cso1z/Feishu-MCP](https://github.com/cso1z/Feishu-MCP) | BLOCK | medium | 33 | 22 | [md](reports/cso1z-feishu-mcp.md) · [html](reports/cso1z-feishu-mcp.html) |
-| `etsd-tech-mcp-pointer` | [etsd-tech/mcp-pointer](https://github.com/etsd-tech/mcp-pointer) | BLOCK | medium | 33 | 12 | [md](reports/etsd-tech-mcp-pointer.md) · [html](reports/etsd-tech-mcp-pointer.html) |
-| `reading-plus-ai-mcp-server-data-exploration` | [reading-plus-ai/mcp-server-data-exploration](https://github.com/reading-plus-ai/mcp-server-data-exploration) | BLOCK | medium | 33 | 3 | [md](reports/reading-plus-ai-mcp-server-data-exploration.md) · [html](reports/reading-plus-ai-mcp-server-data-exploration.html) |
-| `bvisible-mcp-ssh-manager` | [bvisible/mcp-ssh-manager](https://github.com/bvisible/mcp-ssh-manager) | BLOCK | medium | 33 | 56 | [md](reports/bvisible-mcp-ssh-manager.md) · [html](reports/bvisible-mcp-ssh-manager.html) |
-| `domdomegg-computer-use-mcp` | [domdomegg/computer-use-mcp](https://github.com/domdomegg/computer-use-mcp) | BLOCK | medium | 33 | 10 | [md](reports/domdomegg-computer-use-mcp.md) · [html](reports/domdomegg-computer-use-mcp.html) |
-| `uholli-browser-mcp` | [UHolli/browser-mcp](https://github.com/UHolli/browser-mcp) | BLOCK | medium | 33 | 4 | [md](reports/uholli-browser-mcp.md) · [html](reports/uholli-browser-mcp.html) |
-| `browsermcp-mcp` | [BrowserMCP/mcp](https://github.com/BrowserMCP/mcp) | BLOCK | medium | 32 | 3 | [md](reports/browsermcp-mcp.md) · [html](reports/browsermcp-mcp.html) |
-| `getsentry-sentry-mcp` | [getsentry/sentry-mcp](https://github.com/getsentry/sentry-mcp) | BLOCK | medium | 30 | 178 | [md](reports/getsentry-sentry-mcp.md) · [html](reports/getsentry-sentry-mcp.html) |
-| `nickgnd-tmux-mcp` | [nickgnd/tmux-mcp](https://github.com/nickgnd/tmux-mcp) | BLOCK | medium | 30 | 2 | [md](reports/nickgnd-tmux-mcp.md) · [html](reports/nickgnd-tmux-mcp.html) |
-
-<details>
-<summary>Full list — all 452 servers</summary>
+## All 452 servers
+_Sorted BLOCK → NEEDS_REVIEW → APPROVE_WITH_RESTRICTIONS → APPROVE (review-first), then by score._
 
 | Server | Source | Decision | Risk | Score | Findings | Report |
 |---|---|---|---|---|---|---|
@@ -505,7 +469,5 @@ Evidence-based scan reports for **452 real public MCP servers** (JavaScript / Ty
 | `ninjacazul-hono-mcp-server` | [ninjacazul/hono-mcp-server](https://github.com/ninjacazul/hono-mcp-server) | APPROVE | low | 0 | 1 | [md](reports/ninjacazul-hono-mcp-server.md) · [html](reports/ninjacazul-hono-mcp-server.html) |
 | `hilitb-project-mcp` | [hilitb/project-mcp](https://github.com/hilitb/project-mcp) | APPROVE | low | 0 | 0 | [md](reports/hilitb-project-mcp.md) · [html](reports/hilitb-project-mcp.html) |
 | `niku3325singh-ukrainian-stats-mcp-server` | [niku3325singh/ukrainian-stats-mcp-server](https://github.com/niku3325singh/ukrainian-stats-mcp-server) | APPROVE | low | 0 | 1 | [md](reports/niku3325singh-ukrainian-stats-mcp-server.md) · [html](reports/niku3325singh-ukrainian-stats-mcp-server.html) |
-
-</details>
 
 _Regenerate: `pnpm scan:seed && pnpm reports:public`._

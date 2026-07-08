@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 80%
 
+**Source:** [github.com/openclaw/mcporter](https://github.com/openclaw/mcporter)
+
 _Resolved ref: `f95142b66511564482aeb946d837205b35d91612`_
 
 ## Executive Summary

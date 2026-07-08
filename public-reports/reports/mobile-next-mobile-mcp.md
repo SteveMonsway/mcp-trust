@@ -5,6 +5,8 @@
 **Score:** 34/100  
 **Confidence:** 81%
 
+**Source:** [github.com/mobile-next/mobile-mcp](https://github.com/mobile-next/mobile-mcp)
+
 _Resolved ref: `c5d7d27fd61e4762e15ae4b1c68b6c011be88bb7`_
 
 ## Executive Summary

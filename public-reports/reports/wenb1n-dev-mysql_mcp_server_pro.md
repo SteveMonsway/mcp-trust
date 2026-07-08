@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 80%
 
+**Source:** [github.com/wenb1n-dev/mysql_mcp_server_pro](https://github.com/wenb1n-dev/mysql_mcp_server_pro)
+
 _Resolved ref: `a42af70b9c42f9a48557c030fe91b8a909c0df1a`_
 
 ## Executive Summary

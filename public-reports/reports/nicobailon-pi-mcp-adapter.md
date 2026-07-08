@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 83%
 
+**Source:** [github.com/nicobailon/pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter)
+
 _Resolved ref: `82724dccc13a49310530898f922bafff12b7f3fe`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 79%
 
+**Source:** [github.com/iFurySt/RedNote-MCP](https://github.com/iFurySt/RedNote-MCP)
+
 _Resolved ref: `74bf739a3db5c5b8e86fc8323ede09038cd89f48`_
 
 ## Executive Summary

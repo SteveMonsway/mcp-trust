@@ -5,6 +5,8 @@
 **Score:** 8/100  
 **Confidence:** 70%
 
+**Source:** [github.com/yt314/weather-mcp-playwright](https://github.com/yt314/weather-mcp-playwright)
+
 _Resolved ref: `c8fa56c2eed8bd8033f3fbabf44d4ab30db29e20`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 44/100  
 **Confidence:** 83%
 
+**Source:** [github.com/atagon-GmbH/kogiqa-mcp](https://github.com/atagon-GmbH/kogiqa-mcp)
+
 _Resolved ref: `8db11b79362ec21a69ca83c3bab52f100533c572`_
 
 ## Executive Summary

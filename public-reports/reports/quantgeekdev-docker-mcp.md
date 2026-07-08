@@ -5,6 +5,8 @@
 **Score:** 23/100  
 **Confidence:** 76%
 
+**Source:** [github.com/QuantGeekDev/docker-mcp](https://github.com/QuantGeekDev/docker-mcp)
+
 _Resolved ref: `6dada7feb35543c0d335b84a02559b5d55fe4b85`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 72%
 
+**Source:** [github.com/Jpisnice/shadcn-ui-mcp-server](https://github.com/Jpisnice/shadcn-ui-mcp-server)
+
 _Resolved ref: `45d615f0950b49e7618b129fab8d637ebf44f3da`_
 
 ## Executive Summary

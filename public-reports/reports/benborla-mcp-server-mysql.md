@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 90%
 
+**Source:** [github.com/benborla/mcp-server-mysql](https://github.com/benborla/mcp-server-mysql)
+
 _Resolved ref: `27d5b27e4e02a2d651c7708074dde5ea4d833e68`_
 
 ## Executive Summary

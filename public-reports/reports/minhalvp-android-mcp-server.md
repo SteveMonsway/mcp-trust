@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 90%
 
+**Source:** [github.com/minhalvp/android-mcp-server](https://github.com/minhalvp/android-mcp-server)
+
 _Resolved ref: `451d255a7305e6efef8a1a2b7374a21c512bba45`_
 
 ## Executive Summary

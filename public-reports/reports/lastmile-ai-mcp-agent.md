@@ -5,6 +5,8 @@
 **Score:** 41/100  
 **Confidence:** 72%
 
+**Source:** [github.com/lastmile-ai/mcp-agent](https://github.com/lastmile-ai/mcp-agent)
+
 _Resolved ref: `f62d849350816588b1c6294e7914bbe4d8b84072`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 67%
 
+**Source:** [github.com/openags/paper-search-mcp](https://github.com/openags/paper-search-mcp)
+
 _Resolved ref: `c8b642183bb725f0a7faec89e58b558df09079d1`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 9/100  
 **Confidence:** 60%
 
+**Source:** [github.com/zcaceres/fetch-mcp](https://github.com/zcaceres/fetch-mcp)
+
 _Resolved ref: `1ddb1a59cb09a2d38e759f2d7a97829680cbe514`_
 
 ## Executive Summary

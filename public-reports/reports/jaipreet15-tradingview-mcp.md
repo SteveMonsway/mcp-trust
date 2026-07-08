@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 60%
 
+**Source:** [github.com/jaipreet15/tradingview-mcp](https://github.com/jaipreet15/tradingview-mcp)
+
 _Resolved ref: `b32436fbe7fe6453d90458f399a7880976e2d521`_
 
 ## Executive Summary

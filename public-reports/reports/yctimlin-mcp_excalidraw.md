@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 76%
 
+**Source:** [github.com/yctimlin/mcp_excalidraw](https://github.com/yctimlin/mcp_excalidraw)
+
 _Resolved ref: `e7a48eb587c9a6b7c8abb1711ad18b87787476c0`_
 
 ## Executive Summary

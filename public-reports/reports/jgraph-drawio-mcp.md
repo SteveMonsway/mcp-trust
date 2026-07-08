@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 85%
 
+**Source:** [github.com/jgraph/drawio-mcp](https://github.com/jgraph/drawio-mcp)
+
 _Resolved ref: `82ab91e327566e0369dbe4ba2a1b2eeed517fe59`_
 
 ## Executive Summary

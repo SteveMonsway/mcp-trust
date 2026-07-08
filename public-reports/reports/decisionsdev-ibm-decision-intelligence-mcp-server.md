@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 60%
 
+**Source:** [github.com/DecisionsDev/ibm-decision-intelligence-mcp-server](https://github.com/DecisionsDev/ibm-decision-intelligence-mcp-server)
+
 _Resolved ref: `d99a5ce2413d41eefdbc34787dc14355fb7e525f`_
 
 ## Executive Summary

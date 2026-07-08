@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 79%
 
+**Source:** [github.com/nspady/google-calendar-mcp](https://github.com/nspady/google-calendar-mcp)
+
 _Resolved ref: `5f301a00ff198eb453936126794d4d4f283fb450`_
 
 ## Executive Summary

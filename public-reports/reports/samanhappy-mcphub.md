@@ -5,6 +5,8 @@
 **Score:** 36/100  
 **Confidence:** 69%
 
+**Source:** [github.com/samanhappy/mcphub](https://github.com/samanhappy/mcphub)
+
 _Resolved ref: `8d2ef15f7831cf494b49e9b00e9b45e179228132`_
 
 ## Executive Summary

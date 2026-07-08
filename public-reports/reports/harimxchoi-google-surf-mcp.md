@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 83%
 
+**Source:** [github.com/HarimxChoi/google-surf-mcp](https://github.com/HarimxChoi/google-surf-mcp)
+
 _Resolved ref: `a3c8f5152f674ee863d303d612aac36a70f991d4`_
 
 ## Executive Summary

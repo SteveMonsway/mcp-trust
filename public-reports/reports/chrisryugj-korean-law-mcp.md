@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 60%
 
+**Source:** [github.com/chrisryugj/korean-law-mcp](https://github.com/chrisryugj/korean-law-mcp)
+
 _Resolved ref: `8feffceebab3ee64ef89131d1b55e6357bdcc9ac`_
 
 ## Executive Summary

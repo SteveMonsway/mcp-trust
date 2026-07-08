@@ -5,6 +5,8 @@
 **Score:** 16/100  
 **Confidence:** 80%
 
+**Source:** [github.com/blazickjp/arxiv-mcp-server](https://github.com/blazickjp/arxiv-mcp-server)
+
 _Resolved ref: `d58901760d7ede4adb162eaba1725209a933f100`_
 
 ## Executive Summary

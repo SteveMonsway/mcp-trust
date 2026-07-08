@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 64%
 
+**Source:** [github.com/kyle122497/llamator-mcp-server](https://github.com/kyle122497/llamator-mcp-server)
+
 _Resolved ref: `cb91c4cb3de1f19e8e355bacc8867a9fe35e2a3b`_
 
 ## Executive Summary

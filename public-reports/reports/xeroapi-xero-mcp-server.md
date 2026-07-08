@@ -5,6 +5,8 @@
 **Score:** 11/100  
 **Confidence:** 80%
 
+**Source:** [github.com/XeroAPI/xero-mcp-server](https://github.com/XeroAPI/xero-mcp-server)
+
 _Resolved ref: `f24583c867df7c1f4806f7532eb0691e85892865`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 72%
 
+**Source:** [github.com/Mcp-Brasil/mcp-brasil](https://github.com/Mcp-Brasil/mcp-brasil)
+
 _Resolved ref: `7a7c49cdfc2398eb623a47c60e4b786a86213bdc`_
 
 ## Executive Summary

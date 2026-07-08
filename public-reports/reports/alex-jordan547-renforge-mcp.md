@@ -5,6 +5,8 @@
 **Score:** 31/100  
 **Confidence:** 69%
 
+**Source:** [github.com/alex-jordan547/renforge-mcp](https://github.com/alex-jordan547/renforge-mcp)
+
 _Resolved ref: `716df1f720f395eeb968a446d1f8556976c7eebe`_
 
 ## Executive Summary

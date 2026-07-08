@@ -5,6 +5,8 @@
 **Score:** 14/100  
 **Confidence:** 60%
 
+**Source:** [github.com/Naveenkm007/spaceship-mcp](https://github.com/Naveenkm007/spaceship-mcp)
+
 _Resolved ref: `7bf3bc968636ac91738f2d094f144409021bee73`_
 
 ## Executive Summary

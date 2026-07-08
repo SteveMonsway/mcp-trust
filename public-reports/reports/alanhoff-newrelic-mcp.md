@@ -5,6 +5,8 @@
 **Score:** 29/100  
 **Confidence:** 60%
 
+**Source:** [github.com/alanhoff/newrelic-mcp](https://github.com/alanhoff/newrelic-mcp)
+
 _Resolved ref: `272ccfcf7f2d82e2a3fb185b74646b1f773790b8`_
 
 ## Executive Summary

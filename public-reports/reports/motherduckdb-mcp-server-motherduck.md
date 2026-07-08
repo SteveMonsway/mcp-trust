@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 80%
 
+**Source:** [github.com/motherduckdb/mcp-server-motherduck](https://github.com/motherduckdb/mcp-server-motherduck)
+
 _Resolved ref: `dc170206665971d70010af10cd6ecd5cd4880ee7`_
 
 ## Executive Summary

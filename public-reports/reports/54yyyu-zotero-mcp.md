@@ -5,6 +5,8 @@
 **Score:** 33/100  
 **Confidence:** 68%
 
+**Source:** [github.com/54yyyu/zotero-mcp](https://github.com/54yyyu/zotero-mcp)
+
 _Resolved ref: `f4eb88a2ee463cbddd4b83c9f38cc12d1263968a`_
 
 ## Executive Summary

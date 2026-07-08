@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/ferrislucas/iterm-mcp](https://github.com/ferrislucas/iterm-mcp)
+
 _Resolved ref: `936182b2bbcdada70cf93d0284a48ab227d06a02`_
 
 ## Executive Summary

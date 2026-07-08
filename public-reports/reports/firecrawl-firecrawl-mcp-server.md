@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 65%
 
+**Source:** [github.com/firecrawl/firecrawl-mcp-server](https://github.com/firecrawl/firecrawl-mcp-server)
+
 _Resolved ref: `3eb1115b1f2883ff2fb74e61b5c4acf5a9ac0fb0`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 76%
 
+**Source:** [github.com/Flux159/mcp-server-kubernetes](https://github.com/Flux159/mcp-server-kubernetes)
+
 _Resolved ref: `662a19193fa79de1e4fa4f53faa25191c41481dc`_
 
 ## Executive Summary

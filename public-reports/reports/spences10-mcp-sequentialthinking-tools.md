@@ -5,6 +5,8 @@
 **Score:** 5/100  
 **Confidence:** 60%
 
+**Source:** [github.com/spences10/mcp-sequentialthinking-tools](https://github.com/spences10/mcp-sequentialthinking-tools)
+
 _Resolved ref: `ea99bb7d5d1f14a545905809aedd945f080be87d`_
 
 ## Executive Summary

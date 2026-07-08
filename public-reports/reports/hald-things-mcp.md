@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/hald/things-mcp](https://github.com/hald/things-mcp)
+
 _Resolved ref: `7e6e660a628cd2b2bd3491c1f214200d449db3f0`_
 
 ## Executive Summary

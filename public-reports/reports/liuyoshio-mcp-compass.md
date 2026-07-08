@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/liuyoshio/mcp-compass](https://github.com/liuyoshio/mcp-compass)
+
 _Resolved ref: `c7caa5cab78b0247bda17bbccf1ee75cff5912f7`_
 
 ## Executive Summary

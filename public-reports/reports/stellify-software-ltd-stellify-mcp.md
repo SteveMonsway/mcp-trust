@@ -5,6 +5,8 @@
 **Score:** 25/100  
 **Confidence:** 60%
 
+**Source:** [github.com/Stellify-Software-Ltd/stellify-mcp](https://github.com/Stellify-Software-Ltd/stellify-mcp)
+
 _Resolved ref: `4338036592fca406c8222e68c00b2577169d9aea`_
 
 ## Executive Summary

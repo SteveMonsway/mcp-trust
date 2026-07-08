@@ -5,6 +5,8 @@
 **Score:** 10/100  
 **Confidence:** 70%
 
+**Source:** [github.com/shaneholloman/mcp-knowledge-graph](https://github.com/shaneholloman/mcp-knowledge-graph)
+
 _Resolved ref: `9f6268c4b5dfb97b4188325deb5d7340fa2d19f7`_
 
 ## Executive Summary

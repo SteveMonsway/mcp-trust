@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 60%
 
+**Source:** [github.com/mrkrsl/web-search-mcp](https://github.com/mrkrsl/web-search-mcp)
+
 _Resolved ref: `eeb03f88525cbf74c4019e59a3fea45a537a760b`_
 
 ## Executive Summary

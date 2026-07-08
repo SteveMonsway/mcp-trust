@@ -5,6 +5,8 @@
 **Score:** 15/100  
 **Confidence:** 75%
 
+**Source:** [github.com/robotmcp/ros-mcp-server](https://github.com/robotmcp/ros-mcp-server)
+
 _Resolved ref: `f1c023bb5570794ee4d935aa2c7c06e025810952`_
 
 ## Executive Summary

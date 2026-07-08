@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 76%
 
+**Source:** [github.com/CursorTouch/Windows-MCP](https://github.com/CursorTouch/Windows-MCP)
+
 _Resolved ref: `afc0b273550902c56ae13596a611929c1bb2eea5`_
 
 ## Executive Summary

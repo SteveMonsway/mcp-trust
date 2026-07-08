@@ -5,6 +5,8 @@
 **Score:** 0/100  
 **Confidence:** 80%
 
+**Source:** [github.com/kontext-security/browser-use-mcp-server](https://github.com/kontext-security/browser-use-mcp-server)
+
 _Resolved ref: `a9864a400979e6e80fac9bff3e38adf3fa4e64cb`_
 
 ## Executive Summary

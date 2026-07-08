@@ -5,6 +5,8 @@
 **Score:** 11/100  
 **Confidence:** 75%
 
+**Source:** [github.com/SecretiveShell/MCP-Bridge](https://github.com/SecretiveShell/MCP-Bridge)
+
 _Resolved ref: `df1dcc58cac7bf2a4ead5f5630eb970f42999c57`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 69%
 
+**Source:** [github.com/regenrek/deepwiki-mcp](https://github.com/regenrek/deepwiki-mcp)
+
 _Resolved ref: `d62d749629716a28905da5555922b6f93a654fbf`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 32/100  
 **Confidence:** 93%
 
+**Source:** [github.com/BrowserMCP/mcp](https://github.com/BrowserMCP/mcp)
+
 _Resolved ref: `9db12f2b4f61294f0bc11708986abc47db539d6c`_
 
 ## Executive Summary

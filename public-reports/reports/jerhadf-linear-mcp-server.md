@@ -5,6 +5,8 @@
 **Score:** 4/100  
 **Confidence:** 80%
 
+**Source:** [github.com/jerhadf/linear-mcp-server](https://github.com/jerhadf/linear-mcp-server)
+
 _Resolved ref: `5e2cb621c52762618eb015b4a8d6bf884021b29e`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 66%
 
+**Source:** [github.com/21st-dev/magic-mcp](https://github.com/21st-dev/magic-mcp)
+
 _Resolved ref: `b07bc9d1c0ce6fa7d70d831c103ffa7b71b4f8f8`_
 
 ## Executive Summary

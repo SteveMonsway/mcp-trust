@@ -5,6 +5,8 @@
 **Score:** 35/100  
 **Confidence:** 77%
 
+**Source:** [github.com/karanb192/reddit-mcp-buddy](https://github.com/karanb192/reddit-mcp-buddy)
+
 _Resolved ref: `1b459295d7d1ad3197e776807f9ffa16c5968ac5`_
 
 ## Executive Summary

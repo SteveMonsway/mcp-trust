@@ -5,6 +5,8 @@
 **Score:** 26/100  
 **Confidence:** 71%
 
+**Source:** [github.com/anaisbetts/mcp-youtube](https://github.com/anaisbetts/mcp-youtube)
+
 _Resolved ref: `6348fbafcfe71b1d0582fd71987c89fd89e67df9`_
 
 ## Executive Summary

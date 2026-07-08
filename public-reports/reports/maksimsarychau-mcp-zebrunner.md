@@ -5,6 +5,8 @@
 **Score:** 39/100  
 **Confidence:** 75%
 
+**Source:** [github.com/maksimsarychau/mcp-zebrunner](https://github.com/maksimsarychau/mcp-zebrunner)
+
 _Resolved ref: `342683bd021c7ac9c9a2b886f66b62c4376e1a8b`_
 
 ## Executive Summary

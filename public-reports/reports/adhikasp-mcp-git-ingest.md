@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 80%
 
+**Source:** [github.com/adhikasp/mcp-git-ingest](https://github.com/adhikasp/mcp-git-ingest)
+
 _Resolved ref: `cd392d5bee561b3978cc2acf6b1305c6d377812f`_
 
 ## Executive Summary

@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 63%
 
+**Source:** [github.com/atilaahmettaner/tradingview-mcp](https://github.com/atilaahmettaner/tradingview-mcp)
+
 _Resolved ref: `36ca7ff648149682a4eb65798821718e5bdfbfea`_
 
 ## Executive Summary

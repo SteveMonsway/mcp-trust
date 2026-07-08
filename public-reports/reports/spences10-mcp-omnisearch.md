@@ -5,6 +5,8 @@
 **Score:** 27/100  
 **Confidence:** 75%
 
+**Source:** [github.com/spences10/mcp-omnisearch](https://github.com/spences10/mcp-omnisearch)
+
 _Resolved ref: `e0ec58c5b8568079d4d110ace97937778d2c339e`_
 
 ## Executive Summary

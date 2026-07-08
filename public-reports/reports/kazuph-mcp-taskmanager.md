@@ -5,6 +5,8 @@
 **Score:** 20/100  
 **Confidence:** 70%
 
+**Source:** [github.com/kazuph/mcp-taskmanager](https://github.com/kazuph/mcp-taskmanager)
+
 _Resolved ref: `e9f09ab46d9f870d4b74e9d17a210116313c84b0`_
 
 ## Executive Summary

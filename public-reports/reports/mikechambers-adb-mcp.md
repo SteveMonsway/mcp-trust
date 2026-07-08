@@ -5,6 +5,8 @@
 **Score:** 24/100  
 **Confidence:** 70%
 
+**Source:** [github.com/mikechambers/adb-mcp](https://github.com/mikechambers/adb-mcp)
+
 _Resolved ref: `04f65226379c90e60ad15016ee1e54716d897ce4`_
 
 ## Executive Summary

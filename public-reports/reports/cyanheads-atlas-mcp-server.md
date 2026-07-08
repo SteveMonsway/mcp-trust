@@ -5,6 +5,8 @@
 **Score:** 38/100  
 **Confidence:** 69%
 
+**Source:** [github.com/cyanheads/atlas-mcp-server](https://github.com/cyanheads/atlas-mcp-server)
+
 _Resolved ref: `5a0bfdc08f9d0d106e69432bcaa606cc414340f1`_
 
 ## Executive Summary

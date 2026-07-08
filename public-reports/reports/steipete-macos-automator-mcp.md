@@ -5,6 +5,8 @@
 **Score:** 28/100  
 **Confidence:** 75%
 
+**Source:** [github.com/steipete/macos-automator-mcp](https://github.com/steipete/macos-automator-mcp)
+
 _Resolved ref: `ef3076b2501c0f6ac1e5f92eba724aa6691d5b94`_
 
 ## Executive Summary

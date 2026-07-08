@@ -5,6 +5,8 @@
 **Score:** 22/100  
 **Confidence:** 90%
 
+**Source:** [github.com/caol64/wenyan-mcp](https://github.com/caol64/wenyan-mcp)
+
 _Resolved ref: `fa81c1d1879634dc41958b9177a57638d62d19eb`_
 
 ## Executive Summary
